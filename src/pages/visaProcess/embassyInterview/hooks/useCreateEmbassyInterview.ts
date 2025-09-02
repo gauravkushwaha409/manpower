@@ -16,6 +16,7 @@ const useCreateEmbassyInterview = () => {
   ] = usePostDataMutation();
 
   const initialValues: EmbassyInterviewValidationSchemaType = {
+    id: "",
     candidate_name: "",
     embassy_name: "",
     interview_date: new Date(),

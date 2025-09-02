@@ -1,5 +1,6 @@
 import * as Yup from "yup";
 export const embassyInterviewValidationSchema = Yup.object().shape({
+  id: Yup.string().required("Candidate Id is required"),
   candidate_name: Yup.string()
     .required("Candidate Name is required")
     .min(3, "Candidate Name must be at least 3 characters"),

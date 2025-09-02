@@ -16,6 +16,7 @@ const useCreateCountry = () => {
   ] = usePostDataMutation();
 
   const initialValues: CountryValidationSchemaType = {
+    id: "",
     country: "",
     currency: "",
     capital: "",

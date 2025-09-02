@@ -29,6 +29,7 @@ const useUpdateCountry = () => {
   const initial: CountryValidationSchemaType = data;
 
   const initialValues: CountryValidationSchemaType = {
+    id: initial?.id || "",
     country: initial?.country || "",
     flag: initial?.flag || "",
     currency: initial?.currency || "",
@@ -40,10 +41,10 @@ const useUpdateCountry = () => {
     initialValues,
     validationSchema: countryValidationSchema,
     enableReinitialize: true,
-    onSubmit: async (values, id) => {
+    onSubmit: async (values) => {
       updateCountry({
         data: values,
-        url: `/country/${id}`,
+        url: `/country/${values?.id}`,
         invalidateTag: "",
       });
     },

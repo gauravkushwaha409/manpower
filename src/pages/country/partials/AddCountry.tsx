@@ -26,7 +26,7 @@ const AddCountry: React.FC<IAddCountryProps> = ({
         <DialogHeader>
           <DialogTitle>Add Country</DialogTitle>
           <DialogDescription>
-            Fill in the form to add a new country.
+            Fill in the form to add a new country
           </DialogDescription>
         </DialogHeader>
 

@@ -16,7 +16,7 @@ const Country: React.FC = () => {
           <UserHeader
             number={50}
             title="Embassy Interview"
-            handleAddClick={addModal.toggle}
+            handleAddClick={addModal?.toggle}
           />
         </div>
 
@@ -29,8 +29,8 @@ const Country: React.FC = () => {
       </div>
 
       <AddEmbassyInterview
-        isOpen={addModal.isOpen}
-        handleCloseModal={addModal.close}
+        isOpen={addModal?.isOpen}
+        handleCloseModal={addModal?.close}
       />
     </div>
   );

@@ -1,6 +1,8 @@
 import * as Yup from "yup";
 
 export const countryValidationSchema = Yup.object().shape({
+  id: Yup.string().required("Country Id is required"),
+
   country: Yup.string()
     .required("Country name is required")
     .min(3, "Country name must be at least 3 characters")

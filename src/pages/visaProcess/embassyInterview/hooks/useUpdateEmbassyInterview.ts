@@ -29,6 +29,7 @@ const useUpdateEmbassyInterview = () => {
   const initial: EmbassyInterviewValidationSchemaType = data;
 
   const initialValues: EmbassyInterviewValidationSchemaType = {
+    id: initial?.id || "",
     candidate_name: initial?.candidate_name || "",
     embassy_name: initial?.embassy_name || "",
     interview_date: initial?.interview_date || "",
@@ -40,10 +41,10 @@ const useUpdateEmbassyInterview = () => {
     initialValues,
     validationSchema: embassyInterviewValidationSchema,
     enableReinitialize: true,
-    onSubmit: async (values, id) => {
+    onSubmit: async (values) => {
       updateEmbassyInterview({
         data: values,
-        url: `/embassy-interview/${id}`,
+        url: `/embassy-interview/${values?.id}`,
         invalidateTag: "",
       });
     },
