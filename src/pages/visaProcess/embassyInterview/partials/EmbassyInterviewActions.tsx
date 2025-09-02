@@ -1,8 +1,8 @@
 import { DeleteIcon, EditIcon } from "@/components/actions/TableComp";
 import useDisclosure from "@/hooks/useDisclousre";
-import UpdateCountryModal from "@/pages/country/partials/UpdateCountry";
 // import useDeleteCountry from "@/pages/country/hooks/useDeleteCountry";
 import DeleteModal from "@/components/DeleteModal";
+import UpdateEmbassyInterview from "./UpdateEmbassyInterview";
 
 interface TableActionsProps<T> {
   row: T;
@@ -37,7 +37,7 @@ function EmbassyInterviewActions<T>({
         </div>
       </div>
 
-      <UpdateCountryModal
+      <UpdateEmbassyInterview
         isOpen={updateModal?.isOpen}
         handleCloseModal={updateModal?.close}
       />

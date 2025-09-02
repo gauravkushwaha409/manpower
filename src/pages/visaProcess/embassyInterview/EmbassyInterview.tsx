@@ -2,7 +2,7 @@ import React from "react";
 import UserHeader from "@/common/UserHeader";
 import Table from "@/components/Table";
 import useDisclosure from "@/hooks/useDisclousre";
-import AddEmbassyInterview from "./partials/AddEmbassyInterviewModal";
+import AddEmbassyInterview from "./partials/AddEmbassyInterview";
 import { embassyInterviewTableData } from "@/data/embassyInterview";
 import { EmbassyInterviewColumns } from "./partials/EmbassyInterviewColumns";
 
