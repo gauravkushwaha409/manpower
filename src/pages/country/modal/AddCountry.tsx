@@ -7,20 +7,14 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { ICountry } from "../interface/ICountry";
 import CountryForm from "../partials/CountryForm";
 
 interface IProps {
   isOpen: boolean;
   handleCloseModal: () => void;
-  formik: FormikProps<ICountry>;
 }
 
-const AddCountryModal: React.FC<IProps> = ({
-  formik,
-  handleCloseModal,
-  isOpen,
-}) => {
+const AddCountryModal: React.FC<IProps> = ({ handleCloseModal, isOpen }) => {
   return (
     <Dialog open={isOpen} onOpenChange={handleCloseModal}>
       <DialogContent className="max-h-[80vh] overflow-y-auto scroll-none sm:max-w-[80vw] lg:max-w-[70vw] [&>button:hover]:cursor-pointer">
@@ -30,7 +24,16 @@ const AddCountryModal: React.FC<IProps> = ({
             Fill the form to add a new Country.
           </DialogDescription>
         </DialogHeader>
-        <CountryForm formik={formik} />
+        <CountryForm />
+        {/* button   */}
+        <div className="mt-8 flex items-center justify-end">
+          <button
+            type="submit"
+            className="typography-button-text px-5 py-3 bg-Blue-400 rounded-lg"
+          >
+            Add Country
+          </button>
+        </div>
       </DialogContent>
     </Dialog>
   );

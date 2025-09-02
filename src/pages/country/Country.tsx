@@ -10,6 +10,7 @@ import useUpdateCountry from "@/pages/country/hooks/useUpdateCountry.ts";
 import DeleteModal from "@/components/DeleteModal.tsx";
 import Table, { CustomColumnDef } from "@/components/Table";
 import { CountryTableData } from "@/data/country";
+import useDisclosure from "@/hooks/useDisclousre";
 
 const Country: React.FC = () => {
   const {
@@ -24,6 +25,9 @@ const Country: React.FC = () => {
     handleCloseDeleteModal,
     handleDeleteCountry,
   } = useCountry();
+
+  const countryModal= useDisclosure();
+  
 
   const { addCountryFormik } = useCreateCountry();
   const { updateCountryFormik } = useUpdateCountry();
@@ -101,7 +105,7 @@ const Country: React.FC = () => {
           <UserHeader
             number={120}
             title="Country"
-            handleAddClick={handleOpenAddModal}
+            handleAddClick={countryModal?.toggle}
           />
         </div> 
 
@@ -112,18 +116,16 @@ const Country: React.FC = () => {
       </div>
 
       <AddCountry
-        formik={addCountryFormik}
-        isOpen={addCountry}
-        handleCloseModal={handleCloseAddModal}
+        isOpen={countryModal?.isOpen}
+        handleCloseModal={countryModal?.close}
       />
       <UpdateCountryModal
-        handleCloseModal={handleCloseUpdateModal}
+        handleCloseModal={countryModal?.close}
         isOpen={!!updateCountry}
-        formik={updateCountryFormik}
       />
       <DeleteModal
-        isOpen={!!deleteCountry}
-        onCancel={handleCloseDeleteModal}
+        isOpen={countryModal?.isOpen}
+        onCancel={countryModal?.close}
         onConfirm={handleDeleteCountry}
       />
     </div>
