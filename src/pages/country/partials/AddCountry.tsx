@@ -1,6 +1,6 @@
 import React from "react";
 import CountryForm from "./CountryForm";
-import ExtendedForm from "@/components/extended-components/extended-form";
+import ExtendedForm from "@/components/extended-components/ExtendedForm";
 import {
   Dialog,
   DialogContent,

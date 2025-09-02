@@ -1,5 +1,5 @@
 import React from "react";
-import ExtendedForm from "@/components/extended-components/extended-form";
+import ExtendedForm from "@/components/extended-components/ExtendedForm";
 import {
   Dialog,
   DialogContent,

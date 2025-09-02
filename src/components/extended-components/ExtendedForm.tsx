@@ -1,7 +1,7 @@
 import { FormikProvider, FormikValues, FormikContextType } from "formik";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import ExtendedButton from "./extended-button";
+import ExtendedButton from "./ExtendedButton";
 
 interface ExtendedFormProps<T extends FormikValues> {
   formik: FormikContextType<T>;
