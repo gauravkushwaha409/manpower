@@ -14,14 +14,14 @@ const useUpdateCountry = () => {
       isSuccess: isUpdateCountrySuccess,
     },
   ] = useUpdateDataMutation();
-  
+
   const {
     data,
     isError: isGetCountryDetailsError,
     isLoading: isGetCountryDetailsLoading,
     isSuccess: isGetCountryDetailsSuccess,
   } = useGetDataQuery({
-    url: "",
+    url: "/country",
     params: {},
     tag: "",
   });
@@ -40,10 +40,10 @@ const useUpdateCountry = () => {
     initialValues,
     validationSchema: countryValidationSchema,
     enableReinitialize: true,
-    onSubmit: async (values) => {
+    onSubmit: async (values, id) => {
       updateCountry({
         data: values,
-        url: "",
+        url: `/country/${id}`,
         invalidateTag: "",
       });
     },
@@ -52,6 +52,7 @@ const useUpdateCountry = () => {
   return {
     data,
     formik,
+    updateCountry,
     isGetCountryDetailsError,
     isGetCountryDetailsLoading,
     isGetCountryDetailsSuccess,

@@ -1,20 +1,16 @@
 import { CustomColumnDef } from "@/components/Table";
 import { ICountry } from "../interface/ICountry";
-import TableActions from "@/components/TableActions";
+import CountryActions from "./CountryActions";
 
-export const getCountryColumns = (
-  onEdit: (country: ICountry) => void,
-  onDelete: (country: ICountry) => void
-): CustomColumnDef<ICountry>[] => [
+export const CountryColumns: CustomColumnDef<ICountry>[] = [
   {
     header: "Country",
     accessorKey: "country",
-    search: false,
   },
   {
     header: "Flag",
     accessorKey: "flag",
-    search: false,
+
     cell: (cell) => (
       <div className="flex items-center">
         <img
@@ -32,24 +28,25 @@ export const getCountryColumns = (
   {
     header: "Currency",
     accessorKey: "currency",
-    search: false,
   },
   {
     header: "Capital",
     accessorKey: "capital",
-    search: false,
   },
   {
     header: "Language",
     accessorKey: "language",
-    search: false,
   },
   {
     header: "Action",
     accessorKey: "action",
-    search: false,
+
     cell: ({ row }) => (
-      <TableActions row={row.original} onEdit={onEdit} onDelete={onDelete} />
+      <CountryActions
+        row={row.original}
+        onEdit={() => {}}
+        onDelete={() => {}}
+      />
     ),
   },
 ];

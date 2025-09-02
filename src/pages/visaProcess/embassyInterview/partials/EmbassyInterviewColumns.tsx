@@ -1,11 +1,8 @@
 import { CustomColumnDef } from "@/components/Table";
 import { IEmbassyInterview } from "../interface/IEmbassyInterview";
-import TableActions from "@/components/TableActions";
+import EmbassyInterviewActions from "./EmbassyInterviewActions";
 
-export const getEmbassyInterviewColumns = (
-  onEdit: (embassyInterview: IEmbassyInterview) => void,
-  onDelete: (embassyInterview: IEmbassyInterview) => void
-): CustomColumnDef<IEmbassyInterview>[] => [
+export const EmbassyInterviewColumns: CustomColumnDef<IEmbassyInterview>[] = [
   {
     header: "Candidate Name",
     accessorKey: "candidate_name",
@@ -31,7 +28,11 @@ export const getEmbassyInterviewColumns = (
     accessorKey: "action",
     search: false,
     cell: ({ row }) => (
-      <TableActions row={row.original} onEdit={onEdit} onDelete={onDelete} />
+      <EmbassyInterviewActions
+        row={row.original}
+        onEdit={() => {}}
+        onDelete={() => {}}
+      />
     ),
   },
 ];

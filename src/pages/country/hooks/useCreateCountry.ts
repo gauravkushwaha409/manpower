@@ -28,7 +28,7 @@ const useCreateCountry = () => {
     validationSchema: countryValidationSchema,
     onSubmit: async (values) => {
       await createCountry({
-        url: "",
+        url: "/country",
         data: values,
         invalidateTag: "",
       });
