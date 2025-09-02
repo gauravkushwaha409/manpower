@@ -37,11 +37,11 @@ export default function ExtendedForm<T extends FormikValues>({
       >
         {children}
 
-        <div className="flex gap-5 mt-10 w-full">
+        <div className="flex justify-end gap-5 mt-10 w-full">
           {showCancelBtn && (
             <Button
               type="button"
-              className="p-[1.25rem] rounded-full shadow-[0px_4px_4px_0px_#E4E8EC] typography-paragraph-small font-medium cursor-pointer w-[110px]"
+              className="p-[1.25rem] rounded-lg typography-paragraph-small font-medium cursor-pointer w-[110px]"
               variant="outline"
               onClick={() => {
                 formik.setErrors({});
@@ -55,7 +55,7 @@ export default function ExtendedForm<T extends FormikValues>({
           <ExtendedButton
             disabled={btnDisabled}
             type="submit"
-            className="min-w-[110px] w-fit  p-[1.25rem] border border-green-500"
+            className="min-w-[110px] w-fit  p-[1.25rem]"
             text={submitText}
             isLoading={isSubmitting}
           />

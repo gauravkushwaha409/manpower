@@ -1,50 +1,32 @@
-import React from "react";
-import { FormikProps, FormikProvider } from "formik";
 import InputText from "@/components/form/InputText.tsx";
 import { InputSearchSelect } from "@/components/form/InputSelect.tsx";
-import { ICountry } from "@/pages/country/interface/ICountry.ts";
 
-interface IProps {
-  formik: FormikProps<ICountry>;
-  isUpdate?: boolean;
-}
-
-const CountryForm: React.FC<IProps> = () => {
+const CountryForm= () => {
   return (
-    <FormikProvider value={}>
-      <form onSubmit={handleSubmit} className="space-y-4 gird grid-cols-2">
-        <div className="flex flex-col gap-5">
-          <div className="grid grid-cols-2 gap-5">
-            <InputText
-              label="Country"
-              name="country"
-              placeholder="Enter Country"
-            />
-            <InputText
-              label="Currency"
-              name="currency"
-              placeholder="Enter Currency"
-            />
-            <InputText
-              label="Capital"
-              name="capital"
-              placeholder="Enter Capital"
-            />
-            <InputSearchSelect
-              label="Language"
-              name="language"
-              options={[{ label: "Nepali", value: "nepali" }]}
-            />
-            <InputText
-              label="Religion"
-              name="religion"
-              placeholder="Enter Religion"
-            />
-          </div>
-          
-        </div>
-      </form>
-    </FormikProvider>
+    <>
+      <div className="grid grid-cols-2 gap-5">
+        <InputText label="Country" name="country" placeholder="Enter Country" />
+        <InputText
+          label="Currency"
+          name="currency"
+          placeholder="Enter Currency"
+        />
+        <InputText label="Capital" name="capital" placeholder="Enter Capital" />
+        <InputSearchSelect
+          label="Language"
+          name="language"
+          options={[{ label: "Nepali", value: "nepali" }]}
+        />
+        <InputText
+          label="Religion"
+          name="religion"
+          placeholder="Enter Religion"
+        />
+      </div>
+
+      
+    </>
   );
 };
+
 export default CountryForm;

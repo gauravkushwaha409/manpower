@@ -1,5 +1,4 @@
 export interface ICountry {
-    id: string;
     country: string;
     flag: null | File | string;
     currency: string;

@@ -1,55 +1,22 @@
-import { useGetDataQuery } from "@/api/api";
 import { useState } from "react";
+import { ICountry } from "../interface/ICountry";
 
 const useCountry = () => {
-    const [addCountry, setAddCountry] = useState<boolean>(false);
-    const [updateCountry, setUpdateCountry] = useState<string>("");
-    const [deleteCountry, setDeleteCountry] = useState<string>("");
+  const [updateCountry, setUpdateCountry] = useState<ICountry | null>(null);
+  const [deleteCountry, setDeleteCountry] = useState<ICountry | null>(null);
 
-    const { data, isError: isGetCountryError, isLoading: isGetCountryLoading, isSuccess: isGetCountrySuccess } = useGetDataQuery({ url: "", params: {}, tag: "" });
+  const handleDeleteCountry = () => {
+    if (!deleteCountry) return;
+    setDeleteCountry(null);
+  };
 
-    // Handle Open Add Country Modal
-    const handleOpenAddModal = () => {
-        setAddCountry(true);
-    };
-
-    // Handle Close Add Country Modal
-    const handleCloseAddModal = () => {
-        setAddCountry(false);
-    };
-
-    // handle close update modal
-    const handleCloseUpdateModal = () => {
-        setUpdateCountry("");
-    };
-
-    // handle Close Delete Modal
-    const handleCloseDeleteModal = () => {
-        setDeleteCountry("");
-    };
-
-    const handleDeleteCountry = () => {
-        alert("Country Deleted Successfully" + deleteCountry);
-        setDeleteCountry("");
-    };
-
-    return {
-        data,
-        addCountry,
-        setAddCountry,
-        updateCountry,
-        setUpdateCountry,
-        deleteCountry,
-        setDeleteCountry,
-        isGetCountrySuccess,
-        isGetCountryLoading,
-        isGetCountryError,
-        handleOpenAddModal,
-        handleCloseAddModal,
-        handleDeleteCountry,
-        handleCloseDeleteModal,
-        handleCloseUpdateModal,
-    };
+  return {
+    updateCountry,
+    setUpdateCountry,
+    deleteCountry,
+    setDeleteCountry,
+    handleDeleteCountry,
+  };
 };
 
 export default useCountry;

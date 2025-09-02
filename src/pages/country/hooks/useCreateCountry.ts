@@ -1,36 +1,45 @@
-import * as Yup from "yup";
 import { useFormik } from "formik";
 import { usePostDataMutation } from "@/api/api";
-import { countryValidationSchema } from "../schema/countryValidation";
-export type CountryFormValues = Yup.InferType<typeof countryValidationSchema>;
+import { countryValidationSchema, CountryValidationSchemaType } from "../schema/countryValidation";
+
 
 const useCreateCountry = () => {
-    const [createCountry, { isError: isCountryError, isLoading: isCountryLoading, isSuccess: isCountrySuccess }] = usePostDataMutation();
+  const [
+    createCountry,
+    {
+      isError: isCountryError,
+      isLoading: isCountryLoading,
+      isSuccess: isCountrySuccess,
+    },
+  ] = usePostDataMutation();
 
-    // Initial values based strictly on the provided ICountry interface
-    const initialValues: CountryFormValues = {
-        country: "",
-        currency: "",
-        capital: "",
-        language: "",
-        religion: "",
-    };
+  const initialValues:CountryValidationSchemaType = {
+    country: "",
+    currency: "",
+    capital: "",
+    language: "",
+    religion: "",
+    flag: "",
+  };
 
-    const addCountryFormik = useFormik({
-        initialValues,
-        validationSchema: countryValidationSchema,
-        onSubmit: async (values) => {
-            createCountry({
-                url: "",
-                data: values,
-                invalidateTag: "",
-            });
-        },
-    });
+  const formik = useFormik<CountryValidationSchemaType>({
+    initialValues,
+    validationSchema: countryValidationSchema,
+    onSubmit: async (values) => {
+      await createCountry({
+        url: "/countries",
+        data: values,
+        invalidateTag: "Country",
+      });
+    },
+  });
 
-    return { addCountryFormik, isCountryError, isCountryLoading, isCountrySuccess };
+  return {
+    formik,
+    isCountryError,
+    isCountryLoading,
+    isCountrySuccess,
+  };
 };
 
 export default useCreateCountry;
-
-

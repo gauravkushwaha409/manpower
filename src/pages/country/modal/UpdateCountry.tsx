@@ -1,36 +1,40 @@
-import { FormikProps } from "formik";
 import React from "react";
+import CountryForm from "../partials/CountryForm";
+import ExtendedForm from "@/components/extended-components/extended-form";
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogHeader,
   DialogTitle,
+  DialogDescription,
 } from "@/components/ui/dialog";
-import { ICountry } from "../interface/ICountry";
-import CountryForm from "../partials/CountryForm";
+import useUpdateCountry from "../hooks/useUpdateCountry";
 
 interface IProps {
   isOpen: boolean;
   handleCloseModal: () => void;
-  formik: FormikProps<ICountry>;
 }
 
-const UpdateCountryModal: React.FC<IProps> = ({
-  formik,
-  handleCloseModal,
-  isOpen,
-}) => {
+const UpdateCountryModal: React.FC<IProps> = ({ handleCloseModal, isOpen }) => {
+  const { formik } = useUpdateCountry();
   return (
     <Dialog open={isOpen} onOpenChange={handleCloseModal}>
       <DialogContent className="max-h-[80vh] overflow-y-auto scroll-none sm:max-w-[80vw] lg:max-w-[70vw] [&>button:hover]:cursor-pointer">
         <DialogHeader>
-          <DialogTitle>Update Country</DialogTitle>
+          <DialogTitle>Add Country</DialogTitle>
           <DialogDescription>
-            Fill the form to update Country.
+            Fill in the form to add a new country.
           </DialogDescription>
         </DialogHeader>
-        <CountryForm formik={formik} isUpdate />
+
+        <ExtendedForm
+          formik={formik}
+          onClose={handleCloseModal}
+          submitText="Update Country"
+          cancelText="Cancel"
+        >
+          <CountryForm />
+        </ExtendedForm>
       </DialogContent>
     </Dialog>
   );

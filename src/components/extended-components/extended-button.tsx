@@ -32,7 +32,7 @@ const ExtendedButton = ({
     <Button
       onClick={onClick}
       className={cn(
-        "bg-green-600 p-[1.25rem] rounded-full shadow-[0px_4px_4px_0px_#E4E8EC] typography-paragraph-small font-medium text-white hover:bg-green-700 cursor-pointer",
+        "typography-button-text px-5 py-3 bg-Blue-400 rounded-lg text-white",
         {
           "opacity-80": isLoading,
         },

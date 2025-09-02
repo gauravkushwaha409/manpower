@@ -26,9 +26,8 @@ export const countryValidationSchema = Yup.object().shape({
     .required("Preferred language is required")
     .min(2, "Language must be at least 2 characters")
     .max(30, "Language cannot exceed 30 characters"),
-
-  religion: Yup.string()
-    .required("Religion is required")
-    .min(3, "Religion must be at least 3 characters")
-    .max(30, "Religion cannot exceed 30 characters"),
 });
+
+export type CountryValidationSchemaType = Yup.InferType<
+  typeof countryValidationSchema
+>;

@@ -1,13 +1,14 @@
-import { FormikProps } from "formik";
 import React from "react";
+import CountryForm from "../partials/CountryForm";
+import ExtendedForm from "@/components/extended-components/extended-form";
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogHeader,
   DialogTitle,
+  DialogDescription,
 } from "@/components/ui/dialog";
-import CountryForm from "../partials/CountryForm";
+import useCreateCountry from "../hooks/useCreateCountry";
 
 interface IProps {
   isOpen: boolean;
@@ -15,25 +16,25 @@ interface IProps {
 }
 
 const AddCountryModal: React.FC<IProps> = ({ handleCloseModal, isOpen }) => {
+  const { formik } = useCreateCountry();
   return (
     <Dialog open={isOpen} onOpenChange={handleCloseModal}>
       <DialogContent className="max-h-[80vh] overflow-y-auto scroll-none sm:max-w-[80vw] lg:max-w-[70vw] [&>button:hover]:cursor-pointer">
         <DialogHeader>
           <DialogTitle>Add Country</DialogTitle>
           <DialogDescription>
-            Fill the form to add a new Country.
+            Fill in the form to add a new country.
           </DialogDescription>
         </DialogHeader>
-        <CountryForm />
-        {/* button   */}
-        <div className="mt-8 flex items-center justify-end">
-          <button
-            type="submit"
-            className="typography-button-text px-5 py-3 bg-Blue-400 rounded-lg"
-          >
-            Add Country
-          </button>
-        </div>
+
+        <ExtendedForm
+          formik={formik}
+          onClose={handleCloseModal}
+          submitText="Add Country"
+          cancelText="Cancel"
+        >
+          <CountryForm />
+        </ExtendedForm>
       </DialogContent>
     </Dialog>
   );
