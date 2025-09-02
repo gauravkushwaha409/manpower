@@ -27,12 +27,6 @@ export const EmbassyInterviewColumns: CustomColumnDef<IEmbassyInterview>[] = [
     header: "Action",
     accessorKey: "action",
     search: false,
-    cell: ({ row }) => (
-      <EmbassyInterviewActions
-        row={row.original}
-        onEdit={() => {}}
-        onDelete={() => {}}
-      />
-    ),
+    cell: ({ row }) => <EmbassyInterviewActions row={row?.original} />,
   },
 ];

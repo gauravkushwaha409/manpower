@@ -2,7 +2,7 @@ import React from "react";
 import UserHeader from "../../common/UserHeader";
 import Table from "@/components/Table";
 import useDisclosure from "@/hooks/useDisclousre";
-import AddCountryModal from "@/pages/country/modal/AddCountry";
+import AddCountry from "@/pages/country/partials/AddCountry";
 import { CountryTableData } from "@/data/country";
 import { CountryColumns } from "./partials/CountryColumns";
 // import useGetCountry from "./hooks/useGetCountry";
@@ -19,7 +19,7 @@ const Country: React.FC = () => {
           <UserHeader
             number={120}
             title="Country"
-            handleAddClick={addModal.toggle}
+            handleAddClick={addModal?.toggle}
           />
         </div>
 
@@ -28,7 +28,7 @@ const Country: React.FC = () => {
         </div>
       </div>
 
-      <AddCountryModal
+      <AddCountry
         isOpen={addModal?.isOpen}
         handleCloseModal={addModal?.close}
       />

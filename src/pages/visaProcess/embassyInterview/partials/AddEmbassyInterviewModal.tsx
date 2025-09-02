@@ -8,14 +8,17 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 import useCreateEmbassyInterview from "../hooks/useCreateEmbassyInterview";
-import EmbassyInterviewForm from "../partials/EmbassyInterviewForm";
+import EmbassyInterviewForm from "./EmbassyInterviewForm";
 
-interface IProps {
+interface IAddEmbassyInterviewProps {
   isOpen: boolean;
   handleCloseModal: () => void;
 }
 
-const AddEmbassyInterview: React.FC<IProps> = ({ handleCloseModal, isOpen }) => {
+const AddEmbassyInterview: React.FC<IAddEmbassyInterviewProps> = ({
+  handleCloseModal,
+  isOpen,
+}) => {
   const { formik } = useCreateEmbassyInterview();
   return (
     <Dialog open={isOpen} onOpenChange={handleCloseModal}>

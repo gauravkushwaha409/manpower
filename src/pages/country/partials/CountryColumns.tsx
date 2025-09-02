@@ -41,12 +41,6 @@ export const CountryColumns: CustomColumnDef<ICountry>[] = [
     header: "Action",
     accessorKey: "action",
 
-    cell: ({ row }) => (
-      <CountryActions
-        row={row.original}
-        onEdit={() => {}}
-        onDelete={() => {}}
-      />
-    ),
+    cell: ({ row }) => <CountryActions row={row?.original} />,
   },
 ];

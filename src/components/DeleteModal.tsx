@@ -13,7 +13,7 @@ import React from "react";
 interface IProps {
   isOpen: boolean;
   onCancel: () => void;
-  onConfirm: () => void;
+  onConfirm?: () => void;
   primaryMessage?: string;
   secondaryMessage?: string;
 }

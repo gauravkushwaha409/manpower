@@ -8,14 +8,14 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 import useUpdateEmbassyInterview from "../hooks/useUpdateEmbassyInterview";
-import EmbassyInterviewForm from "../partials/EmbassyInterviewForm";
+import EmbassyInterviewForm from "./EmbassyInterviewForm";
 
-interface IProps {
+interface IUpdateEmbassyInterviewProps {
   isOpen: boolean;
   handleCloseModal: () => void;
 }
 
-const UpdateEmbassyInterviewModal: React.FC<IProps> = ({
+const UpdateEmbassyInterview: React.FC<IUpdateEmbassyInterviewProps> = ({
   handleCloseModal,
   isOpen,
 }) => {
@@ -43,4 +43,4 @@ const UpdateEmbassyInterviewModal: React.FC<IProps> = ({
   );
 };
 
-export default UpdateEmbassyInterviewModal;
+export default UpdateEmbassyInterview;
