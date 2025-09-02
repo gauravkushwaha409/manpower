@@ -1,9 +1,9 @@
 import { useGetDataQuery, useUpdateDataMutation } from "@/api/api";
 import { useFormik } from "formik";
 import {
-  embassyInterviewValidation,
+  embassyInterviewValidationSchema,
   EmbassyInterviewValidationSchemaType,
-} from "../schema/embassyInterviewValidation";
+} from "../schema/embassyInterviewValidationSchema";
 
 const useUpdateEmbassyInterview = () => {
   const [
@@ -38,12 +38,12 @@ const useUpdateEmbassyInterview = () => {
 
   const formik = useFormik({
     initialValues,
-    validationSchema: embassyInterviewValidation,
+    validationSchema: embassyInterviewValidationSchema,
     enableReinitialize: true,
-    onSubmit: async (values) => {
+    onSubmit: async (values, id) => {
       updateEmbassyInterview({
         data: values,
-        url: "",
+        url: `/embassy-interview/${id}`,
         invalidateTag: "",
       });
     },

@@ -1,5 +1,5 @@
 import * as Yup from "yup";
-export const embassyInterviewValidation = Yup.object().shape({
+export const embassyInterviewValidationSchema = Yup.object().shape({
   candidate_name: Yup.string()
     .required("Candidate Name is required")
     .min(3, "Candidate Name must be at least 3 characters"),
@@ -24,5 +24,5 @@ export const embassyInterviewValidation = Yup.object().shape({
 });
 
 export type EmbassyInterviewValidationSchemaType = Yup.InferType<
-  typeof embassyInterviewValidation
+  typeof embassyInterviewValidationSchema
 >;

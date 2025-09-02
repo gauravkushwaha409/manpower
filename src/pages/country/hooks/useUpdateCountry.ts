@@ -3,7 +3,7 @@ import { useFormik } from "formik";
 import {
   countryValidationSchema,
   CountryValidationSchemaType,
-} from "../schema/countryValidation";
+} from "../schema/countryValidationSchema";
 
 const useUpdateCountry = () => {
   const [

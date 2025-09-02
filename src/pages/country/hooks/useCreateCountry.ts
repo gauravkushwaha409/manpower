@@ -3,7 +3,7 @@ import { usePostDataMutation } from "@/api/api";
 import {
   countryValidationSchema,
   CountryValidationSchemaType,
-} from "../schema/countryValidation";
+} from "../schema/countryValidationSchema";
 
 const useCreateCountry = () => {
   const [
