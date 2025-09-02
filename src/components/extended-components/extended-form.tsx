@@ -41,7 +41,7 @@ export default function ExtendedForm<T extends FormikValues>({
           {showCancelBtn && (
             <Button
               type="button"
-              className="p-[1.25rem] rounded-lg typography-paragraph-small font-medium cursor-pointer w-[110px]"
+              className="p-[1.25rem] rounded-lg typography-paragraph-small font-medium cursor-pointer w-[110px] cursor-pointer"
               variant="outline"
               onClick={() => {
                 formik.setErrors({});
@@ -55,7 +55,7 @@ export default function ExtendedForm<T extends FormikValues>({
           <ExtendedButton
             disabled={btnDisabled}
             type="submit"
-            className="min-w-[110px] w-fit  p-[1.25rem]"
+            className="min-w-[110px] w-fit  p-[1.25rem] cursor-pointer"
             text={submitText}
             isLoading={isSubmitting}
           />

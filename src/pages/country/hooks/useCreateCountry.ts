@@ -1,7 +1,9 @@
 import { useFormik } from "formik";
 import { usePostDataMutation } from "@/api/api";
-import { countryValidationSchema, CountryValidationSchemaType } from "../schema/countryValidation";
-
+import {
+  countryValidationSchema,
+  CountryValidationSchemaType,
+} from "../schema/countryValidation";
 
 const useCreateCountry = () => {
   const [
@@ -13,12 +15,11 @@ const useCreateCountry = () => {
     },
   ] = usePostDataMutation();
 
-  const initialValues:CountryValidationSchemaType = {
+  const initialValues: CountryValidationSchemaType = {
     country: "",
     currency: "",
     capital: "",
     language: "",
-    religion: "",
     flag: "",
   };
 
@@ -27,9 +28,9 @@ const useCreateCountry = () => {
     validationSchema: countryValidationSchema,
     onSubmit: async (values) => {
       await createCountry({
-        url: "/countries",
+        url: "",
         data: values,
-        invalidateTag: "Country",
+        invalidateTag: "",
       });
     },
   });

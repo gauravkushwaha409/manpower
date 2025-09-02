@@ -1,5 +1,4 @@
 import React from "react";
-import CountryForm from "../partials/CountryForm";
 import ExtendedForm from "@/components/extended-components/extended-form";
 import {
   Dialog,
@@ -8,36 +7,37 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
-import useUpdateCountry from "../hooks/useUpdateCountry";
+import useCreateEmbassyInterview from "../hooks/useCreateEmbassyInterview";
+import EmbassyInterviewForm from "../partials/EmbassyInterviewForm";
 
 interface IProps {
   isOpen: boolean;
   handleCloseModal: () => void;
 }
 
-const UpdateCountryModal: React.FC<IProps> = ({ handleCloseModal, isOpen }) => {
-  const { formik } = useUpdateCountry();
+const AddEmbassyInterview: React.FC<IProps> = ({ handleCloseModal, isOpen }) => {
+  const { formik } = useCreateEmbassyInterview();
   return (
     <Dialog open={isOpen} onOpenChange={handleCloseModal}>
       <DialogContent className="max-h-[80vh] overflow-y-auto scroll-none sm:max-w-[80vw] lg:max-w-[70vw] [&>button:hover]:cursor-pointer">
         <DialogHeader>
-          <DialogTitle>Update Country</DialogTitle>
+          <DialogTitle>Add Embassy Interview</DialogTitle>
           <DialogDescription>
-            Edit the fields below to update the country information.
+            Fill in the form to add a new embassy interview.
           </DialogDescription>
         </DialogHeader>
 
         <ExtendedForm
           formik={formik}
           onClose={handleCloseModal}
-          submitText="Update Country"
+          submitText="Add Embassy Interview"
           cancelText="Cancel"
         >
-          <CountryForm />
+          <EmbassyInterviewForm />
         </ExtendedForm>
       </DialogContent>
     </Dialog>
   );
 };
 
-export default UpdateCountryModal;
+export default AddEmbassyInterview;

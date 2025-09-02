@@ -1,7 +1,7 @@
 import InputText from "@/components/form/InputText.tsx";
 import { InputSearchSelect } from "@/components/form/InputSelect.tsx";
 
-const CountryForm= () => {
+const CountryForm = () => {
   return (
     <>
       <div className="grid grid-cols-2 gap-5">
@@ -17,14 +17,7 @@ const CountryForm= () => {
           name="language"
           options={[{ label: "Nepali", value: "nepali" }]}
         />
-        <InputText
-          label="Religion"
-          name="religion"
-          placeholder="Enter Religion"
-        />
       </div>
-
-      
     </>
   );
 };

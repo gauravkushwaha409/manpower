@@ -14,8 +14,7 @@ const useUpdateCountry = () => {
       isSuccess: isUpdateCountrySuccess,
     },
   ] = useUpdateDataMutation();
-
-  // Get Initial Data
+  
   const {
     data,
     isError: isGetCountryDetailsError,
@@ -35,7 +34,6 @@ const useUpdateCountry = () => {
     currency: initial?.currency || "",
     capital: initial?.capital || "",
     language: initial?.language || "",
-    religion: initial?.religion || "",
   };
 
   const formik = useFormik({
