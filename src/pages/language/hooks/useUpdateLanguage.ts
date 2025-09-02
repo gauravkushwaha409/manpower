@@ -1,17 +1,13 @@
+import * as Yup from "yup";
 import { useGetDataQuery, useUpdateDataMutation } from "@/api/api";
 import { useFormik } from "formik";
 import { ILanguage } from "@/pages/language/interface/ILanguage.ts";
-import { languageValidationSchema } from "@/pages/language/hooks/useCreateLanguage.ts";
+import { languageValidationSchema } from "../validation/languageValidation";
+export type LanguageFormValues = Yup.InferType<typeof languageValidationSchema>;
 
 const useUpdateLanguage = () => {
-  const [
-    updateLanguage,
-    {
-      isError: isUpdateLanguageError,
-      isLoading: isUpdateLanguageLoading,
-      isSuccess: isUpdateLanguageSuccess,
-    },
-  ] = useUpdateDataMutation();
+  const [updateLanguage, { isError, isLoading, isSuccess }] =
+    useUpdateDataMutation();
 
   // Get Initial Data
   const {
@@ -32,7 +28,7 @@ const useUpdateLanguage = () => {
     language: initial?.language || "",
   };
 
-  const updateLanguageFormik = useFormik({
+  const formik = useFormik({
     initialValues,
     validationSchema: languageValidationSchema,
     enableReinitialize: true,
@@ -47,13 +43,13 @@ const useUpdateLanguage = () => {
 
   return {
     data,
-    updateLanguageFormik,
+    formik,
     isGetLanguageDetailsError,
     isGetLanguageDetailsLoading,
     isGetLanguageDetailsSuccess,
-    isUpdateLanguageSuccess,
-    isUpdateLanguageLoading,
-    isUpdateLanguageError,
+    isSuccess,
+    isLoading,
+    isError,
   };
 };
 

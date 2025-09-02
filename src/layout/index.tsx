@@ -1,10 +1,10 @@
-import { useState } from 'react';
-import { Outlet } from 'react-router-dom';
-import Sidebar from './sidebar';
-import Header from './header/Header';
+import { useState } from "react";
+import { Outlet } from "react-router-dom";
+import Sidebar from "./sidebar";
+import Header from "./header/Header";
 
 const Layout: React.FC = () => {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(true);
   const toggleSidebar = () => setSidebarOpen((prev) => !prev);
 
   return (

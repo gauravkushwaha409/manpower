@@ -1,25 +1,18 @@
-import * as Yup from "yup";
 import { useFormik } from "formik";
 import { usePostDataMutation } from "@/api/api";
 import { ILanguage } from "@/pages/language/interface/ILanguage.ts";
+import { languageValidationSchema } from "../validation/languageValidation";
 
 const useCreateLanguage = () => {
-  const [
-    createLanguage,
-    {
-      isError: isLanguageError,
-      isLoading: isLanguageLoading,
-      isSuccess: isLanguageSuccess,
-    },
-  ] = usePostDataMutation();
+  const [createLanguage, { isError, isLoading, isSuccess }] =
+    usePostDataMutation();
 
-  // Initial values based strictly on the provided ILanguage interface
   const initialValues: ILanguage = {
     id: "",
     language: "",
   };
 
-  const addLanguageFormik = useFormik({
+  const formik = useFormik({
     initialValues,
     validationSchema: languageValidationSchema,
     onSubmit: async (values) => {
@@ -32,18 +25,11 @@ const useCreateLanguage = () => {
   });
 
   return {
-    addLanguageFormik,
-    isLanguageError,
-    isLanguageLoading,
-    isLanguageSuccess,
+    formik,
+    isError,
+    isLoading,
+    isSuccess,
   };
 };
 
 export default useCreateLanguage;
-
-// Separate validation schema that may include additional fields
-export const languageValidationSchema = Yup.object().shape({
-  language: Yup.string()
-    .required("language name is required")
-    .min(3, "language name must be at least 3 character"),
-});
