@@ -1,7 +1,7 @@
 import { useFormik } from "formik";
 import { usePostDataMutation } from "@/api/api";
 import { ILanguage } from "@/pages/language/interface/ILanguage.ts";
-import { languageValidationSchema } from "../validation/languageValidation";
+import { languageValidationSchema } from "../schema/languageValidation";
 
 const useCreateLanguage = () => {
   const [createLanguage, { isError, isLoading, isSuccess }] =

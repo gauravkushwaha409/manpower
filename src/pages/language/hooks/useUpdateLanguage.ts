@@ -2,7 +2,7 @@ import * as Yup from "yup";
 import { useGetDataQuery, useUpdateDataMutation } from "@/api/api";
 import { useFormik } from "formik";
 import { ILanguage } from "@/pages/language/interface/ILanguage.ts";
-import { languageValidationSchema } from "../validation/languageValidation";
+import { languageValidationSchema } from "../schema/languageValidation";
 export type LanguageFormValues = Yup.InferType<typeof languageValidationSchema>;
 
 const useUpdateLanguage = () => {
