@@ -10,7 +10,7 @@ import { CountryColumns } from "./partials/CountryColumns";
 const Country: React.FC = () => {
   const addModal = useDisclosure();
 
-  // const { data } = useGetCountry();
+  // const { data } = useGetCountry();s
 
   return (
     <div className="min-h-full w-full bg-surface">

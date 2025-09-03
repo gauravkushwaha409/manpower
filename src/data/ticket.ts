@@ -1,5 +1,6 @@
 import { ITicket } from "@/pages/visaProcess/ticket/interface/ITicket";
 
+
 export const flightTableData: Pick<ITicket, "id" | "candidate_name" | "country" | "flight_number" | "airline_name" | "status">[] = [
  {
   id: "1",

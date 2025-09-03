@@ -23,8 +23,8 @@ const VISA = {
   medicalReport: "/medical-report",
   orientation: "/orientation",
   dofe: "/dofe",
-  ticket: "/ticket"
-}
+  ticket: "/ticket",
+};
 
 /**
  *ALL PATH
@@ -32,5 +32,5 @@ const VISA = {
 export const PATH = {
   auth: AUTH_PATH,
   dashboard: DASHBOARD_PATH,
-  visa: VISA
+  visa: VISA,
 };
