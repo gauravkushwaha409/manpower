@@ -13,7 +13,7 @@ import useJobApplicant from './hooks/useJobApplicant';
 import UpdateJobApplicantModal from './modal/UpdateJobApplicantModal';
 import DeleteModal from '@/components/DeleteModal';
 import { jobApplicantsTableData } from './hooks/useGetJobApplicants';
-import UserHeader from '@/common/userHeader';
+import PageHeader from '@/common/PageHeader';
 
 const JobApplicant: React.FC = () => {
   const {
@@ -90,7 +90,7 @@ const JobApplicant: React.FC = () => {
       <div className="relative px-6">
         {/* Header */}
         <div className="w-full h-fit">
-          <UserHeader
+          <PageHeader
             title="Job Applicants"
             handleAddClick={handleOpenAddModal}
             routePath="/"

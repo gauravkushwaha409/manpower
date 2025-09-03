@@ -4,7 +4,7 @@ import useDisclosure from '@/hooks/useDisclousre';
 import AddOrientation from './partials/AddOrientation';
 import { OrientationColumns } from './partials/OrientationColumns';
 import { orientationTableData } from '@/data/orientation';
-import UserHeader from '@/common/userHeader';
+import PageHeader from '@/common/PageHeader';
 
 const Orientation: React.FC = () => {
   const addModal = useDisclosure();
@@ -13,7 +13,7 @@ const Orientation: React.FC = () => {
     <div className="bg-surface w-full min-h-full">
       <div className="px-5">
         <div className="w-full h-fit">
-          <UserHeader
+          <PageHeader
             title="Orientation"
             handleAddClick={addModal?.toggle}
             routePath="/"

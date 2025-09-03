@@ -1,7 +1,7 @@
 import React from 'react';
 import Table from '@/components/Table';
 import AddLanguageModal from '@/pages/language/partials/AddLanguage';
-import UserHeader from '@/common/userHeader';
+import PageHeader from '@/common/PageHeader';
 import useDisclosure from '@/hooks/useDisclousre';
 import { getLanguageData } from '../hooks/useGetLanguage';
 import { LanguageColumns } from './LanguageColumns';
@@ -14,7 +14,7 @@ const LanguageTable: React.FC = () => {
       <div className="px-5">
         {/* Header */}
         <div className="w-full h-fit">
-          <UserHeader
+          <PageHeader
             title="Language"
             handleAddClick={addLanguageModal.open}
             routePath="/"

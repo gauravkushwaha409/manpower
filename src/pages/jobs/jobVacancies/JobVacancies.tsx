@@ -6,7 +6,7 @@ import useCreateVacancies from './hooks/useCreateVacancies';
 import useUpdateVacancies from './hooks/useUpdateVacancies';
 import UpdateJobVacancyModal from './modal/UpdateJobVacancyModal';
 import DeleteModal from '@/components/DeleteModal';
-import UserHeader from '@/common/userHeader';
+import PageHeader from '@/common/PageHeader';
 // import { CustomColumnDef } from '@/components/Table';
 // import { IJobVacancyTableData } from './interface/IAddJobVacancies';
 
@@ -83,7 +83,7 @@ const JobVacancies: React.FC = () => {
       <div className="relative px-6">
         {/* Header */}
         <div className="w-full h-fit">
-          <UserHeader
+          <PageHeader
             title="Job Vacancies"
             handleAddClick={handleOpenAddModal}
             routePath="/"

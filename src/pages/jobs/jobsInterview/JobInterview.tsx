@@ -1,6 +1,6 @@
 import React from 'react';
 import Table, { CustomColumnDef } from '../../../components/Table';
-import UserHeader from '@/common/userHeader';
+import PageHeader from '@/common/PageHeader';
 import {
   DeleteIcon,
   EditIcon,
@@ -93,7 +93,7 @@ const JobInterview: React.FC = () => {
       <div className="relative px-6">
         {/* Header */}
         <div className="w-full h-fit">
-          <UserHeader
+          <PageHeader
             handleAddClick={handleOpenAddModal}
             title="Interview Candidates"
             routePath="/"

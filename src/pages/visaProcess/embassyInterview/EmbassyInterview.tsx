@@ -2,7 +2,7 @@ import React from 'react';
 import Table from '@/components/Table';
 import { embassyInterviewTableData } from '@/data/embassyInterview';
 import { EmbassyInterviewColumns } from './partials/EmbassyInterviewColumns';
-import UserHeader from '@/common/userHeader';
+import PageHeader from '@/common/PageHeader';
 import Breadcrumb from '@/components/reusable-component/Breadcrumb';
 import EmbassyInterviewFilterList from './partials/EmbassyInterviewFilterList';
 
@@ -12,7 +12,7 @@ const EmbassyInterview: React.FC = () => {
       <Breadcrumb Navone="Dashboard" Navtwo="Embassy Interview" />
       <div>
         <div className="w-full h-fit">
-          <UserHeader title="Embassy Interview" routePath="/" />
+          <PageHeader title="Embassy Interview" routePath="/" />
         </div>
         <div className="py-5">
           <EmbassyInterviewFilterList />

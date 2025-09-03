@@ -4,7 +4,7 @@ import useDisclosure from '@/hooks/useDisclousre';
 import { VisaColumns } from './partials/VisaColumns';
 import { visaTableData } from '@/data/visa';
 import AddVisa from './partials/AddVisa';
-import UserHeader from '@/common/userHeader';
+import PageHeader from '@/common/PageHeader';
 
 const Visa: React.FC = () => {
   const addModal = useDisclosure();
@@ -13,7 +13,7 @@ const Visa: React.FC = () => {
     <div className="bg-surface w-full min-h-full">
       <div className="px-5">
         <div className="w-full h-fit">
-          <UserHeader
+          <PageHeader
             title="Visa"
             handleAddClick={addModal?.toggle}
             routePath="/"

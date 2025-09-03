@@ -10,7 +10,7 @@ interface IHeaderProps {
   routePath: string;
 }
 
-const UserHeader: React.FC<IHeaderProps> = ({
+const PageHeader: React.FC<IHeaderProps> = ({
   title,
   showAddButton = true,
   routePath,
@@ -40,4 +40,4 @@ const UserHeader: React.FC<IHeaderProps> = ({
   );
 };
 
-export default UserHeader;
+export default PageHeader;

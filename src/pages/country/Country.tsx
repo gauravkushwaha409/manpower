@@ -5,7 +5,7 @@ import useDisclosure from '@/hooks/useDisclousre';
 import AddCountry from '@/pages/country/partials/AddCountry';
 import { CountryTableData } from '@/data/country';
 import { CountryColumns } from './partials/CountryColumns';
-import UserHeader from '@/common/userHeader';
+import PageHeader from '@/common/PageHeader';
 // import useGetCountry from "./hooks/useGetCountry";
 
 const Country: React.FC = () => {
@@ -17,7 +17,7 @@ const Country: React.FC = () => {
     <div className="bg-surface w-full min-h-full">
       <div className="px-5">
         <div className="w-full h-fit">
-          <UserHeader
+          <PageHeader
             title="Country"
             handleAddClick={addModal?.toggle}
             routePath="/"

@@ -4,7 +4,7 @@ import useDisclosure from '@/hooks/useDisclousre';
 import AddMedicalReport from './partials/AddMedicalReport';
 import { medicalReportTableData } from '@/data/medicalReport';
 import { MedicalReportColumns } from './partials/MedicalReportColumns';
-import UserHeader from '@/common/userHeader';
+import PageHeader from '@/common/PageHeader';
 
 const MedicalReport: React.FC = () => {
   const addModal = useDisclosure();
@@ -13,7 +13,7 @@ const MedicalReport: React.FC = () => {
     <div className="bg-surface w-full min-h-full">
       <div className="px-5">
         <div className="w-full h-fit">
-          <UserHeader
+          <PageHeader
             title="Medical Report"
             handleAddClick={addModal?.toggle}
             routePath="/"

@@ -4,7 +4,7 @@ import useDisclosure from '@/hooks/useDisclousre';
 import { TicketColumns } from './partials/TicketColumns';
 import AddTicket from './partials/AddTicket';
 import { flightTableData } from '@/data/ticket';
-import UserHeader from '@/common/userHeader';
+import PageHeader from '@/common/PageHeader';
 
 const Ticket: React.FC = () => {
   const addModal = useDisclosure();
@@ -13,7 +13,7 @@ const Ticket: React.FC = () => {
     <div className="bg-surface w-full min-h-full">
       <div className="px-5">
         <div className="w-full h-fit">
-          <UserHeader title="Ticket" routePath="/" />
+          <PageHeader title="Ticket" routePath="/" />
         </div>
 
         <div className="overflow-x-visible">

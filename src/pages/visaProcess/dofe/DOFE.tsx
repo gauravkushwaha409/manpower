@@ -4,7 +4,7 @@ import useDisclosure from '@/hooks/useDisclousre';
 import AddDOFE from './partials/AddDOFE';
 import { dofeTableData } from '@/data/dofe';
 import { DOFEColumns } from './partials/DOFEColumns';
-import UserHeader from '@/common/userHeader';
+import PageHeader from '@/common/PageHeader';
 
 const Dofe: React.FC = () => {
   const addModal = useDisclosure();
@@ -13,7 +13,7 @@ const Dofe: React.FC = () => {
     <div className="bg-surface w-full min-h-full">
       <div className="px-5">
         <div className="w-full h-fit">
-          <UserHeader
+          <PageHeader
             title="DOFE (Department of Foreign Employment)"
             handleAddClick={addModal?.toggle}
             routePath="/"

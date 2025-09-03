@@ -1,6 +1,6 @@
 import React from 'react';
 import Table, { CustomColumnDef } from '../../../components/Table';
-import UserHeader from '@/common/userHeader';
+import PageHeader from '@/common/PageHeader';
 import {
   DeleteIcon,
   EditIcon,
@@ -92,7 +92,7 @@ const JobOffer: React.FC = () => {
     <div className="bg-surface rounded-lg w-full min-h-full">
       <div className="relative px-6">
         <div className="w-full h-fit">
-          <UserHeader
+          <PageHeader
             title="Job Offers"
             handleAddClick={handleOpenAddModal}
             routePath="/"
