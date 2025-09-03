@@ -1,0 +1,143 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import {
+  BaseQueryApi,
+  BaseQueryArg,
+  createApi,
+  fetchBaseQuery,
+} from "@reduxjs/toolkit/query/react";
+import { COOKIE_CONFIG, getCookie, setCookie } from "../utils/cookie";
+import { logoutUser } from "@/store/authSlice";
+import { BASE_API_URL, endpoints } from "./endpoints";
+
+interface IGetDataArgs {
+  url: string;
+  params?: Record<string, string | number | boolean>;
+  tag?: string;
+}
+interface IPostDataArgs {
+  url: string;
+  data?: any;
+  options?: any;
+  invalidateTag?: string;
+}
+interface IUpdateDataArgs {
+  url: string;
+  data: any;
+  options?: any;
+  invalidateTag?: string;
+}
+interface IDeleteDataArgs {
+  url: string;
+  body?: any;
+  options?: any;
+  invalidates?: string[];
+}
+const baseQuery = fetchBaseQuery({
+  baseUrl: BASE_API_URL,
+  prepareHeaders: async (headers) => {
+    const token = getCookie(COOKIE_CONFIG.accessToken);
+    if (token) {
+      headers.set("authorization", `Bearer ${token}`);
+    }
+    headers.set("Accept", "application/json");
+    return headers;
+  },
+});
+
+const baseQueryWithReauth = async (
+  args: BaseQueryArg<any>,
+  api: BaseQueryApi,
+  extraOptions: any
+) => {
+  let result = await baseQuery(args, api, extraOptions);
+  if (result.error && result.error.status === 401) {
+    const refresh = getCookie(COOKIE_CONFIG.refreshToken);
+    const refreshResult = await baseQuery(
+      {
+        // change this with actual refresh token endpoint
+        url: endpoints.refreshToken,
+        method: "POST",
+        body: { refresh },
+      },
+      api,
+      extraOptions
+    );
+    if (refreshResult.data) {
+      const { accessToken, refreshToken } = refreshResult.data as {
+        accessToken: string;
+        refreshToken: string;
+      };
+      setCookie({
+        cookieName: COOKIE_CONFIG.accessToken,
+        value: accessToken,
+        expiresIn: COOKIE_CONFIG.accessTokenExpiryDuration,
+      });
+      setCookie({
+        cookieName: COOKIE_CONFIG.refreshToken,
+        value: refreshToken,
+        expiresIn: COOKIE_CONFIG.refreshTokenExpiryDuration,
+      });
+      result = await baseQuery(args, api, extraOptions);
+    } else {
+      // logic to logout user
+      api.dispatch(logoutUser());
+    }
+  }
+  return result;
+};
+
+export const apiSlice = createApi({
+  baseQuery: baseQueryWithReauth,
+  tagTypes: ["Data"],
+  endpoints: (builder) => ({
+    getData: builder.query<any, IGetDataArgs>({
+      query: ({ url, params }) => ({
+        url,
+        method: "GET",
+        params,
+      }),
+      providesTags: (_, __, { tag }) =>
+        tag ? [{ type: "Data", id: tag }] : [],
+    }),
+
+    postData: builder.mutation<any, IPostDataArgs>({
+      query: ({ url, data, options }) => ({
+        url,
+        method: "POST",
+        body: data,
+        ...options,
+      }),
+      invalidatesTags: (_, __, { invalidateTag }) =>
+        invalidateTag ? [{ type: "Data", id: invalidateTag }] : [],
+    }),
+
+    updateData: builder.mutation<any, IUpdateDataArgs>({
+      query: ({ url, data }) => ({
+        url,
+        method: "PUT",
+        body: data,
+      }),
+      invalidatesTags: (_, __, { invalidateTag }) =>
+        invalidateTag ? [{ type: "Data", id: invalidateTag }] : [],
+    }),
+
+    deleteData: builder.mutation<any, IDeleteDataArgs>({
+      query: ({ url, body }) => ({
+        url,
+        method: "DELETE",
+        body,
+      }),
+      invalidatesTags: (_, __, { invalidates }) =>
+        invalidates
+          ? invalidates.map((tag: string) => ({ type: "Data", id: tag }))
+          : [],
+    }),
+  }),
+});
+
+export const {
+  useGetDataQuery,
+  usePostDataMutation,
+  useUpdateDataMutation,
+  useDeleteDataMutation,
+} = apiSlice;
