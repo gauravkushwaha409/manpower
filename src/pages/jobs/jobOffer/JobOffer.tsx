@@ -1,19 +1,19 @@
-import React from "react";
-import Table, { CustomColumnDef } from "../../../components/Table";
-import UserHeader from "@/common/userHeader";
+import React from 'react';
+import Table, { CustomColumnDef } from '../../../components/Table';
+import PageHeader from '@/common/PageHeader';
 import {
   DeleteIcon,
   EditIcon,
   ViewIcon,
-} from "@/components/actions/TableComp.tsx";
-import { IJobOffer } from "./interface/IJobOffer";
-import useJobOffer from "./hooks/useJobOffer";
-import useCreateJobOffer from "./hooks/useCreateJobOffer";
-import useUpdateJobOffer from "./hooks/useUpdateJobOffer";
-import AddJobOfferModal from "./modal/AddJobOfferModal";
-import UpdateJobOfferModal from "./modal/UpdateJobOfferModal";
-import DeleteModal from "@/components/DeleteModal";
-import { jobOfferTableData } from "./hooks/useGetJobOffer";
+} from '@/components/actions/TableComp.tsx';
+import { IJobOffer } from './interface/IJobOffer';
+import useJobOffer from './hooks/useJobOffer';
+import useCreateJobOffer from './hooks/useCreateJobOffer';
+import useUpdateJobOffer from './hooks/useUpdateJobOffer';
+import AddJobOfferModal from './modal/AddJobOfferModal';
+import UpdateJobOfferModal from './modal/UpdateJobOfferModal';
+import DeleteModal from '@/components/DeleteModal';
+import { jobOfferTableData } from './hooks/useGetJobOffer';
 
 const JobOffer: React.FC = () => {
   const {
@@ -33,38 +33,38 @@ const JobOffer: React.FC = () => {
 
   const tableHead: CustomColumnDef<IJobOffer>[] = [
     {
-      header: "Company Name",
-      accessorKey: "company_name",
+      header: 'Company Name',
+      accessorKey: 'company_name',
       search: true,
     },
     {
-      header: "Candidate Name",
-      accessorKey: "candidate_name",
+      header: 'Candidate Name',
+      accessorKey: 'candidate_name',
       search: true,
     },
     {
-      header: "Job Vacancy",
-      accessorKey: "job_vacancy",
+      header: 'Job Vacancy',
+      accessorKey: 'job_vacancy',
       search: true,
     },
     {
-      header: "Offer Date",
-      accessorKey: "offer_date",
+      header: 'Offer Date',
+      accessorKey: 'offer_date',
       search: false,
     },
     {
-      header: "Salary Offered",
-      accessorKey: "salary_offered",
+      header: 'Salary Offered',
+      accessorKey: 'salary_offered',
       search: false,
     },
     {
-      header: "Status",
-      accessorKey: "status",
+      header: 'Status',
+      accessorKey: 'status',
       search: false,
     },
     {
-      header: "Action",
-      accessorKey: "action",
+      header: 'Action',
+      accessorKey: 'action',
       search: false,
       cell: ({ row }) => (
         <div className="flex items-center gap-4 ml-5">
@@ -89,13 +89,13 @@ const JobOffer: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-full w-full bg-surface rounded-lg">
-      <div className="px-6 relative">
+    <div className="bg-surface rounded-lg w-full min-h-full">
+      <div className="relative px-6">
         <div className="w-full h-fit">
-          <UserHeader
-            number={100}
+          <PageHeader
             title="Job Offers"
             handleAddClick={handleOpenAddModal}
+            routePath="/"
           />
         </div>
 

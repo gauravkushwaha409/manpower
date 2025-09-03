@@ -1,22 +1,22 @@
-import React from "react";
-import UserHeader from "@/common/UserHeader";
-import Table from "@/components/Table";
-import useDisclosure from "@/hooks/useDisclousre";
-import AddDOFE from "./partials/AddDOFE";
-import { dofeTableData } from "@/data/dofe";
-import { DOFEColumns } from "./partials/DOFEColumns";
+import React from 'react';
+import Table from '@/components/Table';
+import useDisclosure from '@/hooks/useDisclousre';
+import AddDOFE from './partials/AddDOFE';
+import { dofeTableData } from '@/data/dofe';
+import { DOFEColumns } from './partials/DOFEColumns';
+import PageHeader from '@/common/PageHeader';
 
 const Dofe: React.FC = () => {
   const addModal = useDisclosure();
 
   return (
-    <div className="min-h-full w-full bg-surface">
+    <div className="bg-surface w-full min-h-full">
       <div className="px-5">
         <div className="w-full h-fit">
-          <UserHeader
-            number={50}
+          <PageHeader
             title="DOFE (Department of Foreign Employment)"
             handleAddClick={addModal?.toggle}
+            routePath="/"
           />
         </div>
 

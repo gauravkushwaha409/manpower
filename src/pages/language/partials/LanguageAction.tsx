@@ -1,8 +1,8 @@
-import { DeleteIcon, EditIcon } from "@/components/actions/TableComp";
-import useDisclosure from "@/hooks/useDisclousre";
-import UpdateLanguageModal from "./UpdateLanguage";
-import DeleteModal from "@/components/DeleteModal";
-import useDeleteLanguage from "../hooks/useDeleteLanguage";
+import { DeleteIcon, EditIcon } from '@/components/actions/TableComp';
+import useDisclosure from '@/hooks/useDisclousre';
+import UpdateLanguageModal from './UpdateLanguage';
+import DeleteModal from '@/components/DeleteModal';
+// import useDeleteLanguage from "../hooks/useDeleteLanguage";
 
 interface TableActionsProps<T> {
   row: T;
@@ -10,8 +10,8 @@ interface TableActionsProps<T> {
 }
 
 function LanguageActionButtons<T>({
-  row,
-  className = "flex items-center gap-4 ml-5",
+  // row,
+  className = 'flex items-center gap-4 ml-5',
 }: TableActionsProps<T>) {
   const updateModal = useDisclosure();
   const deleteModal = useDisclosure();
@@ -28,7 +28,7 @@ function LanguageActionButtons<T>({
     <>
       <div className={className}>
         <div onClick={handleEdit}>
-          {" "}
+          {' '}
           <EditIcon />
         </div>
         <div onClick={handleDelete}>

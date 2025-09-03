@@ -1,22 +1,22 @@
-import React from "react";
-import UserHeader from "@/common/UserHeader";
-import Table from "@/components/Table";
-import useDisclosure from "@/hooks/useDisclousre";
-import { VisaColumns } from "./partials/VisaColumns";
-import { visaTableData } from "@/data/visa";
-import AddVisa from "./partials/AddVisa";
+import React from 'react';
+import Table from '@/components/Table';
+import useDisclosure from '@/hooks/useDisclousre';
+import { VisaColumns } from './partials/VisaColumns';
+import { visaTableData } from '@/data/visa';
+import AddVisa from './partials/AddVisa';
+import PageHeader from '@/common/PageHeader';
 
 const Visa: React.FC = () => {
   const addModal = useDisclosure();
 
   return (
-    <div className="min-h-full w-full bg-surface">
+    <div className="bg-surface w-full min-h-full">
       <div className="px-5">
         <div className="w-full h-fit">
-          <UserHeader
-            number={50}
+          <PageHeader
             title="Visa"
             handleAddClick={addModal?.toggle}
+            routePath="/"
           />
         </div>
 

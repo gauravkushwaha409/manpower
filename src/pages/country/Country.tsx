@@ -1,10 +1,11 @@
-import React from "react";
-import UserHeader from "../../common/UserHeader";
-import Table from "@/components/Table";
-import useDisclosure from "@/hooks/useDisclousre";
-import AddCountry from "@/pages/country/partials/AddCountry";
-import { CountryTableData } from "@/data/country";
-import { CountryColumns } from "./partials/CountryColumns";
+import React from 'react';
+
+import Table from '@/components/Table';
+import useDisclosure from '@/hooks/useDisclousre';
+import AddCountry from '@/pages/country/partials/AddCountry';
+import { CountryTableData } from '@/data/country';
+import { CountryColumns } from './partials/CountryColumns';
+import PageHeader from '@/common/PageHeader';
 // import useGetCountry from "./hooks/useGetCountry";
 
 const Country: React.FC = () => {
@@ -13,13 +14,13 @@ const Country: React.FC = () => {
   // const { data } = useGetCountry();s
 
   return (
-    <div className="min-h-full w-full bg-surface">
+    <div className="bg-surface w-full min-h-full">
       <div className="px-5">
         <div className="w-full h-fit">
-          <UserHeader
-            number={120}
+          <PageHeader
             title="Country"
             handleAddClick={addModal?.toggle}
+            routePath="/"
           />
         </div>
 

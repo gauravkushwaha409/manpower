@@ -1,7 +1,7 @@
-import { useState, useRef, useEffect } from "react";
-import UserImage from "/vite.svg";
-import { Link } from "react-router-dom";
-import { LogOut, Settings, User } from "lucide-react";
+import { useState, useRef, useEffect } from 'react';
+import UserImage from '/vite.svg';
+import { Link } from 'react-router-dom';
+import { ChevronDownIcon, LogOut, User } from 'lucide-react';
 // import { PATH } from '@/constants/paths';
 // import { clearAllCookies } from '@/utils/cookie';
 
@@ -20,9 +20,9 @@ const ProfileSection = () => {
       }
     };
 
-    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener('mousedown', handleClickOutside);
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
   const toggleDropdown = () => {
@@ -40,18 +40,22 @@ const ProfileSection = () => {
   return (
     <div className="relative" ref={dropdownRef}>
       <div
-        className="flex items-center gap-1 bg-gray-100 hover:bg-gray-200 p-1 rounded-full w-fit transition-colors duration-200 cursor-pointer"
+        className="flex items-center gap-1 p-1 rounded-full w-fit transition-colors duration-200 cursor-pointer"
         onClick={toggleDropdown}
       >
-        <div className="rounded-full w-12 h-10 overflow-hidden">
+        <div className="pr-2 rounded-full w-8 h-8 overflow-hidden">
           <img
             src={UserImage}
             alt="Profile"
-            className="w-full h-full size-8 object-contain"
+            className="w-full h-full object-contain"
           />
         </div>
+        <div className="flex flex-col text-text-color">
+          <span className="text-xs">Jack Grealish</span>
+          <span className="text-xs">useremail@gmail.com</span>
+        </div>
         <div className="flex justify-center items-center rounded-full w-10 h-10">
-          <Settings className="w-6 h-6 text-red-500" />
+          <ChevronDownIcon size={16} className="text-primary-400" />
         </div>
       </div>
 

@@ -9,7 +9,7 @@
 // import useCreateLanguage from "@/pages/language/hooks/useCreateLanguage.ts";
 // import useUpdateLanguage from "@/pages/language/hooks/useUpdateLanguage.ts";
 // import { getLanguageData } from "./hooks/useGetLanguage";
-// import UserHeader from "@/common/userHeader";
+// import PageHeader from "@/common/PageHeader";
 // import useDisclosure from "@/hooks/useDisclousre";
 
 // const Language: React.FC = () => {
@@ -63,11 +63,11 @@
 //   ];
 
 //   return (
-//     <div className="min-h-full w-full bg-surface">
+//     <div className="bg-surface w-full min-h-full">
 //       <div className="px-5">
 //         {/* Header */}
 //         <div className="w-full h-fit">
-//           <UserHeader
+//           <PageHeader
 //             number={120}
 //             title="Language"
 //             handleAddClick={languageModal.open}
@@ -99,7 +99,7 @@
 // };
 
 // export default Language;
-import LanguageTable from "./partials/LanguageTable";
+import LanguageTable from './partials/LanguageTable';
 
 function Language() {
   return (

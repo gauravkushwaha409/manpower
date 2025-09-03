@@ -1,15 +1,15 @@
-import { Formik, FormikProps } from "formik";
-import React from "react";
+// import { Formik, FormikProps } from "formik";
+import React from 'react';
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog";
-import LanguageForm from "./LanguageForm";
-import useUpdateLanguage from "../hooks/useUpdateLanguage";
-import ExtendedForm from "@/components/input/extended-form";
+} from '@/components/ui/dialog';
+import LanguageForm from './LanguageForm';
+import useUpdateLanguage from '../hooks/useUpdateLanguage';
+import ExtendedForm from '@/components/input/extended-form';
 
 interface IProps {
   isOpen: boolean;
@@ -25,7 +25,7 @@ const UpdateLanguageModal: React.FC<IProps> = ({
   const { formik } = useUpdateLanguage();
   return (
     <Dialog open={isOpen} onOpenChange={handleCloseModal}>
-      <DialogContent className="max-h-[80vh] overflow-y-auto scroll-none sm:max-w-[80vw] lg:max-w-[70vw] [&>button:hover]:cursor-pointer">
+      <DialogContent className="sm:max-w-[80vw] lg:max-w-[70vw] max-h-[80vh] overflow-y-auto scroll-none [&>button:hover]:cursor-pointer">
         <DialogHeader>
           <DialogTitle>Update Language</DialogTitle>
           <DialogDescription>

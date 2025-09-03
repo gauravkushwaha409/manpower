@@ -1,8 +1,6 @@
-import { DeleteIcon, EditIcon } from "@/components/actions/TableComp";
-import useDisclosure from "@/hooks/useDisclousre";
-// import useDeleteCountry from "@/pages/country/hooks/useDeleteCountry";
-import DeleteModal from "@/components/DeleteModal";
-import UpdateEmbassyInterview from "./UpdateEmbassyInterview";
+import { DeleteIcon, EditIcon } from '@/components/actions/TableComp';
+import useDisclosure from '@/hooks/useDisclousre';
+import DeleteModal from '@/components/DeleteModal';
 
 interface TableActionsProps<T> {
   row: T;
@@ -11,7 +9,7 @@ interface TableActionsProps<T> {
 
 function EmbassyInterviewActions<T>({
   //   row,
-  className = "flex items-center gap-4 ml-5",
+  className = 'flex items-center gap-4 ml-5',
 }: TableActionsProps<T>) {
   const updateModal = useDisclosure();
   const deleteModal = useDisclosure();
@@ -36,11 +34,6 @@ function EmbassyInterviewActions<T>({
           <DeleteIcon />
         </div>
       </div>
-
-      <UpdateEmbassyInterview
-        isOpen={updateModal?.isOpen}
-        handleCloseModal={updateModal?.close}
-      />
 
       <DeleteModal
         isOpen={deleteModal.isOpen}
