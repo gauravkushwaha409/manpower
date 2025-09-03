@@ -6,7 +6,7 @@ import AddEmbassyInterview from "./partials/AddEmbassyInterview";
 import { embassyInterviewTableData } from "@/data/embassyInterview";
 import { EmbassyInterviewColumns } from "./partials/EmbassyInterviewColumns";
 
-const Country: React.FC = () => {
+const EmbassyInterview: React.FC = () => {
   const addModal = useDisclosure();
 
   return (
@@ -36,4 +36,4 @@ const Country: React.FC = () => {
   );
 };
 
-export default Country;
+export default EmbassyInterview;

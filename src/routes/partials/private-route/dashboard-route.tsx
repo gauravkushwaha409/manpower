@@ -6,7 +6,7 @@ import JobInterview from "@/pages/jobs/jobsInterview/JobInterview";
 import JobVacancies from "@/pages/jobs/jobVacancies/JobVacancies";
 import Language from "@/pages/language/Language";
 import Country from "@/pages/country/Country";
-import DOFE from "@/pages/visaProcess/dofe/DOFE";
+import Dofe from "@/pages/visaProcess/dofe/DOFE";
 import EmbassyInterview from "@/pages/visaProcess/embassyInterview/EmbassyInterview";
 import MedicalReport from "@/pages/visaProcess/medicalReport/MedicalReport";
 import Orientation from "@/pages/visaProcess/orientation/Orientation";
@@ -64,7 +64,7 @@ export const dashboardRoutes = [
   },
   {
     path: PATH.visa.dofe,
-    element: <DOFE />,
+    element: <Dofe />,
   },
   {
     path: PATH.visa.ticket,

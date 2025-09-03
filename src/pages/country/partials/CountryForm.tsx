@@ -1,6 +1,8 @@
 import InputText from "@/components/form/InputText.tsx";
 import { InputSearchSelect } from "@/components/form/InputSelect.tsx";
 
+const languageOptions = [{ label: "Nepali", value: "nepali" }];
+
 const CountryForm = () => {
   return (
     <>
@@ -15,7 +17,7 @@ const CountryForm = () => {
         <InputSearchSelect
           label="Language"
           name="language"
-          options={[{ label: "Nepali", value: "nepali" }]}
+          options={languageOptions}
         />
       </div>
     </>
