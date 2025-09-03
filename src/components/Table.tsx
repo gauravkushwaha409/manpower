@@ -39,8 +39,6 @@ const Table = <T,>({
   totalPage,
   onSelectedRowsChange,
 }: TableProps<T>) => {
-  console.log("data in table", data);
-  console.log("columns in table", columns);
   const table = useReactTable({
     data: data,
     columns: columns,
@@ -83,7 +81,7 @@ const Table = <T,>({
     : [...pageSizeOption].sort((a, b) => a - b);
 
   return (
-    <div className="w-full min-h-screen bg-white shadow-lg !rounded-t-2xl overflow-hidden">
+    <div className="w-full min-h-screen bg-white shadow-lg !rounded-t-2xl overflow-hidden p-2 gap-4 flex flex-col">
       {/* table starts */}
       <div className="overflow-x-auto scroll-none">
         <table className="w-full border-separate bg-white border-spacing-0">
@@ -91,7 +89,7 @@ const Table = <T,>({
             {table.getHeaderGroups().map((headerGroup) => (
               <tr key={headerGroup.id} className="w-full h-fit table-border">
                 {headerGroup.headers.map((header) => {
-                  // const column = header.column.columnDef as CustomColumnDef<T>;
+                  const column = header.column.columnDef as CustomColumnDef<T>;
                   return (
                     <th className=" py-5 table-border " key={header.id}>
                       <div className="flex flex-col gap-1.5 ml-5">
@@ -101,13 +99,13 @@ const Table = <T,>({
                             header.getContext()
                           )}
                         </span>
-                        {/* {column.search && (
+                        {column.search && (
                           <input
                             type="text"
                             className="w-4/5 px-3 py-1.5 rounded-lg table-search-border typography-caption-c1 placeholder:typography-caption-c2 focus:ring-2 focus:ring-primary outline-none"
                             placeholder="-Search"
                           />
-                        )} */}
+                        )}
                       </div>
                     </th>
                   );
@@ -138,24 +136,25 @@ const Table = <T,>({
       </div>
 
       {/* Pagination Controls */}
-      <div className="overflow-hidden flex justify-between items-center p-2 text-sm bg-gray-100 rounded-lg m-3">
+      <div className="overflow-hidden flex justify-between items-center p-4 text-sm bg-gray-100 rounded-md">
         <div>
-          Showing {table.getPaginationRowModel().rows.length} items of{" "}
-          {totalItem} Page {pages?.page || 0 + 1} {totalPage}
+          Page {pages?.page || 0 + 1} of {totalPage} <br />
+          Showing {table.getPaginationRowModel().rows.length} of {totalItem}{" "}
+          items
         </div>
 
         <div className="flex items-center gap-2">
           <button
             onClick={() => table.previousPage()}
             disabled={!table.getCanPreviousPage()}
-            className={`px-2 py-1 bg-Blue-500 rounded disabled:opacity-50 disabled:cursor-not-allowed text-white`}
+            className={`px-4 py-2 bg-Blue-500 rounded disabled:opacity-50 disabled:cursor-not-allowed text-white`}
           >
             Previous
           </button>
           <button
             onClick={() => table.nextPage()}
             disabled={!table.getCanNextPage()}
-            className={`px-2 py-1 bg-Blue-500 rounded disabled:opacity-50 disabled:cursor-not-allowed text-white`}
+            className={`px-4 py-2 bg-Blue-500 rounded disabled:opacity-50 disabled:cursor-not-allowed text-white`}
           >
             Next
           </button>

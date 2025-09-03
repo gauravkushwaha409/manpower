@@ -9,4 +9,5 @@ export const endpoints = {
   deleteUserById: "/user/delete/",
 };
 
-export const BASE_API_URL = import.meta.env.VITE_PUBLIC_API_URL;
+export const BASE_API_URL =
+  import.meta.env.VITE_PUBLIC_API_URL || "https://api.manpower.com";

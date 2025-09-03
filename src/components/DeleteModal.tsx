@@ -9,12 +9,11 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 import React from "react";
-import ExtendedForm from "./input/extended-form";
 
 interface IProps {
   isOpen: boolean;
   onCancel: () => void;
-  onConfirm: () => void;
+  onConfirm?: () => void;
   primaryMessage?: string;
   secondaryMessage?: string;
 }
