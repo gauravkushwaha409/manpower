@@ -1,4 +1,4 @@
-import { pageSizeOption } from "@/utils/table";
+import { pageSizeOption } from '@/utils/table';
 import {
   ColumnDef,
   flexRender,
@@ -6,8 +6,9 @@ import {
   getPaginationRowModel,
   RowSelectionState,
   useReactTable,
-} from "@tanstack/react-table";
-import React, { useEffect } from "react";
+} from '@tanstack/react-table';
+import React, { useEffect } from 'react';
+import CustomPagination from './reusable-component/CustomPagination';
 
 export type CustomColumnDef<T> = ColumnDef<T> & {
   search?: boolean;
@@ -35,8 +36,8 @@ const Table = <T,>({
   rowSelection,
   setRowSelection,
   pages,
-  totalItem,
-  totalPage,
+  totalItem = 0,
+  totalPage = 0,
   onSelectedRowsChange,
 }: TableProps<T>) => {
   const table = useReactTable({
@@ -49,17 +50,17 @@ const Table = <T,>({
       rowSelection,
       pagination: {
         pageIndex: pages?.page || 0,
-        pageSize: pages?.pageSize || 0,
+        pageSize: pages?.pageSize || 10,
       },
     },
     enableRowSelection: true,
     onRowSelectionChange: setRowSelection,
     onPaginationChange: (updater) => {
       const newPagination =
-        typeof updater === "function"
+        typeof updater === 'function'
           ? updater({
               pageIndex: pages?.page || 0,
-              pageSize: pages?.pageSize || 0,
+              pageSize: pages?.pageSize || 10,
             })
           : updater;
       pages?.setPage(newPagination.pageIndex);
@@ -67,6 +68,7 @@ const Table = <T,>({
     },
     getPaginationRowModel: getPaginationRowModel(),
   });
+
   useEffect(() => {
     if (onSelectedRowsChange) {
       const selectedData = table
@@ -74,101 +76,90 @@ const Table = <T,>({
         .rows.map((row) => row.original);
       onSelectedRowsChange(selectedData);
     }
-  }, [rowSelection, table, onSelectedRowsChange]); // Re-run when selection changes
+  }, [rowSelection, table, onSelectedRowsChange]);
 
   const pageSizeOptions = pages?.pageSize
     ? [...pageSizeOption, pages?.pageSize]
     : [...pageSizeOption].sort((a, b) => a - b);
 
   return (
-    <div className="w-full min-h-screen bg-white shadow-lg !rounded-t-2xl overflow-hidden p-2 gap-4 flex flex-col">
-      {/* table starts */}
-      <div className="overflow-x-auto scroll-none">
-        <table className="w-full border-separate bg-white border-spacing-0">
-          <thead>
-            {table.getHeaderGroups().map((headerGroup) => (
-              <tr key={headerGroup.id} className="w-full h-fit table-border">
-                {headerGroup.headers.map((header) => {
-                  const column = header.column.columnDef as CustomColumnDef<T>;
-                  return (
-                    <th className=" py-5 table-border " key={header.id}>
-                      <div className="flex flex-col gap-1.5 ml-5">
-                        <span className="typography-caption-c1-semibold ml-1 text-text-color text-start">
-                          {flexRender(
-                            header.column.columnDef.header,
-                            header.getContext()
+    <>
+      <div className="flex flex-col gap-4 bg-white shadow-lg border border-primary-50 w-full overflow-hidden">
+        <div className="overflow-x-auto scroll-none">
+          <table className="bg-white w-full border-separate border-spacing-0">
+            <thead>
+              {table.getHeaderGroups().map((headerGroup) => (
+                <tr key={headerGroup.id} className="table-border w-full h-fit">
+                  {headerGroup.headers.map((header) => {
+                    const column = header.column
+                      .columnDef as CustomColumnDef<T>;
+                    return (
+                      <th
+                        className="table-border bg-primary-400 py-5 text-white"
+                        key={header.id}
+                      >
+                        <div className="flex flex-col gap-1.5 ml-5">
+                          <span className="ml-1 text-start typography-caption-c1-semibold">
+                            {flexRender(
+                              header.column.columnDef.header,
+                              header.getContext()
+                            )}
+                          </span>
+                          {column.search && (
+                            <input
+                              type="text"
+                              className="table-search-border px-3 py-1.5 rounded-lg outline-none focus:ring-2 focus:ring-primary w-4/5 typography-caption-c1 placeholder:typography-caption-c2"
+                              placeholder="-Search"
+                            />
                           )}
-                        </span>
-                        {column.search && (
-                          <input
-                            type="text"
-                            className="w-4/5 px-3 py-1.5 rounded-lg table-search-border typography-caption-c1 placeholder:typography-caption-c2 focus:ring-2 focus:ring-primary outline-none"
-                            placeholder="-Search"
-                          />
-                        )}
-                      </div>
-                    </th>
-                  );
-                })}
-              </tr>
-            ))}
-          </thead>
+                        </div>
+                      </th>
+                    );
+                  })}
+                </tr>
+              ))}
+            </thead>
 
-          <tbody className="min-w-full">
-            {table.getRowModel().rows.map((row, index) => (
-              <tr key={row.id} className={`w-full table-border`}>
-                {row.getVisibleCells().map((cell) => (
-                  <td
-                    className={`px-5 py-2 typography-caption-c1 table-border align-middle ${
-                      index === 0
-                        ? "border-t-2 border-surface"
-                        : "border border-surface"
-                    } `}
-                    key={cell.id}
-                  >
-                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                  </td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-
-      {/* Pagination Controls */}
-      <div className="overflow-hidden flex justify-between items-center p-4 text-sm bg-gray-100 rounded-md">
-        <div>
-          Page {pages?.page || 0 + 1} of {totalPage} <br />
-          Showing {table.getPaginationRowModel().rows.length} of {totalItem}{" "}
-          items
+            <tbody className="min-w-full">
+              {table.getRowModel().rows.map((row, index) => (
+                <tr key={row.id} className={`w-full table-border`}>
+                  {row.getVisibleCells().map((cell) => (
+                    <td
+                      className={`px-5 py-2 typography-caption-c1 table-border align-middle ${
+                        index === 0
+                          ? 'border-t-2 border-surface'
+                          : 'border border-surface'
+                      } `}
+                      key={cell.id}
+                    >
+                      {flexRender(
+                        cell.column.columnDef.cell,
+                        cell.getContext()
+                      )}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
-
-        <div className="flex items-center gap-2">
-          <button
-            onClick={() => table.previousPage()}
-            disabled={!table.getCanPreviousPage()}
-            className={`px-4 py-2 bg-Blue-500 rounded disabled:opacity-50 disabled:cursor-not-allowed text-white`}
-          >
-            Previous
-          </button>
-          <button
-            onClick={() => table.nextPage()}
-            disabled={!table.getCanNextPage()}
-            className={`px-4 py-2 bg-Blue-500 rounded disabled:opacity-50 disabled:cursor-not-allowed text-white`}
-          >
-            Next
-          </button>
-
-          {/* Control page size Start */}
+      </div>
+      <CustomPagination
+        currentPage={(pages?.page || 0) + 1}
+        totalItems={totalItem}
+        pageCount={totalPage}
+        perPage={pages?.pageSize || 10}
+        onPageChange={(page) => pages?.setPage(page - 1)}
+        recordPerPage={
           <div className="flex items-center gap-2">
-            <span>Rows per page:</span>
+            <span className="text-xs">Show</span>
             <select
-              value={pages?.pageSize || 0}
+              value={pages?.pageSize || 10}
               onChange={(e) => {
                 pages?.setPageSize(Number(e.target.value));
-                pages?.setPage(0); // ✅ Reset to first page when page size changes
+                pages?.setPage(0);
               }}
-              className="px-2 py-1 rounded border border-gray-300 text-sm"
+              className="bg-white px-2 py-1 border-2 border-gray-100 rounded text-sm"
             >
               {pageSizeOptions.map((size) => (
                 <option key={size} value={size}>
@@ -176,11 +167,11 @@ const Table = <T,>({
                 </option>
               ))}
             </select>
+            <span className="text-xs">entries</span>
           </div>
-          {/* Control page size End */}
-        </div>
-      </div>
-    </div>
+        }
+      />
+    </>
   );
 };
 

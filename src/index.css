@@ -1,50 +1,42 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Mona+Sans:ital,wght@0,200..900;1,200..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Mona+Sans:ital,wght@0,200..900;1,200..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Mona+Sans:ital,wght@0,200..900;1,200..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Mona+Sans:ital,wght@0,200..900;1,200..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-@import "tailwindcss";
+@import 'tailwindcss';
 
-@import "tw-animate-css";
+@import 'tw-animate-css';
 
 @custom-variant dark (&:is(.dark *));
 
 /* Colors */
 @theme {
-  --color-Black-50: #e7e7e7;
-  --color-Black-100: #b4b4b4;
-  --color-Black-200: #909090;
-  --color-Black-300: #5d5d5d;
-  --color-Black-400: #3d3d3d;
-  --color-Black-500: #0d0d0d;
-  --color-Black-600: #0c0c0c;
-  --color-Black-700: #090909;
-  --color-Black-800: #070707;
-  --color-Black-900: #050505;
+  --color-primary-50: #ffffff;
+  --color-primary-75: #dfe3ed;
+  --color-primary-100: #b3bcd4;
+  --color-primary-200: #8795bb;
+  --color-primary-300: #697bab;
+  --color-primary-400: #536493; /* base */
+  --color-primary-500: #4b5a84;
+  --color-primary-600: #425076;
+  --color-primary-700: #3a4667;
+  --color-primary-800: #2e3751;
+  --color-primary-900: #21283b;
 
-  --color-Blue-50: #e6eefa;
-  --color-Blue-100: #b0c9ef;
-  --color-Blue-200: #8aafe8;
-  --color-Blue-300: #548bdd;
-  --color-Blue-400: #3375d6;
-  --color-Blue-500: #0052cc;
-  --color-Blue-600: #004bba;
-  --color-Blue-700: #003a91;
-  --color-Blue-800: #002d70;
-  --color-Blue-900: #002256;
+  --color-secondary-50: #396bc0;
+  --color-secondary-75: #2e569a;
+  --color-secondary-100: #274983;
+  --color-secondary-200: #203c6c;
+  --color-secondary-300: #1c345c;
+  --color-secondary-400: #172b4d; /* base */
+  --color-secondary-500: #152745;
+  --color-secondary-600: #12223e;
+  --color-secondary-700: #101e36;
+  --color-secondary-800: #0d182a;
+  --color-secondary-900: #09111f;
 
-  --color-oc-gray-9: #212529;
-
-  --color-primary: #0052cc;
-  --color-error: #d32f2f;
-  --color-yellow: #ffd700;
-  --color-error-container: #ffdad6;
-  --color-light-gray: #f4f4f4;
-  --color-form-color: rgba(230, 238, 250, 0.2);
-  --color-surface: rgba(230, 238, 250, 0.5);
-  --color-rejected: rgba(255, 9, 0, 0.1);
-
-  --color-table-color: #e6eefa;
-  --color-text-color: #020202;
+  --color-text-color: #6b778c;
+  --color-button-background: #4b5a84;
+  --color-border-color: #d1d5db;
 }
 
 /* Font Style Name */
@@ -52,7 +44,16 @@
   .typography-button-text {
     color: white;
     text-align: center;
-    font-family: Inter;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+  }
+
+  .typography-label-text {
+    color: black;
+    font-family: 'Inter', sans-serif;
     font-size: 12px;
     font-style: normal;
     font-weight: 400;
@@ -60,51 +61,52 @@
   }
 
   .typography-h3 {
-    font-family: "poppins", sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 600;
     font-size: 2rem;
     letter-spacing: 0;
     line-height: 100%;
   }
   .typography-heading-poppins-medium {
-    font-family: Poppins;
-    font-size: 1.5rem;
+    font-family: 'Inter', sans-serif;
+    color: #172b4d;
+    font-size: 1.2rem;
     font-style: normal;
-    font-weight: 500;
-    line-height: 130%;
+    font-weight: 600;
+    line-height: 100%;
   }
 
   .typography-p1-regular {
-    font-family: "Inter", sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 400;
     font-size: 1rem;
     line-height: 150%;
     letter-spacing: 0%;
   }
   .typography-p2-regular {
-    font-family: "Inter", sans-serif;
-    font-weight: 400;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
     font-size: 0.875rem;
     line-height: 150%;
     letter-spacing: 0%;
   }
 
   .typography-p1-medium {
-    font-family: "Inter", sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 500;
     font-size: 1rem;
     line-height: 150%;
   }
 
   .typography-p2-medium {
-    font-family: "Inter", sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 500;
     font-size: 0.875rem;
     line-height: 150%;
     letter-spacing: 0%;
   }
   .typography-p1-semibold {
-    font-family: "Inter", sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 600;
     font-size: 1rem;
     line-height: 150%;
@@ -112,7 +114,7 @@
   }
 
   .typography-p2-semibold {
-    font-family: "Inter", sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 0.875rem;
     font-style: normal;
     font-weight: 600;
@@ -120,20 +122,20 @@
   }
 
   .typography-caption-c1 {
-    font-family: "Inter", sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 400;
     font-size: 0.75rem;
     line-height: 150%;
     letter-spacing: 0%;
   }
   .typography-caption-c2 {
-    font-family: "Inter", sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 400;
     font-size: 0.625rem;
     line-height: 150%;
   }
   .typography-caption-c3 {
-    font-family: "Inter", sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 0.5rem;
     font-style: normal;
     font-weight: 400;
@@ -141,7 +143,7 @@
   }
 
   .typography-caption-c1-semibold {
-    font-family: "Inter", sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 600;
     font-size: 0.75rem;
     line-height: 150%;
@@ -179,7 +181,7 @@
   }
 
   .notification-badge {
-    font-family: "Mona Sans", sans-serif;
+    font-family: 'Mona Sans', sans-serif;
     font-weight: 700;
     font-size: 0.75rem;
     line-height: 0.75rem;
@@ -189,7 +191,7 @@
 
 @layer utilities {
   .bg-login {
-    background-image: url("/assets/images/login-bg.jpg");
+    background-image: url('/assets/images/login-bg.jpg');
     background-size: cover;
     background-position: center;
   }
@@ -217,7 +219,7 @@
   border-width: 0px;
   height: 10rem;
   padding: 1rem;
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   font-weight: 400;
   font-size: 0.875rem;
   line-height: 150%;
@@ -226,31 +228,31 @@
 }
 
 .ProseMirror ol {
-  @apply list-decimal pl-5;
+  @apply pl-5 list-decimal;
 }
 
 .ProseMirror ul {
-  @apply list-disc pl-5;
+  @apply pl-5 list-disc;
 }
 
 .ProseMirror strong {
-  @apply text-xl font-bold;
+  @apply font-bold text-xl;
 }
 
 /* Targeting the code element within the ProseMirror container */
 .ProseMirror code {
-  @apply font-mono text-sm bg-gray-300 px-2 py-1 rounded-md shadow-sm;
+  @apply bg-gray-300 shadow-sm px-2 py-1 rounded-md font-mono text-sm;
 }
 .ProseMirror h1 {
-  @apply text-3xl font-bold; /* Increase font size */
+  @apply font-bold text-3xl; /* Increase font size */
 }
 
 .ProseMirror h2 {
-  @apply text-2xl font-semibold;
+  @apply font-semibold text-2xl;
 }
 
 .ProseMirror h3 {
-  @apply text-xl font-medium;
+  @apply font-medium text-xl;
 }
 .ProseMirror-focused {
   @apply outline-none;
@@ -370,4 +372,21 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+:root::-webkit-scrollbar {
+  display: none;
+}
+
+.body {
+  font-family: 'Inter', sans-serif;
 }

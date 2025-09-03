@@ -1,19 +1,19 @@
-import React from "react";
-import Table, { CustomColumnDef } from "../../../components/Table";
-import UserHeader from "@/common/userHeader";
+import React from 'react';
+import Table, { CustomColumnDef } from '../../../components/Table';
 import {
   DeleteIcon,
   EditIcon,
   ViewIcon,
-} from "@/components/actions/TableComp.tsx";
-import AddJobApplicantModal from "./modal/AddJobApplicantModal";
-import { IJobApplicant } from "./interface/IJobApplicant";
-import useCreateJobApplicant from "./hooks/useCreateJobApplicant";
-import useUpdateJobApplicant from "./hooks/useUpdateJobApplicant";
-import useJobApplicant from "./hooks/useJobApplicant";
-import UpdateJobApplicantModal from "./modal/UpdateJobApplicantModal";
-import DeleteModal from "@/components/DeleteModal";
-import { jobApplicantsTableData } from "./hooks/useGetJobApplicants";
+} from '@/components/actions/TableComp.tsx';
+import AddJobApplicantModal from './modal/AddJobApplicantModal';
+import { IJobApplicant } from './interface/IJobApplicant';
+import useCreateJobApplicant from './hooks/useCreateJobApplicant';
+import useUpdateJobApplicant from './hooks/useUpdateJobApplicant';
+import useJobApplicant from './hooks/useJobApplicant';
+import UpdateJobApplicantModal from './modal/UpdateJobApplicantModal';
+import DeleteModal from '@/components/DeleteModal';
+import { jobApplicantsTableData } from './hooks/useGetJobApplicants';
+import UserHeader from '@/common/userHeader';
 
 const JobApplicant: React.FC = () => {
   const {
@@ -33,34 +33,34 @@ const JobApplicant: React.FC = () => {
 
   const tableHead: CustomColumnDef<IJobApplicant>[] = [
     {
-      header: "Company Name",
-      accessorKey: "company_name",
+      header: 'Company Name',
+      accessorKey: 'company_name',
       search: true,
     },
     {
-      header: "Candidate Name",
-      accessorKey: "candidate_name",
+      header: 'Candidate Name',
+      accessorKey: 'candidate_name',
       search: true,
     },
     {
-      header: "Country",
-      accessorKey: "country",
+      header: 'Country',
+      accessorKey: 'country',
       search: true,
     },
     {
-      header: "Job Vacancy",
-      accessorKey: "job_vacancy",
+      header: 'Job Vacancy',
+      accessorKey: 'job_vacancy',
       search: true,
     },
     {
-      header: "Status",
-      accessorKey: "status",
+      header: 'Status',
+      accessorKey: 'status',
       search: true,
     },
 
     {
-      header: "Action",
-      accessorKey: "action",
+      header: 'Action',
+      accessorKey: 'action',
       search: false,
       cell: (cell) => (
         <div className="flex items-center gap-4 ml-5">
@@ -86,14 +86,14 @@ const JobApplicant: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-full w-full bg-surface rounded-lg">
-      <div className="px-6 relative">
+    <div className="bg-surface rounded-lg w-full min-h-full">
+      <div className="relative px-6">
         {/* Header */}
         <div className="w-full h-fit">
           <UserHeader
-            number={100}
             title="Job Applicants"
             handleAddClick={handleOpenAddModal}
+            routePath="/"
           />
         </div>
 

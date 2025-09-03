@@ -1,35 +1,40 @@
-import React from "react";
-import plusIcon from "../assets/icons/rounded_plus.svg";
+import { PlusCircle } from 'lucide-react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 interface IHeaderProps {
   title: string;
-  number: number;
   handleAddClick?: () => void;
   handleClickExport?: () => void;
+  showAddButton?: boolean;
+  routePath: string;
 }
 
 const UserHeader: React.FC<IHeaderProps> = ({
   title,
-  number,
-  handleAddClick,
+  showAddButton = true,
+  routePath,
 }) => {
   return (
-    <div className="h-full w-full">
-      <div className="py-6 flex flex-col md:flex-row gap-4 items-center justify-between">
+    <div className="w-full h-full">
+      <div className="flex md:flex-row flex-col justify-between items-center gap-4 pt-6">
         <div>
           <p className="flex items-center">
-            <span className="typography-heading-poppins-medium text-Black/black-700">
+            <span className="text-Black/black-700 typography-heading-poppins-medium">
               {title}
-              <sub className="ml-1 typography-poppins-medium-c1 text-Black/black-300 ">
-                ({number})
-              </sub>
             </span>
           </p>
         </div>
 
-        <button onClick={handleAddClick}>
-          <img className="w-11 cursor-pointer" src={plusIcon} alt="" />
-        </button>
+        {showAddButton && (
+          <Link
+            to={routePath}
+            className="flex justify-center items-center gap-2 bg-primary-400 hover:to-primary-600 shadow-md hover:shadow-2xl px-6 py-2 rounded-sm font-medium text-white active:scale-95 transition-all duration-200 ease-in-out"
+          >
+            <PlusCircle size={14} className="cursor-pointer" />
+            <span className="typography-button-text">Add</span>
+          </Link>
+        )}
       </div>
     </div>
   );

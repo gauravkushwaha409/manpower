@@ -1,18 +1,18 @@
-import React from "react";
-import Table, { CustomColumnDef } from "../../../components/Table";
-import UserHeader from "@/common/userHeader";
+import React from 'react';
+import Table, { CustomColumnDef } from '../../../components/Table';
+import UserHeader from '@/common/userHeader';
 import {
   DeleteIcon,
   EditIcon,
   ViewIcon,
-} from "@/components/actions/TableComp.tsx";
-import DeleteModal from "@/components/DeleteModal";
-import AddJobCategoryModal from "@/pages/jobs/jobCategory/modal/AddJobCategoriesModal.tsx";
-import UpdateJobCategoriesModal from "@/pages/jobs/jobCategory/modal/UpdateJobCategoriesModal.tsx";
-import useJobCategory from "@/pages/jobs/jobCategory/hooks/useJobCategory.ts";
-import useCreateJobCategory from "@/pages/jobs/jobCategory/hooks/useCreateJobCategory.ts";
-import useUpdateJobCategory from "@/pages/jobs/jobCategory/hooks/useUpdateJobCategory.ts";
-import { jobCategoriesTableData } from "./hooks/useGetJobCategories";
+} from '@/components/actions/TableComp.tsx';
+import DeleteModal from '@/components/DeleteModal';
+import AddJobCategoryModal from '@/pages/jobs/jobCategory/modal/AddJobCategoriesModal.tsx';
+import UpdateJobCategoriesModal from '@/pages/jobs/jobCategory/modal/UpdateJobCategoriesModal.tsx';
+import useJobCategory from '@/pages/jobs/jobCategory/hooks/useJobCategory.ts';
+import useCreateJobCategory from '@/pages/jobs/jobCategory/hooks/useCreateJobCategory.ts';
+import useUpdateJobCategory from '@/pages/jobs/jobCategory/hooks/useUpdateJobCategory.ts';
+import { jobCategoriesTableData } from './hooks/useGetJobCategories';
 
 type JobCategory = {
   id: string;
@@ -38,18 +38,18 @@ const JobCategory: React.FC = () => {
 
   const tableHead: CustomColumnDef<JobCategory>[] = [
     {
-      header: "Title",
-      accessorKey: "title",
+      header: 'Title',
+      accessorKey: 'title',
       search: true,
     },
     {
-      header: "Description",
-      accessorKey: "description",
+      header: 'Description',
+      accessorKey: 'description',
       search: true,
     },
     {
-      header: "Action",
-      accessorKey: "action",
+      header: 'Action',
+      accessorKey: 'action',
       search: false,
       cell: (cell) => (
         <div className="flex items-center gap-4 ml-5">
@@ -75,14 +75,14 @@ const JobCategory: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-full w-full bg-surface rounded-lg">
-      <div className="px-6 relative">
+    <div className="bg-surface rounded-lg w-full min-h-full">
+      <div className="relative px-6">
         {/* Header */}
         <div className="w-full h-fit">
           <UserHeader
-            number={100}
             title="Job Categories"
             handleAddClick={handleOpenAddModal}
+            routePath="/"
           />
         </div>
 

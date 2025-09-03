@@ -1,17 +1,17 @@
-import InputText from "@/components/form/InputText.tsx";
-import { InputSearchSelect } from "@/components/form/InputSelect.tsx";
-import InputDate from "@/components/form/InputDate";
+import InputText from '@/components/form/InputText.tsx';
+import { InputSearchSelect } from '@/components/form/InputSelect.tsx';
+import InputDate from '@/components/form/InputDate';
 
 const EmbassyInterviewForm = () => {
   return (
     <>
-      <div className="flex flex-col gap-5">
+      <div className="flex flex-col gap-5 p-2">
         <InputText
           label="Candidate Name"
           name="candidate_name"
           placeholder="Enter Canidate Name"
         />
-        <div className="grid grid-cols-2 gap-5">
+        <div className="gap-5 grid grid-cols-2">
           <InputText
             label="Embassy Name"
             name="embassy_name"
@@ -30,7 +30,7 @@ const EmbassyInterviewForm = () => {
           <InputSearchSelect
             label="Status"
             name="status"
-            options={[{ label: "Schedule", value: "schedule" }]}
+            options={[{ label: 'Schedule', value: 'schedule' }]}
           />
         </div>
       </div>

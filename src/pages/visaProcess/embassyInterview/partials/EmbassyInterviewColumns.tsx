@@ -1,27 +1,32 @@
-import { CustomColumnDef } from "@/components/Table";
-import { IEmbassyInterview } from "../interface/IEmbassyInterview";
-import EmbassyInterviewActions from "./EmbassyInterviewActions";
+import { CustomColumnDef } from '@/components/Table';
+import { IEmbassyInterview } from '../interface/IEmbassyInterview';
+import EmbassyInterviewActions from './EmbassyInterviewActions';
 
 export const EmbassyInterviewColumns: CustomColumnDef<IEmbassyInterview>[] = [
   {
-    header: "Candidate Name",
-    accessorKey: "candidate_name",
+    header: 'SN',
+    cell: ({ row }) => row.index + 1,
+    size: 50,
   },
   {
-    header: "Interview Date",
-    accessorKey: "interview_date",
+    header: 'Candidate Name',
+    accessorKey: 'candidate_name',
   },
   {
-    header: "Visa Number",
-    accessorKey: "visa_number",
+    header: 'Interview Date',
+    accessorKey: 'interview_date',
   },
   {
-    header: "Status",
-    accessorKey: "status",
+    header: 'Visa Number',
+    accessorKey: 'visa_number',
   },
   {
-    header: "Action",
-    accessorKey: "action",
+    header: 'Status',
+    accessorKey: 'status',
+  },
+  {
+    header: 'Action',
+    accessorKey: 'action',
     cell: ({ row }) => <EmbassyInterviewActions row={row?.original} />,
   },
 ];

@@ -1,22 +1,22 @@
-import React from "react";
-import UserHeader from "@/common/UserHeader";
-import Table from "@/components/Table";
-import useDisclosure from "@/hooks/useDisclousre";
-import AddOrientation from "./partials/AddOrientation";
-import { OrientationColumns } from "./partials/OrientationColumns";
-import { orientationTableData } from "@/data/orientation";
+import React from 'react';
+import Table from '@/components/Table';
+import useDisclosure from '@/hooks/useDisclousre';
+import AddOrientation from './partials/AddOrientation';
+import { OrientationColumns } from './partials/OrientationColumns';
+import { orientationTableData } from '@/data/orientation';
+import UserHeader from '@/common/userHeader';
 
 const Orientation: React.FC = () => {
   const addModal = useDisclosure();
 
   return (
-    <div className="min-h-full w-full bg-surface">
+    <div className="bg-surface w-full min-h-full">
       <div className="px-5">
         <div className="w-full h-fit">
           <UserHeader
-            number={50}
             title="Orientation"
             handleAddClick={addModal?.toggle}
+            routePath="/"
           />
         </div>
 

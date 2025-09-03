@@ -3,8 +3,10 @@ import { IoChevronDownOutline, IoChevronForward } from 'react-icons/io5';
 import { Link } from 'react-router-dom';
 import { mainMenuItems } from './Data/SidebarData';
 import { MenuItem } from './interface/sidebar_interface';
+import { SidebarProps } from '@/types';
+import { IoIosMenu } from 'react-icons/io';
 
-const Sidebar = ({ isSidebarOpen }: { isSidebarOpen: boolean }) => {
+const Sidebar: React.FC<SidebarProps> = ({ isSidebarOpen, toggleSidebar }) => {
   const defaultOpenIds = [
     ...mainMenuItems
       .filter((item) => item.active)
@@ -56,8 +58,8 @@ const Sidebar = ({ isSidebarOpen }: { isSidebarOpen: boolean }) => {
               level === 0 || level === 1 ? 'py-3 mb-1' : 'py-2'
             } rounded-xl cursor-pointer transition-colors ${
               isActive
-                ? 'bg-primary-75 text-secondary-500'
-                : 'text-secondary-500 hover:bg-primary-50'
+                ? 'bg-secondary-400 text-white'
+                : 'text-white hover:bg-secondary-500'
             }`}
             onClick={() =>
               (hasChildren && isSidebarOpen && toggleDropdown(item.id)) ||
@@ -148,10 +150,31 @@ const Sidebar = ({ isSidebarOpen }: { isSidebarOpen: boolean }) => {
 
   return (
     <div
-      className={`hidden md:relative md:block bg-white p-4 pt-2 h-full font-medium no-scrollbar transition-all duration-300 ease-in-out ${
+      className={`hidden md:relative md:block bg-primary-600 p-4 pt-6 h-full font-medium no-scrollbar transition-all duration-300 ease-in-out ${
         isSidebarOpen ? 'w-64' : 'w-20'
       } ${isSidebarOpen ? 'overflow-y-scroll scrollbar-hidden' : ''}`}
     >
+      <div
+        className={`flex ${
+          isSidebarOpen ? 'justify-between' : 'justify-center'
+        } items-center gap-20 pb-4`}
+      >
+        <h2
+          className={`font-semibold text-white ${
+            isSidebarOpen ? 'block' : 'hidden'
+          }`}
+        >
+          MMS
+        </h2>
+        <div className="flex justify-center items-center">
+          <div
+            onClick={toggleSidebar}
+            className="hidden md:flex justify-center items-center py-2 rounded-lg w-8 h-8 cursor-pointer"
+          >
+            <IoIosMenu size={24} color="#ffffff" />
+          </div>
+        </div>
+      </div>
       <div className="mb-3">{renderMenuItems(mainMenuItems)}</div>
     </div>
   );

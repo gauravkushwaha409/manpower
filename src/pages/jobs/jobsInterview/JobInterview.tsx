@@ -1,19 +1,19 @@
-import React from "react";
-import Table, { CustomColumnDef } from "../../../components/Table";
-import UserHeader from "@/common/userHeader";
+import React from 'react';
+import Table, { CustomColumnDef } from '../../../components/Table';
+import UserHeader from '@/common/userHeader';
 import {
   DeleteIcon,
   EditIcon,
   ViewIcon,
-} from "../../../components/actions/TableComp";
-import { IJobInterview } from "./interface/IJobInterview";
-import useJobInterview from "./hooks/useJobInterview";
-import useCreateJobInterview from "./hooks/useCreateJobInterview";
-import useUpdateJobInterview from "./hooks/useUpdateJobInterview";
-import AddJobInterviewModal from "./modal/AddJobInterviewModal";
-import UpdateJobInterviewModal from "./modal/UpdateJobInterview";
-import DeleteModal from "@/components/DeleteModal";
-import { jobInterviewTableData } from "./hooks/useGetJobInterview";
+} from '../../../components/actions/TableComp';
+import { IJobInterview } from './interface/IJobInterview';
+import useJobInterview from './hooks/useJobInterview';
+import useCreateJobInterview from './hooks/useCreateJobInterview';
+import useUpdateJobInterview from './hooks/useUpdateJobInterview';
+import AddJobInterviewModal from './modal/AddJobInterviewModal';
+import UpdateJobInterviewModal from './modal/UpdateJobInterview';
+import DeleteModal from '@/components/DeleteModal';
+import { jobInterviewTableData } from './hooks/useGetJobInterview';
 
 const JobInterview: React.FC = () => {
   const {
@@ -33,38 +33,38 @@ const JobInterview: React.FC = () => {
 
   const tableHead: CustomColumnDef<IJobInterview>[] = [
     {
-      header: "Company Name",
-      accessorKey: "company_name",
+      header: 'Company Name',
+      accessorKey: 'company_name',
       search: true,
     },
     {
-      header: "Candidate Name",
-      accessorKey: "candidate_name",
+      header: 'Candidate Name',
+      accessorKey: 'candidate_name',
       search: true,
     },
     {
-      header: "Job Vacancy",
-      accessorKey: "job_vacancy",
+      header: 'Job Vacancy',
+      accessorKey: 'job_vacancy',
       search: true,
     },
     {
-      header: "Interview Date & Time",
-      accessorKey: "interview_date_time",
+      header: 'Interview Date & Time',
+      accessorKey: 'interview_date_time',
       search: true,
     },
     {
-      header: "Salary Offered",
-      accessorKey: "salary_offered",
+      header: 'Salary Offered',
+      accessorKey: 'salary_offered',
       search: false,
     },
     {
-      header: "Status",
-      accessorKey: "status",
+      header: 'Status',
+      accessorKey: 'status',
       search: false,
     },
     {
-      header: "Action",
-      accessorKey: "action",
+      header: 'Action',
+      accessorKey: 'action',
       search: false,
       cell: (cell) => (
         <div className="flex items-center gap-4 ml-5">
@@ -89,19 +89,19 @@ const JobInterview: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen w-full bg-surface rounded-lg">
-      <div className="px-6 relative">
+    <div className="bg-surface rounded-lg w-full min-h-screen">
+      <div className="relative px-6">
         {/* Header */}
         <div className="w-full h-fit">
           <UserHeader
             handleAddClick={handleOpenAddModal}
-            number={100}
             title="Interview Candidates"
+            routePath="/"
           />
         </div>
 
         {/* Table */}
-        <div className="overflow-auto min-h-screen">
+        <div className="min-h-screen overflow-auto">
           <Table columns={tableHead} data={jobInterviewTableData} />
         </div>
 

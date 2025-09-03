@@ -1,23 +1,23 @@
-import React from "react";
-import Table from "@/components/Table";
-import AddLanguageModal from "@/pages/language/partials/AddLanguage";
-import UserHeader from "@/common/userHeader";
-import useDisclosure from "@/hooks/useDisclousre";
-import { getLanguageData } from "../hooks/useGetLanguage";
-import { LanguageColumns } from "./LanguageColumns";
+import React from 'react';
+import Table from '@/components/Table';
+import AddLanguageModal from '@/pages/language/partials/AddLanguage';
+import UserHeader from '@/common/userHeader';
+import useDisclosure from '@/hooks/useDisclousre';
+import { getLanguageData } from '../hooks/useGetLanguage';
+import { LanguageColumns } from './LanguageColumns';
 
 const LanguageTable: React.FC = () => {
   const addLanguageModal = useDisclosure();
 
   return (
-    <div className="min-h-full w-full bg-surface">
+    <div className="bg-surface w-full min-h-full">
       <div className="px-5">
         {/* Header */}
         <div className="w-full h-fit">
           <UserHeader
-            number={120}
             title="Language"
             handleAddClick={addLanguageModal.open}
+            routePath="/"
           />
         </div>
 
