@@ -106,6 +106,51 @@ export const mainMenuItems = [
       },
     ],
   },
+  {
+    id: "job-process",
+    icon: IoSettingsOutline,
+    label: "Job Process",
+    active: false,
+    children: [
+      {
+        id: "job-categories",
+        label: "Job Categories",
+        icon: IoSettingsOutline,
+        link: PATH.jobProcess.jobCategories,
+      },
+      {
+        id: "job-vacancies",
+        label: "Job Vacancies",
+        icon: IoSettingsOutline,
+        // link: PATH.jobProcess.jobVacancies.list,
+      },
+      {
+        id: "job-applications",
+        label: "Job Applications",
+        icon: IoSettingsOutline,
+        // link: PATH.jobProcess.jobApplications.list,
+      },
+      {
+        id: "job-offer",
+        label: "Job Offer",
+        icon: IoSettingsOutline,
+        // link: PATH.jobProcess.jobOffer.list,
+      },
+      {
+        id: "interview-candidates",
+        label: "Interview Candidates",
+        icon: IoSettingsOutline,
+        // link: PATH.jobProcess.interviewCandidates.list,
+      },
+    ],
+  },
+  {
+    id: "language",
+    icon: IoSettingsOutline,
+    label: "Language",
+    active: false,
+    link: PATH.dashboard.language,
+  },
 ];
 
 export const deliveryAgentMenuItems = [

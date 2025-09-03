@@ -1,7 +1,7 @@
-import { useState, useRef, useEffect } from 'react';
-import UserImage from '/vite.svg';
-import { Link } from 'react-router-dom';
-import { LogOut, Settings, User } from 'lucide-react';
+import { useState, useRef, useEffect } from "react";
+import UserImage from "/vite.svg";
+import { Link } from "react-router-dom";
+import { LogOut, Settings, User } from "lucide-react";
 // import { PATH } from '@/constants/paths';
 // import { clearAllCookies } from '@/utils/cookie';
 
@@ -20,9 +20,9 @@ const ProfileSection = () => {
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
   const toggleDropdown = () => {
@@ -40,7 +40,7 @@ const ProfileSection = () => {
   return (
     <div className="relative" ref={dropdownRef}>
       <div
-        className="flex items-center gap-1 bg-gray-100 hover:bg-gray-300 p-1 rounded-full w-fit transition-colors duration-200 cursor-pointer"
+        className="flex items-center gap-1 bg-gray-100 hover:bg-gray-200 p-1 rounded-full w-fit transition-colors duration-200 cursor-pointer"
         onClick={toggleDropdown}
       >
         <div className="rounded-full w-12 h-10 overflow-hidden">

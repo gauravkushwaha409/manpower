@@ -14,7 +14,16 @@ const AUTH_PATH = {
  */
 const DASHBOARD_PATH = {
   dashboard: "/",
+  language: "/language",
   country: "/country",
+};
+
+const JOB_PROCESS = {
+  jobCategories: "/job-categories",
+  jobVacancies: "/job-vacancies",
+  jobApplications: "/job-applications",
+  jobOffer: "/job-offer",
+  interviewCandidates: "/interview-candidates",
 };
 
 const VISA = {
@@ -32,5 +41,6 @@ const VISA = {
 export const PATH = {
   auth: AUTH_PATH,
   dashboard: DASHBOARD_PATH,
+  jobProcess: JOB_PROCESS,
   visa: VISA,
 };

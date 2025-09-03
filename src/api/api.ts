@@ -1,13 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+// import { logoutUser } from "@/store/features/authSlice";
 import {
   BaseQueryApi,
   BaseQueryArg,
   createApi,
   fetchBaseQuery,
 } from "@reduxjs/toolkit/query/react";
-import { COOKIE_CONFIG, getCookie, setCookie } from "../utils/cookie";
-import { logoutUser } from "@/store/authSlice";
+import { COOKIE_CONFIG, getCookie, setCookie } from "@/utils/cookie";
 import { BASE_API_URL, endpoints } from "./endpoints";
+import { logoutUser } from "@/store/authSlice";
 
 interface IGetDataArgs {
   url: string;
