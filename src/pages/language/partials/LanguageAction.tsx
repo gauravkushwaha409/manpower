@@ -1,8 +1,7 @@
 import { DeleteIcon, EditIcon } from '@/components/actions/TableComp';
 import useDisclosure from '@/hooks/useDisclousre';
-import UpdateLanguageModal from './UpdateLanguage';
 import DeleteModal from '@/components/DeleteModal';
-// import useDeleteLanguage from "../hooks/useDeleteLanguage";
+import { PATH } from '@/constant/path';
 
 interface TableActionsProps<T> {
   row: T;
@@ -10,15 +9,9 @@ interface TableActionsProps<T> {
 }
 
 function LanguageActionButtons<T>({
-  // row,
   className = 'flex items-center gap-4 ml-5',
 }: TableActionsProps<T>) {
-  const updateModal = useDisclosure();
   const deleteModal = useDisclosure();
-
-  const handleEdit = () => {
-    updateModal?.open();
-  };
 
   const handleDelete = () => {
     deleteModal?.open();
@@ -27,25 +20,15 @@ function LanguageActionButtons<T>({
   return (
     <>
       <div className={className}>
-        <div onClick={handleEdit}>
-          {' '}
-          <EditIcon />
+        <div>
+          <EditIcon updateRoutePath={PATH.dashboard.updateLanguage} />
         </div>
         <div onClick={handleDelete}>
           <DeleteIcon />
         </div>
       </div>
 
-      <UpdateLanguageModal
-        isOpen={updateModal?.isOpen}
-        handleCloseModal={updateModal?.close}
-      />
-
-      <DeleteModal
-        isOpen={deleteModal.isOpen}
-        onCancel={deleteModal.close}
-        // onConfirm={isSuccess}
-      />
+      <DeleteModal isOpen={deleteModal.isOpen} onCancel={deleteModal.close} />
     </>
   );
 }
