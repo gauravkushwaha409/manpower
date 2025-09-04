@@ -1,5 +1,4 @@
 import React from 'react';
-
 import AddJobVacancyModal from './modal/AddJobVacancyModal';
 import useJobVacancy from './hooks/useJobVacancy';
 import useCreateVacancies from './hooks/useCreateVacancies';
@@ -7,8 +6,6 @@ import useUpdateVacancies from './hooks/useUpdateVacancies';
 import UpdateJobVacancyModal from './modal/UpdateJobVacancyModal';
 import DeleteModal from '@/components/DeleteModal';
 import PageHeader from '@/common/PageHeader';
-// import { CustomColumnDef } from '@/components/Table';
-// import { IJobVacancyTableData } from './interface/IAddJobVacancies';
 
 const JobVacancies: React.FC = () => {
   const {
@@ -29,54 +26,6 @@ const JobVacancies: React.FC = () => {
     onClose: handleCloseAddModal,
   });
   const { updateCandidateFormik } = useUpdateVacancies({ setStep, step });
-
-  // const tableHead: CustomColumnDef<Pick<IJobVacancyTableData, "recruitment_company" | "">> = [
-  //    {
-  //       header: "Company Name",
-  //       accessorKey: "recruitment_company",
-  //       search: true,
-  //    },
-  //    {
-  //       header: "Job Title",
-  //       accessorKey: "job_title",
-  //       search: true,
-  //    },
-  //    {
-  //       header: "Country",
-  //       accessorKey: "country",
-  //       search: true,
-  //    },
-  //    {
-  //       header: "No. Of Vacancies",
-  //       accessorKey: "no_of_vacancies",
-  //       search: false,
-  //    },
-  //    {
-  //       header: "Vacancy Type",
-  //       accessorKey: "vacancy_type",
-  //       search: false,
-  //    },
-  //    {
-  //       header: "Date",
-  //       accessorKey: "date",
-  //       search: false,
-  //    },
-  //    {
-  //       header: "Action",
-  //       accessorKey: "action",
-  //       search: false,
-  //       cell: (cell) => (
-  //          <div className='flex items-center gap-4 ml-5'>
-  //             <ViewIcon id={cell.row.original.id} />
-  //             <EditIcon
-  //                id={cell.row.original.id}
-  //             // onClick={() => setActiveId(cell.row.original.id)}
-  //             />
-  //             <DeleteIcon id={cell.row.original.id} />
-  //          </div>
-  //       ),
-  //    },
-  // ];
 
   return (
     <div className="bg-surface rounded-lg w-full min-h-full">

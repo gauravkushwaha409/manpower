@@ -2,163 +2,156 @@ import {
   IoCallOutline,
   IoLocationOutline,
   IoSettingsOutline,
-} from "react-icons/io5";
-import { LuSettings2 } from "react-icons/lu";
-import { TbSeo } from "react-icons/tb";
-import { TfiWorld } from "react-icons/tfi";
-import { IoPeopleSharp, IoTicketSharp } from "react-icons/io5";
-import { FcApproval } from "react-icons/fc";
-import { ScrollText, ShoppingCart } from "lucide-react";
-import { GoOrganization } from "react-icons/go";
-import { LiaCcVisa } from "react-icons/lia";
-import { GrVisa } from "react-icons/gr";
-import { TbReportMedical } from "react-icons/tb";
-import { PATH } from "@/constant/path";
+  IoBriefcaseOutline,
+  IoListOutline,
+} from 'react-icons/io5';
+import { LuSettings2, LuUsers } from 'react-icons/lu';
+import { TbSeo } from 'react-icons/tb';
+import { TfiWorld } from 'react-icons/tfi';
+import { IoPeopleSharp, IoTicketSharp } from 'react-icons/io5';
+import { ScrollText } from 'lucide-react';
+import { HiOutlineLanguage, HiOutlineUserPlus } from 'react-icons/hi2';
+import { GoOrganization } from 'react-icons/go';
+import { LiaCcVisa, LiaFileAlt } from 'react-icons/lia';
+import { GrVisa } from 'react-icons/gr';
+import { TiTickOutline } from 'react-icons/ti';
+import { TbReportMedical } from 'react-icons/tb';
+import { MdOutlineHandshake } from 'react-icons/md';
+import { PATH } from '@/constant/path';
 
 export const mainMenuItems = [
   {
-    id: "visa",
+    id: 'country',
+    icon: TfiWorld,
+    label: 'Country',
+    active: false,
+    link: PATH.dashboard.country,
+  },
+  {
+    id: 'language',
+    icon: HiOutlineLanguage,
+    label: 'Language',
+    active: false,
+    link: PATH.dashboard.language,
+  },
+  {
+    id: 'visa-process',
     icon: LiaCcVisa,
-    label: "Visa Process",
+    label: 'Visa Process',
     active: false,
     children: [
       {
-        id: "employee-interview",
-        label: "Employee Interview",
+        id: 'employee-interview',
+        label: 'Employee Interview',
         icon: GoOrganization,
         link: PATH.visa.embassyInteview,
       },
       {
-        id: "visa",
-        label: "Visa",
+        id: 'visa',
+        label: 'Visa',
         icon: GrVisa,
         link: PATH.visa.visa,
       },
       {
-        id: "medical-report",
-        label: "Medical Report",
+        id: 'medical-report',
+        label: 'Medical Report',
         icon: TbReportMedical,
         link: PATH.visa.medicalReport,
       },
       {
-        id: "orientation",
-        label: "Orientation",
+        id: 'orientation',
+        label: 'Orientation',
         icon: IoPeopleSharp,
         link: PATH.visa.orientation,
       },
       {
-        id: "dofe",
-        label: "DOFE Approval",
-        icon: FcApproval,
+        id: 'dofe',
+        label: 'DOFE Approval',
+        icon: TiTickOutline,
         link: PATH.visa.dofe,
       },
       {
-        id: "ticket",
-        label: "Tickets",
+        id: 'ticket',
+        label: 'Tickets',
         icon: IoTicketSharp,
         link: PATH.visa.ticket,
       },
     ],
   },
-
   {
-    id: "country",
-    icon: TfiWorld,
-    label: "Country",
-    active: false,
-    link: PATH.dashboard.country,
-  },
-  {
-    id: "settings",
-    icon: IoSettingsOutline,
-    label: "Settings",
+    id: 'job-process',
+    icon: IoBriefcaseOutline,
+    label: 'Job Process',
     active: false,
     children: [
       {
-        id: "locations",
-        label: "Locations",
+        id: 'job-categories',
+        label: 'Job Categories',
+        icon: IoListOutline,
+        link: PATH.jobProcess.jobCategories,
+      },
+      {
+        id: 'job-vacancies',
+        label: 'Job Vacancies',
+        icon: HiOutlineUserPlus,
+        link: PATH.jobProcess.jobVacancies,
+      },
+      {
+        id: 'job-applications',
+        label: 'Job Applications',
+        icon: LiaFileAlt,
+        link: PATH.jobProcess.jobApplications,
+      },
+      {
+        id: 'job-offer',
+        label: 'Job Offer',
+        icon: MdOutlineHandshake,
+        link: PATH.jobProcess.jobOffer,
+      },
+      {
+        id: 'interview-candidates',
+        label: 'Interview Candidates',
+        icon: LuUsers,
+        link: PATH.jobProcess.interviewCandidates,
+      },
+    ],
+  },
+  {
+    id: 'settings',
+    icon: IoSettingsOutline,
+    label: 'Settings',
+    active: false,
+    children: [
+      {
+        id: 'locations',
+        label: 'Locations',
         icon: IoLocationOutline,
         // link: PATH.settings.locations.list,
       },
       {
-        id: "contact-us",
-        label: "Contact Us",
+        id: 'contact-us',
+        label: 'Contact Us',
         icon: IoCallOutline,
         // link: PATH.settings.contactUs.list,
       },
       {
-        id: "policy",
-        label: "Policy",
+        id: 'policy',
+        label: 'Policy',
         icon: ScrollText,
         // link: PATH.settings.policy.list,
       },
       {
-        id: "organization-settings",
-        label: "Organization Settings",
+        id: 'organization-settings',
+        label: 'Organization Settings',
         icon: LuSettings2,
         // link: PATH.settings.organizationSettings.list,
       },
       {
-        id: "static-seo",
-        label: "Static SEO",
+        id: 'static-seo',
+        label: 'Static SEO',
         icon: TbSeo,
         // link: PATH.settings.seo.list,
       },
     ],
-  },
-  {
-    id: "job-process",
-    icon: IoSettingsOutline,
-    label: "Job Process",
-    active: false,
-    children: [
-      {
-        id: "job-categories",
-        label: "Job Categories",
-        icon: IoSettingsOutline,
-        link: PATH.jobProcess.jobCategories,
-      },
-      {
-        id: "job-vacancies",
-        label: "Job Vacancies",
-        icon: IoSettingsOutline,
-        // link: PATH.jobProcess.jobVacancies.list,
-      },
-      {
-        id: "job-applications",
-        label: "Job Applications",
-        icon: IoSettingsOutline,
-        // link: PATH.jobProcess.jobApplications.list,
-      },
-      {
-        id: "job-offer",
-        label: "Job Offer",
-        icon: IoSettingsOutline,
-        // link: PATH.jobProcess.jobOffer.list,
-      },
-      {
-        id: "interview-candidates",
-        label: "Interview Candidates",
-        icon: IoSettingsOutline,
-        // link: PATH.jobProcess.interviewCandidates.list,
-      },
-    ],
-  },
-  {
-    id: "language",
-    icon: IoSettingsOutline,
-    label: "Language",
-    active: false,
-    link: PATH.dashboard.language,
-  },
-];
-
-export const deliveryAgentMenuItems = [
-  {
-    id: "order-management",
-    icon: ShoppingCart,
-    label: "Order Management",
-    active: false,
-    // link: PATH.orderManagement.order.list,
   },
 ];
