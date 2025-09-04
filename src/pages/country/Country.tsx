@@ -1,38 +1,27 @@
 import React from 'react';
-
 import Table from '@/components/Table';
-import useDisclosure from '@/hooks/useDisclousre';
-import AddCountry from '@/pages/country/partials/AddCountry';
 import { CountryTableData } from '@/data/country';
 import { CountryColumns } from './partials/CountryColumns';
 import PageHeader from '@/common/PageHeader';
-// import useGetCountry from "./hooks/useGetCountry";
+import Breadcrumb from '@/components/reusable-component/Breadcrumb';
+import CountryFilterList from './partials/CountryFilterList';
+import { PATH } from '@/constant/path';
 
 const Country: React.FC = () => {
-  const addModal = useDisclosure();
-
-  // const { data } = useGetCountry();s
-
   return (
     <div className="bg-surface w-full min-h-full">
-      <div className="px-5">
+      <Breadcrumb Navone="Dashboard" Navtwo="Country" />
+      <div>
         <div className="w-full h-fit">
-          <PageHeader
-            title="Country"
-            handleAddClick={addModal?.toggle}
-            routePath="/"
-          />
+          <PageHeader title="Country" routePath={PATH.dashboard.addCountry} />
         </div>
-
+        <div className="py-5">
+          <CountryFilterList />
+        </div>
         <div className="overflow-x-visible">
           <Table columns={CountryColumns} data={CountryTableData} />
         </div>
       </div>
-
-      <AddCountry
-        isOpen={addModal?.isOpen}
-        handleCloseModal={addModal?.close}
-      />
     </div>
   );
 };
