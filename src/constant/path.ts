@@ -28,6 +28,8 @@ const JOB_PROCESS = {
   addJobOffer: '/add-job-offer',
   updateJobOffer: '/update-job-offer',
   interviewCandidates: '/interview-candidates',
+  addInterviewCandidates: '/add-interview-candidates',
+  updateInterviewCandidates: '/update-interview-candidates',
 };
 
 const VISA = {
