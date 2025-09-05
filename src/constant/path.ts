@@ -60,6 +60,9 @@ const SETTINGS = {
   contactUs: "/contact-us",
   addContactUs: "/add-contact-us",
   updateContactUs: "/update-contact-us",
+  policy: "/policy",
+  addPolicy: "/add-policy",
+  updatePolicy: "/update-policy",
 };
 
 export const PATH = {

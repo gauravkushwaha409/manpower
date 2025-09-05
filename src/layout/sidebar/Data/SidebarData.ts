@@ -138,7 +138,7 @@ export const mainMenuItems = [
         id: "policy",
         label: "Policy",
         icon: ScrollText,
-        // link: PATH.settings.policy.list,
+        link: PATH.settings.policy,
       },
       {
         id: "organization-settings",

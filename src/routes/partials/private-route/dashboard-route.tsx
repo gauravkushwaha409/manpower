@@ -42,12 +42,17 @@ import UpdateLocation from "@/pages/settings/location/UpdateLocation";
 import AddContactUs from "@/pages/settings/contactUs/AddContactUs";
 import UpdateContactUs from "@/pages/settings/contactUs/UpdateContactUs";
 import ContactUs from "@/pages/settings/contactUs/ContactUs";
+import Policy from "@/pages/settings/policy/PolicyForm";
+import AddPolicy from "@/pages/settings/policy/AddPolicy";
+import UpdatePolicy from "@/pages/settings/policy/UpdatePolicy";
 
 export const dashboardRoutes = [
   {
     path: PATH.dashboard.dashboard,
     element: "This is layout ",
   },
+
+  // language
   {
     path: PATH.dashboard.language,
     element: <Language />,
@@ -60,6 +65,8 @@ export const dashboardRoutes = [
     path: PATH.dashboard.updateLanguage,
     element: <UpdateLanguage />,
   },
+
+  // job process
   {
     path: PATH.jobProcess.jobCategories,
     element: <JobCategory />,
@@ -112,6 +119,8 @@ export const dashboardRoutes = [
     path: PATH.jobProcess.updateInterviewCandidates,
     element: <UpdateJobInterview />,
   },
+
+  // country
   {
     path: PATH.dashboard.country,
     element: <Country />,
@@ -124,6 +133,8 @@ export const dashboardRoutes = [
     path: PATH.dashboard.updateCountry,
     element: <UpdateCountry />,
   },
+
+  // visa process
   {
     path: PATH.visa.embassyInteview,
     element: <EmbassyInterview />,
@@ -196,6 +207,8 @@ export const dashboardRoutes = [
     path: PATH.visa.updateTicket,
     element: <UpdateTicket />,
   },
+
+  // settings
   {
     path: PATH.settings.location,
     element: <Location />,
@@ -219,5 +232,17 @@ export const dashboardRoutes = [
   {
     path: PATH.settings.updateContactUs,
     element: <UpdateContactUs />,
+  },
+  {
+    path: PATH.settings.policy,
+    element: <Policy />,
+  },
+  {
+    path: PATH.settings.addPolicy,
+    element: <AddPolicy />,
+  },
+  {
+    path: PATH.settings.updatePolicy,
+    element: <UpdatePolicy />,
   },
 ];
