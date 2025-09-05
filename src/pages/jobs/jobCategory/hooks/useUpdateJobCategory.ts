@@ -1,7 +1,7 @@
 import { useGetDataQuery, useUpdateDataMutation } from '@/api/api';
 import { useFormik } from 'formik';
-import { jobCategoryValidation } from '@/pages/jobs/jobCategory/hooks/useCreateJobCategory.ts';
 import { IJobCategory } from '@/pages/jobs/jobCategory/interface/IJobCategory.ts';
+import { jobCategoryValidation } from '../schema/jobCategoryValidationSchema';
 
 const useUpdateJobCategory = () => {
   const [
@@ -13,7 +13,6 @@ const useUpdateJobCategory = () => {
     },
   ] = useUpdateDataMutation();
 
-  // Get Initial Data
   const {
     data,
     isError: isGetJobCategoryDetailsError,
@@ -29,7 +28,7 @@ const useUpdateJobCategory = () => {
     description: initial?.description || '',
   };
 
-  const updateJobCategoryFormik = useFormik({
+  const formik = useFormik({
     initialValues,
     validationSchema: jobCategoryValidation,
     enableReinitialize: true,
@@ -44,7 +43,7 @@ const useUpdateJobCategory = () => {
 
   return {
     data,
-    updateJobCategoryFormik,
+    formik,
     isGetJobCategoryDetailsError,
     isGetJobCategoryDetailsLoading,
     isGetJobCategoryDetailsSuccess,

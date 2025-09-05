@@ -1,6 +1,7 @@
 import { DeleteIcon, EditIcon } from '@/components/actions/TableComp';
 import useDisclosure from '@/hooks/useDisclousre';
 import DeleteModal from '@/components/DeleteModal';
+import { PATH } from '@/constant/path';
 
 interface TableActionsProps<T> {
   row: T;
@@ -8,17 +9,9 @@ interface TableActionsProps<T> {
 }
 
 function EmbassyInterviewActions<T>({
-  //   row,
   className = 'flex items-center gap-4 ml-5',
 }: TableActionsProps<T>) {
-  const updateModal = useDisclosure();
   const deleteModal = useDisclosure();
-
-  //   const { handleDeleteCountry } = useDeleteCountry();
-
-  const handleEdit = () => {
-    updateModal?.open();
-  };
 
   const handleDelete = () => {
     deleteModal?.open();
@@ -27,19 +20,15 @@ function EmbassyInterviewActions<T>({
   return (
     <>
       <div className={className}>
-        <div onClick={handleEdit}>
-          <EditIcon />
+        <div>
+          <EditIcon updateRoutePath={PATH.visa.updateembassyInterview} />
         </div>
         <div onClick={handleDelete}>
           <DeleteIcon />
         </div>
       </div>
 
-      <DeleteModal
-        isOpen={deleteModal.isOpen}
-        onCancel={deleteModal.close}
-        // onConfirm={handleDeleteCountry}
-      />
+      <DeleteModal isOpen={deleteModal.isOpen} onCancel={deleteModal.close} />
     </>
   );
 }

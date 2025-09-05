@@ -5,6 +5,7 @@ import { EmbassyInterviewColumns } from './partials/EmbassyInterviewColumns';
 import PageHeader from '@/common/PageHeader';
 import Breadcrumb from '@/components/reusable-component/Breadcrumb';
 import EmbassyInterviewFilterList from './partials/EmbassyInterviewFilterList';
+import { PATH } from '@/constant/path';
 
 const EmbassyInterview: React.FC = () => {
   return (
@@ -12,7 +13,10 @@ const EmbassyInterview: React.FC = () => {
       <Breadcrumb Navone="Dashboard" Navtwo="Embassy Interview" />
       <div>
         <div className="w-full h-fit">
-          <PageHeader title="Embassy Interview" routePath="/" />
+          <PageHeader
+            title="Embassy Interview"
+            routePath={PATH.visa.addembassyInterview}
+          />
         </div>
         <div className="py-5">
           <EmbassyInterviewFilterList />

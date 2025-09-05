@@ -1,6 +1,3 @@
-/**
-AUTH PATH
-*/
 const AUTH_PATH = {
   login: '/login',
   forgotPassword: '/forgot-password',
@@ -9,19 +6,24 @@ const AUTH_PATH = {
   verifyOtp: '/verify-otp',
 };
 
-/**
- * DASHBOARD PATH
- */
 const DASHBOARD_PATH = {
   dashboard: '/',
   language: '/language',
+  addLanguage: '/add-language',
+  updateLanguage: '/update-language',
   country: '/country',
+  addCountry: '/add-country',
+  updateCountry: '/update-country',
 };
 
 const JOB_PROCESS = {
   jobCategories: '/job-categories',
+  addJobCategories: '/add-job-categories',
+  updateJobCategories: '/update-job-categories',
   jobVacancies: '/job-vacancies',
   jobApplications: '/job-applications',
+  addJobApplication: '/add-job-application',
+  updateJobApplication: '/update-job-application',
   jobOffer: '/job-offer',
   interviewCandidates: '/interview-candidates',
 };
@@ -31,15 +33,22 @@ const VISA = {
   addembassyInterview: '/add-embassy-interview',
   updateembassyInterview: '/update-embassy-interview',
   visa: '/visa',
+  addVisa: '/add-visa',
+  updateVisa: '/update-visa',
   medicalReport: '/medical-report',
+  addMedicalReport: '/add-medical-report',
+  updateMedicalReport: '/update-medical-report',
   orientation: '/orientation',
+  addOrientation: '/add-orientation',
+  updateOrientation: '/update-orientation',
   dofe: '/dofe',
+  addDOFE: '/add-dofe',
+  updateDOFE: '/update-dofe',
   ticket: '/ticket',
+  addTicket: '/add-ticket',
+  updateTicket: '/update-ticket',
 };
 
-/**
- *ALL PATH
- */
 export const PATH = {
   auth: AUTH_PATH,
   dashboard: DASHBOARD_PATH,

@@ -1,5 +1,4 @@
 import { PATH } from '@/constant/path';
-import JobApplicant from '@/pages/jobs/jobApplicant/JobApplicant';
 import JobCategory from '@/pages/jobs/jobCategory/JobCategory';
 import JobOffer from '@/pages/jobs/jobOffer/JobOffer';
 import JobInterview from '@/pages/jobs/jobsInterview/JobInterview';
@@ -14,6 +13,25 @@ import Ticket from '@/pages/visaProcess/ticket/Ticket';
 import Visa from '@/pages/visaProcess/visa/Visa';
 import AddEmbassyInterview from '@/pages/visaProcess/embassyInterview/AddEmbassyInterview';
 import UpdateEmbassyInterview from '@/pages/visaProcess/embassyInterview/UpdateEmbassyInterview';
+import AddVisa from '@/pages/visaProcess/visa/AddVisa';
+import UpdateVisa from '@/pages/visaProcess/visa/UpdateVisa';
+import AddMedicalReport from '@/pages/visaProcess/medicalReport/AddMedicalReport';
+import UpdateMedicalReport from '@/pages/visaProcess/medicalReport/UpdateMedicalReport';
+import AddOrientation from '@/pages/visaProcess/orientation/AddOrientation';
+import UpdateOrientation from '@/pages/visaProcess/orientation/UpdateOrientation';
+import AddDOFE from '@/pages/visaProcess/dofe/AddDOFE';
+import UpdateDOFE from '@/pages/visaProcess/dofe/UpdateDOFE';
+import AddTicket from '@/pages/visaProcess/ticket/AddTicket';
+import UpdateTicket from '@/pages/visaProcess/ticket/UpdateTicket';
+import AddCountry from '@/pages/country/AddCountry';
+import UpdateCountry from '@/pages/country/UpdateCountry';
+import AddLanguage from '@/pages/language/AddLanguage';
+import UpdateLanguage from '@/pages/language/UpdateLanguage';
+import AddJobCategory from '@/pages/jobs/jobCategory/AddJobCategory';
+import UpdateJobCategory from '@/pages/jobs/jobCategory/UpdateJobCategory';
+import JobApplications from '@/pages/jobs/jobApplication/JobApplications';
+import AddJobApplication from '@/pages/jobs/jobApplication/AddJobApplication';
+import UpdateJobApplication from '@/pages/jobs/jobApplication/UpdateJobApplication';
 
 export const dashboardRoutes = [
   {
@@ -25,16 +43,40 @@ export const dashboardRoutes = [
     element: <Language />,
   },
   {
+    path: PATH.dashboard.addLanguage,
+    element: <AddLanguage />,
+  },
+  {
+    path: PATH.dashboard.updateLanguage,
+    element: <UpdateLanguage />,
+  },
+  {
     path: PATH.jobProcess.jobCategories,
     element: <JobCategory />,
+  },
+  {
+    path: PATH.jobProcess.addJobCategories,
+    element: <AddJobCategory />,
+  },
+  {
+    path: PATH.jobProcess.updateJobCategories,
+    element: <UpdateJobCategory />,
   },
   {
     path: PATH.jobProcess.jobVacancies,
     element: <JobVacancies />,
   },
   {
+    path: PATH.jobProcess.addJobApplication,
+    element: <AddJobApplication />,
+  },
+  {
+    path: PATH.jobProcess.updateJobApplication,
+    element: <UpdateJobApplication />,
+  },
+  {
     path: PATH.jobProcess.jobApplications,
-    element: <JobApplicant />,
+    element: <JobApplications />,
   },
   {
     path: PATH.jobProcess.jobOffer,
@@ -49,6 +91,14 @@ export const dashboardRoutes = [
     element: <Country />,
   },
   {
+    path: PATH.dashboard.addCountry,
+    element: <AddCountry />,
+  },
+  {
+    path: PATH.dashboard.updateCountry,
+    element: <UpdateCountry />,
+  },
+  {
     path: PATH.visa.embassyInteview,
     element: <EmbassyInterview />,
   },
@@ -61,6 +111,14 @@ export const dashboardRoutes = [
     element: <UpdateEmbassyInterview />,
   },
   {
+    path: PATH.visa.addVisa,
+    element: <AddVisa />,
+  },
+  {
+    path: PATH.visa.updateVisa,
+    element: <UpdateVisa />,
+  },
+  {
     path: PATH.visa.visa,
     element: <Visa />,
   },
@@ -69,15 +127,47 @@ export const dashboardRoutes = [
     element: <MedicalReport />,
   },
   {
+    path: PATH.visa.addMedicalReport,
+    element: <AddMedicalReport />,
+  },
+  {
+    path: PATH.visa.updateMedicalReport,
+    element: <UpdateMedicalReport />,
+  },
+  {
     path: PATH.visa.orientation,
     element: <Orientation />,
+  },
+  {
+    path: PATH.visa.addOrientation,
+    element: <AddOrientation />,
+  },
+  {
+    path: PATH.visa.updateOrientation,
+    element: <UpdateOrientation />,
   },
   {
     path: PATH.visa.dofe,
     element: <Dofe />,
   },
   {
+    path: PATH.visa.addDOFE,
+    element: <AddDOFE />,
+  },
+  {
+    path: PATH.visa.updateDOFE,
+    element: <UpdateDOFE />,
+  },
+  {
     path: PATH.visa.ticket,
     element: <Ticket />,
+  },
+  {
+    path: PATH.visa.addTicket,
+    element: <AddTicket />,
+  },
+  {
+    path: PATH.visa.updateTicket,
+    element: <UpdateTicket />,
   },
 ];

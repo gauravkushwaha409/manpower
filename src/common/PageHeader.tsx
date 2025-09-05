@@ -7,7 +7,7 @@ interface IHeaderProps {
   handleAddClick?: () => void;
   handleClickExport?: () => void;
   showAddButton?: boolean;
-  routePath: string;
+  routePath?: string;
 }
 
 const PageHeader: React.FC<IHeaderProps> = ({
@@ -26,7 +26,7 @@ const PageHeader: React.FC<IHeaderProps> = ({
           </p>
         </div>
 
-        {showAddButton && (
+        {showAddButton && routePath && (
           <Link
             to={routePath}
             className="flex justify-center items-center gap-2 bg-primary-400 hover:to-primary-600 shadow-md hover:shadow-2xl px-6 py-2 rounded-sm font-medium text-white active:scale-95 transition-all duration-200 ease-in-out"
