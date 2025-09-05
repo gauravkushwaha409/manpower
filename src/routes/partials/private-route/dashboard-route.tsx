@@ -34,6 +34,8 @@ import AddJobApplication from '@/pages/jobs/jobApplication/AddJobApplication';
 import UpdateJobApplication from '@/pages/jobs/jobApplication/UpdateJobApplication';
 import AddJobOffer from '@/pages/jobs/jobOffer/AddJobOffer';
 import UpdateJobOffer from '@/pages/jobs/jobOffer/UpdateJobOffer';
+import AddJobInterview from '@/pages/jobs/jobsInterview/AddJobInterview';
+import UpdateJobInterview from '@/pages/jobs/jobsInterview/UpdateJobInterview';
 
 export const dashboardRoutes = [
   {
@@ -95,6 +97,14 @@ export const dashboardRoutes = [
   {
     path: PATH.jobProcess.interviewCandidates,
     element: <JobInterview />,
+  },
+  {
+    path: PATH.jobProcess.addInterviewCandidates,
+    element: <AddJobInterview />,
+  },
+  {
+    path: PATH.jobProcess.updateInterviewCandidates,
+    element: <UpdateJobInterview />,
   },
   {
     path: PATH.dashboard.country,
