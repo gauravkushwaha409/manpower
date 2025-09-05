@@ -1,4 +1,4 @@
-import { DeleteIcon, EditIcon } from "@/components/actions/TableComp";
+import { DeleteIcon, EditIcon } from '@/components/actions/TableComp';
 
 interface TableActionsProps<T> {
   row: T;
@@ -11,7 +11,7 @@ function TableActions<T>({
   row,
   onEdit,
   onDelete,
-  className = "flex items-center gap-4 ml-5",
+  className = 'flex items-center gap-4 ml-5',
 }: TableActionsProps<T>) {
   const handleEdit = () => {
     onEdit(row);
@@ -24,7 +24,7 @@ function TableActions<T>({
   return (
     <div className={className}>
       <button onClick={handleEdit}>
-        <EditIcon />
+        <EditIcon updateRoutePath="#" />
       </button>
       <button onClick={handleDelete}>
         <DeleteIcon />

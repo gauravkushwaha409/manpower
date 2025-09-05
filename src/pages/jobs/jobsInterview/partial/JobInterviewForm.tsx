@@ -93,7 +93,7 @@ const JobInterviewForm: React.FC<IProps> = ({ formik, isUpdate }) => {
             <label className="typography-p2-regular" htmlFor="remarks">
               Remarks
             </label>
-            <TextEditor name="remarks" />
+            <TextEditor name="remarks" label="Remarks" />
           </div>
         </div>
 
