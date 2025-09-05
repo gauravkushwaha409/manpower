@@ -1,128 +1,32 @@
 import React from 'react';
-import Table, { CustomColumnDef } from '../../../components/Table';
 import PageHeader from '@/common/PageHeader';
-import {
-  DeleteIcon,
-  EditIcon,
-  ViewIcon,
-} from '../../../components/actions/TableComp';
-import { IJobInterview } from './interface/IJobInterview';
-import useJobInterview from './hooks/useJobInterview';
-import useCreateJobInterview from './hooks/useCreateJobInterview';
-import useUpdateJobInterview from './hooks/useUpdateJobInterview';
-import AddJobInterviewModal from './modal/AddJobInterviewModal';
-import UpdateJobInterviewModal from './modal/UpdateJobInterview';
-import DeleteModal from '@/components/DeleteModal';
+import Breadcrumb from '@/components/reusable-component/Breadcrumb';
+import { PATH } from '@/constant/path';
+import JobInterviewFilterList from './partial/JobInterviewFilterList';
+import Table from '@/components/Table';
+import { JobInterviewColumns } from './partial/JobInterviewColumn';
 import { jobInterviewTableData } from './hooks/useGetJobInterview';
 
-const JobInterview: React.FC = () => {
-  const {
-    addJobInterview,
-    updateJobInterview,
-    setUpdateJobInterview,
-    deleteJobInterview,
-    setDeleteJobInterview,
-    handleOpenAddModal,
-    handleCloseAddModal,
-    handleDeleteJobInterview,
-    handleCloseDeleteModal,
-    handleCloseUpdateModal,
-  } = useJobInterview();
-  const { addJobInterviewFormik } = useCreateJobInterview();
-  const { updateJobInterviewFormik } = useUpdateJobInterview();
-
-  const tableHead: CustomColumnDef<IJobInterview>[] = [
-    {
-      header: 'Company Name',
-      accessorKey: 'company_name',
-      search: true,
-    },
-    {
-      header: 'Candidate Name',
-      accessorKey: 'candidate_name',
-      search: true,
-    },
-    {
-      header: 'Job Vacancy',
-      accessorKey: 'job_vacancy',
-      search: true,
-    },
-    {
-      header: 'Interview Date & Time',
-      accessorKey: 'interview_date_time',
-      search: true,
-    },
-    {
-      header: 'Salary Offered',
-      accessorKey: 'salary_offered',
-      search: false,
-    },
-    {
-      header: 'Status',
-      accessorKey: 'status',
-      search: false,
-    },
-    {
-      header: 'Action',
-      accessorKey: 'action',
-      search: false,
-      cell: (cell) => (
-        <div className="flex items-center gap-4 ml-5">
-          <ViewIcon id={cell.row.original.id} />
-          <button
-            onClick={() => {
-              setUpdateJobInterview(cell.row.original.id);
-            }}
-          >
-            <EditIcon updateRoutePath="#" />
-          </button>
-          <button
-            onClick={() => {
-              setDeleteJobInterview(cell.row.original.id);
-            }}
-          >
-            <DeleteIcon />
-          </button>
-        </div>
-      ),
-    },
-  ];
-
+const EmbassyInterview: React.FC = () => {
   return (
-    <div className="bg-surface rounded-lg w-full min-h-screen">
-      <div className="relative px-6">
-        {/* Header */}
+    <div className="bg-surface w-full min-h-full">
+      <Breadcrumb Navone="Dashboard" Navtwo="Interview Candidates" />
+      <div>
         <div className="w-full h-fit">
           <PageHeader
-            handleAddClick={handleOpenAddModal}
             title="Interview Candidates"
-            routePath="/"
+            routePath={PATH.jobProcess.addInterviewCandidates}
           />
         </div>
-
-        {/* Table */}
-        <div className="min-h-screen overflow-auto">
-          <Table columns={tableHead} data={jobInterviewTableData} />
+        <div className="py-5">
+          <JobInterviewFilterList />
         </div>
-
-        <AddJobInterviewModal
-          formik={addJobInterviewFormik}
-          handleCloseModal={handleCloseAddModal}
-          isOpen={addJobInterview}
-        />
-        <UpdateJobInterviewModal
-          formik={updateJobInterviewFormik}
-          handleCloseModal={handleCloseUpdateModal}
-          isOpen={updateJobInterview ? true : false}
-        />
-        <DeleteModal
-          isOpen={deleteJobInterview ? true : false}
-          onCancel={handleCloseDeleteModal}
-          onConfirm={handleDeleteJobInterview}
-        />
+        <div className="overflow-x-visible">
+          <Table columns={JobInterviewColumns} data={jobInterviewTableData} />
+        </div>
       </div>
     </div>
   );
 };
 
-export default JobInterview;
+export default EmbassyInterview;
