@@ -74,7 +74,7 @@ const JobInterview: React.FC = () => {
               setUpdateJobInterview(cell.row.original.id);
             }}
           >
-            <EditIcon />
+            <EditIcon updateRoutePath="#" />
           </button>
           <button
             onClick={() => {

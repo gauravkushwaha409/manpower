@@ -74,7 +74,7 @@ const JobOffer: React.FC = () => {
               setUpdateJobOffer(row.original.id);
             }}
           >
-            <EditIcon />
+            <EditIcon updateRoutePath="#" />
           </button>
           <button
             onClick={() => {
