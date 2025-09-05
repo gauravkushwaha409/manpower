@@ -150,7 +150,7 @@ export const mainMenuItems = [
         id: "static-seo",
         label: "Static SEO",
         icon: TbSeo,
-        // link: PATH.settings.seo.list,
+        link: PATH.settings.seo,
       },
     ],
   },

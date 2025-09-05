@@ -63,6 +63,9 @@ const SETTINGS = {
   policy: "/policy",
   addPolicy: "/add-policy",
   updatePolicy: "/update-policy",
+  seo: "/seo",
+  addSeo: "/add-seo",
+  updateSeo: "/update-seo",
 };
 
 export const PATH = {

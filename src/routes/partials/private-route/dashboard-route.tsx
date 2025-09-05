@@ -45,6 +45,9 @@ import ContactUs from "@/pages/settings/contactUs/ContactUs";
 import Policy from "@/pages/settings/policy/PolicyForm";
 import AddPolicy from "@/pages/settings/policy/AddPolicy";
 import UpdatePolicy from "@/pages/settings/policy/UpdatePolicy";
+import Seo from "@/pages/settings/seo/Seo";
+import AddSeo from "@/pages/settings/seo/AddSeo";
+import UpdateSeo from "@/pages/settings/seo/UpdateSeo";
 
 export const dashboardRoutes = [
   {
@@ -244,5 +247,17 @@ export const dashboardRoutes = [
   {
     path: PATH.settings.updatePolicy,
     element: <UpdatePolicy />,
+  },
+  {
+    path: PATH.settings.seo,
+    element: <Seo />,
+  },
+  {
+    path: PATH.settings.addSeo,
+    element: <AddSeo />,
+  },
+  {
+    path: PATH.settings.updateSeo,
+    element: <UpdateSeo />,
   },
 ];
