@@ -53,9 +53,16 @@ const VISA = {
   updateTicket: '/update-ticket',
 };
 
+const SETTINGS ={
+  location: '/location',
+  addLocation: "/add-location",
+  updateLocation: "/update-location"
+}
+
 export const PATH = {
   auth: AUTH_PATH,
   dashboard: DASHBOARD_PATH,
   jobProcess: JOB_PROCESS,
   visa: VISA,
+  settings: SETTINGS,
 };
