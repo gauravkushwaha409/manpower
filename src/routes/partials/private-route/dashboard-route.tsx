@@ -39,6 +39,9 @@ import UpdateJobInterview from "@/pages/jobs/jobsInterview/UpdateJobInterview";
 import Location from "@/pages/settings/location/Location";
 import AddLocation from "@/pages/settings/location/AddLocation";
 import UpdateLocation from "@/pages/settings/location/UpdateLocation";
+import AddContactUs from "@/pages/settings/contactUs/AddContactUs";
+import UpdateContactUs from "@/pages/settings/contactUs/UpdateContactUs";
+import ContactUs from "@/pages/settings/contactUs/ContactUs";
 
 export const dashboardRoutes = [
   {
@@ -204,5 +207,17 @@ export const dashboardRoutes = [
   {
     path: PATH.settings.updateLocation,
     element: <UpdateLocation />,
+  },
+  {
+    path: PATH.settings.contactUs,
+    element: <ContactUs />,
+  },
+  {
+    path: PATH.settings.addContactUs,
+    element: <AddContactUs />,
+  },
+  {
+    path: PATH.settings.updateContactUs,
+    element: <UpdateContactUs />,
   },
 ];

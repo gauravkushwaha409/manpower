@@ -132,7 +132,7 @@ export const mainMenuItems = [
         id: "contact-us",
         label: "Contact Us",
         icon: IoCallOutline,
-        // link: PATH.settings.contactUs.list,
+        link: PATH.settings.contactUs,
       },
       {
         id: "policy",
