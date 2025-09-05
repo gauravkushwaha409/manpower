@@ -25,6 +25,8 @@ const JOB_PROCESS = {
   addJobApplication: '/add-job-application',
   updateJobApplication: '/update-job-application',
   jobOffer: '/job-offer',
+  addJobOffer: '/add-job-offer',
+  updateJobOffer: '/update-job-offer',
   interviewCandidates: '/interview-candidates',
 };
 
