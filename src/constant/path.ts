@@ -23,9 +23,12 @@ const DASHBOARD_PATH = {
   preApplication: "/pre-application",
   addPreAppliction: "/add-pre-application",
   updatePreAppliction: "/update-pre-application",
-  users: "/users",
-  addUser: "/add-users",
-  updateUser: "/update-users",
+  users: "/user",
+  addUser: "/add-user",
+  updateUser: "/update-user",
+  payment: "/payment",
+  addPayment: "/add-payment",
+  updatePayment: "/update-payment",
 };
 
 const JOB_PROCESS = {

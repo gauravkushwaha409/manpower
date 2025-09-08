@@ -12,7 +12,7 @@ import { IoPeopleSharp, IoTicketSharp } from "react-icons/io5";
 import { ScrollText, Users2 } from "lucide-react";
 import { LiaIndustrySolid } from "react-icons/lia";
 import { HiOutlineLanguage, HiOutlineUserPlus } from "react-icons/hi2";
-import { FaWpforms } from "react-icons/fa";
+import { FaMoneyBillWave, FaWpforms } from "react-icons/fa";
 import { PiBuildingOffice } from "react-icons/pi";
 import { GoOrganization } from "react-icons/go";
 import { LiaCcVisa, LiaFileAlt } from "react-icons/lia";
@@ -153,6 +153,13 @@ export const mainMenuItems = [
     label: "Language",
     active: false,
     link: PATH.dashboard.language,
+  },
+  {
+    id: "payment",
+    icon: FaMoneyBillWave,
+    label: "Payments",
+    active: false,
+    link: PATH.dashboard.payment,
   },
   {
     id: "settings",

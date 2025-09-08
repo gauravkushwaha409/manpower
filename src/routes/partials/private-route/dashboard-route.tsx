@@ -60,6 +60,9 @@ import UpdatePreApplication from "@/pages/preApplication/UpdatePreApplication";
 import User from "@/pages/users/User";
 import AddUser from "@/pages/users/AddUser";
 import UpdateUser from "@/pages/users/UpdateUser";
+import Payment from "@/pages/payment/Payment";
+import AddPayment from "@/pages/payment/AddPayment";
+import UpdatePayment from "@/pages/payment/UpdatePayment";
 
 export const dashboardRoutes = [
   {
@@ -107,6 +110,20 @@ export const dashboardRoutes = [
   {
     path: PATH.dashboard.updateCompany,
     element: <UpdateCompany />,
+  },
+
+  // payment
+  {
+    path: PATH.dashboard.payment,
+    element: <Payment />,
+  },
+  {
+    path: PATH.dashboard.addPayment,
+    element: <AddPayment />,
+  },
+  {
+    path: PATH.dashboard.updatePayment,
+    element: <UpdatePayment />,
   },
 
   // pre application
