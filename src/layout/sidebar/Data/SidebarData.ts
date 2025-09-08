@@ -9,7 +9,7 @@ import { LuSettings2, LuUsers } from "react-icons/lu";
 import { TbSeo } from "react-icons/tb";
 import { TfiWorld } from "react-icons/tfi";
 import { IoPeopleSharp, IoTicketSharp } from "react-icons/io5";
-import { ScrollText } from "lucide-react";
+import { ScrollText, Users2 } from "lucide-react";
 import { LiaIndustrySolid } from "react-icons/lia";
 import { HiOutlineLanguage, HiOutlineUserPlus } from "react-icons/hi2";
 import { FaWpforms } from "react-icons/fa";
@@ -19,10 +19,17 @@ import { LiaCcVisa, LiaFileAlt } from "react-icons/lia";
 import { GrVisa } from "react-icons/gr";
 import { TiTickOutline } from "react-icons/ti";
 import { TbReportMedical } from "react-icons/tb";
-import { MdOutlineHandshake } from "react-icons/md";
+import { MdDashboard, MdOutlineHandshake } from "react-icons/md";
 import { PATH } from "@/constant/path";
 
 export const mainMenuItems = [
+  {
+    id: "dashboard",
+    icon: MdDashboard,
+    label: "Dashboard",
+    active: false,
+    link: PATH.dashboard.dashboard,
+  },  
   {
     id: "industry",
     icon: LiaIndustrySolid,
@@ -125,6 +132,13 @@ export const mainMenuItems = [
         link: PATH.jobProcess.interviewCandidates,
       },
     ],
+  },
+  {
+    id: "users",
+    icon: Users2,
+    label: "Users",
+    active: false,
+    link: PATH.dashboard.users,
   },
   {
     id: "country",

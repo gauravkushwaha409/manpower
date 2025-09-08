@@ -57,6 +57,9 @@ import UpdateCompany from "@/pages/company/UpdateCompany";
 import PreApplication from "@/pages/preApplication/PreApplication";
 import AddPreApplication from "@/pages/preApplication/AddPreApplication";
 import UpdatePreApplication from "@/pages/preApplication/UpdatePreApplication";
+import User from "@/pages/users/User";
+import AddUser from "@/pages/users/AddUser";
+import UpdateUser from "@/pages/users/UpdateUser";
 
 export const dashboardRoutes = [
   {
@@ -118,6 +121,20 @@ export const dashboardRoutes = [
   {
     path: PATH.dashboard.updatePreAppliction,
     element: <UpdatePreApplication />,
+  },
+
+  // user
+  {
+    path: PATH.dashboard.users,
+    element: <User />,
+  },
+  {
+    path: PATH.dashboard.addUser,
+    element: <AddUser />,
+  },
+  {
+    path: PATH.dashboard.updateUser,
+    element: <UpdateUser />,
   },
 
   // job process
