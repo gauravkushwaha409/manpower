@@ -10,7 +10,10 @@ import { TbSeo } from "react-icons/tb";
 import { TfiWorld } from "react-icons/tfi";
 import { IoPeopleSharp, IoTicketSharp } from "react-icons/io5";
 import { ScrollText } from "lucide-react";
+import { LiaIndustrySolid } from "react-icons/lia";
 import { HiOutlineLanguage, HiOutlineUserPlus } from "react-icons/hi2";
+import { FaWpforms } from "react-icons/fa";
+import { PiBuildingOffice } from "react-icons/pi";
 import { GoOrganization } from "react-icons/go";
 import { LiaCcVisa, LiaFileAlt } from "react-icons/lia";
 import { GrVisa } from "react-icons/gr";
@@ -21,18 +24,25 @@ import { PATH } from "@/constant/path";
 
 export const mainMenuItems = [
   {
-    id: "country",
-    icon: TfiWorld,
-    label: "Country",
+    id: "industry",
+    icon: LiaIndustrySolid,
+    label: "Industry",
     active: false,
-    link: PATH.dashboard.country,
+    link: PATH.dashboard.industry,
   },
   {
-    id: "language",
-    icon: HiOutlineLanguage,
-    label: "Language",
+    id: "company",
+    icon: PiBuildingOffice,
+    label: "Company",
     active: false,
-    link: PATH.dashboard.language,
+    link: PATH.dashboard.company,
+  },
+  {
+    id: "pre-application",
+    icon: FaWpforms,
+    label: "Pre Application",
+    active: false,
+    link: PATH.dashboard.preApplication,
   },
   {
     id: "visa-process",
@@ -115,6 +125,20 @@ export const mainMenuItems = [
         link: PATH.jobProcess.interviewCandidates,
       },
     ],
+  },
+  {
+    id: "country",
+    icon: TfiWorld,
+    label: "Country",
+    active: false,
+    link: PATH.dashboard.country,
+  },
+  {
+    id: "language",
+    icon: HiOutlineLanguage,
+    label: "Language",
+    active: false,
+    link: PATH.dashboard.language,
   },
   {
     id: "settings",

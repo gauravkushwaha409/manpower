@@ -14,6 +14,15 @@ const DASHBOARD_PATH = {
   country: "/country",
   addCountry: "/add-country",
   updateCountry: "/update-country",
+  industry: "/industry",
+  addIndustry: "/add-industry",
+  updateIndustry: "/update-industry",
+  company: "/company",
+  addCompany: "/add-company",
+  updateCompany: "/update-company",
+  preApplication: "/pre-application",
+  addPreAppliction: "/add-pre-application",
+  updatePreAppliction: "/update-pre-application",
 };
 
 const JOB_PROCESS = {
