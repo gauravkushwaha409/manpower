@@ -63,6 +63,9 @@ import UpdateUser from "@/pages/users/UpdateUser";
 import Payment from "@/pages/payment/Payment";
 import AddPayment from "@/pages/payment/AddPayment";
 import UpdatePayment from "@/pages/payment/UpdatePayment";
+import AddCandidate from "@/pages/candidate/AddCandidate";
+import UpdateCandidate from "@/pages/candidate/UpdateCandidate";
+import Candidate from "@/pages/candidate/Candidate";
 
 export const dashboardRoutes = [
   {
@@ -82,6 +85,20 @@ export const dashboardRoutes = [
   {
     path: PATH.dashboard.updateLanguage,
     element: <UpdateLanguage />,
+  },
+
+  // Candidate
+  {
+    path: PATH.dashboard.candidate,
+    element: <Candidate />,
+  },
+  {
+    path: PATH.dashboard.addCandidate,
+    element: <AddCandidate />,
+  },
+  {
+    path: PATH.dashboard.updateCandidate,
+    element: <UpdateCandidate />,
   },
 
   // industry
