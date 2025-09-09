@@ -9,7 +9,7 @@ import { LuSettings2, LuUsers } from "react-icons/lu";
 import { TbSeo } from "react-icons/tb";
 import { TfiWorld } from "react-icons/tfi";
 import { IoPeopleSharp, IoTicketSharp } from "react-icons/io5";
-import { ScrollText, Users2 } from "lucide-react";
+import { ScrollText, User2, Users2 } from "lucide-react";
 import { LiaIndustrySolid } from "react-icons/lia";
 import { HiOutlineLanguage, HiOutlineUserPlus } from "react-icons/hi2";
 import { FaMoneyBillWave, FaWpforms } from "react-icons/fa";
@@ -29,6 +29,13 @@ export const mainMenuItems = [
     label: "Dashboard",
     active: false,
     link: PATH.dashboard.dashboard,
+  },  
+  {
+    id: "candidate",
+    icon: User2,
+    label: "Candidates",
+    active: false,
+    link: PATH.dashboard.candidate,
   },  
   {
     id: "industry",
