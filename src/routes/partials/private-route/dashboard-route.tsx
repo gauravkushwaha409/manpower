@@ -63,6 +63,7 @@ import UpdateUser from "@/pages/users/UpdateUser";
 import Payment from "@/pages/payment/Payment";
 import AddPayment from "@/pages/payment/AddPayment";
 import UpdatePayment from "@/pages/payment/UpdatePayment";
+import ChangePassword from "@/pages/changePassword/ChangePassword";
 
 export const dashboardRoutes = [
   {
@@ -344,5 +345,9 @@ export const dashboardRoutes = [
   {
     path: PATH.settings.updateSeo,
     element: <UpdateSeo />,
+  },
+  {
+    path: PATH.auth.changePassword,
+    element: <ChangePassword />,
   },
 ];
