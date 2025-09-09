@@ -1,8 +1,8 @@
 import { PATH } from "@/constant/path";
-import Login from "@/pages/login/Login";
-import ForgotPassword from "@/pages/newPassword/NewPassword";
-import Reset from "@/pages/reset/Reset";
-import VerifyOtp from "@/pages/otpVerification/VerifyOtp";
+import Login from "@/pages/auth/login/Login";
+import ForgotPassword from "@/pages/auth/forgotPassword/NewPassword";
+import VerifyOtp from "@/pages/auth/otpVerification/VerifyOtp";
+import Reset from "@/pages/auth/reset/Reset";
 
 export const publicRoutes = [
   { path: PATH.auth.login, element: <Login /> },
