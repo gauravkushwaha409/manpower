@@ -1,17 +1,19 @@
 import { useFormik } from "formik";
-import { newPasswordValidationSchema } from "../schema/newPasswordValidation";
+import {
+  NewPasswordFormValues,
+  newPasswordValidationSchema,
+} from "../schema/newPasswordValidation";
 import { usePostDataMutation } from "@/api/api";
-import { INewPassword } from "../interface/INewPassword.interface";
 
-const useCreateNewPasswordForm = () => {
+const useCreateNewPassword = () => {
   const [createNewPasswordForm, { isError, isLoading, isSuccess }] =
     usePostDataMutation();
 
-  const initialValues: INewPassword = {
+  const initialValues: NewPasswordFormValues = {
     password: "",
     rePassword: "",
   };
-  const formik = useFormik({
+  const formik = useFormik<NewPasswordFormValues>({
     initialValues,
     validationSchema: newPasswordValidationSchema,
     onSubmit: async (values) => {
@@ -25,4 +27,4 @@ const useCreateNewPasswordForm = () => {
   return { formik, isError, isLoading, isSuccess };
 };
 
-export default useCreateNewPasswordForm;
+export default useCreateNewPassword;

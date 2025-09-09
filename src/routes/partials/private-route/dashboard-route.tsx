@@ -66,6 +66,7 @@ import UpdatePayment from "@/pages/payment/UpdatePayment";
 import AddCandidate from "@/pages/candidate/AddCandidate";
 import UpdateCandidate from "@/pages/candidate/UpdateCandidate";
 import Candidate from "@/pages/candidate/Candidate";
+import ChangePassword from "@/pages/changePassword/ChangePassword";
 
 export const dashboardRoutes = [
   {
@@ -361,5 +362,9 @@ export const dashboardRoutes = [
   {
     path: PATH.settings.updateSeo,
     element: <UpdateSeo />,
+  },
+  {
+    path: PATH.auth.changePassword,
+    element: <ChangePassword />,
   },
 ];
