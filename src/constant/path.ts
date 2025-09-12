@@ -32,6 +32,7 @@ const DASHBOARD_PATH = {
   payment: "/payment",
   addPayment: "/add-payment",
   updatePayment: "/update-payment",
+  notification: "/notifications"
 };
 
 const JOB_PROCESS = {

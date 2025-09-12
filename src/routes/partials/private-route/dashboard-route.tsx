@@ -67,11 +67,16 @@ import AddCandidate from "@/pages/candidate/AddCandidate";
 import UpdateCandidate from "@/pages/candidate/UpdateCandidate";
 import Candidate from "@/pages/candidate/Candidate";
 import ChangePassword from "@/pages/changePassword/ChangePassword";
+import Notification from "@/pages/notification/Notification";
 
 export const dashboardRoutes = [
   {
     path: PATH.dashboard.dashboard,
     element: "This is layout ",
+  },
+  {
+    path: PATH.dashboard.notification,
+    element: <Notification/>,
   },
 
   // language
