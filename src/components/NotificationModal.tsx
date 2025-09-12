@@ -4,7 +4,7 @@ import { Bell, UserPlus, FileText, Globe, Languages } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useClickOutside } from "@/hooks/useClickOutside";
 import useDisclosure from "@/hooks/useDisclousre";
-import { useNotifications } from "../hooks/useNotifications";
+import { useGetNotifications } from "@/pages/notification/hooks/useGetNotifications";
 
 const iconMap = {
   UserPlus: <UserPlus className="w-5 h-5 text-blue-500" />,
@@ -16,7 +16,7 @@ const iconMap = {
 export default function NotificationModal() {
   const { isOpen, toggle, close } = useDisclosure(false);
   const { notifications, unreadCount, markAllAsRead, markAsRead } =
-    useNotifications();
+    useGetNotifications();
 
   const modalRef = useClickOutside<HTMLDivElement>(close);
 

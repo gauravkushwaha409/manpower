@@ -4,13 +4,13 @@ import { useState, useCallback } from "react";
 import { initialNotifications, Notification } from "../../../data/notification";
 import { useInfiniteScroll } from "@/utils/useInfiniteScroll";
 
-interface UseNotificationsProps {
+interface UseGetNotificationsProps {
   pageSize?: number;
 }
 
-export const useNotifications = ({
+export const useGetNotifications = ({
   pageSize = 10,
-}: UseNotificationsProps = {}) => {
+}: UseGetNotificationsProps = {}) => {
   const [notifications, setNotifications] =
     useState<Notification[]>(initialNotifications);
   const [page, setPage] = useState(1);

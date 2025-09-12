@@ -1,6 +1,5 @@
-import NotificationModal from '@/pages/notification/partials/NotificationModal';
+import NotificationModal from '@/components/NotificationModal';
 import ProfileSection from './partials/ProfileSection';
-// import NotificationSection from './partials/NotificationSection';
 
 const Header = () => {
   return (
