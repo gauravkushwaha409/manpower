@@ -1,8 +1,9 @@
 "use client";
 
 import { useState, useCallback } from "react";
-import { initialNotifications, Notification } from "../../../data/notification";
+import { initialNotifications } from "../../../data/notification";
 import { useInfiniteScroll } from "@/utils/useInfiniteScroll";
+import { INotification } from "../interface/INotification";
 
 interface UseGetNotificationsProps {
   pageSize?: number;
@@ -12,7 +13,7 @@ export const useGetNotifications = ({
   pageSize = 10,
 }: UseGetNotificationsProps = {}) => {
   const [notifications, setNotifications] =
-    useState<Notification[]>(initialNotifications);
+    useState<INotification[]>(initialNotifications);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
   const [isLoading, setIsLoading] = useState(false);

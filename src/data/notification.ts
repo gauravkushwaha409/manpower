@@ -1,13 +1,6 @@
-export interface Notification {
-  id: number;
-  iconType: "UserPlus" | "FileText" | "Globe" | "Languages"; 
-  title: string;
-  description: string;
-  time: string;
-  read?: boolean;
-}
+import { INotification } from "@/pages/notification/interface/INotification";
 
-export const initialNotifications: Notification[] = [
+export const initialNotifications: INotification[] = [
   {
     id: 1,
     iconType: "UserPlus",
