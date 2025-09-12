@@ -1,7 +1,7 @@
 import ExtendedForm from "@/components/extended-components/ExtendedForm";
 import { Link } from "react-router-dom";
-import useLogin from "../pages/login/hooks/useLogin";
-import LoginForm from "../pages/login/partials/LoginForm";
+import useLogin from "../pages/auth/login/hooks/useLogin";
+import LoginForm from "../pages/auth/login/partials/LoginForm";
 
 const Login = () => {
   const { formik } = useLogin();
