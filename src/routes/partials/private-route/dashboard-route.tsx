@@ -67,11 +67,12 @@ import AddCandidate from "@/pages/candidate/AddCandidate";
 import UpdateCandidate from "@/pages/candidate/UpdateCandidate";
 import Candidate from "@/pages/candidate/Candidate";
 import ChangePassword from "@/pages/changePassword/ChangePassword";
+import Dashboard from "@/pages/dashboard/Dashboard";
 
 export const dashboardRoutes = [
   {
     path: PATH.dashboard.dashboard,
-    element: "This is layout ",
+    element: <Dashboard />,
   },
 
   // language
