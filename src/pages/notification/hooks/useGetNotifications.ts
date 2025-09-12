@@ -1,21 +1,23 @@
 "use client";
 
 import { useState, useCallback } from "react";
-import { initialNotifications } from "../../../data/notification";
+import { initialNotifications} from "../../../data/notification";
 import { useInfiniteScroll } from "@/utils/useInfiniteScroll";
 import { INotification } from "../interface/INotification";
 
-interface UseGetNotificationsProps {
+interface UseNotificationsProps {
   pageSize?: number;
 }
 
 export const useGetNotifications = ({
   pageSize = 10,
-}: UseGetNotificationsProps = {}) => {
+}: UseNotificationsProps = {}) => {
   const [notifications, setNotifications] =
-    useState<INotification[]>(initialNotifications);
-  const [page, setPage] = useState(1);
-  const [hasMore, setHasMore] = useState(true);
+    useState<INotification[]>(initialNotifications.slice(0, pageSize)); 
+  const [page, setPage] = useState(2); 
+  const [hasMore, setHasMore] = useState(
+    initialNotifications.length > pageSize
+  );
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -26,14 +28,24 @@ export const useGetNotifications = ({
     setError(null);
 
     try {
-      await new Promise((resolve) => setTimeout(resolve, 500));
+      await new Promise((resolve) => setTimeout(resolve, 500)); 
 
       const start = (page - 1) * pageSize;
-      const nextItems = initialNotifications.slice(start, start + pageSize);
+      const end = start + pageSize;
+      const nextItems = initialNotifications.slice(start, end);
 
-      setNotifications((prev) => [...prev, ...nextItems]);
-      setHasMore(start + pageSize < initialNotifications.length);
-      setPage((prev) => prev + 1);
+      if (nextItems.length > 0) {
+        setNotifications((prev) => [
+          ...prev,
+          ...nextItems.filter(
+            (n) => !prev.some((existing) => existing.id === n.id) 
+          ),
+        ]);
+        setPage((prev) => prev + 1);
+        setHasMore(end < initialNotifications.length);
+      } else {
+        setHasMore(false);
+      }
     } catch (err) {
       console.error("Failed to load notifications:", err);
       setError("Failed to load notifications");
@@ -58,8 +70,8 @@ export const useGetNotifications = ({
 
   const refresh = () => {
     setNotifications(initialNotifications.slice(0, pageSize));
-    setPage(1);
-    setHasMore(true);
+    setPage(2);
+    setHasMore(initialNotifications.length > pageSize);
   };
 
   return {
