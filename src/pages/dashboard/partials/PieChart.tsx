@@ -1,10 +1,8 @@
+import { useState } from "react";
+import dayjs from "dayjs";
 import { Pie, PieChart, ResponsiveContainer, Legend, Cell } from "recharts";
-
-const data = [
-  { name: "Approved Candidates", value: 400 },
-  { name: "Pending Candidates", value: 300 },
-  { name: "Rejected Candidates", value: 300 },
-];
+import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
+import { pieChartData } from "@/data/dashboard";
 
 const COLORS = ["#697bab", "#4b5a84", "#2e3751"];
 
@@ -32,48 +30,81 @@ const renderLabel = ({ cx, cy, midAngle, outerRadius, percent }: any) => {
 };
 
 export default function DashboardPieChart() {
+  const [currentMonth, setCurrentMonth] = useState(dayjs());
+
+  const filteredData =
+    pieChartData.find((item) => dayjs(item.month).isSame(currentMonth, "month"))
+      ?.stages || [];
+
+  const handlePrevMonth = () => {
+    setCurrentMonth((prev) => prev.subtract(1, "month"));
+  };
+
+  const handleNextMonth = () => {
+    setCurrentMonth((prev) => prev.add(1, "month"));
+  };
+
   return (
-    <div
-      style={{
-        width: "100%",
-        height: "100%",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center", // Center vertically
-        padding: "24px 0",
-      }}
-    >
-      <ResponsiveContainer width={320} height={320}>
-        <PieChart>
-          <Pie
-            data={data}
-            cx="50%"
-            cy="50%"
-            innerRadius={50}
-            outerRadius={90}
-            dataKey="value"
-            labelLine={false}
-            label={renderLabel}
-            isAnimationActive={false}
-          >
-            {data.map((_, i) => (
-              <Cell key={i} fill={COLORS[i % COLORS.length]} />
-            ))}
-          </Pie>
-          <Legend
-            align="left"
-            verticalAlign="bottom"
-            layout="horizontal"
-            iconType="circle"
-            formatter={(_, __, i) => {
-              const total = data.reduce((sum, d) => sum + d.value, 0);
-              const percent = ((data[i].value / total) * 100).toFixed(0);
-              return `${data[i].name} (${percent}%)`;
-            }}
-          />
-        </PieChart>
-      </ResponsiveContainer>
+    <div className="w-full h-full">
+      <div className="flex items-center mb-4">
+        <button onClick={handlePrevMonth} className="cursor-pointer">
+          <FaAngleLeft />
+        </button>
+        <span className="flex-1 text-center font-bold">
+          {currentMonth.format("MMMM YYYY")}
+        </span>
+        <button onClick={handleNextMonth} className="cursor-pointer">
+          <FaAngleRight />
+        </button>
+      </div>
+
+      {filteredData.length === 0 ? (
+        <div className="flex items-center justify-center h-80 text-gray-500 font-medium">
+          No data available for this month
+        </div>
+      ) : (
+        <ResponsiveContainer width={320} height={320}>
+          <PieChart>
+            <Pie
+              data={filteredData}
+              cx="50%"
+              cy="50%"
+              innerRadius={50}
+              outerRadius={90}
+              dataKey="value"
+              labelLine={false}
+              label={renderLabel}
+              isAnimationActive={false}
+            >
+              {filteredData.map((_, i) => (
+                <Cell key={i} fill={COLORS[i % COLORS.length]} />
+              ))}
+            </Pie>
+
+            <Legend
+              align="left"
+              verticalAlign="bottom"
+              layout="horizontal"
+              iconType="circle"
+              formatter={(_, __, i) => {
+                if (
+                  typeof i !== "number" ||
+                  !filteredData[i] ||
+                  typeof filteredData[i].name !== "string"
+                ) {
+                  return "";
+                }
+                const total = filteredData.reduce((sum, d) => sum + d.value, 0);
+                const percent =
+                  total > 0
+                    ? ((filteredData[i].value / total) * 100).toFixed(0)
+                    : 0;
+                return `${filteredData[i].name} (${percent}%)`;
+              }}
+            />
+          </PieChart>
+        </ResponsiveContainer>
+      )}
     </div>
   );
 }
