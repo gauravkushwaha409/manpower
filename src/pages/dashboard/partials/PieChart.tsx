@@ -1,8 +1,8 @@
 import { useState } from "react";
 import dayjs from "dayjs";
 import { Pie, PieChart, ResponsiveContainer, Legend, Cell } from "recharts";
-import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import { pieChartData } from "@/data/dashboard";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const COLORS = ["#697bab", "#4b5a84", "#2e3751"];
 
@@ -48,13 +48,13 @@ export default function DashboardPieChart() {
     <div className="w-full h-full">
       <div className="flex items-center mb-4">
         <button onClick={handlePrevMonth} className="cursor-pointer">
-          <FaAngleLeft />
+          <ChevronLeft />
         </button>
-        <span className="flex-1 text-center font-bold">
+        <span className="flex-1 text-center">
           {currentMonth.format("MMMM YYYY")}
         </span>
         <button onClick={handleNextMonth} className="cursor-pointer">
-          <FaAngleRight />
+          <ChevronRight />
         </button>
       </div>
 
@@ -63,7 +63,7 @@ export default function DashboardPieChart() {
           No data available for this month
         </div>
       ) : (
-        <ResponsiveContainer width={320} height={320}>
+        <ResponsiveContainer width="100%" height="100%">
           <PieChart>
             <Pie
               data={filteredData}

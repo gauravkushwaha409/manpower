@@ -9,7 +9,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import dayjs from "dayjs";
-import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const DashboardBarChart = () => {
   const [currentMonth, setCurrentMonth] = useState(dayjs());
@@ -37,17 +37,19 @@ const DashboardBarChart = () => {
     setCurrentMonth((prev) => prev.add(1, "month"));
   };
 
+  const barSize = window.innerWidth < 768 ? 30 : 50;
+
   return (
-    <div className="w-full h-full">
+    <div className="w-full h-[300px] sm:h-[400px] md:h-full">
       <div className="flex items-center mb-4">
         <button onClick={handlePrevMonth} className="cursor-pointer">
-          <FaAngleLeft />
+          <ChevronLeft />
         </button>
-        <span className="flex-1 text-center font-bold">
+        <span className="flex-1 text-center">
           {currentMonth.format("MMMM YYYY")}
         </span>
         <button onClick={handleNextMonth} className="cursor-pointer">
-          <FaAngleRight />
+          <ChevronRight />
         </button>
       </div>
       {chartData.length === 0 ? (
@@ -55,22 +57,22 @@ const DashboardBarChart = () => {
           No data available for this month
         </div>
       ) : (
-        <ResponsiveContainer width="100%" height={300}>
+        <ResponsiveContainer width="100%" height="100%">
           <BarChart
             data={chartData}
             margin={{
               top: 5,
               right: 30,
-              left: 30,
+              left: 10,
               bottom: 5,
             }}
             barCategoryGap={90}
-            barSize={50}
+            barSize={barSize}
           >
             <XAxis
               dataKey="name"
               scale="point"
-              padding={{ left: 10, right: 10 }}
+              padding={{ left: 5, right: 10 }}
               axisLine={false}
               tickLine={false}
               tick={({ x, y, payload }) => {

@@ -11,25 +11,21 @@ interface StatCardProps {
 
 const StatCard: React.FC<StatCardProps> = ({ icon: Icon, title, value }) => {
   return (
-    <div className="flex flex-1 min-w-0 rounded-xl bg-white px-6 py-6 items-center justify-between relative shadow-sm">
-      <div className="flex items-center gap-4 w-full">
-        <div className="flex flex-col justify-center flex-1 min-w-0">
-          <p className="text-gray-900 mt-1 whitespace-nowrap overflow-hidden text-ellipsis">
-            {title}
-          </p>
-          <p className="text-3xl font-medium text-primary-500 m-0">{value}</p>
-        </div>
-        <div className="ml-6 w-12 h-12 rounded-lg flex items-center justify-center shadow-md bg-gradient-to-br from-primary-75 to-white">
-          <Icon className="w-6 h-6 text-primary-300" />
-        </div>
+    <div className="flex flex-row items-center justify-between rounded-xl bg-white px-6 py-5 shadow-sm w-full h-full">
+      <div className="flex flex-col">
+        <p className="text-gray-900 text-base font-medium truncate">{title}</p>
+        <p className="text-3xl font-semibold text-primary-500">{value}</p>
+      </div>
+      <div className="ml-4 w-12 h-12 rounded-lg flex items-center justify-center shadow-md bg-gradient-to-br from-primary-75 to-white">
+        <Icon className="w-6 h-6 text-primary-300" />
       </div>
     </div>
   );
 };
 
 const Statistics: React.FC = () => (
-  <div className="flex mb-5 w-full">
-    <div className="flex flex-row gap-4 w-full">
+  <div className="mb-5 w-full">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 w-full">
       <StatCard icon={FaUsers} title="Total Candidates" value={5500} />
       <StatCard icon={RefreshCcw} title="Visa in Process" value={300} />
       <StatCard icon={FaUserCheck} title="Visa Approved" value={300} />

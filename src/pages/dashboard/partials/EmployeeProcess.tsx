@@ -29,9 +29,13 @@ const EmployeeProcess = () => {
       <p className="text-lg font-semibold mb-6 text-gray-800">
         Employment Process
       </p>
-      <div className="flex w-full items-center justify-between">
+
+      <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between w-full">
         {steps.map((step, idx) => (
-          <div key={step.label} className="flex-1 flex items-center min-w-0">
+          <div
+            key={step.label}
+            className="flex-1 flex flex-col sm:flex-row items-center min-w-0"
+          >
             <span className="flex items-center min-w-0">
               <step.icon className="text-primary-400 mr-2 flex-shrink-0" />
               <span className="truncate text-gray-500">{step.label}</span>
@@ -39,9 +43,16 @@ const EmployeeProcess = () => {
                 ({step.count})
               </span>
             </span>
+
             {idx < steps.length - 1 && (
-              <span className="flex-shrink-0 flex items-center justify-center w-12">
+              <span className="hidden sm:flex flex-shrink-0 items-center justify-center w-12">
                 <MoveRight className="text-primary-400 text-2xl" />
+              </span>
+            )}
+
+            {idx < steps.length - 1 && (
+              <span className="flex sm:hidden mt-2">
+                <MoveRight className="text-primary-400 text-2xl rotate-90 mx-auto" />
               </span>
             )}
           </div>
