@@ -1,8 +1,8 @@
-import { ACCESS_TOKEN } from "@/constant";
-import { PATH } from "@/constant/path";
-import { getCookie } from "@/lib/utils/get-cookie";
-import React from "react";
-import { Navigate } from "react-router-dom";
+import { ACCESS_TOKEN } from '@/constant';
+import { PATH } from '@/constant/path';
+import { getCookie } from '@/lib/utils/get-cookie';
+import React from 'react';
+import { Navigate, useLocation } from 'react-router-dom';
 
 /**
  * A wrapper component for protecting private routes.
@@ -12,17 +12,17 @@ import { Navigate } from "react-router-dom";
  * they are redirected to the dashboard.
  */
 const PrivateRouteWrapper = ({ children }: { children?: React.ReactNode }) => {
-  // Check if the access token exists in cookies to determine if the user is logged in
   const isLoggedIn = !!getCookie(ACCESS_TOKEN);
+  const location = useLocation();
 
   // If user is not logged in, navigate to the login page
   if (!isLoggedIn) {
-    return <Navigate to={PATH.auth.login} />;
+    return <Navigate to={PATH.auth.login} replace />;
   }
 
   // If user is logged in and tries to access root `/`, redirect them to dashboard
-  if (window.location.pathname === "/") {
-    window.location.replace(PATH.dashboard.dashboard);
+  if (location.pathname === '/') {
+    return <Navigate to={PATH.dashboard.dashboard} replace />;
   }
 
   // Render children (protected content) if authenticated
