@@ -1,5 +1,5 @@
 export const endpoints = {
-  refreshToken: '/user/token/refresh/',
+  refreshToken: '/user/superadmin/refresh-token',
   getData: '/getData',
   login: '/user/superadmin/login',
   changePassword: '/user/superadmin/change-password',
