@@ -4,7 +4,7 @@ import { showErrorMessage, showSuccessMessage } from '@/utils/toast';
 import { useFormik } from 'formik';
 import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
-import { setCookie } from '@/utils/cookie';
+import { COOKIE_CONFIG, setCookie } from '@/utils/cookie';
 import { ILoginError, ILoginSuccess } from '../interface/ILogin';
 import { PATH } from '@/constant/path';
 import handleErrors, { ApiResponse } from '@/api/api.error';
@@ -47,14 +47,15 @@ const useLogin = () => {
         return;
       }
       if (response && response?.status === 'success') {
-        console.log('Login Successful');
         setCookie({
           cookieName: 'accessToken',
           value: response?.data?.accessToken,
+          expiresIn: COOKIE_CONFIG.accessTokenExpiryDuration,
         });
         setCookie({
           cookieName: 'refreshToken',
           value: response?.data?.refreshToken,
+          expiresIn: COOKIE_CONFIG.refreshTokenExpiryDuration,
         });
         navigate(PATH.dashboard.dashboard);
         showSuccessMessage(response?.message);
