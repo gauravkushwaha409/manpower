@@ -1,15 +1,16 @@
 import { useState, useRef, useEffect } from 'react';
 import UserImage from '/vite.svg';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ChevronDownIcon, LogOut, User } from 'lucide-react';
-// import { PATH } from '@/constants/paths';
-// import { clearAllCookies } from '@/utils/cookie';
+import { clearAllCookies } from '@/utils/cookie';
+import { PATH } from '@/constant/path';
+import { showSuccessMessage } from '@/utils/toast';
 
 const ProfileSection = () => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -29,12 +30,10 @@ const ProfileSection = () => {
     setIsOpen(!isOpen);
   };
 
-  // const handleLogout = () => {
-  //   clearAllCookies();
-  //   navigate(PATH.login, { replace: true });
-  // };
-  const handleAccountSettings = () => {
-    setIsOpen(false);
+  const handleLogout = () => {
+    clearAllCookies();
+    navigate(PATH.auth.login, { replace: true });
+    showSuccessMessage('Logout Successfully');
   };
 
   return (
@@ -70,8 +69,7 @@ const ProfileSection = () => {
 
           <div className="py-2">
             <Link
-              to="/account-settings"
-              onClick={handleAccountSettings}
+              to={PATH.auth.changePassword}
               className="flex items-center gap-3 hover:bg-secondary-50 px-4 py-2.5 w-full text-text-main text-sm transition-colors duration-150 hover:cursor-pointer"
             >
               <User className="w-4 h-4 text-secondary-500" />
@@ -79,7 +77,7 @@ const ProfileSection = () => {
             </Link>
 
             <button
-              // onClick={handleLogout}
+              onClick={handleLogout}
               className="flex items-center gap-3 hover:bg-red-50 px-4 py-2.5 w-full text-danger-300 text-sm transition-colors duration-150 hover:cursor-pointer"
             >
               <LogOut className="w-4 h-4 text-danger-300" />

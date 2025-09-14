@@ -1,13 +1,13 @@
-import React from "react";
-import InputText from "@/components/form/InputText";
+import React from 'react';
+import InputText from '@/components/form/InputText';
 
 const ChangePasswordForm: React.FC = () => {
   return (
-    <div className="grid grid-cols-2 gap-5">
+    <div className="gap-5 grid grid-cols-2">
       <InputText
-        placeholder="Enter old password"
-        label="Old Password"
-        name="oldPassword"
+        placeholder="Enter current password"
+        label="Current Password"
+        name="currentPassword"
       />
       <InputText
         placeholder="Enter new password"
