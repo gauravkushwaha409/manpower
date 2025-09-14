@@ -2,6 +2,7 @@ export const endpoints = {
   refreshToken: '/user/token/refresh/',
   getData: '/getData',
   login: '/user/superadmin/login',
+  changePassword: '/user/superadmin/change-password',
   createUser: '/user/register',
   getUser: '/user/list/search/',
   getUserById: '/user/profile/',
