@@ -1,83 +1,87 @@
-import { PATH } from "@/constant/path";
-import JobCategory from "@/pages/jobs/jobCategory/JobCategory";
-import JobOffer from "@/pages/jobs/jobOffer/JobOffer";
-import JobInterview from "@/pages/jobs/jobsInterview/JobInterview";
-import JobVacancies from "@/pages/jobs/jobVacancies/JobVacancies";
-import Language from "@/pages/language/Language";
-import Country from "@/pages/country/Country";
-import Dofe from "@/pages/visaProcess/dofe/DOFE";
-import EmbassyInterview from "@/pages/visaProcess/embassyInterview/EmbassyInterview";
-import MedicalReport from "@/pages/visaProcess/medicalReport/MedicalReport";
-import Orientation from "@/pages/visaProcess/orientation/Orientation";
-import Ticket from "@/pages/visaProcess/ticket/Ticket";
-import Visa from "@/pages/visaProcess/visa/Visa";
-import AddEmbassyInterview from "@/pages/visaProcess/embassyInterview/AddEmbassyInterview";
-import UpdateEmbassyInterview from "@/pages/visaProcess/embassyInterview/UpdateEmbassyInterview";
-import AddVisa from "@/pages/visaProcess/visa/AddVisa";
-import UpdateVisa from "@/pages/visaProcess/visa/UpdateVisa";
-import AddMedicalReport from "@/pages/visaProcess/medicalReport/AddMedicalReport";
-import UpdateMedicalReport from "@/pages/visaProcess/medicalReport/UpdateMedicalReport";
-import AddOrientation from "@/pages/visaProcess/orientation/AddOrientation";
-import UpdateOrientation from "@/pages/visaProcess/orientation/UpdateOrientation";
-import AddDOFE from "@/pages/visaProcess/dofe/AddDOFE";
-import UpdateDOFE from "@/pages/visaProcess/dofe/UpdateDOFE";
-import AddTicket from "@/pages/visaProcess/ticket/AddTicket";
-import UpdateTicket from "@/pages/visaProcess/ticket/UpdateTicket";
-import AddCountry from "@/pages/country/AddCountry";
-import UpdateCountry from "@/pages/country/UpdateCountry";
-import AddLanguage from "@/pages/language/AddLanguage";
-import UpdateLanguage from "@/pages/language/UpdateLanguage";
-import AddJobCategory from "@/pages/jobs/jobCategory/AddJobCategory";
-import UpdateJobCategory from "@/pages/jobs/jobCategory/UpdateJobCategory";
-import JobApplications from "@/pages/jobs/jobApplication/JobApplications";
-import AddJobApplication from "@/pages/jobs/jobApplication/AddJobApplication";
-import UpdateJobApplication from "@/pages/jobs/jobApplication/UpdateJobApplication";
-import AddJobOffer from "@/pages/jobs/jobOffer/AddJobOffer";
-import UpdateJobOffer from "@/pages/jobs/jobOffer/UpdateJobOffer";
-import AddJobInterview from "@/pages/jobs/jobsInterview/AddJobInterview";
-import UpdateJobInterview from "@/pages/jobs/jobsInterview/UpdateJobInterview";
-import Location from "@/pages/settings/location/Location";
-import AddLocation from "@/pages/settings/location/AddLocation";
-import UpdateLocation from "@/pages/settings/location/UpdateLocation";
-import AddContactUs from "@/pages/settings/contactUs/AddContactUs";
-import UpdateContactUs from "@/pages/settings/contactUs/UpdateContactUs";
-import ContactUs from "@/pages/settings/contactUs/ContactUs";
-import Policy from "@/pages/settings/policy/PolicyForm";
-import AddPolicy from "@/pages/settings/policy/AddPolicy";
-import UpdatePolicy from "@/pages/settings/policy/UpdatePolicy";
-import Seo from "@/pages/settings/seo/Seo";
-import AddSeo from "@/pages/settings/seo/AddSeo";
-import UpdateSeo from "@/pages/settings/seo/UpdateSeo";
-import Industry from "@/pages/industry/Industry";
-import AddIndustry from "@/pages/industry/AddIndustry";
-import UpdateIndustry from "@/pages/industry/UpdateIndustry";
-import Company from "@/pages/company/Company";
-import AddCompany from "@/pages/company/AddCompany";
-import UpdateCompany from "@/pages/company/UpdateCompany";
-import PreApplication from "@/pages/preApplication/PreApplication";
-import AddPreApplication from "@/pages/preApplication/AddPreApplication";
-import UpdatePreApplication from "@/pages/preApplication/UpdatePreApplication";
-import User from "@/pages/users/User";
-import AddUser from "@/pages/users/AddUser";
-import UpdateUser from "@/pages/users/UpdateUser";
-import Payment from "@/pages/payment/Payment";
-import AddPayment from "@/pages/payment/AddPayment";
-import UpdatePayment from "@/pages/payment/UpdatePayment";
-import AddCandidate from "@/pages/candidate/AddCandidate";
-import UpdateCandidate from "@/pages/candidate/UpdateCandidate";
-import Candidate from "@/pages/candidate/Candidate";
-import ChangePassword from "@/pages/changePassword/ChangePassword";
-import Notification from "@/pages/notification/Notification";
-import Dashboard from "@/pages/dashboard/Dashboard";
+import { PATH } from '@/constant/path';
+import JobCategory from '@/pages/jobs/jobCategory/JobCategory';
+import JobOffer from '@/pages/jobs/jobOffer/JobOffer';
+import JobInterview from '@/pages/jobs/jobsInterview/JobInterview';
+import JobVacancies from '@/pages/jobs/jobVacancies/JobVacancies';
+import Language from '@/pages/language/Language';
+import Country from '@/pages/country/Country';
+import Dofe from '@/pages/visaProcess/dofe/DOFE';
+import EmbassyInterview from '@/pages/visaProcess/embassyInterview/EmbassyInterview';
+import MedicalReport from '@/pages/visaProcess/medicalReport/MedicalReport';
+import Orientation from '@/pages/visaProcess/orientation/Orientation';
+import Ticket from '@/pages/visaProcess/ticket/Ticket';
+import Visa from '@/pages/visaProcess/visa/Visa';
+import AddEmbassyInterview from '@/pages/visaProcess/embassyInterview/AddEmbassyInterview';
+import UpdateEmbassyInterview from '@/pages/visaProcess/embassyInterview/UpdateEmbassyInterview';
+import AddVisa from '@/pages/visaProcess/visa/AddVisa';
+import UpdateVisa from '@/pages/visaProcess/visa/UpdateVisa';
+import AddMedicalReport from '@/pages/visaProcess/medicalReport/AddMedicalReport';
+import UpdateMedicalReport from '@/pages/visaProcess/medicalReport/UpdateMedicalReport';
+import AddOrientation from '@/pages/visaProcess/orientation/AddOrientation';
+import UpdateOrientation from '@/pages/visaProcess/orientation/UpdateOrientation';
+import AddDOFE from '@/pages/visaProcess/dofe/AddDOFE';
+import UpdateDOFE from '@/pages/visaProcess/dofe/UpdateDOFE';
+import AddTicket from '@/pages/visaProcess/ticket/AddTicket';
+import UpdateTicket from '@/pages/visaProcess/ticket/UpdateTicket';
+import AddCountry from '@/pages/country/AddCountry';
+import UpdateCountry from '@/pages/country/UpdateCountry';
+import AddLanguage from '@/pages/language/AddLanguage';
+import UpdateLanguage from '@/pages/language/UpdateLanguage';
+import AddJobCategory from '@/pages/jobs/jobCategory/AddJobCategory';
+import UpdateJobCategory from '@/pages/jobs/jobCategory/UpdateJobCategory';
+import JobApplications from '@/pages/jobs/jobApplication/JobApplications';
+import AddJobApplication from '@/pages/jobs/jobApplication/AddJobApplication';
+import UpdateJobApplication from '@/pages/jobs/jobApplication/UpdateJobApplication';
+import AddJobOffer from '@/pages/jobs/jobOffer/AddJobOffer';
+import UpdateJobOffer from '@/pages/jobs/jobOffer/UpdateJobOffer';
+import AddJobInterview from '@/pages/jobs/jobsInterview/AddJobInterview';
+import UpdateJobInterview from '@/pages/jobs/jobsInterview/UpdateJobInterview';
+import Location from '@/pages/settings/location/Location';
+import AddLocation from '@/pages/settings/location/AddLocation';
+import UpdateLocation from '@/pages/settings/location/UpdateLocation';
+import AddContactUs from '@/pages/settings/contactUs/AddContactUs';
+import UpdateContactUs from '@/pages/settings/contactUs/UpdateContactUs';
+import ContactUs from '@/pages/settings/contactUs/ContactUs';
+import Policy from '@/pages/settings/policy/PolicyForm';
+import AddPolicy from '@/pages/settings/policy/AddPolicy';
+import UpdatePolicy from '@/pages/settings/policy/UpdatePolicy';
+import Seo from '@/pages/settings/seo/Seo';
+import AddSeo from '@/pages/settings/seo/AddSeo';
+import UpdateSeo from '@/pages/settings/seo/UpdateSeo';
+import Industry from '@/pages/industry/Industry';
+import AddIndustry from '@/pages/industry/AddIndustry';
+import UpdateIndustry from '@/pages/industry/UpdateIndustry';
+import Company from '@/pages/company/Company';
+import AddCompany from '@/pages/company/AddCompany';
+import UpdateCompany from '@/pages/company/UpdateCompany';
+import PreApplication from '@/pages/preApplication/PreApplication';
+import AddPreApplication from '@/pages/preApplication/AddPreApplication';
+import UpdatePreApplication from '@/pages/preApplication/UpdatePreApplication';
+import User from '@/pages/users/User';
+import AddUser from '@/pages/users/AddUser';
+import UpdateUser from '@/pages/users/UpdateUser';
+import Payment from '@/pages/payment/Payment';
+import AddPayment from '@/pages/payment/AddPayment';
+import UpdatePayment from '@/pages/payment/UpdatePayment';
+import AddCandidate from '@/pages/candidate/AddCandidate';
+import UpdateCandidate from '@/pages/candidate/UpdateCandidate';
+import Candidate from '@/pages/candidate/Candidate';
+import ChangePassword from '@/pages/changePassword/ChangePassword';
+import Notification from '@/pages/notification/Notification';
+import Dashboard from '@/pages/dashboard/Dashboard';
 
 export const dashboardRoutes = [
+  {
+    path: PATH.auth.changePassword,
+    element: <ChangePassword />,
+  },
   {
     path: PATH.dashboard.dashboard,
     element: <Dashboard />,
   },
   {
     path: PATH.dashboard.notification,
-    element: <Notification/>,
+    element: <Notification />,
   },
 
   // language
@@ -368,9 +372,5 @@ export const dashboardRoutes = [
   {
     path: PATH.settings.updateSeo,
     element: <UpdateSeo />,
-  },
-  {
-    path: PATH.auth.changePassword,
-    element: <ChangePassword />,
   },
 ];
