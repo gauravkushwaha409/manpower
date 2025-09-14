@@ -7,6 +7,7 @@ import * as Yup from 'yup';
 import { setCookie } from '@/utils/cookie';
 import { ILoginError, ILoginSuccess } from '../interface/ILogin';
 import { PATH } from '@/constant/path';
+import handleErrors, { ApiResponse } from '@/api/api.error';
 
 const useLogin = () => {
   const navigate = useNavigate();
@@ -32,8 +33,19 @@ const useLogin = () => {
         data: values,
       });
       const response: ILoginSuccess = res?.data;
-      console.log(response, 'Response Data');
       const error = res?.error as ILoginError;
+      if ('error' in response && response.error) {
+        handleErrors(res as ApiResponse, (errors) => {
+          if (errors.general) {
+            showErrorMessage(errors.general);
+          } else {
+            Object.entries(errors).forEach(([field, msg]) => {
+              showErrorMessage(`${field}: ${msg}`);
+            });
+          }
+        });
+        return;
+      }
       if (response && response?.status === 'success') {
         console.log('Login Successful');
         setCookie({
