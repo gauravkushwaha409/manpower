@@ -41,3 +41,5 @@ export interface ICandidate {
  police_report_file: null | File;
  citizenship_document: null | File;
 }
+
+export type CandidateTable = Pick<ICandidate, 'id' | 'firstname' | 'agentName' | 'phone' | 'district' | 'passport_number'>;
