@@ -5,10 +5,14 @@ import {
   BaseQueryArg,
   createApi,
   fetchBaseQuery,
-} from "@reduxjs/toolkit/query/react";
-import { COOKIE_CONFIG, getCookie, setCookie } from "@/utils/cookie";
-import { BASE_API_URL, endpoints } from "./endpoints";
-import { logoutUser } from "@/store/authSlice";
+} from '@reduxjs/toolkit/query/react';
+import {
+  clearAllCookies,
+  COOKIE_CONFIG,
+  getCookie,
+  setCookie,
+} from '@/utils/cookie';
+import { BASE_API_URL, endpoints } from './endpoints';
 
 interface IGetDataArgs {
   url: string;
@@ -38,9 +42,9 @@ const baseQuery = fetchBaseQuery({
   prepareHeaders: async (headers) => {
     const token = getCookie(COOKIE_CONFIG.accessToken);
     if (token) {
-      headers.set("authorization", `Bearer ${token}`);
+      headers.set('authorization', `Bearer ${token}`);
     }
-    headers.set("Accept", "application/json");
+    headers.set('Accept', 'application/json');
     return headers;
   },
 });
@@ -57,7 +61,7 @@ const baseQueryWithReauth = async (
       {
         // change this with actual refresh token endpoint
         url: endpoints.refreshToken,
-        method: "POST",
+        method: 'POST',
         body: { refresh },
       },
       api,
@@ -81,7 +85,8 @@ const baseQueryWithReauth = async (
       result = await baseQuery(args, api, extraOptions);
     } else {
       // logic to logout user
-      api.dispatch(logoutUser());
+      clearAllCookies();
+      window.location.href = '/login';
     }
   }
   return result;
@@ -89,48 +94,48 @@ const baseQueryWithReauth = async (
 
 export const apiSlice = createApi({
   baseQuery: baseQueryWithReauth,
-  tagTypes: ["Data"],
+  tagTypes: ['Data'],
   endpoints: (builder) => ({
     getData: builder.query<any, IGetDataArgs>({
       query: ({ url, params }) => ({
         url,
-        method: "GET",
+        method: 'GET',
         params,
       }),
       providesTags: (_, __, { tag }) =>
-        tag ? [{ type: "Data", id: tag }] : [],
+        tag ? [{ type: 'Data', id: tag }] : [],
     }),
 
     postData: builder.mutation<any, IPostDataArgs>({
       query: ({ url, data, options }) => ({
         url,
-        method: "POST",
+        method: 'POST',
         body: data,
         ...options,
       }),
       invalidatesTags: (_, __, { invalidateTag }) =>
-        invalidateTag ? [{ type: "Data", id: invalidateTag }] : [],
+        invalidateTag ? [{ type: 'Data', id: invalidateTag }] : [],
     }),
 
     updateData: builder.mutation<any, IUpdateDataArgs>({
       query: ({ url, data }) => ({
         url,
-        method: "PUT",
+        method: 'PUT',
         body: data,
       }),
       invalidatesTags: (_, __, { invalidateTag }) =>
-        invalidateTag ? [{ type: "Data", id: invalidateTag }] : [],
+        invalidateTag ? [{ type: 'Data', id: invalidateTag }] : [],
     }),
 
     deleteData: builder.mutation<any, IDeleteDataArgs>({
       query: ({ url, body }) => ({
         url,
-        method: "DELETE",
+        method: 'DELETE',
         body,
       }),
       invalidatesTags: (_, __, { invalidates }) =>
         invalidates
-          ? invalidates.map((tag: string) => ({ type: "Data", id: tag }))
+          ? invalidates.map((tag: string) => ({ type: 'Data', id: tag }))
           : [],
     }),
   }),
