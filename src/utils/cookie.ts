@@ -1,7 +1,7 @@
-import { Cookies } from "react-cookie";
+import { Cookies } from 'react-cookie';
 export const COOKIE_CONFIG = {
-  accessToken: "access",
-  refreshToken: "refresh",
+  accessToken: 'accessToken',
+  refreshToken: 'refreshToken',
   accessTokenExpiryDuration: 1,
   refreshTokenExpiryDuration: 24 * 7,
 };
@@ -13,7 +13,7 @@ interface CookieSetOptions {
   domain?: string;
   secure?: boolean;
   httpOnly?: boolean;
-  sameSite?: boolean | "none" | "lax" | "strict";
+  sameSite?: boolean | 'none' | 'lax' | 'strict';
   partitioned?: boolean;
 }
 
@@ -38,13 +38,13 @@ export const setCookie = ({
   expiresDate.setTime(expiresDate.getTime() + expiresIn * 60 * 60 * 1000);
   cookie.set(cookieName, value, {
     expires: expiresDate,
-    path: "/",
+    path: '/',
     ...options,
   });
 };
 
 export const removeCookie = (cookieName: string) =>
-  cookie.remove(cookieName, { path: "/" });
+  cookie.remove(cookieName, { path: '/' });
 
 export const getCookie = (cookieName: string) => cookie.get(cookieName);
 
