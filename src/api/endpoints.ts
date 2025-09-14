@@ -1,7 +1,7 @@
 export const endpoints = {
   refreshToken: '/user/token/refresh/',
   getData: '/getData',
-  login: '/user/login',
+  login: '/user/superadmin/login',
   createUser: '/user/register',
   getUser: '/user/list/search/',
   getUserById: '/user/profile/',
