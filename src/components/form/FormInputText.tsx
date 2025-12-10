@@ -38,7 +38,7 @@ const FormInputText: React.FC<IInputText> = ({
       <input
         id={name}
         type="text"
-        className={`w-full px-4 py-2 typography-label-text text-gray-900 rounded-[10px] border ${className} ${getBorderClass()}`}
+        className={`w-full px-4 py-2 typography-label-text text-gray-900 rounded-[10px] border focus:outline-gray-500 ${className} ${getBorderClass()}`}
         {...field}
         {...props}
       />

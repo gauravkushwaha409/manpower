@@ -20,7 +20,17 @@ export const InputSearchSelect: React.FC<IReactSelect> = ({
   disabled,
   placeholder,
 }) => {
-  const [field, , helpers] = useField(name);
+  const [field, meta, helpers] = useField(name);
+
+  const getBorderClass = () => {
+    if (meta.touched && meta.error) {
+      return "border-error";
+    }
+    if (meta.touched && !meta.error) {
+      return "#d1d5dc";
+    }
+    return "#e5e7eb";
+  };
 
   // Find the currently selected value
   const selectedOption =
@@ -48,10 +58,15 @@ export const InputSearchSelect: React.FC<IReactSelect> = ({
         styles={{
           control: (baseStyles, state) => ({
             ...baseStyles,
-            borderColor: state.isFocused ? "#d1d5dc" : "e5e7eb",
-            outline: "",
+            border: `1px solid ${getBorderClass()}`,
+            borderColor: "#e5e7eb",
             borderRadius: "10px",
             fontFamily: "Inter",
+            outline: "none",
+            boxShadow: state.isFocused ? "0 0 0 1px #6a7282" : "none",
+            "&:hover": {
+              borderColor: getBorderClass(),
+            },
           }),
         }}
       />
