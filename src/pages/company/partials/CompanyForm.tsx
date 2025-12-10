@@ -1,5 +1,5 @@
 import { InputSearchSelect } from "@/components/form/InputSelect";
-import InputText from "@/components/form/InputText";
+import InputText from "@/components/form/FormInputText";
 import { InputFile } from "@/components/ui/FormComponent";
 
 const CompanyForm = () => {

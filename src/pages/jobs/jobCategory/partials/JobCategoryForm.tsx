@@ -1,5 +1,5 @@
-import InputText from '@/components/form/InputText.tsx';
-import TextEditor from '@/components/form/TextEditor';
+import InputText from "@/components/form/FormInputText";
+import TextEditor from "@/components/form/TextEditor";
 
 const JobCategoryForm = () => {
   return (

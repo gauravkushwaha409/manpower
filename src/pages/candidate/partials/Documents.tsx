@@ -1,5 +1,5 @@
 import React from "react";
-import InputText from "@/components/form/InputText";
+import InputText from "@/components/form/FormInputText";
 import { InputFile } from "@/components/form/InputFile";
 import { ICandidate } from "../interface/ICandidate";
 import { useFormikContext } from "formik";

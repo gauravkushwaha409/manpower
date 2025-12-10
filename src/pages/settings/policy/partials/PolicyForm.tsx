@@ -1,5 +1,5 @@
 import { InputSearchSelect } from "@/components/form/InputSelect";
-import InputText from "@/components/form/InputText.tsx";
+import InputText from "@/components/form/FormInputText";
 import TextEditor from "@/components/form/TextEditor";
 
 const policyOptions = [{ label: "Terms Policy", value: "terms" }];

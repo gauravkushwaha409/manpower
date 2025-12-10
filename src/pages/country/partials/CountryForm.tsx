@@ -1,4 +1,4 @@
-import InputText from "@/components/form/InputText.tsx";
+import InputText from "@/components/form/FormInputText";
 import { InputSearchSelect } from "@/components/form/InputSelect.tsx";
 
 const languageOptions = [{ label: "Nepali", value: "nepali" }];

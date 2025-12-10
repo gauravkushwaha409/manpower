@@ -1,5 +1,5 @@
-import React from 'react';
-import InputText from '@/components/form/InputText';
+import React from "react";
+import InputText from "@/components/form/FormInputText";
 
 const LoginForm: React.FC = () => {
   return (

@@ -1,7 +1,7 @@
-import React from 'react';
-import InputText from '@/components/form/InputText';
-import { InputSearchSelect } from '@/components/form/InputSelect';
-import TextEditor from '@/components/form/TextEditor';
+import React from "react";
+import InputText from "@/components/form/FormInputText";
+import { InputSearchSelect } from "@/components/form/InputSelect";
+import TextEditor from "@/components/form/TextEditor";
 
 const JobApplicationForm: React.FC = () => {
   return (
@@ -11,22 +11,22 @@ const JobApplicationForm: React.FC = () => {
           label="Candidate Name"
           name="candidate_name"
           options={[
-            { value: '', label: 'Select Candidate' },
-            { value: 'Gaurav', label: 'Gaurav' },
-            { value: 'Suresh', label: 'Suresh' },
-            { value: 'Suman', label: 'Suman' },
-            { value: 'Prassanna', label: 'Prassanna' },
+            { value: "", label: "Select Candidate" },
+            { value: "Gaurav", label: "Gaurav" },
+            { value: "Suresh", label: "Suresh" },
+            { value: "Suman", label: "Suman" },
+            { value: "Prassanna", label: "Prassanna" },
           ]}
         />
         <InputSearchSelect
           label="Country"
           name="country"
           options={[
-            { value: '', label: 'Select Country' },
-            { value: 'USA', label: 'USA' },
-            { value: 'Canada', label: 'Canada' },
-            { value: 'UK', label: 'UK' },
-            { value: 'Australia', label: 'Australia' },
+            { value: "", label: "Select Country" },
+            { value: "USA", label: "USA" },
+            { value: "Canada", label: "Canada" },
+            { value: "UK", label: "UK" },
+            { value: "Australia", label: "Australia" },
           ]}
         />
       </div>
@@ -44,11 +44,11 @@ const JobApplicationForm: React.FC = () => {
           label="Job Vacancy"
           name="job_vacancy"
           options={[
-            { value: '', label: 'Select Job Vacancy' },
-            { value: 'Software Engineer', label: 'Software Engineer' },
-            { value: 'Data Analyst', label: 'Data Analyst' },
-            { value: 'Product Manager', label: 'Product Manager' },
-            { value: 'UI/UX Designer', label: 'UI/UX Designer' },
+            { value: "", label: "Select Job Vacancy" },
+            { value: "Software Engineer", label: "Software Engineer" },
+            { value: "Data Analyst", label: "Data Analyst" },
+            { value: "Product Manager", label: "Product Manager" },
+            { value: "UI/UX Designer", label: "UI/UX Designer" },
           ]}
         />
 
@@ -56,10 +56,10 @@ const JobApplicationForm: React.FC = () => {
           label="Status"
           name="status"
           options={[
-            { value: '', label: 'Select Status' },
-            { value: 'Pending', label: 'Pending' },
-            { value: 'Approved', label: 'Approved' },
-            { value: 'Rejected', label: 'Rejected' },
+            { value: "", label: "Select Status" },
+            { value: "Pending", label: "Pending" },
+            { value: "Approved", label: "Approved" },
+            { value: "Rejected", label: "Rejected" },
           ]}
         />
       </div>

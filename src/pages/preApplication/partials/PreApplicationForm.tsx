@@ -1,5 +1,5 @@
 import { InputFile } from "@/components/form/InputFile";
-import InputText from "@/components/form/InputText.tsx";
+import InputText from "@/components/form/FormInputText";
 import TextEditor from "@/components/form/TextEditor";
 
 const PreApplicationForm = () => {

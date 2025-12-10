@@ -3,7 +3,7 @@ import InputCheckbox from "@/components/form/InputCheckBox";
 import InputDate from "@/components/form/FormInputDate";
 import { InputFile } from "@/components/form/InputFile";
 import { InputSearchSelect } from "@/components/form/InputSelect";
-import InputText from "@/components/form/InputText";
+import InputText from "@/components/form/FormInputText";
 
 const PreApprovalDofeForm = () => {
   return (

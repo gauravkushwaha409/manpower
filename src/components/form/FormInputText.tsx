@@ -8,7 +8,7 @@ interface IInputText extends React.InputHTMLAttributes<HTMLInputElement> {
   labelClassName?: string;
 }
 
-const InputText: React.FC<IInputText> = ({
+const FormInputText: React.FC<IInputText> = ({
   name,
   label,
   labelClassName,
@@ -38,7 +38,7 @@ const InputText: React.FC<IInputText> = ({
       <input
         id={name}
         type="text"
-        className={`w-full p-2 typography-label-text text-gray-900 rounded-[10px] border ${className} ${getBorderClass()}`}
+        className={`w-full px-4 py-2 typography-label-text text-gray-900 rounded-[10px] border ${className} ${getBorderClass()}`}
         {...field}
         {...props}
       />
@@ -51,4 +51,4 @@ const InputText: React.FC<IInputText> = ({
   );
 };
 
-export default InputText;
+export default FormInputText;

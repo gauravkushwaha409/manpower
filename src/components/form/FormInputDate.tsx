@@ -8,6 +8,7 @@ interface InputDateProps {
   name: string;
   placeholder?: string;
   required?: boolean;
+  wrapperClassName?: string;
 }
 
 const FormInputDate: React.FC<InputDateProps> = ({
@@ -39,7 +40,7 @@ const FormInputDate: React.FC<InputDateProps> = ({
   };
 
   return (
-    <div className="w-full">
+    <div className="w-full flex flex-col gap-2">
       <label className="block mb-1 typography-label-text">
         {label}
         {required && <span className="text-red-600">*</span>}
@@ -50,7 +51,7 @@ const FormInputDate: React.FC<InputDateProps> = ({
         onBlur={field.onBlur}
         placeholderText={placeholder}
         dateFormat="yyyy-MM-dd"
-        className={`w-full p-1.5 border rounded-[10px] typography-label-text typography-placeholder ${getBorderClass()}`}
+        className={`w-full px-4 py-2 border rounded-[10px] typography-label-text typography-placeholder ${getBorderClass()}`}
         wrapperClassName={`w-full`}
       />
       <ErrorMessage

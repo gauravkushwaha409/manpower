@@ -1,5 +1,5 @@
 import React from "react";
-import InputText from "@/components/form/InputText";
+import InputText from "@/components/form/FormInputText";
 import { InputSearchSelect } from "@/components/form/InputSelect";
 import TextEditor from "@/components/form/TextEditor";
 import { InputTime } from "@/components/ui/FormComponent";

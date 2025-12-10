@@ -1,4 +1,4 @@
-import InputText from "@/components/form/InputText.tsx";
+import InputText from "@/components/form/FormInputText";
 
 const ContactUsForm = () => {
   return (

@@ -1,4 +1,4 @@
-import InputText from "@/components/form/InputText";
+import InputText from "@/components/form/FormInputText";
 
 const UserForm = () => {
   return (

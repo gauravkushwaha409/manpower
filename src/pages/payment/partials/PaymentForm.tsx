@@ -1,6 +1,6 @@
 import InputDate from "@/components/form/FormInputDate";
 import { InputSearchSelect } from "@/components/form/InputSelect";
-import InputText from "@/components/form/InputText.tsx";
+import InputText from "@/components/form/FormInputText";
 
 const PaymentForm = () => {
   return (
