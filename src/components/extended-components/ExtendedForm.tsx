@@ -1,9 +1,9 @@
-import { FormikProvider, FormikValues, FormikContextType } from 'formik';
-import { Button } from '@/components/ui/button';
-import { cn } from '@/lib/utils';
-import ExtendedButton from './ExtendedButton';
-import { useNavigate } from 'react-router-dom';
-import HorizontalDivider from '../reusable-component/HorizontalDivider';
+import { FormikProvider, FormikValues, FormikContextType } from "formik";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+import ExtendedButton from "./ExtendedButton";
+import { useNavigate } from "react-router-dom";
+import HorizontalDivider from "../reusable-component/HorizontalDivider";
 
 interface ExtendedFormProps<T extends FormikValues> {
   formik: FormikContextType<T>;
@@ -20,10 +20,10 @@ interface ExtendedFormProps<T extends FormikValues> {
 export default function ExtendedForm<T extends FormikValues>({
   formik,
   children,
-  submitText = 'Save',
-  cancelText = 'Cancel',
+  submitText = "Save",
+  cancelText = "Cancel",
   isSubmitting = false,
-  className = '',
+  className = "",
   showCancelBtn = true,
   btnDisabled = false,
 }: ExtendedFormProps<T>) {
@@ -33,7 +33,7 @@ export default function ExtendedForm<T extends FormikValues>({
       <form
         onSubmit={formik.handleSubmit}
         className={cn(
-          'space-y-6 bg-background-200 bg-white shadow-[0px_1px_22px_0px_rgba(0,0,0,0.04)] p-4 rounded-[0.5rem]',
+          "space-y-6 bg-background-200 bg-white shadow-[0px_1px_22px_0px_rgba(0,0,0,0.04)] p-4 rounded-[0.5rem]",
           className
         )}
       >
