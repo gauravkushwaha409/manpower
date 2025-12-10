@@ -1,14 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import Breadcrumb from "@/components/reusable-component/Breadcrumb";
 import PageHeader from "@/common/PageHeader";
-import ExtendedForm from "@/components/extended-components/ExtendedForm";
 import { PATH } from "@/constant/path";
-import PreApprovalDofeForm from "./partials/PreApprovalDofeForm";
+import {
+  PreApprovalFormStep1,
+  PreApprovalFormStep2,
+  PreApprovalFormStep3,
+} from "./partials/PreApprovalDofeForm";
 import useCreatePreApprovalDofe from "./hooks/useCreatePreApprovalDofe";
+import ExtendedMultiStepForm from "@/components/extended-components/ExtendedMultiStepForm";
 
 const AddPreApprovalDofe: React.FC = () => {
   const { formik } = useCreatePreApprovalDofe();
-  // console.error(formik.errors);
+  const [step, setStep] = useState(0);
 
   return (
     <div className="flex flex-col gap-4">
@@ -25,9 +29,28 @@ const AddPreApprovalDofe: React.FC = () => {
         ]}
       />
       <PageHeader title="Add Pre Approval Dofe" showAddButton={false} />
-      <ExtendedForm formik={formik}>
-        <PreApprovalDofeForm  />
-      </ExtendedForm>
+      <ExtendedMultiStepForm
+        formik={formik}
+        currentStep={step}
+        onStepChange={() => setStep(step + 1)}
+        steps={[
+          {
+            id: "pre-approval-step-1",
+            title: "Step-1",
+            content: <PreApprovalFormStep1 />,
+          },
+          {
+            id: "pre-approval-step-2",
+            title: "Step-2",
+            content: <PreApprovalFormStep2 />,
+          },
+          {
+            id: "pre-approval-step-3",
+            title: "Step-3",
+            content: <PreApprovalFormStep3 />,
+          },
+        ]}
+      />
     </div>
   );
 };

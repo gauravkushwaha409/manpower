@@ -1,5 +1,6 @@
 import React from "react";
 import { ErrorMessage, useField } from "formik";
+import { cn } from "@/lib/utils";
 
 interface IRadioOption {
   label: string;
@@ -14,6 +15,7 @@ interface IProps extends React.InputHTMLAttributes<HTMLInputElement> {
   labelClassName?: string;
   optionLabelClassName?: string;
   containerClassName?: string;
+  optionsWrapperClassName?: string;
 }
 
 const FormInputRadio: React.FC<IProps> = ({
@@ -24,6 +26,7 @@ const FormInputRadio: React.FC<IProps> = ({
   className,
   optionLabelClassName,
   containerClassName,
+  optionsWrapperClassName,
   ...props
 }) => {
   const [field, meta] = useField(name);
@@ -39,22 +42,20 @@ const FormInputRadio: React.FC<IProps> = ({
   };
 
   return (
-    <div className={`flex flex-col gap-2 ${containerClassName}`}>
+    <div className={cn(`flex flex-col gap-2`, containerClassName)}>
       {label && (
-        <label
-          className={`typography-p2-regular text-Black-500 ${labelClassName}`}
-        >
+        <label className={`typography-label-text ${labelClassName}`}>
           {label}
         </label>
       )}
 
-      <div className="flex flex-col gap-3">
+      <div className={cn(`flex flex-col gap-3`, optionsWrapperClassName)}>
         {options.map((option) => (
           <div key={option.value} className="flex items-center gap-3">
             <input
               id={`${name}-${option.value}`}
               type="radio"
-              className={`w-5 h-5 rounded-full border-2 bg-form-color focus:ring-0 ${getBorderClass()} ${className}`}
+              className={`size-3 rounded-full border-2 bg-form-color focus:ring-0 ${getBorderClass()} ${className}`}
               {...field}
               value={option.value}
               checked={field.value === option.value}
@@ -62,7 +63,7 @@ const FormInputRadio: React.FC<IProps> = ({
             />
             <label
               htmlFor={`${name}-${option.value}`}
-              className={`typography-p2-regular text-Black-500 ${optionLabelClassName}`}
+              className={`typography-label-text ${optionLabelClassName}`}
             >
               {option.label}
             </label>

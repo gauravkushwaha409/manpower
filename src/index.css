@@ -47,6 +47,9 @@
 @utility typography-placeholder {
   @apply placeholder:font-[12px] font-[Inter] leading-[150%];
 }
+@utility typography-caption-c2 {
+  @apply font-[Inter] font-normal text-[0.625rem] leading-[150%];
+}
 
 @layer utilities {
   .typography-button-text {
@@ -126,12 +129,6 @@
     font-size: 0.75rem;
     line-height: 150%;
     letter-spacing: 0%;
-  }
-  .typography-caption-c2 {
-    font-family: "Inter", sans-serif;
-    font-weight: 400;
-    font-size: 0.625rem;
-    line-height: 150%;
   }
   .typography-caption-c3 {
     font-family: "Inter", sans-serif;
