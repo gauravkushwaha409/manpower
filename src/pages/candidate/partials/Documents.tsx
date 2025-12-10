@@ -4,7 +4,7 @@ import { InputFile } from "@/components/form/InputFile";
 import { ICandidate } from "../interface/ICandidate";
 import { useFormikContext } from "formik";
 import { InputSearchSelect } from "@/components/form/InputSelect";
-import InputDate from "@/components/form/InputDate";
+import InputDate from "@/components/form/FormInputDate";
 
 const Documents: React.FC = () => {
   const formik = useFormikContext<ICandidate>();

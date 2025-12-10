@@ -1,7 +1,7 @@
 import React from "react";
 import plusGreenIcon from "../../../assets/icons/plus_green.svg";
 import InputText from "@/components/form/InputText";
-import InputDate from "@/components/form/InputDate";
+import InputDate from "@/components/form/FormInputDate";
 import { useFormikContext } from "formik";
 import { ICandidate } from "../interface/ICandidate";
 

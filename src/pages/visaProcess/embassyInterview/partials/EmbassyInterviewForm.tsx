@@ -1,6 +1,6 @@
-import InputText from '@/components/form/InputText.tsx';
-import { InputSearchSelect } from '@/components/form/InputSelect.tsx';
-import InputDate from '@/components/form/InputDate';
+import InputText from "@/components/form/InputText.tsx";
+import { InputSearchSelect } from "@/components/form/InputSelect.tsx";
+import InputDate from "@/components/form/FormInputDate";
 
 const EmbassyInterviewForm = () => {
   return (
@@ -30,7 +30,7 @@ const EmbassyInterviewForm = () => {
           <InputSearchSelect
             label="Status"
             name="status"
-            options={[{ label: 'Schedule', value: 'schedule' }]}
+            options={[{ label: "Schedule", value: "schedule" }]}
           />
         </div>
       </div>

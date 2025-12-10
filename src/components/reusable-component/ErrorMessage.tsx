@@ -5,7 +5,7 @@ const ErrorMessage = () => {
         Something went wrong
       </h1>
       <p className="mb-6 text-gray-700 text-md">
-        We’re sorry, but an unexpected error has occurred.
+        We're sorry, but an unexpected error has occurred.
       </p>
     </div>
   );

@@ -1,7 +1,7 @@
-import React from 'react';
-import InputText from '@/components/form/InputText';
-import { InputSearchSelect } from '@/components/form/InputSelect';
-import InputDate from '@/components/form/InputDate';
+import React from "react";
+import InputText from "@/components/form/InputText";
+import { InputSearchSelect } from "@/components/form/InputSelect";
+import InputDate from "@/components/form/FormInputDate";
 
 const JobOfferForm: React.FC = () => {
   return (
@@ -9,12 +9,12 @@ const JobOfferForm: React.FC = () => {
       <InputSearchSelect
         label="Candidate Name"
         name="candidate_name"
-        options={[{ label: 'Gaurav', value: 'gaurav' }]}
+        options={[{ label: "Gaurav", value: "gaurav" }]}
       />
       <InputSearchSelect
         label="Job Vacancy"
         name="job_vacancy"
-        options={[{ label: 'React Developer', value: 'react' }]}
+        options={[{ label: "React Developer", value: "react" }]}
       />
       <InputText label="Salary Offered" name="salary_offered" />
       <InputDate label="Offer Date" name="offer_date" />
@@ -22,7 +22,7 @@ const JobOfferForm: React.FC = () => {
       <InputSearchSelect
         label="Status"
         name="status"
-        options={[{ label: 'Peending', value: 'peending' }]}
+        options={[{ label: "Peending", value: "peending" }]}
       />
     </div>
   );

@@ -1,9 +1,9 @@
-import React from 'react';
-import InputText from '@/components/form/InputText';
-import { InputSearchSelect } from '@/components/form/InputSelect';
-import TextEditor from '@/components/form/TextEditor';
-import { InputTime } from '@/components/ui/FormComponent';
-import InputDate from '@/components/form/InputDate';
+import React from "react";
+import InputText from "@/components/form/InputText";
+import { InputSearchSelect } from "@/components/form/InputSelect";
+import TextEditor from "@/components/form/TextEditor";
+import { InputTime } from "@/components/ui/FormComponent";
+import InputDate from "@/components/form/FormInputDate";
 
 const JobInterviewForm: React.FC = () => {
   return (
@@ -21,11 +21,11 @@ const JobInterviewForm: React.FC = () => {
           label="Candidate Name"
           name="candidate_name"
           options={[
-            { value: '', label: 'Select Candidate' },
-            { value: 'Gaurav', label: 'Gaurav' },
-            { value: 'Suresh', label: 'Suresh' },
-            { value: 'Suman', label: 'Suman' },
-            { value: 'Prassanna', label: 'Prassanna' },
+            { value: "", label: "Select Candidate" },
+            { value: "Gaurav", label: "Gaurav" },
+            { value: "Suresh", label: "Suresh" },
+            { value: "Suman", label: "Suman" },
+            { value: "Prassanna", label: "Prassanna" },
           ]}
         />
 
@@ -33,10 +33,10 @@ const JobInterviewForm: React.FC = () => {
           label="Job Vacancy"
           name="job_vacancy"
           options={[
-            { value: '', label: 'Select Job Vacancy' },
-            { value: 'Developer', label: 'Developer' },
-            { value: 'Designer', label: 'Designer' },
-            { value: 'Manager', label: 'Manager' },
+            { value: "", label: "Select Job Vacancy" },
+            { value: "Developer", label: "Developer" },
+            { value: "Designer", label: "Designer" },
+            { value: "Manager", label: "Manager" },
           ]}
         />
       </div>
@@ -67,10 +67,10 @@ const JobInterviewForm: React.FC = () => {
           label="Status"
           name="status"
           options={[
-            { value: '', label: 'Select Status' },
-            { value: 'Pending', label: 'Pending' },
-            { value: 'Accepted', label: 'Accepted' },
-            { value: 'Rejected', label: 'Rejected' },
+            { value: "", label: "Select Status" },
+            { value: "Pending", label: "Pending" },
+            { value: "Accepted", label: "Accepted" },
+            { value: "Rejected", label: "Rejected" },
           ]}
         />
       </div>

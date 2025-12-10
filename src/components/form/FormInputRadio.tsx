@@ -2,8 +2,8 @@ import React from "react";
 import { ErrorMessage, useField } from "formik";
 
 interface IRadioOption {
-  value: string;
   label: string;
+  value: string | number;
 }
 
 interface IProps extends React.InputHTMLAttributes<HTMLInputElement> {

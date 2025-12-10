@@ -1,4 +1,4 @@
-import InputDate from "@/components/form/InputDate";
+import InputDate from "@/components/form/FormInputDate";
 import { InputSearchSelect } from "@/components/form/InputSelect";
 import InputText from "@/components/form/InputText.tsx";
 

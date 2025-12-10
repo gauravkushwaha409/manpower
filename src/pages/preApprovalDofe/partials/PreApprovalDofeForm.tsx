@@ -1,9 +1,9 @@
+import FormInputRadio from "@/components/form/FormInputRadio";
 import InputCheckbox from "@/components/form/InputCheckBox";
-import InputDate from "@/components/form/InputDate";
+import InputDate from "@/components/form/FormInputDate";
 import { InputFile } from "@/components/form/InputFile";
 import { InputSearchSelect } from "@/components/form/InputSelect";
 import InputText from "@/components/form/InputText";
-import { InputRadio } from "@/components/ui/FormComponent";
 
 const PreApprovalDofeForm = () => {
   return (
@@ -109,11 +109,46 @@ const PreApprovalDofeForm = () => {
           name="chalanNumber"
           placeholder="Enter your Chalani Number"
         />
-        <InputRadio label="Food" name="food" />
-        <InputCheckbox label="Accommodation" name="food" />
-        <InputCheckbox label="Transportation" name="food" />
-        <InputCheckbox label="Free Visa" name="food" />
-        <InputCheckbox label="Free Ticket" name="food" />
+        <FormInputRadio
+          options={[
+            { label: "Yes", value: "true" },
+            { label: "No", value: "false" },
+          ]}
+          label="Food"
+          name="food"
+        />
+        <FormInputRadio
+          options={[
+            { label: "Yes", value: "true" },
+            { label: "No", value: "false" },
+          ]}
+          label="Accommodation"
+          name="accommodation"
+        />
+        <FormInputRadio
+          options={[
+            { label: "Yes", value: "true" },
+            { label: "No", value: "false" },
+          ]}
+          label="Transportation"
+          name="transportation"
+        />
+        <FormInputRadio
+          options={[
+            { label: "Yes", value: "true" },
+            { label: "No", value: "false" },
+          ]}
+          label="Free Visa"
+          name="free_visa"
+        />
+        <FormInputRadio
+          options={[
+            { label: "Yes", value: "true" },
+            { label: "No", value: "false" },
+          ]}
+          label="Free Ticket"
+          name="free_ticket"
+        />
         <InputText
           label="Working Hours"
           name="chalanNumber"
@@ -173,31 +208,3 @@ const PreApprovalDofeForm = () => {
 };
 
 export default PreApprovalDofeForm;
-
-/**
- * 
- * 
- *         <div className="flex items-center gap-2">
-          <div className="flex-1">
-            <InputSearchSelect
-              label="Recuirtment Company"
-              name="company"
-              options={[]}
-              placeholder="Select Recuirtment Company"
-            />
-          </div>
-          {/* {location.pathname === PATH.dashboard.addPreApprovalDofe && (
-            <ExtendedTooltip title="Create Company">
-              <button
-                type="button"
-                className="h-10 mt-6 px-3 bg-primary-500 text-white rounded text-sm cursor-pointer flex items-center justify-center"
-                onClick={() => {
-                  navigate(PATH.dashboard.addCompany);
-                }}
-              >
-                <Plus className="w-4 h-4" />
-              </button>
-            </ExtendedTooltip>
-          )} *
-        </div>
- */

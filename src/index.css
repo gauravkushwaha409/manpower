@@ -44,6 +44,10 @@
   @apply text-sm font-normal font-[Inter] leading-[150%];
 }
 
+@utility typography-placeholder {
+  @apply placeholder:font-[12px] font-[Inter] leading-[150%];
+}
+
 @layer utilities {
   .typography-button-text {
     color: white;

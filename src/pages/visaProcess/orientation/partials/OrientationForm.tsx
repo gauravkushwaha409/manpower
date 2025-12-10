@@ -1,6 +1,6 @@
 import InputText from "@/components/form/InputText.tsx";
 import { InputSearchSelect } from "@/components/form/InputSelect.tsx";
-import InputDate from "@/components/form/InputDate";
+import InputDate from "@/components/form/FormInputDate";
 
 const OrientationForm = () => {
   return (

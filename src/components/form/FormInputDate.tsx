@@ -1,5 +1,5 @@
 import React from "react";
-import { useField } from "formik";
+import { ErrorMessage, useField } from "formik";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -10,7 +10,7 @@ interface InputDateProps {
   required?: boolean;
 }
 
-const InputDate: React.FC<InputDateProps> = ({
+const FormInputDate: React.FC<InputDateProps> = ({
   label,
   name,
   placeholder,
@@ -40,7 +40,7 @@ const InputDate: React.FC<InputDateProps> = ({
 
   return (
     <div className="w-full">
-      <label className="block mb-1 font-medium typography-label-text">
+      <label className="block mb-1 typography-label-text">
         {label}
         {required && <span className="text-red-600">*</span>}
       </label>
@@ -50,14 +50,16 @@ const InputDate: React.FC<InputDateProps> = ({
         onBlur={field.onBlur}
         placeholderText={placeholder}
         dateFormat="yyyy-MM-dd"
-        className={`w-full p-1.5 border rounded-lg typography-label-text ${getBorderClass()}`}
+        className={`w-full p-1.5 border rounded-[10px] typography-label-text typography-placeholder ${getBorderClass()}`}
         wrapperClassName={`w-full`}
       />
-      {meta.touched && meta.error && (
-        <p className="mt-1 text-red-500 text-sm">{meta.error}</p>
-      )}
+      <ErrorMessage
+        name={name}
+        component="div"
+        className="text-red-500 text-sm"
+      />
     </div>
   );
 };
 
-export default InputDate;
+export default FormInputDate;
