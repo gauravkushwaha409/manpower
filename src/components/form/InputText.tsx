@@ -2,49 +2,53 @@ import React from "react";
 import { ErrorMessage, useField } from "formik";
 
 interface IInputText extends React.InputHTMLAttributes<HTMLInputElement> {
-   name: string;
-   label: string;
-   className?: string;
-   labelClassName?: string;
+  name: string;
+  label: string;
+  className?: string;
+  labelClassName?: string;
 }
 
 const InputText: React.FC<IInputText> = ({
-   name,
-   label,
-   labelClassName,
-   className,
-   ...props
-
-
+  name,
+  label,
+  labelClassName,
+  className,
+  ...props
 }) => {
-   const [field, meta] = useField(name);
+  const [field, meta] = useField(name);
 
+  const getBorderClass = () => {
+    if (meta.touched && meta.error) {
+      return "border-error";
+    }
+    if (meta.touched && !meta.error) {
+      return "border-gray-300";
+    }
+    return "border-gray-200";
+  };
 
-   const getBorderClass = () => {
-      if (meta.touched && meta.error) {
-         return 'border-error';
-      }
-      if (meta.touched && !meta.error) {
-         return 'border-Black-100';
-      }
-      return 'border-Black-200';
-   };
-
-   return (
-      <div className={`flex flex-col gap-2`}>
-         <label className={`typography-p2-regular text-Black-500 ${labelClassName}`} htmlFor={name}>
-            {label}
-         </label>
-         <input
-            id={name}
-            type="text"
-            className={`w-full p-3 bg-form-color typography-p2-medium text-Black-500 rounded-lg border ${className} ${getBorderClass()}`}
-            {...field}
-            {...props}
-         />
-         <ErrorMessage name={name} component="div" className="text-red-500 text-sm" />
-      </div >
-   );
+  return (
+    <div className={`flex flex-col gap-2`}>
+      <label
+        className={`typography-label-text text-gray-800 ${labelClassName}`}
+        htmlFor={name}
+      >
+        {label}
+      </label>
+      <input
+        id={name}
+        type="text"
+        className={`w-full p-2 typography-label-text text-gray-900 rounded-[10px] border ${className} ${getBorderClass()}`}
+        {...field}
+        {...props}
+      />
+      <ErrorMessage
+        name={name}
+        component="div"
+        className="text-red-500 text-sm"
+      />
+    </div>
+  );
 };
 
-export default InputText
+export default InputText;

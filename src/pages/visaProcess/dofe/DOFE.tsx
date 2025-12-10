@@ -1,11 +1,11 @@
-import React from 'react';
-import Table from '@/components/Table';
-import { dofeTableData } from '@/data/dofe';
-import { DOFEColumns } from './partials/DOFEColumns';
-import PageHeader from '@/common/PageHeader';
-import Breadcrumb from '@/components/reusable-component/Breadcrumb';
-import DOFEFilterList from './partials/DOFEFilterList';
-import { PATH } from '@/constant/path';
+import React from "react";
+import Table from "@/components/Table";
+import { dofeTableData } from "@/data/dofe";
+import { DOFEColumns } from "./partials/DOFEColumns";
+import PageHeader from "@/common/PageHeader";
+import Breadcrumb from "@/components/reusable-component/Breadcrumb";
+import DOFEFilterList from "./partials/DOFEFilterList";
+import { PATH } from "@/constant/path";
 
 const Dofe: React.FC = () => {
   return (

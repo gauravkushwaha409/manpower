@@ -1,7 +1,7 @@
-import React from 'react';
-import { useField } from 'formik';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
+import React from "react";
+import { useField } from "formik";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 interface InputDateProps {
   label: string;
@@ -21,7 +21,7 @@ const InputDate: React.FC<InputDateProps> = ({
   const handleChange = (date: Date | null) => {
     if (date) {
       // Format the date to yyyy-MM-dd
-      const formattedDate = date.toISOString().split('T')[0]; // Get only the date part
+      const formattedDate = date.toISOString().split("T")[0]; // Get only the date part
       helpers.setValue(formattedDate);
     } else {
       helpers.setValue(null); // If date is cleared, set it to null
@@ -30,17 +30,17 @@ const InputDate: React.FC<InputDateProps> = ({
 
   const getBorderClass = () => {
     if (meta.touched && meta.error) {
-      return 'border-error';
+      return "border-error";
     }
     if (meta.touched && !meta.error) {
-      return 'border-Black-100';
+      return "border-Black-100";
     }
-    return 'border-Black-200';
+    return "border-Black-200";
   };
 
   return (
     <div className="w-full">
-      <label className="block mb-1 font-medium typography-p2-regular">
+      <label className="block mb-1 font-medium typography-label-text">
         {label}
         {required && <span className="text-red-600">*</span>}
       </label>
@@ -50,7 +50,7 @@ const InputDate: React.FC<InputDateProps> = ({
         onBlur={field.onBlur}
         placeholderText={placeholder}
         dateFormat="yyyy-MM-dd"
-        className={`w-full p-3 border rounded-lg ${getBorderClass()}`}
+        className={`w-full p-1.5 border rounded-lg typography-label-text ${getBorderClass()}`}
         wrapperClassName={`w-full`}
       />
       {meta.touched && meta.error && (

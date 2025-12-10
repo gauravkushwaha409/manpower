@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Mona+Sans:ital,wght@0,200..900;1,200..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Mona+Sans:ital,wght@0,200..900;1,200..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Mona+Sans:ital,wght@0,200..900;1,200..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Mona+Sans:ital,wght@0,200..900;1,200..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
-@import 'tailwindcss';
+@import "tailwindcss";
 
-@import 'tw-animate-css';
+@import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -40,20 +40,15 @@
 }
 
 /* Font Style Name */
+@utility typography-label-text {
+  @apply text-sm font-normal font-[Inter] leading-[150%];
+}
+
 @layer utilities {
   .typography-button-text {
     color: white;
     text-align: center;
-    font-family: 'Inter', sans-serif;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 150%;
-  }
-
-  .typography-label-text {
-    color: black;
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 12px;
     font-style: normal;
     font-weight: 400;
@@ -61,14 +56,14 @@
   }
 
   .typography-h3 {
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     font-size: 2rem;
     letter-spacing: 0;
     line-height: 100%;
   }
   .typography-heading-poppins-medium {
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", sans-serif;
     color: #172b4d;
     font-size: 1.2rem;
     font-style: normal;
@@ -77,14 +72,14 @@
   }
 
   .typography-p1-regular {
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 400;
     font-size: 1rem;
     line-height: 150%;
     letter-spacing: 0%;
   }
   .typography-p2-regular {
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     font-size: 0.875rem;
     line-height: 150%;
@@ -92,21 +87,21 @@
   }
 
   .typography-p1-medium {
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 500;
     font-size: 1rem;
     line-height: 150%;
   }
 
   .typography-p2-medium {
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 500;
     font-size: 0.875rem;
     line-height: 150%;
     letter-spacing: 0%;
   }
   .typography-p1-semibold {
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     font-size: 1rem;
     line-height: 150%;
@@ -114,7 +109,7 @@
   }
 
   .typography-p2-semibold {
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 0.875rem;
     font-style: normal;
     font-weight: 600;
@@ -122,20 +117,20 @@
   }
 
   .typography-caption-c1 {
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 400;
     font-size: 0.75rem;
     line-height: 150%;
     letter-spacing: 0%;
   }
   .typography-caption-c2 {
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 400;
     font-size: 0.625rem;
     line-height: 150%;
   }
   .typography-caption-c3 {
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 0.5rem;
     font-style: normal;
     font-weight: 400;
@@ -143,7 +138,7 @@
   }
 
   .typography-caption-c1-semibold {
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     font-size: 0.75rem;
     line-height: 150%;
@@ -181,7 +176,7 @@
   }
 
   .notification-badge {
-    font-family: 'Mona Sans', sans-serif;
+    font-family: "Mona Sans", sans-serif;
     font-weight: 700;
     font-size: 0.75rem;
     line-height: 0.75rem;
@@ -191,7 +186,7 @@
 
 @layer utilities {
   .bg-login {
-    background-image: url('/assets/images/login-bg.jpg');
+    background-image: url("/assets/images/login-bg.jpg");
     background-size: cover;
     background-position: center;
   }
@@ -219,7 +214,7 @@
   border-width: 0px;
   height: 10rem;
   padding: 1rem;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-weight: 400;
   font-size: 0.875rem;
   line-height: 150%;
@@ -297,7 +292,7 @@
 }
 
 :root {
-  --radius: 0.625rem;
+  --radius: 0.25rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.129 0.042 264.695);
   --card: oklch(1 0 0);
@@ -388,5 +383,5 @@
 }
 
 .body {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }

@@ -47,7 +47,7 @@ const JobVacancies: React.FC = () => {
         <AddJobVacancyModal
           formik={createVacancyFormik}
           handleCloseModal={handleCloseAddModal}
-          isOpen={addJobVacancy}
+          isOpen={true}
           setStep={setStep}
           step={step}
         />

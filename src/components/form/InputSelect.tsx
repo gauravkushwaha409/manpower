@@ -18,27 +18,18 @@ export const InputSearchSelect: React.FC<IReactSelect> = ({
   className,
   labelClassName,
   disabled,
+  placeholder,
 }) => {
-  const [field, meta, helpers] = useField(name);
+  const [field, , helpers] = useField(name);
 
   // Find the currently selected value
   const selectedOption =
     options?.find((opt) => opt.value === field.value) || null;
 
-  const getBorderClass = () => {
-    if (meta.touched && meta.error) {
-      return "!border-error";
-    }
-    if (meta.touched && !meta.error) {
-      return "!border-Black-100";
-    }
-    return "!border-Black-200";
-  };
-
   return (
     <div className={`flex flex-col gap-2 ${className}`}>
       <label
-        className={`typography-p2-regular text-Black-500 ${labelClassName}`}
+        className={`typography-label-text text-gray-800 ${labelClassName}`}
         htmlFor={name}
       >
         {label}
@@ -51,26 +42,24 @@ export const InputSearchSelect: React.FC<IReactSelect> = ({
         value={selectedOption}
         onChange={(option) => helpers.setValue((option as any)?.value)}
         onBlur={() => helpers.setTouched(true)}
-        placeholder={`Select ${label}`}
+        placeholder={placeholder}
         isSearchable
         isDisabled={disabled}
-        classNames={{
-          control: () => `
-                  !p-1.5 !border !rounded-lg !bg-form-color 
-                  typography-p2-medium text-Black-500 
-                  ${getBorderClass()}
-               `,
-          placeholder: () => "typography-p2-medium text-Black-200",
-          input: () => "typography-p2-medium text-Black-500",
-          option: () => "typography-p2-medium",
-          singleValue: () => "typography-p2-medium text-Black-500",
+        styles={{
+          control: (baseStyles, state) => ({
+            ...baseStyles,
+            borderColor: state.isFocused ? "#d1d5dc" : "e5e7eb",
+            outline: "",
+            borderRadius: "10px",
+            fontFamily: "Inter",
+          }),
         }}
       />
 
       <ErrorMessage
         name={name}
         component="div"
-        className="text-red-500 text-sm"
+        className="text-red-500 text-sm border-gray-200"
       />
     </div>
   );

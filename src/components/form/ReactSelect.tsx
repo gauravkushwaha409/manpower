@@ -1,8 +1,8 @@
-import React from 'react';
-import Select, { components } from 'react-select';
-import { useField, useFormikContext } from 'formik';
-import { ErrorMessage } from 'formik';
-import { ChevronDown } from 'lucide-react';
+import React from "react";
+import Select, { components } from "react-select";
+import { useField, useFormikContext } from "formik";
+import { ErrorMessage } from "formik";
+import { ChevronDown, PlayIcon } from "lucide-react";
 
 export interface IOption {
   label: string;
@@ -27,12 +27,12 @@ const ReactSelect: React.FC<IInputReactSelect> = ({
   name,
   label,
   options,
-  className = '',
+  className = "",
   setSearch,
-  labelClassName = '',
+  labelClassName = "",
   required = false,
-  placeholder = 'Select an option',
-  wrapperClassName = '',
+  placeholder = "Select an option",
+  wrapperClassName = "",
   isDisabled = false,
 }) => {
   const [field, meta] = useField(name);
@@ -77,36 +77,36 @@ const ReactSelect: React.FC<IInputReactSelect> = ({
           styles={{
             control: (base) => ({
               ...base,
-              padding: '6px',
-              borderRadius: '0.5rem',
-              borderColor: meta.touched && meta.error ? '#EF4444' : '#E5E7EB',
-              boxShadow: 'none',
-              '&:hover': {
-                borderColor: '#3B82F6',
+              padding: "6px",
+              borderRadius: "0.5rem",
+              borderColor: meta.touched && meta.error ? "#EF4444" : "#E5E7EB",
+              boxShadow: "none",
+              "&:hover": {
+                borderColor: "#3B82F6",
               },
-              minHeight: '42px',
+              minHeight: "42px",
             }),
             placeholder: (base) => ({
               ...base,
-              fontSize: '0.875rem',
-              color: '#9CA3AF',
+              fontSize: "0.875rem",
+              color: "#9CA3AF",
             }),
             singleValue: (base) => ({
               ...base,
-              fontSize: '0.875rem',
-              color: '#111827',
+              fontSize: "0.875rem",
+              color: "#111827",
             }),
             option: (base) => ({
               ...base,
-              fontSize: '0.875rem',
+              fontSize: "0.875rem",
             }),
           }}
         />
 
         {/* Custom Dropdown Icon */}
-        {/* <div className="top-1/2 right-4 absolute -translate-y-1/2 pointer-events-none">
-               <PlayIcon className="rotate-90" />
-            </div> */}
+        <div className="top-1/2 right-4 absolute -translate-y-1/2 pointer-events-none">
+          <PlayIcon className="rotate-90" />
+        </div>
       </div>
 
       <ErrorMessage
