@@ -16,7 +16,7 @@ export default defineConfig({
     // visualizer({ open: true })
   ],
   server: {
-    port: 3000,
+    port: 5173,
   },
 
   resolve: {

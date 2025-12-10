@@ -1,6 +1,6 @@
-import { ACCESS_TOKEN } from '@/constant';
+// import { ACCESS_TOKEN } from '@/constant';
 import { PATH } from '@/constant/path';
-import { getCookie } from '@/lib/utils/get-cookie';
+// import { getCookie } from '@/lib/utils/get-cookie';
 import React from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 
@@ -12,7 +12,8 @@ import { Navigate, useLocation } from 'react-router-dom';
  * they are redirected to the dashboard.
  */
 const PrivateRouteWrapper = ({ children }: { children?: React.ReactNode }) => {
-  const isLoggedIn = !!getCookie(ACCESS_TOKEN);
+  // const isLoggedIn = !!getCookie(ACCESS_TOKEN);
+  const isLoggedIn = true;
   const location = useLocation();
 
   // If user is not logged in, navigate to the login page

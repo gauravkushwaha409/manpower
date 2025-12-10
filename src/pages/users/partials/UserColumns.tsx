@@ -4,6 +4,12 @@ import UserActions from "./UserActions";
 
 export const UserColumns: CustomColumnDef<IUser>[] = [
   {
+    header: "SN",
+    accessorKey: "sn",
+    search: false,
+    cell: ({ row }) => row.index + 1,
+  },
+  {
     header: "Name",
     accessorKey: "name",
   },

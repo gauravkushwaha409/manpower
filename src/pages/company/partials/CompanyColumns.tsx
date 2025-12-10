@@ -3,6 +3,12 @@ import { ICompany } from "../interface/ICompany";
 import CompanyActions from "./CompanyActions";
 
 export const CompanyColumns: CustomColumnDef<ICompany>[] = [
+   {
+    header: "SN",
+    accessorKey: "sn",
+    search: false,
+    cell: ({ row }) => row.index + 1,
+  },
   {
     header: "Recruitment Company",
     accessorKey: "recruitment_company",

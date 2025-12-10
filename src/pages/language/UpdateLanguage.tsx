@@ -4,12 +4,24 @@ import useUpdateLanguage from './hooks/useUpdateLanguage';
 import Breadcrumb from '@/components/reusable-component/Breadcrumb';
 import PageHeader from '@/common/PageHeader';
 import ExtendedForm from '@/components/extended-components/ExtendedForm';
+import { PATH } from '@/constant/path';
 
 const UpdateLanguage: React.FC = () => {
   const { formik } = useUpdateLanguage();
   return (
     <div className="flex flex-col gap-4">
-      <Breadcrumb Navone="Dashboard" Navtwo="Language" />
+      <Breadcrumb
+        items={[
+          { label: "Dashboard" },
+          {
+            label: "Langugae",
+            to: PATH.dashboard.language,
+          },
+          {
+            label: "Update Language",
+          },
+        ]}
+      />
       <PageHeader title="Update Language" showAddButton={false} />
       <ExtendedForm formik={formik}>
         <LanguageForm />

@@ -8,6 +8,9 @@ const AUTH_PATH = {
 
 const DASHBOARD_PATH = {
   dashboard: '/dashboard',
+  preApprovalDofe: '/preApprovalDofe',
+  addPreApprovalDofe: '/add-preApprovalDofe',
+  updatePreApprovalDofe: '/update-preApprovalDofe',
   language: '/language',
   addLanguage: '/add-language',
   updateLanguage: '/update-language',

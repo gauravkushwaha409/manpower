@@ -4,6 +4,12 @@ import LanguageActionButtons from "./LanguageAction";
 
 export const LanguageColumns: CustomColumnDef<ILanguage>[] = [
   {
+    header: "SN",
+    accessorKey: "sn",
+    search: false,
+    cell: ({ row }) => row.index + 1,
+  },
+  {
     header: "Language",
     accessorKey: "language",
   },

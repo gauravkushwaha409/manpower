@@ -3,6 +3,12 @@ import CandidateActions from "./CandidateActions";
 import { CandidateTable } from "../interface/ICandidate";
 
 export const CandidateColumns: CustomColumnDef<CandidateTable>[] = [
+   {
+    header: "SN",
+    accessorKey: "sn",
+    search: false,
+    cell: ({ row }) => row.index + 1,
+  },
   {
     header: "Candidate Name",
     accessorKey: "firstname",

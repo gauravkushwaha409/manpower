@@ -7,13 +7,25 @@ import { CandidateValidationSchemaType } from "./schema/candidateValidationSchem
 import BasicInformation from "./partials/BasicInformation";
 import SkillEducation from "./partials/SkillEducation";
 import Documents from "./partials/Documents";
+import { PATH } from "@/constant/path";
 
 const UpdateCandidate = () => {
   const [step, setStep] = useState<number>(0);
   const updateCandidate = useUpdateCandidate({ setStep, step });
   return (
     <div className="flex flex-col gap-4">
-      <Breadcrumb Navone="Dashboard" Navtwo="Company" />
+      <Breadcrumb
+        items={[
+          { label: "Dashboard" },
+          {
+            label: "Candidate",
+            to: PATH.dashboard.candidate,
+          },
+          {
+            label: "Update Candidate",
+          },
+        ]}
+      />
       <PageHeader title="Update Company" showAddButton={false} />
       <ExtendedMultiStepForm<CandidateValidationSchemaType>
         formik={updateCandidate.updateCandidateFormik}

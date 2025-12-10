@@ -10,7 +10,14 @@ import { UserTableData } from "./hooks/useGetUser";
 const User: React.FC = () => {
   return (
     <div className="bg-surface w-full min-h-full">
-      <Breadcrumb Navone="Dashboard" Navtwo="Users" />
+      <Breadcrumb
+        items={[
+          { label: "Dashboard" },
+          {
+            label: "User",
+          },
+        ]}
+      />
       <div>
         <div className="w-full h-fit">
           <PageHeader title="Users" routePath={PATH.dashboard.addUser} />

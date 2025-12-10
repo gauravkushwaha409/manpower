@@ -14,3 +14,8 @@ export interface ISearchSectionProps {
   search?: string;
   setSearch?: React.Dispatch<React.SetStateAction<string>>;
 }
+
+export interface IOption {
+  label: string;
+  value: string | number;
+}

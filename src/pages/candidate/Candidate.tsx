@@ -10,7 +10,14 @@ import { CandidateTableData } from "./hooks/useGetCandidate"
 const Candidate = () => {
   return (
      <div className="bg-surface w-full min-h-full">
-      <Breadcrumb Navone="Dashboard" Navtwo="Candidates" />
+      <Breadcrumb
+        items={[
+          { label: "Dashboard" },
+          {
+            label: "Candidates",
+          },
+        ]}
+      />
       <div>
         <div className="w-full h-fit">
           <PageHeader title="Candidates" routePath={PATH.dashboard.addCandidate} />

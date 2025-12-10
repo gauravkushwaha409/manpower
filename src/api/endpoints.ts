@@ -15,6 +15,13 @@ export const endpoints = {
     delete: '/organization-settings/delete',
     details: '/organization/detail/id/',
   },
+  preApprovalDofe: {
+    list: '/organization-settings/list',
+    create: '/organization-settings/create',
+    update: '/organization-settings/update',
+    delete: '/organization-settings/delete',
+    details: '/organization/detail/id/',
+  },
 };
 
 export const BASE_API_URL =

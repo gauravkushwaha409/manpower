@@ -3,18 +3,25 @@ import Table from "@/components/Table";
 import PageHeader from "@/common/PageHeader";
 import Breadcrumb from "@/components/reusable-component/Breadcrumb";
 import { PATH } from "@/constant/path";
-import { PreApplicationTableData } from "./hooks/useGetPreApplication";
 import PreApplicationFilterList from "./partials/PreApplicationFilterList";
 import { PreApplicationColumns } from "./partials/PreApplicationColumns";
+import { PreApplicationTableData } from "./hooks/useGetPreApplication";
 
 const PreApplication: React.FC = () => {
   return (
     <div className="bg-surface w-full min-h-full">
-      <Breadcrumb Navone="Dashboard" Navtwo="PreApplication" />
+      <Breadcrumb
+        items={[
+          { label: "Dashboard" },
+          {
+            label: "Pre Application",
+          },
+        ]}
+      />
       <div>
         <div className="w-full h-fit">
           <PageHeader
-            title="PreApplication"
+            title="Pre Application"
             routePath={PATH.dashboard.addPreAppliction}
           />
         </div>

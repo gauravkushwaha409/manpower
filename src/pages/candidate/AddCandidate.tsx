@@ -7,18 +7,32 @@ import ExtendedMultiStepForm from "@/components/extended-components/ExtendedMult
 import BasicInformation from "./partials/BasicInformation";
 import SkillEducation from "./partials/SkillEducation";
 import Documents from "./partials/Documents";
+import { PATH } from "@/constant/path";
 
 const AddCandidate = () => {
   const [step, setStep] = useState<number>(0);
   const createCandidate = useCreateCandidate({ step, setStep });
   return (
     <div className="flex flex-col gap-4">
-      <Breadcrumb Navone="Dashboard" Navtwo="Candidate" />
+      <Breadcrumb
+        items={[
+          { label: "Dashboard" },
+          {
+            label: "Candidate",
+            to: PATH.dashboard.candidate,
+          },
+          {
+            label: "Add Candidate",
+          },
+        ]}
+      />
       <PageHeader title="Create Candidate" showAddButton={false} />
       <ExtendedMultiStepForm<CandidateValidationSchemaType>
         formik={createCandidate.formik}
         currentStep={step}
-        onStepChange={(step) => { setStep(step) }}
+        onStepChange={(step) => {
+          setStep(step);
+        }}
         steps={[
           {
             content: <BasicInformation />,
@@ -28,17 +42,15 @@ const AddCandidate = () => {
           {
             content: <SkillEducation />,
             id: "skill_and_education",
-            title: "Skill and Education"
+            title: "Skill and Education",
           },
           {
             content: <Documents />,
             id: "documents",
-            title: "Documents"
+            title: "Documents",
           },
         ]}
-
       />
-
     </div>
   );
 };

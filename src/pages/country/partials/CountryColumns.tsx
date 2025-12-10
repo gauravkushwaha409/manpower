@@ -4,6 +4,12 @@ import CountryActions from "./CountryActions";
 
 export const CountryColumns: CustomColumnDef<ICountry>[] = [
   {
+    header: "SN",
+    accessorKey: "sn",
+    search: false,
+    cell: ({ row }) => row.index + 1,
+  },
+  {
     header: "Country",
     accessorKey: "country",
   },

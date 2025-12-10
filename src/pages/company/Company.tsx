@@ -10,7 +10,14 @@ import { companyTableData } from "@/data/company";
 const Company: React.FC = () => {
   return (
     <div className="bg-surface w-full min-h-full">
-      <Breadcrumb Navone="Dashboard" Navtwo="Company" />
+      <Breadcrumb
+        items={[
+          { label: "Dashboard" },
+          {
+            label: "Company",
+          },
+        ]}
+      />
       <div>
         <div className="w-full h-fit">
           <PageHeader title="Company" routePath={PATH.dashboard.addCompany} />

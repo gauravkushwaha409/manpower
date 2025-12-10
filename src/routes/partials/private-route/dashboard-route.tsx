@@ -69,6 +69,9 @@ import Candidate from '@/pages/candidate/Candidate';
 import ChangePassword from '@/pages/changePassword/ChangePassword';
 import Notification from '@/pages/notification/Notification';
 import Dashboard from '@/pages/dashboard/Dashboard';
+import PreApprovalDofe from '@/pages/preApprovalDofe/PreApprovalDofe';
+import AddPreApprovalDofe from '@/pages/preApprovalDofe/AddPreApprovalDofe';
+import UpdatePreApprovalDofe from '@/pages/preApprovalDofe/UpdatePreApprovalDofe';
 
 export const dashboardRoutes = [
   {
@@ -96,6 +99,20 @@ export const dashboardRoutes = [
   {
     path: PATH.dashboard.updateLanguage,
     element: <UpdateLanguage />,
+  },
+
+  // language
+  {
+    path: PATH.dashboard.preApprovalDofe,
+    element: <PreApprovalDofe />,
+  },
+  {
+    path: PATH.dashboard.addPreApprovalDofe,
+    element: <AddPreApprovalDofe />,
+  },
+  {
+    path: PATH.dashboard.updatePreApprovalDofe,
+    element: <UpdatePreApprovalDofe />,
   },
 
   // Candidate
