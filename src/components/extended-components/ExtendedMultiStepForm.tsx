@@ -53,10 +53,6 @@ export default function ExtendedMultiStepForm<T extends FormikValues>({
 
   const handleNext = async () => {
     formik.handleSubmit();
-    // const validation = await formik.validateForm();
-    // if (!isLastStep && Object.keys(validation).length === 0) {
-    //     onStepChange(currentStep + 1);
-    // }
     if (!isLastStep) {
       onStepChange(currentStep + 1);
     }

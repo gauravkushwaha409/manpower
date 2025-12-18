@@ -1,11 +1,11 @@
-import React from 'react';
-import AddJobVacancyModal from './modal/AddJobVacancyModal';
-import useJobVacancy from './hooks/useJobVacancy';
-import useCreateVacancies from './hooks/useCreateVacancies';
-import useUpdateVacancies from './hooks/useUpdateVacancies';
-import UpdateJobVacancyModal from './modal/UpdateJobVacancyModal';
-import DeleteModal from '@/components/DeleteModal';
-import PageHeader from '@/common/PageHeader';
+import React from "react";
+import AddJobVacancyModal from "./modal/AddJobVacancyModal";
+import useJobVacancy from "./hooks/useJobVacancy";
+import useCreateVacancies from "./hooks/useCreateVacancies";
+import useUpdateVacancies from "./hooks/useUpdateVacancies";
+import UpdateJobVacancyModal from "./modal/UpdateJobVacancyModal";
+import DeleteModal from "@/components/DeleteModal";
+import PageHeader from "@/common/PageHeader";
 
 const JobVacancies: React.FC = () => {
   const {
@@ -35,7 +35,7 @@ const JobVacancies: React.FC = () => {
           <PageHeader
             title="Job Vacancies"
             handleAddClick={handleOpenAddModal}
-            routePath="/"
+            routePath="#"
           />
         </div>
 
@@ -47,7 +47,7 @@ const JobVacancies: React.FC = () => {
         <AddJobVacancyModal
           formik={createVacancyFormik}
           handleCloseModal={handleCloseAddModal}
-          isOpen={true}
+          isOpen={addJobVacancy}
           setStep={setStep}
           step={step}
         />

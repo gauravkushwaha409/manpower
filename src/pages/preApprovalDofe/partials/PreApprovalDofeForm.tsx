@@ -1,10 +1,9 @@
-import FormInputRadio from "@/components/form/FormInputRadio";
 import InputDate from "@/components/form/FormInputDate";
 import { InputSearchSelect } from "@/components/form/InputSelect";
 import InputText from "@/components/form/FormInputText";
 import FormInputPdf from "@/components/form/FormInputPdf";
 import { CircleX, FileIcon, Plus } from "lucide-react";
-import TextEditor from "@/components/form/TextEditor";
+import FormSwitch from "@/components/form/FormSwitch";
 
 export const PreApprovalFormStep1 = () => {
   return (
@@ -25,47 +24,27 @@ export const PreApprovalFormStep1 = () => {
             { label: "South Korea", value: "south-korea" },
             { label: "Singapore", value: "singapore" },
           ]}
-          placeholder="Select Country"
         />
         <InputSearchSelect
           label="Recuirtment Company"
           name="company"
           options={[]}
-          placeholder="Select Recuirtment Company"
         />
         <InputText
           label="Pre Approval Certifcate Number"
           name="pre_approval_certificate_number"
-          placeholder="Pre Approval Certificate Number"
         />
         <FormInputPdf
           label="Pre Approval Certifcate Pdf"
           name="pre_approval_certificate_pdf"
-          placeholder="Enter Pre Approval Certificate PDF"
         />
       </div>
 
       <div className="col-span-2 grid grid-cols-4 gap-6">
-        <InputDate
-          label="Pre Approval Date"
-          name="preApprovalDate"
-          placeholder="Enter your pre approval date"
-        />
-        <InputDate
-          label="Pre Approval Validity"
-          name="preApprovalValidity"
-          placeholder="Pre Approval validity"
-        />
-        <InputText
-          label="Pre LT number"
-          name="ltNumber"
-          placeholder="Pre LT number"
-        />
-        <InputText
-          label="Chalani Number"
-          name="chalanNumber"
-          placeholder="Chalani Number"
-        />
+        <InputDate label="Pre Approval Date" name="preApprovalDate" />
+        <InputDate label="Pre Approval Validity" name="preApprovalValidity" />
+        <InputText label="Pre LT number" name="ltNumber" />
+        <InputText label="Chalani Number" name="chalanNumber" />
       </div>
 
       <div className="grid grid-cols-2 gap-6">
@@ -84,7 +63,6 @@ export const PreApprovalFormStep1 = () => {
             { label: "Quota Approval", value: "quota approval" },
             { label: "Gaurantee Letter", value: "gaurantee letter" },
           ]}
-          placeholder="Select Recuirtment Company"
         />
         <FormInputPdf
           label="Document"
@@ -122,123 +100,26 @@ export const PreApprovalFormStep2 = () => {
   return (
     <div className="space-y-6">
       <p>Job Details</p>
-      <div className="grid grid-cols-4 gap-6">
-        <InputText
+      <div className="grid grid-cols-3 gap-6">
+        <InputSearchSelect
           label="Job Title"
           name="job_title"
-          placeholder="Enter your Job Title"
+          options={[
+            { label: "QA", value: "qa" },
+            { label: "BA", value: "ba" },
+          ]}
         />
         <div className="grid grid-cols-2 gap-x-4">
-          <InputText
-            label="Male"
-            name="no_of_male"
-            placeholder="Enter your no. of male"
-          />
-          <InputText
-            label="Female"
-            name="no_of_female"
-            placeholder="Enter your no. of female"
-          />
+          <InputText label="Male" name="no_of_male" />
+          <InputText label="Female" name="no_of_female" />
         </div>
         <div className="grid grid-cols-2 gap-x-4">
-          <InputText
-            label="Basic Salary (In)"
-            name="basic_salary"
-            placeholder="Enter your basic salary"
-          />
+          <InputText label="Basic Salary (AED)" name="basic_salary_aed" />
+          <InputText label="Basic Salary (NRP)" name="basic_salary_nrp" />
         </div>
-
-        <div className="col-span-4">
-          <TextEditor label="Job Description" name="job_description" />
-        </div>
-      </div>
-      <div className="grid grid-cols-4 gap-6">
-        <InputSearchSelect
-          label="Food"
-          name="food"
-          options={[
-            {
-              label: "Yes",
-              value: "Yes",
-            },
-            { label: "No", value: "No" },
-          ]}
-          placeholder=""
-        />
-
-        <FormInputRadio
-          options={[
-            { label: "Yes", value: "true" },
-            { label: "No", value: "false" },
-          ]}
-          label="Accommodation"
-          name="accommodation"
-          containerClassName="flex-row items-center "
-          optionsWrapperClassName="flex-row"
-        />
-        <FormInputRadio
-          options={[
-            { label: "Yes", value: "true" },
-            { label: "No", value: "false" },
-          ]}
-          label="Transportation"
-          name="transportation"
-          containerClassName="flex-row items-center "
-          optionsWrapperClassName="flex-row"
-        />
-        <FormInputRadio
-          options={[
-            { label: "Yes", value: "true" },
-            { label: "No", value: "false" },
-          ]}
-          label="Free Visa"
-          name="free_visa"
-          containerClassName="flex-row items-center "
-          optionsWrapperClassName="flex-row"
-        />
       </div>
 
       <div className="grid grid-cols-4 gap-6">
-        <FormInputRadio
-          options={[
-            { label: "Yes", value: "true" },
-            { label: "No", value: "false" },
-          ]}
-          label="Free Ticket"
-          name="free_ticket"
-          containerClassName="flex-row items-center "
-          optionsWrapperClassName="flex-row"
-        />
-        <FormInputRadio
-          options={[
-            { label: "Yes", value: "true" },
-            { label: "No", value: "false" },
-          ]}
-          label="Over Time"
-          name="overtime"
-          containerClassName="flex-row items-center "
-          optionsWrapperClassName="flex-row"
-        />
-        <FormInputRadio
-          options={[
-            { label: "Yes", value: "true" },
-            { label: "No", value: "false" },
-          ]}
-          label="Foreign Emp."
-          name="foreign_employment"
-          containerClassName="flex-row items-center"
-          optionsWrapperClassName="flex-row"
-        />
-        {/* <FormInputRadio
-          options={[
-            { label: "Yes", value: "true" },
-            { label: "No", value: "false" },
-          ]}
-          label="Sync"
-          name="sync"
-          containerClassName="flex-row items-center "
-          optionsWrapperClassName="flex-row"
-        /> */}
         <InputText label="Working Hours" name="working_hours" placeholder="" />
         <InputText label="Working Days" name="working_days" placeholder="" />
         <InputText
@@ -246,26 +127,11 @@ export const PreApprovalFormStep2 = () => {
           name="contract_period"
           placeholder=""
         />
-        <InputText
-          label="Working City"
-          name="working_city"
-          placeholder="working city"
-        />
-        <FormInputRadio
-          options={[
-            { label: "Yes", value: "true" },
-            { label: "No", value: "false" },
-          ]}
-          label="Experience"
-          name="isExperienced"
-          containerClassName="flex-row items-center "
-          optionsWrapperClassName="flex-row"
-        />
-        <InputText
-          label="If yes (Years)"
-          name="experience"
-          placeholder="Enter your Chalani Number"
-        />
+        <InputText label="Working City" name="working_city" />
+        <div className="grid grid-cols-2">
+          <FormSwitch title="Experience" name="experience" />
+          <InputText label="In (Years)" name="experience" />
+        </div>
         <InputSearchSelect
           label="Academic Qualification"
           name="academic_qualification"
@@ -280,6 +146,15 @@ export const PreApprovalFormStep2 = () => {
           ]}
           placeholder="Select Recuirtment Company"
         />
+      </div>
+
+      <div className="grid grid-cols-6 gap-6">
+        <FormSwitch title="Food" name="food" />
+        <FormSwitch title="Accommodation" name="accommodation" />
+        <FormSwitch title="Transportation" name="transportation" />
+        <FormSwitch title="Free Visa" name="free_visa" />
+        <FormSwitch title="Free Ticket" name="free_visa_ticket" />
+        <FormSwitch title="Over Time" name="over_time" />
       </div>
     </div>
   );

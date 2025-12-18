@@ -39,13 +39,13 @@
 
 /* Font Style Name */
 @utility typography-input-label {
-  @apply text-sm font-normal font-[Inter] leading-[150%] text-gray-800;
+  @apply text-[12px] font-normal font-[Inter] leading-[150%] text-gray-800;
 }
 @utility typography-input-placeholder {
-  @apply placeholder:text-[12px] placeholder:font-[Inter] placeholder:leading-[150%] placeholder:text-[#9ca3af] placeholder:font-normal;
+  @apply placeholder:text-[11px] placeholder:font-[Inter] placeholder:leading-[150%] placeholder:text-[#9ca3af] placeholder:font-normal;
 }
 @utility typography-input-value {
-  @apply text-sm font-medium font-[Inter] leading-[150%] text-gray-700;
+  @apply text-[11px] font-medium font-[Inter] leading-[150%] text-gray-700;
 }
 @utility typography-caption-c2 {
   @apply font-[Inter] font-normal text-[0.625rem] leading-[150%];
