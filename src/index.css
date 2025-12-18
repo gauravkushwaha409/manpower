@@ -1,7 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Mona+Sans:ital,wght@0,200..900;1,200..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
-@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Mona+Sans:ital,wght@0,200..900;1,200..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-
 @import "tailwindcss";
 
 @import "tw-animate-css";
@@ -53,109 +51,57 @@
   @apply font-[Inter] font-normal text-[0.625rem] leading-[150%];
 }
 
+@utility typography-h3 {
+  @apply font-[Inter] font-semibold text-[2rem] tracking-normal leading-8;
+}
+
+@utility typography-button-text {
+  @apply text-white font-[Inter] text-[12px] font-normal leading-4.5;
+}
+@utility typography-p1-regular {
+  @apply font-[Inter] font-normal text-[1rem] leading-[150%] tracking-normal;
+}
+@utility typography-p2-regular {
+  @apply font-[Inter] font-semibold text-sm leading-[150%] tracking-[0];
+}
+
+@utility typography-heading-poppins-medium {
+  @apply font-[Inter] text-[#172b4d] text-[1.2rem] font-semibold leading-[100%];
+}
+
+@utility typography-p1-medium {
+  @apply font-[Inter] font-medium text-base leading-[150%];
+}
+
+@utility typography-p2-medium {
+  @apply font-[Inter] font-medium text-sm leading-[150%] tracking-[0];
+}
+
+@utility typography-p1-semibold {
+  @apply font-[Inter] font-semibold text-base leading-[150%] tracking-[0];
+}
+
+@utility typography-p2-semibold {
+  @apply font-[Inter] font-semibold text-sm leading-[150%];
+}
+
+@utility typography-caption-c1 {
+  @apply font-[Inter] font-normal text-xs leading-[150%] tracking-[0];
+}
+
+@utility typography-caption-c3 {
+  @apply font-[Inter] font-normal text-[0.5rem] leading-[150%];
+}
+
+@utility typography-caption-c1-semibold {
+  @apply font-[Inter] font-semibold text-xs leading-[150%] tracking-[0];
+}
+
+@utility typography-poppins-medium-c1 {
+  @apply font-[Inter] font-medium text-xs leading-[130%];
+}
+
 @layer utilities {
-  .typography-button-text {
-    color: white;
-    text-align: center;
-    font-family: "Inter", sans-serif;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 150%;
-  }
-
-  .typography-h3 {
-    font-family: "Inter", sans-serif;
-    font-weight: 600;
-    font-size: 2rem;
-    letter-spacing: 0;
-    line-height: 100%;
-  }
-  .typography-heading-poppins-medium {
-    font-family: "Inter", sans-serif;
-    color: #172b4d;
-    font-size: 1.2rem;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 100%;
-  }
-
-  .typography-p1-regular {
-    font-family: "Inter", sans-serif;
-    font-weight: 400;
-    font-size: 1rem;
-    line-height: 150%;
-    letter-spacing: 0%;
-  }
-  .typography-p2-regular {
-    font-family: "Inter", sans-serif;
-    font-weight: 600;
-    font-size: 0.875rem;
-    line-height: 150%;
-    letter-spacing: 0%;
-  }
-
-  .typography-p1-medium {
-    font-family: "Inter", sans-serif;
-    font-weight: 500;
-    font-size: 1rem;
-    line-height: 150%;
-  }
-
-  .typography-p2-medium {
-    font-family: "Inter", sans-serif;
-    font-weight: 500;
-    font-size: 0.875rem;
-    line-height: 150%;
-    letter-spacing: 0%;
-  }
-  .typography-p1-semibold {
-    font-family: "Inter", sans-serif;
-    font-weight: 600;
-    font-size: 1rem;
-    line-height: 150%;
-    letter-spacing: 0%;
-  }
-
-  .typography-p2-semibold {
-    font-family: "Inter", sans-serif;
-    font-size: 0.875rem;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 150%;
-  }
-
-  .typography-caption-c1 {
-    font-family: "Inter", sans-serif;
-    font-weight: 400;
-    font-size: 0.75rem;
-    line-height: 150%;
-    letter-spacing: 0%;
-  }
-  .typography-caption-c3 {
-    font-family: "Inter", sans-serif;
-    font-size: 0.5rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 150%;
-  }
-
-  .typography-caption-c1-semibold {
-    font-family: "Inter", sans-serif;
-    font-weight: 600;
-    font-size: 0.75rem;
-    line-height: 150%;
-    letter-spacing: 0%;
-  }
-
-  .typography-poppins-medium-c1 {
-    font-family: Poppins;
-    font-size: 0.75rem;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 130%;
-  }
-
   .border-black-400 {
     border: 0.25px;
     border-style: solid;
