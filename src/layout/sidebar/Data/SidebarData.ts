@@ -35,7 +35,7 @@ export const mainMenuItems = [
     icon: CheckCheck,
     label: "Pre Approval Dofe",
     active: false,
-    link: PATH.dashboard.preApprovalDofe,
+    link: PATH.preApprovalDofe.index,
   },
   {
     id: "company",

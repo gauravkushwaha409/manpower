@@ -2,17 +2,16 @@ import React, { useState } from "react";
 import Breadcrumb from "@/components/reusable-component/Breadcrumb";
 import PageHeader from "@/common/PageHeader";
 import { PATH } from "@/constant/path";
+import ExtendedMultiStepForm from "@/components/extended-components/ExtendedMultiStepForm";
+import useUpdatePreApprovalDofe from "./hooks/useUpdatePreApprovalDofe";
 import {
   PreApprovalFormStep1,
   PreApprovalFormStep2,
-} from "./partials/PreApprovalDofeForm";
-import useCreatePreApprovalDofe from "./hooks/useCreatePreApprovalDofe";
-import ExtendedMultiStepForm from "@/components/extended-components/ExtendedMultiStepForm";
+} from "../../partials/PreApprovalDofeForm";
 
-const AddPreApprovalDofe: React.FC = () => {
-  const { formik } = useCreatePreApprovalDofe();
+const UpdatePreApprovalDofe: React.FC = () => {
   const [step, setStep] = useState(0);
-
+  const update = useUpdatePreApprovalDofe();
   return (
     <div className="flex flex-col gap-4">
       <Breadcrumb
@@ -20,16 +19,16 @@ const AddPreApprovalDofe: React.FC = () => {
           { label: "Dashboard", to: PATH.dashboard.dashboard },
           {
             label: "Pre Approval Dofe",
-            to: PATH.dashboard.preApprovalDofe,
+            to: PATH.preApprovalDofe.index,
           },
           {
-            label: "Add Pre Approval Dofe",
+            label: "Update",
           },
         ]}
       />
-      <PageHeader title="Add Pre Approval Dofe" showAddButton={false} />
+      <PageHeader title="Update Pre Approval Dofe" showAddButton={false} />
       <ExtendedMultiStepForm
-        formik={formik}
+        formik={update.formik}
         currentStep={step}
         onStepChange={() => setStep(step + 1)}
         steps={[
@@ -49,4 +48,4 @@ const AddPreApprovalDofe: React.FC = () => {
   );
 };
 
-export default AddPreApprovalDofe;
+export default UpdatePreApprovalDofe;

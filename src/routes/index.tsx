@@ -1,8 +1,9 @@
-import Layout from '@/layout';
-import PrivateRouteWrapper from './private-route-wrapper';
-import PublicRouteWrapper from './public-route-wrapper';
-import { dashboardRoutes } from './partials/private-route/dashboard-route';
-import { publicRoutes } from './partials/public-route';
+import Layout from "@/layout";
+import PrivateRouteWrapper from "./private-route-wrapper";
+import PublicRouteWrapper from "./public-route-wrapper";
+import { dashboardRoutes } from "./partials/private-route/dashboard-route";
+import { publicRoutes } from "./partials/public-route";
+import { preApprovalDofeRoutes } from "./partials/private-route/preApprovalDofeRoutes";
 
 /**
  * MainRoutes defines the routing configuration for the application.
@@ -12,13 +13,13 @@ import { publicRoutes } from './partials/public-route';
 const MainRoutes = [
   {
     // Root path "/" uses PrivateRouteWrapper to protect dashboard and private pages
-    path: '/',
+    path: "/",
     element: (
       <PrivateRouteWrapper>
         <Layout />
       </PrivateRouteWrapper>
     ),
-    children: [...dashboardRoutes],
+    children: [...dashboardRoutes, ...preApprovalDofeRoutes],
   },
 
   {

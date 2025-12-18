@@ -6,9 +6,7 @@ import PreApprovalDofeFilterList from "./partials/PreApprovalDofeFilterList";
 import { PreApprovalDofeColumns } from "./partials/PreApprovalDofeColumns";
 import { PreApprovalDofeTableData } from "./hooks/useGetPreApprovalDofe";
 
-
 const PreApprovalDofe = () => {
-
   return (
     <div className="bg-surface w-full min-h-full">
       <Breadcrumb
@@ -54,7 +52,7 @@ const PreApprovalDofe = () => {
         <div className="w-full h-fit">
           <PageHeader
             title="Pre Approval DOFE"
-            routePath={PATH.dashboard.addPreApprovalDofe}
+            routePath={PATH.preApprovalDofe.create}
           />
         </div>
         <div className="py-5">
