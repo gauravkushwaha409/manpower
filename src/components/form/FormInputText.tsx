@@ -30,7 +30,7 @@ const FormInputText: React.FC<IInputText> = ({
   return (
     <div className={`flex flex-col gap-2`}>
       <label
-        className={`typography-label-text text-gray-800 ${labelClassName}`}
+        className={`typography-input-label ${labelClassName}`}
         htmlFor={name}
       >
         {label}
@@ -38,7 +38,7 @@ const FormInputText: React.FC<IInputText> = ({
       <input
         id={name}
         type="text"
-        className={`w-full px-4 py-2 typography-label-text text-gray-900 rounded-[10px] border focus:outline-gray-500 ${className} ${getBorderClass()}`}
+        className={`w-full px-4 py-2 typography-input-value typography-input-placeholder rounded-[10px] border focus:outline-gray-500 ${className} ${getBorderClass()}`}
         {...field}
         {...props}
       />

@@ -51,17 +51,11 @@ export const mainMenuItems = [
     active: false,
     link: PATH.dashboard.candidate,
   },
+
   {
-    id: "industry",
-    icon: LiaIndustrySolid,
-    label: "Industry",
-    active: false,
-    link: PATH.dashboard.industry,
-  },
-  {
-    id: "pre-application",
+    id: "enquiry",
     icon: FaWpforms,
-    label: "Pre Application",
+    label: "Enquiry",
     active: false,
     link: PATH.dashboard.preApplication,
   },
@@ -204,6 +198,47 @@ export const mainMenuItems = [
         label: "Organization Settings",
         icon: LuSettings2,
         // link: PATH.settings.organizationSettings.list,
+      },
+      {
+        id: "static-seo",
+        label: "Notice From DOFE",
+        icon: TbSeo,
+        link: PATH.settings.seo,
+      },
+      {
+        id: "license-setting",
+        label: "License Setting",
+        icon: TbSeo,
+        link: PATH.settings.seo,
+      },
+      {
+        id: "job-Setting",
+        label: "Job Setting",
+        icon: IoListOutline,
+        link: PATH.jobProcess.jobCategories,
+        children: [
+          {
+            id: "industry",
+            icon: LiaIndustrySolid,
+            label: "Industry",
+            active: false,
+            link: PATH.dashboard.industry,
+          },
+          {
+            id: "Category",
+            icon: LiaIndustrySolid,
+            label: "Category",
+            active: false,
+            link: PATH.dashboard.industry,
+          },
+          {
+            id: "sub-category",
+            icon: LiaIndustrySolid,
+            label: "Sub Category",
+            active: false,
+            link: PATH.dashboard.industry,
+          },
+        ],
       },
       {
         id: "static-seo",

@@ -1,10 +1,10 @@
-import { EditorContent, useEditor, Editor } from '@tiptap/react';
-import Color from '@tiptap/extension-color';
-import StarterKit from '@tiptap/starter-kit';
-import React, { useEffect, useState } from 'react';
-import { TextStyle } from '@tiptap/extension-text-style';
-import Underline from '@tiptap/extension-underline';
-import { useField } from 'formik';
+import { EditorContent, useEditor, Editor } from "@tiptap/react";
+import Color from "@tiptap/extension-color";
+import StarterKit from "@tiptap/starter-kit";
+import React, { useEffect, useState } from "react";
+import { TextStyle } from "@tiptap/extension-text-style";
+import Underline from "@tiptap/extension-underline";
+import { useField } from "formik";
 import {
   Bold,
   Italic,
@@ -13,7 +13,7 @@ import {
   Redo,
   UnderlineIcon,
   Undo,
-} from 'lucide-react';
+} from "lucide-react";
 
 // Define `content` type explicitly if it is a string (can be HTML or markdown)
 
@@ -37,21 +37,21 @@ const MenuBar: React.FC<MenuBarProps> = ({ editor }) => {
 
   return (
     <div className="control-group bg-[#E3E8EF] px-5 py-2 rounded-t-[8px]">
-      <div className="button-group flex items-center gap-5">
+      <div className="button-group h-10 flex items-center gap-5">
         {/* undo icon */}
         <button
-          className={editor.isActive('undo') ? 'is-active py-2 px-2' : ''}
+          className={editor.isActive("undo") ? "is-active py-2 px-2" : ""}
           onClick={() => editor.chain().focus().undo().run()}
         >
-          <Undo />
+          <Undo size={14} />
         </button>
 
         {/* Redo Icon */}
         <button
-          className={editor.isActive('redo') ? 'is-active px-2 py-2' : ''}
+          className={editor.isActive("redo") ? "is-active px-2 py-2" : ""}
           onClick={() => editor.chain().focus().redo().run()}
         >
-          <Redo />
+          <Redo size={14} />
         </button>
 
         {/* Normal text */}
@@ -61,7 +61,7 @@ const MenuBar: React.FC<MenuBarProps> = ({ editor }) => {
           }}
           className="relative flex items-center gap-2 font-button-text"
         >
-          <span className="text-oc-gray-9 typography-paragraph-p2-regular">
+          <span className="text-oc-gray-9 typography-label-text text-gray-800">
             Normal Text
           </span>
 
@@ -109,43 +109,43 @@ const MenuBar: React.FC<MenuBarProps> = ({ editor }) => {
         {/* Bold */}
         <button
           onClick={() => editor.chain().focus().toggleBold().run()}
-          className={editor.isActive('bold') ? 'is-active px-2 py-2' : ''}
+          className={editor.isActive("bold") ? "is-active px-2 py-2" : ""}
         >
-          <Bold />
+          <Bold size={14} />
         </button>
 
         {/* Italic */}
         <button
           onClick={() => editor.chain().focus().toggleItalic().run()}
-          className={editor.isActive('italic') ? 'is-active px-2 py-2' : ''}
+          className={editor.isActive("italic") ? "is-active px-2 py-2" : ""}
         >
-          <Italic />
+          <Italic size={14} />
         </button>
 
         {/* Underline */}
         <button
           onClick={toggleUnderline}
-          className={editor.isActive('underline') ? 'is-active px-2 py-2' : ''}
+          className={editor.isActive("underline") ? "is-active px-2 py-2" : ""}
         >
-          <UnderlineIcon />
+          <UnderlineIcon size={14} />
         </button>
 
         {/* Unordered List */}
         <button
           onClick={() => editor.chain().focus().toggleBulletList().run()}
-          className={editor.isActive('bulletList') ? 'is-active px-2 py-2' : ''}
+          className={editor.isActive("bulletList") ? "is-active px-2 py-2" : ""}
         >
-          <List />
+          <List size={14} />
         </button>
 
         {/* Ordered List */}
         <button
           onClick={() => editor.chain().focus().toggleOrderedList().run()}
           className={
-            editor.isActive('orderedList') ? 'is-active px-2 py-2' : ''
+            editor.isActive("orderedList") ? "is-active px-2 py-2" : ""
           }
         >
-          <ListOrdered />
+          <ListOrdered size={14} />
         </button>
       </div>
     </div>
@@ -159,7 +159,7 @@ const TextEditor: React.FC<TextEditorProps> = ({ name, label }) => {
     content: field?.value,
     editorProps: {
       attributes: {
-        spellcheck: 'false',
+        spellcheck: "false",
       },
     },
     onUpdate: ({ editor }: { editor: Editor }) => {
@@ -168,16 +168,13 @@ const TextEditor: React.FC<TextEditorProps> = ({ name, label }) => {
   });
   useEffect(() => {
     if (editor && field.value !== editor.getHTML()) {
-      editor.commands.setContent(field.value || '', { emitUpdate: false }); // false = don't emit update event
+      editor.commands.setContent(field.value || "", { emitUpdate: false }); // false = don't emit update event
     }
   }, [field.value, editor]);
   return (
     <>
       <div className="flex flex-col gap-2.5 rounded-lg">
-        <label
-          htmlFor={name}
-          className="text-primary-900 typography-regular-small"
-        >
+        <label htmlFor={name} className="typography-input-label">
           {label}
         </label>
         <div>

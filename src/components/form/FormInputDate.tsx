@@ -41,7 +41,7 @@ const FormInputDate: React.FC<InputDateProps> = ({
 
   return (
     <div className="w-full flex flex-col gap-2">
-      <label className="block mb-1 typography-label-text">
+      <label className="block mb-1 typography-input-label">
         {label}
         {required && <span className="text-red-600">*</span>}
       </label>
@@ -51,7 +51,7 @@ const FormInputDate: React.FC<InputDateProps> = ({
         onBlur={field.onBlur}
         placeholderText={placeholder}
         dateFormat="yyyy-MM-dd"
-        className={`w-full px-4 py-2 border rounded-[10px] typography-label-text typography-placeholder ${getBorderClass()}`}
+        className={`w-full px-4 py-2 border rounded-[10px] typography-input-value typography-input-placeholder ${getBorderClass()}`}
         wrapperClassName={`w-full`}
       />
       <ErrorMessage

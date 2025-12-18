@@ -44,12 +44,12 @@ const FormInputRadio: React.FC<IProps> = ({
   return (
     <div className={cn(`flex flex-col gap-2`, containerClassName)}>
       {label && (
-        <label className={`typography-label-text ${labelClassName}`}>
+        <label className={`typography-input-label w-24 ${labelClassName}`}>
           {label}
         </label>
       )}
 
-      <div className={cn(`flex flex-col gap-3`, optionsWrapperClassName)}>
+      <div className={cn(`ml-4 flex flex-col gap-3`, optionsWrapperClassName)}>
         {options.map((option) => (
           <div key={option.value} className="flex items-center gap-3">
             <input
@@ -63,7 +63,7 @@ const FormInputRadio: React.FC<IProps> = ({
             />
             <label
               htmlFor={`${name}-${option.value}`}
-              className={`typography-label-text ${optionLabelClassName}`}
+              className={`typography-input-value ${optionLabelClassName}`}
             >
               {option.label}
             </label>

@@ -49,7 +49,7 @@ const FormInputPdf: React.FC<IPdfUpload> = ({
     <div className="flex flex-col gap-2">
       {/* Label */}
       <label
-        className={`typography-label-text ${labelClassName}`}
+        className={`typography-input-label ${labelClassName}`}
         htmlFor={name}
       >
         {label}
@@ -63,7 +63,7 @@ const FormInputPdf: React.FC<IPdfUpload> = ({
       >
         {/* Upload placeholder */}
         {!uploadedFile && (
-          <p className="text-gray-600 text-sm">
+          <p className="text-[12px] font-[Inter] leading-[150%] text-[#9ca3af] font-normal">
             Click to upload PDF (max 10MB)
           </p>
         )}

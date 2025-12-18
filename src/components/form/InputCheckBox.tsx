@@ -40,7 +40,7 @@ const InputCheckbox: React.FC<ICheckbox> = ({
                {...props}
             />
             <label
-               className={`typography-p2-regular text-Black-500 ${labelClassName}`}
+               className={`typography-input-label ${labelClassName}`}
                htmlFor={name}
             >
                {label}

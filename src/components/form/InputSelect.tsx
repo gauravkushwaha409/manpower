@@ -39,7 +39,7 @@ export const InputSearchSelect: React.FC<IReactSelect> = ({
   return (
     <div className={`flex flex-col gap-2 ${className}`}>
       <label
-        className={`typography-label-text text-gray-800 ${labelClassName}`}
+        className={`typography-input-label ${labelClassName}`}
         htmlFor={name}
       >
         {label}
@@ -63,10 +63,21 @@ export const InputSearchSelect: React.FC<IReactSelect> = ({
             borderRadius: "10px",
             fontFamily: "Inter",
             outline: "none",
+            fontSize: "14px",
+            color: "#1e2939",
+            fontWeight: "400",
             boxShadow: state.isFocused ? "0 0 0 1px #6a7282" : "none",
             "&:hover": {
               borderColor: getBorderClass(),
             },
+          }),
+          placeholder: (base) => ({
+            ...base,
+            color: "#9ca3af",
+            fontSize: "12px",
+            fontWeight: 400,
+            fontFamily: "Inter",
+            lineHeight: "18px",
           }),
         }}
       />
