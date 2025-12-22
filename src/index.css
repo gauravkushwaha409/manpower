@@ -101,6 +101,17 @@
   @apply font-[Inter] font-medium text-xs leading-[130%];
 }
 
+@utility u-max-w-app {
+  @apply max-w-[120rem] mx-auto;
+}
+
+@utility u-flex-parent {
+  @apply flex-1 flex flex-col overflow-hidden;
+}
+@utility u-flex-child {
+  @apply flex-1 overflow-auto;
+}
+
 @layer utilities {
   .border-black-400 {
     border: 0.25px;
@@ -142,13 +153,6 @@
 
   .scroll-none {
     scrollbar-width: none;
-  }
-
-  .max-width {
-    @apply max-w-[100dvw];
-  }
-  .max-height {
-    @apply max-h-[100dvh];
   }
 }
 

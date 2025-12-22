@@ -1,28 +1,31 @@
 import { useSearchParams } from "react-router-dom";
 
+export type QueryValue = string | null | undefined;
+const SEARCH_PARAMS = "search";
+
 const useSearch = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const search = searchParams.get("search") ?? "";
-
-  const updateSearchParams = (params: { search?: string }) => {
-    const updatedSearchParams = new URLSearchParams(searchParams.toString());
-
-    if (params.search !== undefined) {
-      if (params.search === "" || params.search === null) {
-        updatedSearchParams.delete("search");
-      } else {
-        updatedSearchParams.set("search", params.search);
-      }
-    }
-    setSearchParams(updatedSearchParams);
+  const get = (): string => {
+    return searchParams.get(SEARCH_PARAMS) ?? "";
   };
-  const handleSearch = (val: string) => {
-    updateSearchParams({ search: val });
+
+  const set = (value: QueryValue) => {
+    setSearchParams((prev) => {
+      const params = new URLSearchParams(prev);
+
+      if (value === undefined || value === null || value === "") {
+        params.delete(SEARCH_PARAMS);
+      } else {
+        params.set(SEARCH_PARAMS, value);
+      }
+
+      return params;
+    });
   };
 
   return {
-    handleSearch,
-    search,
+    get,
+    set,
   };
 };
 

@@ -1,6 +1,6 @@
-import { PlusCircle } from 'lucide-react';
-import React from 'react';
-import { Link } from 'react-router-dom';
+import { PlusCircle } from "lucide-react";
+import React from "react";
+import { Link } from "react-router-dom";
 
 interface IHeaderProps {
   title: string;
@@ -15,16 +15,13 @@ const PageHeader: React.FC<IHeaderProps> = ({
   showAddButton = true,
   routePath,
 }) => {
+  console.log("re-render in page header");
   return (
-    <div className="w-full h-full">
+    <div className="w-full">
       <div className="flex md:flex-row flex-col justify-between items-center gap-4 pt-6">
-        <div>
-          <p className="flex items-center">
-            <span className="text-Black/black-700 typography-heading-poppins-medium">
-              {title}
-            </span>
-          </p>
-        </div>
+        <p className="flex items-center text-Black/black-700 typography-heading-poppins-medium">
+          {title}
+        </p>
 
         {showAddButton && routePath && (
           <Link

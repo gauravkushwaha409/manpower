@@ -1,8 +1,9 @@
 import * as Yup from "yup";
 
 export const preApprovalDofeValidationSchema = Yup.object().shape({
-  company: Yup.string().required("Company is required"),
-  preApprovalDate: Yup.string().required("Pre Approval Date is required"),
+  jobTitle: Yup.string().required("Company is required"),
+  male: Yup.string().required("Pre Approval Date is required"),
+  female: Yup.string().required("Pre Approval Date is required"),
   ltNumber: Yup.string().required("LT Number is required"),
   chalanNumber: Yup.string().required("Chalan Number is required"),
 });
