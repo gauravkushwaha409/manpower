@@ -13,7 +13,7 @@ const UpdatePreApprovalDofe: React.FC = () => {
   const [step, setStep] = useState(0);
   const update = useUpdatePreApprovalDofe();
   return (
-    <div className="flex flex-col gap-4">
+    <div className="u-flex-child flex flex-col gap-4">
       <Breadcrumb
         items={[
           { label: "Dashboard", to: PATH.dashboard.dashboard },

@@ -69,43 +69,50 @@ const preApprovalSchemaStep1 = Yup.object().shape({
 });
 
 const preApprovalSchemaStep2 = Yup.object().shape({
-  job_title: Yup.string().required("This field is required"),
-  male: Yup.number()
-    .typeError("Invalid number")
-    .required("This field is required"),
-  female: Yup.number()
-    .typeError("Invalid number")
-    .required("This field is required"),
-  basic_salary_aed: Yup.number()
-    .typeError("Invalid number")
-    .required("This field is required"),
-  basic_salary_nrp: Yup.number()
-    .typeError("Invalid number")
-    .required("This field is required"),
-  working_hours: Yup.number()
-    .typeError("Invalid number")
-    .required("This field is required"),
-  working_days: Yup.number()
-    .typeError("Invalid number")
-    .required("This field is required"),
-  contract_period: Yup.number()
-    .typeError("Invalid number")
-    .required("This field is required"),
-  working_city: Yup.string().required("This field is required"),
-  // experience
-  experience: Yup.boolean(),
-  years: Yup.number().when("experience", (experience, schema) => {
-    return experience
-      ? schema
-          .required("Years of experience is required")
-          .min(0, "Years cannot be negative")
-      : schema.notRequired();
-  }),
-  qualification: Yup.string().when("experience", (experience, schema) => {
-    return experience
-      ? schema.required("Qualification is required")
-      : schema.notRequired();
-  }),
+  job_details: Yup.array()
+    .of(
+      Yup.object({
+        job_title: Yup.string().required("This field is required"),
+        male: Yup.number()
+          .typeError("Invalid number")
+          .required("This field is required"),
+        female: Yup.number()
+          .typeError("Invalid number")
+          .required("This field is required"),
+        basic_salary_aed: Yup.number()
+          .typeError("Invalid number")
+          .required("This field is required"),
+        basic_salary_nrp: Yup.number()
+          .typeError("Invalid number")
+          .required("This field is required"),
+        working_hours: Yup.number()
+          .typeError("Invalid number")
+          .required("This field is required"),
+        working_days: Yup.number()
+          .typeError("Invalid number")
+          .required("This field is required"),
+        contract_period: Yup.number()
+          .typeError("Invalid number")
+          .required("This field is required"),
+        working_city: Yup.string().required("This field is required"),
+        // experience
+        experience: Yup.boolean(),
+        years: Yup.number().when("experience", (experience, schema) => {
+          return experience
+            ? schema
+                .required("Years of experience is required")
+                .min(0, "Years cannot be negative")
+            : schema.notRequired();
+        }),
+        qualification: Yup.string().when("experience", (experience, schema) => {
+          return experience
+            ? schema.required("Qualification is required")
+            : schema.notRequired();
+        }),
+      })
+    )
+    .required()
+    .min(1, ""),
   // Food
   food: Yup.boolean(),
   accomodation: Yup.boolean(),

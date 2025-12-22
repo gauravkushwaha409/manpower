@@ -2,9 +2,9 @@ import InputDate from "@/components/form/FormInputDate";
 import { InputSearchSelect } from "@/components/form/InputSelect";
 import InputText from "@/components/form/FormInputText";
 import FormInputPdf from "@/components/form/FormInputPdf";
-import { CircleX, FileIcon, Plus } from "lucide-react";
+import { CircleX, FileIcon, Plus, Trash } from "lucide-react";
 import FormSwitch from "@/components/form/FormSwitch";
-import { useFormikContext } from "formik";
+import { FieldArray, useFormikContext } from "formik";
 import { PreApprovalDofeFormType } from "../schema/preApprovalDofeValidationSchema";
 import { useRef } from "react";
 
@@ -83,7 +83,6 @@ export const PreApprovalFormStep1 = () => {
       </div>
 
       {/* Documents */}
-
       <div className="grid grid-cols-2 gap-6">
         <InputSearchSelect
           label="Document Type"
@@ -114,7 +113,7 @@ export const PreApprovalFormStep1 = () => {
             e.preventDefault();
             handleAddDocument();
           }}
-          className="ml-auto typography-label-text flex items-center gap-x-2"
+          className="inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm font-medium text-white bg-primary-500 hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 transition"
         >
           <Plus size={26} className="bg-primary-500 text-white rounded-lg" />
           ADD
@@ -124,12 +123,17 @@ export const PreApprovalFormStep1 = () => {
       <div className="col-span-2 flex gap-x-4">
         {formik?.values?.documents &&
           formik?.values?.documents.map((item, index) => (
-            <div className="w-20 relative flex flex-col items-center overflow-hidden">
+            <div
+              title={item.document_type}
+              className="w-20 relative flex flex-col items-center overflow-hidden"
+            >
               <FileIcon size={30} />
-              <span className="typography-caption-c2">
-                {(item?.document instanceof File && item?.document?.name) ||
-                  "file"}
-              </span>
+              <p className="typography-caption-c2 flex flex-col">
+                <span className="line-clamp-1">
+                  {(item?.document instanceof File && item?.document?.name) ||
+                    "file"}
+                </span>
+              </p>
 
               <button
                 className="absolute top-0 right-0 cursor-pointer rounded-full hover:bg-gray-100"
@@ -152,54 +156,121 @@ export const PreApprovalFormStep2 = () => {
   return (
     <div className="space-y-6">
       <p>Job Details</p>
-      <div className="grid grid-cols-3 gap-6">
-        <InputSearchSelect
-          label="Job Title"
-          name="job_title"
-          options={[
-            { label: "QA", value: "qa" },
-            { label: "BA", value: "ba" },
-          ]}
-        />
-        <div className="grid grid-cols-2 gap-x-4">
-          <InputText label="Male" name="male" />
-          <InputText label="Female" name="female" />
-        </div>
-        <div className="grid grid-cols-2 gap-x-4">
-          <InputText label="Basic Salary (AED)" name="basic_salary_aed" />
-          <InputText label="Basic Salary (NRP)" name="basic_salary_nrp" />
-        </div>
-      </div>
+      <FieldArray name="job_details">
+        {({ push, remove }) =>
+          values?.job_details?.map((item, index) => (
+            <div className="space-y-4">
+              <div className="grid grid-cols-3 gap-6">
+                <InputSearchSelect
+                  label="Job Title"
+                  name="job_title"
+                  options={[
+                    { label: "QA", value: "qa" },
+                    { label: "BA", value: "ba" },
+                  ]}
+                />
+                <div className="grid grid-cols-2 gap-x-4">
+                  <InputText label="Male" name="male" />
+                  <InputText label="Female" name="female" />
+                </div>
+                <div className="grid grid-cols-2 gap-x-4">
+                  <InputText
+                    label="Basic Salary (AED)"
+                    name="basic_salary_aed"
+                  />
+                  <InputText
+                    label="Basic Salary (NRP)"
+                    name="basic_salary_nrp"
+                  />
+                </div>
+              </div>
 
-      <div className="grid grid-cols-4 gap-6">
-        <InputText label="Working Hours" name="working_hours" placeholder="" />
-        <InputText label="Working Days" name="working_days" placeholder="" />
-        <InputText
-          label="Contract Period (Years)"
-          name="contract_period"
-          placeholder=""
-        />
-        <InputText label="Working City" name="working_city" />
-        <div className="grid grid-cols-2">
-          <FormSwitch title="Experience" name="experience" />
-          {values?.experience ? (
-            <InputText label="In (Years)" name="years" />
-          ) : null}
-        </div>
-        <InputSearchSelect
-          label="Academic Qualification"
-          name="qualification"
-          options={[
-            { label: "Below 10", value: "below 10" },
-            { label: "10", value: "10" },
-            { label: "+2", value: "+2" },
-            { label: "Bachelor", value: "bachelor" },
-            { label: "Master Degree", value: "master degree" },
-            { label: "PHD", value: "phd" },
-          ]}
-        />
-      </div>
+              <div className="grid grid-cols-4 gap-6">
+                <InputText
+                  label="Working Hours"
+                  name="working_hours"
+                  placeholder=""
+                />
+                <InputText
+                  label="Working Days"
+                  name="working_days"
+                  placeholder=""
+                />
+                <InputText
+                  label="Contract Period (Years)"
+                  name="contract_period"
+                  placeholder=""
+                />
+                <InputText label="Working City" name="working_city" />
+                <div className="grid grid-cols-2">
+                  <FormSwitch title="Experience" name="experience" />
+                  {item?.experience ? (
+                    <InputText label="In (Years)" name="years" />
+                  ) : null}
+                </div>
+                <InputSearchSelect
+                  label="Academic Qualification"
+                  name="qualification"
+                  options={[
+                    { label: "Below 10", value: "below 10" },
+                    { label: "10", value: "10" },
+                    { label: "+2", value: "+2" },
+                    { label: "Bachelor", value: "bachelor" },
+                    { label: "Master Degree", value: "master degree" },
+                    { label: "PHD", value: "phd" },
+                  ]}
+                />
 
+                {/* Add Delete Jobs */}
+                <div className="col-span-2 flex items-center justify-end gap-3">
+                  {values?.job_details?.length > 1 && (
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        remove(index);
+                      }}
+                      className="inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium text-red-600 border border-red-200 hover:bg-red-50  focus:outline-none focus:ring-2 focus:ring-red-200 transition"
+                    >
+                      <Trash size={16} />
+                      Remove Job
+                    </button>
+                  )}
+
+                  {values?.job_details?.length - 1 === index && (
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        push({
+                          job_title: "",
+                          male: 0,
+                          female: 0,
+                          basic_salary_aed: 0,
+                          basic_salary_nrp: 0,
+                          working_hours: 0,
+                          working_days: 0,
+                          contract_period: 0,
+                          working_city: "",
+                          experience: false,
+                          years: 0,
+                          qualification: "",
+                        });
+                      }}
+                      className="inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm font-medium text-white bg-primary-500 hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 transition"
+                    >
+                      <Plus size={16} />
+                      Add Job
+                    </button>
+                  )}
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </FieldArray>
+
+      {/* Same field for all the jobs */}
       <div className="grid grid-cols-6 gap-6">
         <FormSwitch title="Food" name="food" />
         <FormSwitch title="Accommodation" name="accomodation" />
