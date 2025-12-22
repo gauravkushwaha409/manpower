@@ -1,9 +1,15 @@
-import SearchSection from '@/components/reusable-component/SearchSection';
+import SearchSection from "@/components/reusable-component/SearchSection";
+import useSearch from "@/hooks/useSearch";
 
 const CompanyFilterList = () => {
+  const search = useSearch();
   return (
-    <div>
-      <SearchSection showAdjustmentIcon={false} styleClass="w-72 h-10" />
+    <div className="flex items-center justify-between my-4">
+      <SearchSection
+        search={search.get()}
+        setSearch={search.set}
+        styleClass="w-72 h-10"
+      />
     </div>
   );
 };

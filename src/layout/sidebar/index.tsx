@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { IoChevronDownOutline, IoChevronForward } from 'react-icons/io5';
-import { Link } from 'react-router-dom';
-import { mainMenuItems } from './Data/SidebarData';
-import { MenuItem } from './interface/sidebar_interface';
-import { SidebarProps } from '@/types';
-import { IoIosMenu } from 'react-icons/io';
+import React, { useState } from "react";
+import { IoChevronDownOutline, IoChevronForward } from "react-icons/io5";
+import { Link } from "react-router-dom";
+import { mainMenuItems } from "./Data/SidebarData";
+import { MenuItem } from "./interface/sidebar_interface";
+import { SidebarProps } from "@/types";
+import { IoIosMenu } from "react-icons/io";
 
 const Sidebar: React.FC<SidebarProps> = ({ isSidebarOpen, toggleSidebar }) => {
   const defaultOpenIds = [
@@ -53,13 +53,13 @@ const Sidebar: React.FC<SidebarProps> = ({ isSidebarOpen, toggleSidebar }) => {
           }}
         >
           <Link
-            to={item.link ?? '#'}
+            to={item.link ?? "#"}
             className={`flex items-center justify-between px-3 ${
-              level === 0 || level === 1 ? 'py-3 mb-1' : 'py-2'
+              level === 0 || level === 1 ? "py-3 mb-1" : "py-2"
             } rounded-xl cursor-pointer transition-colors ${
               isActive
-                ? 'bg-secondary-400 text-white'
-                : 'text-white hover:bg-secondary-500'
+                ? "bg-secondary-400 text-white"
+                : "text-white hover:bg-secondary-500"
             }`}
             onClick={() =>
               (hasChildren && isSidebarOpen && toggleDropdown(item.id)) ||
@@ -71,7 +71,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isSidebarOpen, toggleSidebar }) => {
               {item.icon && <item.icon className="w-5 h-5" />}
               <span
                 className={`font-[400] text-text-main text-sm ${
-                  isSidebarOpen ? 'block' : 'hidden'
+                  isSidebarOpen ? "block" : "hidden"
                 }`}
               >
                 {item.label}
@@ -89,7 +89,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isSidebarOpen, toggleSidebar }) => {
           </Link>
 
           {hasChildren && isSidebarOpen && isOpen && (
-            <div className={`${level === 0 ? 'space-y-1' : 'space-y-1'}`}>
+            <div className={`${level === 0 ? "space-y-1" : "space-y-1"}`}>
               {renderMenuItems(item.children!, level + 1)}
             </div>
           )}
@@ -124,7 +124,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isSidebarOpen, toggleSidebar }) => {
                     {(child.children?.length ?? 0) > 0 && isHoveredChild && (
                       <div className="top-0 left-full z-50 absolute bg-white shadow-lg ml-[0.6] py-2 rounded-lg w-48">
                         {child?.children?.map((nestedChild, nestedIdx) => (
-                          <Link to={nestedChild.link ?? '#'} key={nestedIdx}>
+                          <Link to={nestedChild.link ?? "#"} key={nestedIdx}>
                             <div className="hover:bg-secondary-50 px-4 py-2 font-[400] text-text-main text-sm cursor-pointer">
                               <span>{nestedChild.label}</span>
                             </div>
@@ -150,18 +150,18 @@ const Sidebar: React.FC<SidebarProps> = ({ isSidebarOpen, toggleSidebar }) => {
 
   return (
     <div
-      className={`hidden md:relative md:block bg-primary-600 p-4 pt-6 h-full font-medium no-scrollbar transition-all duration-300 ease-in-out ${
-        isSidebarOpen ? 'w-64' : 'w-20'
-      } ${isSidebarOpen ? 'overflow-y-scroll scrollbar-hidden' : ''}`}
+      className={`relative bg-primary-600 p-4 pt-6 h-full font-medium no-scrollbar transition-all duration-300 ease-in-out ${
+        isSidebarOpen ? "w-64" : "w-20"
+      } ${isSidebarOpen ? "overflow-y-scroll scrollbar-hidden" : ""}`}
     >
       <div
         className={`flex ${
-          isSidebarOpen ? 'justify-between' : 'justify-center'
+          isSidebarOpen ? "justify-between" : "justify-center"
         } items-center gap-20 pb-4`}
       >
         <h2
           className={`font-semibold text-white ${
-            isSidebarOpen ? 'block' : 'hidden'
+            isSidebarOpen ? "block" : "hidden"
           }`}
         >
           MMS
@@ -169,7 +169,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isSidebarOpen, toggleSidebar }) => {
         <div className="flex justify-center items-center">
           <div
             onClick={toggleSidebar}
-            className="hidden md:flex justify-center items-center py-2 rounded-lg w-8 h-8 cursor-pointer"
+            className="flex justify-center items-center py-2 rounded-lg w-8 h-8 cursor-pointer"
           >
             <IoIosMenu size={24} color="#ffffff" />
           </div>

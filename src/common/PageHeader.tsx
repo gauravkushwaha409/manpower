@@ -15,7 +15,6 @@ const PageHeader: React.FC<IHeaderProps> = ({
   showAddButton = true,
   routePath,
 }) => {
-  console.log("re-render in page header");
   return (
     <div className="w-full">
       <div className="flex md:flex-row flex-col justify-between items-center gap-4 pt-6">
