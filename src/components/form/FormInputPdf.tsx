@@ -1,5 +1,11 @@
 import { useField, useFormikContext } from "formik";
-import { ComponentProps, useRef, useState, useEffect } from "react";
+import {
+  ComponentProps,
+  useRef,
+  useState,
+  useEffect,
+  useImperativeHandle,
+} from "react";
 import { CircleX, FileText } from "lucide-react";
 
 interface IPdfUpload extends ComponentProps<"input"> {
@@ -8,6 +14,9 @@ interface IPdfUpload extends ComponentProps<"input"> {
   labelClassName?: string;
   className?: string;
   required?: boolean;
+  handleDeleteRef?: React.RefObject<{
+    reset: () => void;
+  } | null>;
 }
 
 const FormInputPdf: React.FC<IPdfUpload> = ({
@@ -16,6 +25,7 @@ const FormInputPdf: React.FC<IPdfUpload> = ({
   className,
   labelClassName,
   required,
+  handleDeleteRef,
 }) => {
   const [field, meta] = useField(name);
   const { setFieldValue } = useFormikContext();
@@ -37,6 +47,13 @@ const FormInputPdf: React.FC<IPdfUpload> = ({
     setFieldValue(name, null);
     if (fileInputRef.current) fileInputRef.current.value = "";
   };
+
+  // Link parent ref
+  useImperativeHandle(handleDeleteRef, () => ({
+    reset: () => {
+      handleDeleteFile();
+    },
+  }));
 
   /** Sync initial Formik value */
   useEffect(() => {
@@ -81,7 +98,10 @@ const FormInputPdf: React.FC<IPdfUpload> = ({
             {/* Delete button */}
             <button
               type="button"
-              onClick={handleDeleteFile}
+              onClick={(e) => {
+                e.preventDefault();
+                handleDeleteFile();
+              }}
               className="ml-2 flex-shrink-0 p-1 rounded-full hover:bg-gray-100"
             >
               <CircleX size={16} className="text-red-500" />

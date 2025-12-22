@@ -4,8 +4,43 @@ import InputText from "@/components/form/FormInputText";
 import FormInputPdf from "@/components/form/FormInputPdf";
 import { CircleX, FileIcon, Plus } from "lucide-react";
 import FormSwitch from "@/components/form/FormSwitch";
+import { useFormikContext } from "formik";
+import { PreApprovalDofeFormType } from "../schema/preApprovalDofeValidationSchema";
+import { useRef } from "react";
 
 export const PreApprovalFormStep1 = () => {
+  const formik = useFormikContext<PreApprovalDofeFormType>();
+  const fileInputRef = useRef<{ reset: () => void }>(null);
+
+  const handleAddDocument = () => {
+    const { document, document_type } = formik.values;
+
+    if (!document_type || !document) return;
+
+    // Add to documents array
+    formik.setValues({
+      ...formik.values,
+      documents: [
+        ...(formik.values.documents || []),
+        { document, document_type },
+      ],
+      document_type: "", // clear select
+      document: "", // optional for state
+    });
+
+    // Reset the file input visually
+    fileInputRef.current?.reset();
+  };
+
+  const handleRemoveDocument = (index: number) => {
+    formik.setValues({
+      ...formik.values,
+      documents:
+        formik.values.documents &&
+        formik.values.documents.filter((_, i) => i !== index),
+    });
+  };
+
   return (
     <div className="space-y-6">
       <div className="col-span-2 grid grid-cols-4 gap-8">
@@ -27,8 +62,8 @@ export const PreApprovalFormStep1 = () => {
         />
         <InputSearchSelect
           label="Recuirtment Company"
-          name="company"
-          options={[]}
+          name="recuirtment_company"
+          options={[{ label: "Dome Infosys", value: "dome_infosys" }]}
         />
         <InputText
           label="Pre Approval Certifcate Number"
@@ -41,16 +76,18 @@ export const PreApprovalFormStep1 = () => {
       </div>
 
       <div className="col-span-2 grid grid-cols-4 gap-6">
-        <InputDate label="Pre Approval Date" name="preApprovalDate" />
-        <InputDate label="Pre Approval Validity" name="preApprovalValidity" />
-        <InputText label="Pre LT number" name="ltNumber" />
-        <InputText label="Chalani Number" name="chalanNumber" />
+        <InputDate label="Pre Approval Date" name="pre_approval_date" />
+        <InputDate label="Pre Approval Validity" name="pre_approval_validity" />
+        <InputText label="Pre LT number" name="pre_lt_number" />
+        <InputText label="Chalani Number" name="chalani_number" />
       </div>
+
+      {/* Documents */}
 
       <div className="grid grid-cols-2 gap-6">
         <InputSearchSelect
           label="Document Type"
-          name="company"
+          name="document_type"
           options={[
             {
               label: "Embassy Attested Demand Letter",
@@ -66,37 +103,52 @@ export const PreApprovalFormStep1 = () => {
         />
         <FormInputPdf
           label="Document"
-          name="demand_reference_number"
-          placeholder="Enter your demand reference number"
+          name="document"
+          handleDeleteRef={fileInputRef}
         />
-        <div className="col-span-2">
-          <button className="ml-auto typography-label-text flex items-center gap-x-2">
-            <Plus size={26} className="bg-primary-500 text-white rounded-lg" />
-            ADD
-          </button>
-        </div>
+      </div>
 
-        <div className="col-span-2 flex gap-x-4">
-          {Array.from({ length: 2 }).map(() => (
+      <div className="col-span-2">
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            handleAddDocument();
+          }}
+          className="ml-auto typography-label-text flex items-center gap-x-2"
+        >
+          <Plus size={26} className="bg-primary-500 text-white rounded-lg" />
+          ADD
+        </button>
+      </div>
+
+      <div className="col-span-2 flex gap-x-4">
+        {formik?.values?.documents &&
+          formik?.values?.documents.map((item, index) => (
             <div className="w-20 relative flex flex-col items-center overflow-hidden">
               <FileIcon size={30} />
-              <span className="typography-caption-c2">citizenship.pdf</span>
+              <span className="typography-caption-c2">
+                {(item?.document instanceof File && item?.document?.name) ||
+                  "file"}
+              </span>
 
               <button
-                type="button"
                 className="absolute top-0 right-0 cursor-pointer rounded-full hover:bg-gray-100"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleRemoveDocument(index);
+                }}
               >
                 <CircleX size={16} className="text-red-500" />
               </button>
             </div>
           ))}
-        </div>
       </div>
     </div>
   );
 };
 
 export const PreApprovalFormStep2 = () => {
+  const { values } = useFormikContext<PreApprovalDofeFormType>();
   return (
     <div className="space-y-6">
       <p>Job Details</p>
@@ -110,8 +162,8 @@ export const PreApprovalFormStep2 = () => {
           ]}
         />
         <div className="grid grid-cols-2 gap-x-4">
-          <InputText label="Male" name="no_of_male" />
-          <InputText label="Female" name="no_of_female" />
+          <InputText label="Male" name="male" />
+          <InputText label="Female" name="female" />
         </div>
         <div className="grid grid-cols-2 gap-x-4">
           <InputText label="Basic Salary (AED)" name="basic_salary_aed" />
@@ -130,31 +182,31 @@ export const PreApprovalFormStep2 = () => {
         <InputText label="Working City" name="working_city" />
         <div className="grid grid-cols-2">
           <FormSwitch title="Experience" name="experience" />
-          <InputText label="In (Years)" name="experience" />
+          {values?.experience ? (
+            <InputText label="In (Years)" name="years" />
+          ) : null}
         </div>
         <InputSearchSelect
           label="Academic Qualification"
-          name="academic_qualification"
+          name="qualification"
           options={[
-            { label: "Below 10", value: "" },
-            { label: "10", value: "" },
-            { label: "+2", value: "" },
-            { label: "Bachelor", value: "" },
-            { label: "Master Degree", value: "" },
-            { label: "PHD", value: "" },
-            { label: "Gaurantee Letter", value: "" },
+            { label: "Below 10", value: "below 10" },
+            { label: "10", value: "10" },
+            { label: "+2", value: "+2" },
+            { label: "Bachelor", value: "bachelor" },
+            { label: "Master Degree", value: "master degree" },
+            { label: "PHD", value: "phd" },
           ]}
-          placeholder="Select Recuirtment Company"
         />
       </div>
 
       <div className="grid grid-cols-6 gap-6">
         <FormSwitch title="Food" name="food" />
-        <FormSwitch title="Accommodation" name="accommodation" />
+        <FormSwitch title="Accommodation" name="accomodation" />
         <FormSwitch title="Transportation" name="transportation" />
         <FormSwitch title="Free Visa" name="free_visa" />
-        <FormSwitch title="Free Ticket" name="free_visa_ticket" />
-        <FormSwitch title="Over Time" name="over_time" />
+        <FormSwitch title="Free Ticket" name="free_ticket" />
+        <FormSwitch title="Over Time" name="overtime" />
       </div>
     </div>
   );

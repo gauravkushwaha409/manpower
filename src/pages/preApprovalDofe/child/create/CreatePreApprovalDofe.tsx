@@ -32,7 +32,7 @@ const CreatePreApprovalDofe: React.FC = () => {
       <ExtendedMultiStepForm
         formik={formik}
         currentStep={step}
-        onStepChange={() => setStep(step + 1)}
+        onStepChange={(step: number) => setStep(step)}
         steps={[
           {
             id: "pre-approval-step-1",
