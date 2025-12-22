@@ -4,7 +4,7 @@ import Breadcrumb from "@/components/reusable-component/Breadcrumb";
 import NotificationFilterList from "./partials/NotificationFilterList";
 import NotificationPage from "./partials/NotificationPage";
 
-const Industry: React.FC = () => {
+const Notification: React.FC = () => {
   return (
     <div className="bg-surface w-full max-h-full">
       <Breadcrumb Navone="Dashboard" Navtwo="Notifications" />
@@ -23,4 +23,4 @@ const Industry: React.FC = () => {
   );
 };
 
-export default Industry;
+export default Notification;

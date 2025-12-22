@@ -98,4 +98,12 @@ export const PATH = {
   jobProcess: JOB_PROCESS,
   visa: VISA,
   settings: SETTINGS,
+  setting: {
+    index: "/setting",
+    jobSetting: {
+      industry: "/setting/job-setting/industry",
+      category: "/setting/job-setting/category",
+      subCategory: "/setting/job-setting/sub-category",
+    },
+  },
 };

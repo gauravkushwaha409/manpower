@@ -1,8 +1,8 @@
 // import { ACCESS_TOKEN } from '@/constant';
-import { PATH } from '@/constant/path';
+import { PATH } from "@/constant/path";
 // import { getCookie } from '@/lib/utils/get-cookie';
-import React from 'react';
-import { Navigate, useLocation } from 'react-router-dom';
+import React from "react";
+import { Navigate, useLocation } from "react-router-dom";
 
 /**
  * A wrapper component for protecting private routes.
@@ -22,7 +22,7 @@ const PrivateRouteWrapper = ({ children }: { children?: React.ReactNode }) => {
   }
 
   // If user is logged in and tries to access root `/`, redirect them to dashboard
-  if (location.pathname === '/') {
+  if (location.pathname === "/") {
     return <Navigate to={PATH.dashboard.dashboard} replace />;
   }
 
