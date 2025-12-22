@@ -2,14 +2,14 @@ import React from "react";
 import ExtendedForm from "@/components/extended-components/ExtendedForm";
 import Breadcrumb from "@/components/reusable-component/Breadcrumb";
 import PageHeader from "@/common/PageHeader";
-import useCreateIndustry from "./hooks/useCreateCompany";
-import CompanyForm from "./partials/CompanyForm";
+import useCreateIndustry from "../../hooks/useCreateCompany";
+import CompanyForm from "../../partials/CompanyForm";
 import { PATH } from "@/constant/path";
 
 const AddCompany: React.FC = () => {
   const { formik } = useCreateIndustry();
   return (
-    <div className="flex flex-col gap-4">
+    <div className="u-flex-child">
       <Breadcrumb
         items={[
           { label: "Dashboard" },

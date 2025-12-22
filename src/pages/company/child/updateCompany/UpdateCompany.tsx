@@ -2,15 +2,15 @@ import React from "react";
 import ExtendedForm from "@/components/extended-components/ExtendedForm";
 import Breadcrumb from "@/components/reusable-component/Breadcrumb";
 import PageHeader from "@/common/PageHeader";
-import CompanyForm from "./partials/CompanyForm";
-import useUpdateCompany from "./hooks/useUpdateCompany";
+import CompanyForm from "../../partials/CompanyForm";
+import useUpdateCompany from "../../hooks/useUpdateCompany";
 import { PATH } from "@/constant/path";
 
 const UpdateCompany: React.FC = () => {
   const { formik } = useUpdateCompany();
   return (
-    <div className="flex flex-col gap-4">
-       <Breadcrumb
+    <div className="u-flex-child">
+      <Breadcrumb
         items={[
           { label: "Dashboard" },
           {
