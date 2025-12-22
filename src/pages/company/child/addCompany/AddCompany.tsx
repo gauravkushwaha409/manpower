@@ -2,7 +2,7 @@ import React from "react";
 import ExtendedForm from "@/components/extended-components/ExtendedForm";
 import Breadcrumb from "@/components/reusable-component/Breadcrumb";
 import PageHeader from "@/common/PageHeader";
-import useCreateIndustry from "../../hooks/useCreateCompany";
+import useCreateIndustry from "./hooks/useCreateCompany";
 import CompanyForm from "../../partials/CompanyForm";
 import { PATH } from "@/constant/path";
 

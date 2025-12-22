@@ -1,23 +1,37 @@
 import * as Yup from "yup";
 
 export const companyValidationSchema = Yup.object().shape({
-  id: Yup.string().required("Company id is required"),
-  recruitment_company: Yup.string().required("Company name is required"),
-  license_number: Yup.string().required("License number is required"),
-  country: Yup.string().required("Country is required"),
-  state: Yup.string().required("State is required"),
-  city: Yup.string().required("City is required"),
-  street: Yup.string().required("Street is required"),
-  area: Yup.string().required("Area is required"),
-  currency: Yup.string().required("Currency is required"),
-  contact_number: Yup.string().required("Contact person is required"),
-  email: Yup.string()
-    .email("Invalid email format")
-    .required("Email is required"),
-  office_address: Yup.string().required("Office address is required"),
-  website_url: Yup.string()
-    .url("Invalid URL format")
-    .required("Website URL is required"),
+  recruitment_company: Yup.string().required("This field is required"),
+  country: Yup.string().required("This field is required"),
+  sector: Yup.string().required("This field is required"),
+  currency: Yup.string().required("This field is required"),
+  license_number_name: Yup.string().required("This field is required"),
+  license_number: Yup.string().required("This field is required"),
+  license_issue_by: Yup.string().required("This field is required"),
+  license_image: Yup.mixed<string | File>()
+    .required("Document is required")
+    .test("file-or-url", "Invalid document", (value) => {
+      if (!value) return false; // required check
+      if (typeof value === "string") {
+        try {
+          new URL(value);
+          return true;
+        } catch {
+          return false;
+        }
+      }
+      if (value instanceof File) return true;
+      return false;
+    }),
+  state_region: Yup.string().required("This field is required"),
+  city: Yup.string().required("This field is required"),
+  street: Yup.string().required("This field is required"),
+  area: Yup.string().required("This field is required"),
+  contact_person_name: Yup.string().required("This field is required"),
+  contact_number: Yup.string().required("This field is required"),
+  email: Yup.string().required("This field is required"),
+  office_address: Yup.string().required("This field is required"),
+  website_url: Yup.string().required("This field is required"),
 });
 
 export type CompanyValidationSchemaType = Yup.InferType<

@@ -3,7 +3,7 @@ import { usePostDataMutation } from "@/api/api";
 import {
   companyValidationSchema,
   CompanyValidationSchemaType,
-} from "../schema/companyValidationSchema";
+} from "../../../schema/companyValidationSchema";
 
 const useCreateCompany = () => {
   const [
@@ -16,15 +16,19 @@ const useCreateCompany = () => {
   ] = usePostDataMutation();
 
   const initialValues: CompanyValidationSchemaType = {
-    id: "",
     recruitment_company: "",
-    license_number: "",
     country: "",
-    state: "",
+    sector: "",
+    currency: "",
+    license_number_name: "",
+    license_number: "",
+    license_issue_by: "",
+    license_image: "",
+    state_region: "",
     city: "",
     street: "",
     area: "",
-    currency: "",
+    contact_person_name: "",
     contact_number: "",
     email: "",
     office_address: "",

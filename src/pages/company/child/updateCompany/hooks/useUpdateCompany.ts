@@ -1,9 +1,9 @@
 import { useGetDataQuery, useUpdateDataMutation } from "@/api/api";
-import { useFormik } from "formik";
 import {
   companyValidationSchema,
   CompanyValidationSchemaType,
-} from "../schema/companyValidationSchema";
+} from "@/pages/company/schema/companyValidationSchema";
+import { useFormik } from "formik";
 
 const useUpdateCompany = () => {
   const [
@@ -22,22 +22,24 @@ const useUpdateCompany = () => {
     isSuccess: isGetCompanyDetailsSuccess,
   } = useGetDataQuery({ url: "/company", params: {}, tag: "" });
 
-  const initial: CompanyValidationSchemaType = data;
-
   const initialValues: CompanyValidationSchemaType = {
-    id: initial?.id || "",
-    recruitment_company: initial?.recruitment_company || "",
-    license_number: initial?.license_number || "",
-    country: initial?.country || "",
-    state: initial?.state || "",
-    city: initial?.city || "",
-    street: initial?.street || "",
-    area: initial?.area || "",
-    currency: initial?.currency || "",
-    contact_number: initial?.contact_number || "",
-    email: initial?.email || "",
-    office_address: initial?.office_address || "",
-    website_url: initial?.website_url || "",
+    recruitment_company: "",
+    country: "",
+    sector: "",
+    currency: "",
+    license_number_name: "",
+    license_number: "",
+    license_issue_by: "",
+    license_image: "",
+    state_region: "",
+    city: "",
+    street: "",
+    area: "",
+    contact_person_name: "",
+    contact_number: "",
+    email: "",
+    office_address: "",
+    website_url: "",
   };
 
   const formik = useFormik({
@@ -47,7 +49,7 @@ const useUpdateCompany = () => {
     onSubmit: async (values) => {
       updateCompany({
         data: values,
-        url: `/company/${values.id}`,
+        url: ``,
         invalidateTag: "",
       });
     },

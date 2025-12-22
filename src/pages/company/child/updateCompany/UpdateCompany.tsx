@@ -3,8 +3,8 @@ import ExtendedForm from "@/components/extended-components/ExtendedForm";
 import Breadcrumb from "@/components/reusable-component/Breadcrumb";
 import PageHeader from "@/common/PageHeader";
 import CompanyForm from "../../partials/CompanyForm";
-import useUpdateCompany from "../../hooks/useUpdateCompany";
 import { PATH } from "@/constant/path";
+import useUpdateCompany from "./hooks/useUpdateCompany";
 
 const UpdateCompany: React.FC = () => {
   const { formik } = useUpdateCompany();
