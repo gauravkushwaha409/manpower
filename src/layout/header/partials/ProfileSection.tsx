@@ -1,10 +1,10 @@
-import { useState, useRef, useEffect } from 'react';
-import UserImage from '/vite.svg';
-import { Link, useNavigate } from 'react-router-dom';
-import { ChevronDownIcon, LogOut, User } from 'lucide-react';
-import { clearAllCookies } from '@/utils/cookie';
-import { PATH } from '@/constant/path';
-import { showSuccessMessage } from '@/utils/toast';
+import { useState, useRef, useEffect } from "react";
+import UserImage from "/vite.svg";
+import { Link, useNavigate } from "react-router-dom";
+import { ChevronDownIcon, LogOut, User } from "lucide-react";
+import { clearAllCookies } from "@/utils/cookie";
+import { PATH } from "@/constant/path";
+import { showSuccessMessage } from "@/utils/toast";
 
 const ProfileSection = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,9 +21,9 @@ const ProfileSection = () => {
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
   const toggleDropdown = () => {
@@ -33,7 +33,7 @@ const ProfileSection = () => {
   const handleLogout = () => {
     clearAllCookies();
     navigate(PATH.auth.login, { replace: true });
-    showSuccessMessage('Logout Successfully');
+    showSuccessMessage("Logout Successfully");
   };
 
   return (
@@ -50,8 +50,8 @@ const ProfileSection = () => {
           />
         </div>
         <div className="flex flex-col text-text-color">
-          <span className="text-xs">Jack Grealish</span>
-          <span className="text-xs">useremail@gmail.com</span>
+          <span className="text-xs">Dome Infosys</span>
+          <span className="text-xs">dome@gmail.com</span>
         </div>
         <div className="flex justify-center items-center rounded-full w-10 h-10">
           <ChevronDownIcon size={16} className="text-primary-400" />

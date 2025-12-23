@@ -59,7 +59,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isSidebarOpen, toggleSidebar }) => {
             } rounded-xl cursor-pointer transition-colors ${
               isActive
                 ? "bg-secondary-400 text-white"
-                : "text-white hover:bg-secondary-500"
+                : "text-text-400 hover:bg-secondary-500 hover:text-white"
             }`}
             onClick={() =>
               (hasChildren && isSidebarOpen && toggleDropdown(item.id)) ||
@@ -70,7 +70,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isSidebarOpen, toggleSidebar }) => {
             <div className="flex items-center gap-3">
               {item.icon && <item.icon className="w-5 h-5" />}
               <span
-                className={`font-[400] text-text-main text-sm ${
+                className={`typo-mid-bd-light ${
                   isSidebarOpen ? "block" : "hidden"
                 }`}
               >
@@ -80,9 +80,9 @@ const Sidebar: React.FC<SidebarProps> = ({ isSidebarOpen, toggleSidebar }) => {
             {hasChildren && isSidebarOpen && (
               <span className="text-xs">
                 {isOpen ? (
-                  <IoChevronDownOutline size={16} />
+                  <IoChevronDownOutline size={14} />
                 ) : (
-                  <IoChevronForward size={16} />
+                  <IoChevronForward size={14} />
                 )}
               </span>
             )}
@@ -114,7 +114,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isSidebarOpen, toggleSidebar }) => {
                       }
                     }}
                   >
-                    <div className="flex justify-between items-center hover:bg-secondary-50 px-4 py-2 font-[400] text-text-primary text-sm cursor-pointer">
+                    <div className="flex justify-between items-center text-text-400 px-4 py-2 cursor-pointer">
                       <span>{child.label}</span>
                       {(child.children?.length ?? 0) > 0 && (
                         <IoChevronForward size={14} className="opacity-70" />
@@ -125,7 +125,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isSidebarOpen, toggleSidebar }) => {
                       <div className="top-0 left-full z-50 absolute bg-white shadow-lg ml-[0.6] py-2 rounded-lg w-48">
                         {child?.children?.map((nestedChild, nestedIdx) => (
                           <Link to={nestedChild.link ?? "#"} key={nestedIdx}>
-                            <div className="hover:bg-secondary-50 px-4 py-2 font-[400] text-text-main text-sm cursor-pointer">
+                            <div className="hover:bg-secondary-50 px-4 py-2 font-normal text-text-main text-sm cursor-pointer">
                               <span>{nestedChild.label}</span>
                             </div>
                           </Link>
@@ -150,28 +150,21 @@ const Sidebar: React.FC<SidebarProps> = ({ isSidebarOpen, toggleSidebar }) => {
 
   return (
     <div
-      className={`relative bg-primary-600 p-4 pt-6 h-full font-medium no-scrollbar transition-all duration-300 ease-in-out ${
+      className={`relative p-4 pt-6 h-full font-medium no-scrollbar transition-all duration-300 ease-in-out border-r border-text-50 ${
         isSidebarOpen ? "w-64" : "w-20"
       } ${isSidebarOpen ? "overflow-y-scroll scrollbar-hidden" : ""}`}
     >
       <div
         className={`flex ${
           isSidebarOpen ? "justify-between" : "justify-center"
-        } items-center gap-20 pb-4`}
+        } items-center gap-20 pb-4 `}
       >
-        <h2
-          className={`font-semibold text-white ${
-            isSidebarOpen ? "block" : "hidden"
-          }`}
-        >
-          MMS
-        </h2>
         <div className="flex justify-center items-center">
           <div
             onClick={toggleSidebar}
             className="flex justify-center items-center py-2 rounded-lg w-8 h-8 cursor-pointer"
           >
-            <IoIosMenu size={24} color="#ffffff" />
+            <IoIosMenu size={24} className="text-text-400 hover:text-white" />
           </div>
         </div>
       </div>

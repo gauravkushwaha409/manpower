@@ -13,9 +13,9 @@ const SearchSection = ({
 }) => {
   return (
     <div
-      className={`flex items-center bg-white px-3 border border-border rounded-lg max-w-md ${styleClass}`}
+      className={`flex items-center px-4 bg-white border border-text-50 rounded-4xl max-w-md ${styleClass}`}
     >
-      <Search size={18} className="mr-3 text-gray-400" />
+      <Search size={14} className="mr-3 text-gray-400" />
       <input
         type="text"
         spellCheck={false}
@@ -27,7 +27,7 @@ const SearchSection = ({
           setSearch(e.target.value);
         }}
         placeholder="Search"
-        className="flex-1 bg-transparent outline-none placeholder:font-[400] text-gray-700 placeholder:text-caption placeholder:text-sm"
+        className="typo-mid-bd-light py-2 placeholder:text-black-300 text-black-300 focus:outline-none"
       />
     </div>
   );

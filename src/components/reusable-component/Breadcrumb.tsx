@@ -12,10 +12,7 @@ interface BreadcrumbProps {
 
 const Breadcrumb: React.FC<BreadcrumbProps> = ({ items }) => {
   return (
-    <nav
-      className="flex gap-2 text-primary-500"
-      aria-label="Breadcrumb"
-    >
+    <nav className="flex gap-2 text-primary-500" aria-label="Breadcrumb">
       <ol className="inline-flex items-center gap-x-2">
         {items?.map((item, index) => {
           const isLast = index === items.length - 1;

@@ -3,7 +3,7 @@ import ProfileSection from "./partials/ProfileSection";
 
 const Header = () => {
   return (
-    <header className="flex justify-end items-center bg-white px-6 w-full">
+    <header className="bg-white u-gap-x flex justify-end items-center">
       <div className="flex items-center gap-4">
         <NotificationModal />
         <ProfileSection />
