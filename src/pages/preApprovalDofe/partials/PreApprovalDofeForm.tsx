@@ -2,16 +2,19 @@ import InputDate from "@/components/form/FormInputDate";
 import { InputSearchSelect } from "@/components/form/InputSelect";
 import InputText from "@/components/form/FormInputText";
 import FormInputPdf from "@/components/form/FormInputPdf";
-import { CircleX, FileIcon, Plus, Trash } from "lucide-react";
+import { CircleX, FileIcon, Plus } from "lucide-react";
 import FormSwitch from "@/components/form/FormSwitch";
-import { FieldArray, useFormikContext } from "formik";
-import { PreApprovalDofeFormType } from "../schema/preApprovalDofeValidationSchema";
-import { useRef } from "react";
+import { useFormikContext } from "formik";
+import {
+  PreApprovalDofeFormType,
+  PreApprovalJobDetails,
+} from "../schema/preApprovalDofeValidationSchema";
+import React, { useRef } from "react";
+import { cn } from "@/lib/utils";
 
 export const PreApprovalFormStep1 = () => {
   const formik = useFormikContext<PreApprovalDofeFormType>();
   const fileInputRef = useRef<{ reset: () => void }>(null);
-
   const handleAddDocument = () => {
     const { document, document_type } = formik.values;
 
@@ -108,16 +111,10 @@ export const PreApprovalFormStep1 = () => {
       </div>
 
       <div className="col-span-2">
-        <button
-          onClick={(e) => {
-            e.preventDefault();
-            handleAddDocument();
-          }}
-          className="px-3 py-1 flex items-center typo-mid-bd-reg rounded-4xl text-white bg-secondary-500 cursor-pointer hover:bg-secondary-700"
-        >
+        <Button varient="add" handleClick={handleAddDocument}>
           <Plus size={26} className="text-white rounded-lg" />
           ADD
-        </button>
+        </Button>
       </div>
 
       <div className="col-span-2 flex gap-x-4">
@@ -152,133 +149,220 @@ export const PreApprovalFormStep1 = () => {
 };
 
 export const PreApprovalFormStep2 = () => {
-  const { values } = useFormikContext<PreApprovalDofeFormType>();
+  const { values, setValues } = useFormikContext<PreApprovalDofeFormType>();
+  const handleAddJob = () => {
+    setValues({
+      ...values,
+      job_details: [
+        ...values?.job_details,
+        {
+          job_title: values?.job_title,
+          male: values?.male,
+          female: values?.female,
+          basic_salary_nrp: values?.basic_salary_nrp,
+          basic_salary_aed: values?.basic_salary_aed,
+          contract_period: values?.contract_period,
+          working_city: values?.working_city,
+          working_days: values?.working_days,
+          working_hours: values?.working_hours,
+          experience: values?.experience,
+          qualification: values?.qualification,
+          years: values?.years,
+        },
+      ],
+
+      job_title: "",
+      male: 0,
+      female: 0,
+      basic_salary_nrp: 0,
+      basic_salary_aed: 0,
+      contract_period: 0,
+      working_city: "",
+      working_days: 0,
+      working_hours: 0,
+      experience: false,
+      qualification: "",
+      years: 0,
+    });
+  };
   return (
     <div className="space-y-6">
       <p>Job Details</p>
-      <FieldArray name="job_details">
-        {({ push, remove }) =>
-          values?.job_details?.map((item, index) => (
-            <div className="space-y-4">
-              <div className="grid grid-cols-3 gap-6">
-                <InputSearchSelect
-                  label="Job Title"
-                  name="job_title"
-                  options={[
-                    { label: "QA", value: "qa" },
-                    { label: "BA", value: "ba" },
-                  ]}
-                />
-                <div className="grid grid-cols-2 gap-x-4">
-                  <InputText label="Male" name="male" />
-                  <InputText label="Female" name="female" />
-                </div>
-                <div className="grid grid-cols-2 gap-x-4">
-                  <InputText
-                    label="Basic Salary (AED)"
-                    name="basic_salary_aed"
-                  />
-                  <InputText
-                    label="Basic Salary (NRP)"
-                    name="basic_salary_nrp"
-                  />
-                </div>
-              </div>
+      <div className="space-y-4">
+        <div className="grid grid-cols-3 gap-6">
+          <InputSearchSelect
+            label="Job Title"
+            name="job_title"
+            options={[
+              { label: "QA", value: "qa" },
+              { label: "BA", value: "ba" },
+            ]}
+          />
+          <div className="grid grid-cols-2 gap-x-4">
+            <InputText label="Male" name="male" />
+            <InputText label="Female" name="female" />
+          </div>
+          <div className="grid grid-cols-2 gap-x-4">
+            <InputText label="Basic Salary (AED)" name="basic_salary_aed" />
+            <InputText label="Basic Salary (NRP)" name="basic_salary_nrp" />
+          </div>
+        </div>
 
-              <div className="grid grid-cols-4 gap-6">
-                <InputText
-                  label="Working Hours"
-                  name="working_hours"
-                  placeholder=""
-                />
-                <InputText
-                  label="Working Days"
-                  name="working_days"
-                  placeholder=""
-                />
-                <InputText
-                  label="Contract Period (Years)"
-                  name="contract_period"
-                  placeholder=""
-                />
-                <InputText label="Working City" name="working_city" />
-                <div className="grid grid-cols-2">
-                  <FormSwitch title="Experience" name="experience" />
-                  {item?.experience ? (
-                    <InputText label="In (Years)" name="years" />
-                  ) : null}
-                </div>
-                <InputSearchSelect
-                  label="Academic Qualification"
-                  name="qualification"
-                  options={[
-                    { label: "Below 10", value: "below 10" },
-                    { label: "10", value: "10" },
-                    { label: "+2", value: "+2" },
-                    { label: "Bachelor", value: "bachelor" },
-                    { label: "Master Degree", value: "master degree" },
-                    { label: "PHD", value: "phd" },
-                  ]}
-                />
-
-                {/* Add Delete Jobs */}
-                <div className="col-span-2 flex items-center justify-end gap-3">
-                  {values?.job_details?.length > 1 && (
-                    <button
-                      type="button"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        remove(index);
-                      }}
-                      className="inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium text-red-600 border border-red-200 hover:bg-red-50  focus:outline-none focus:ring-2 focus:ring-red-200 transition"
-                    >
-                      <Trash size={16} />
-                      Remove Job
-                    </button>
-                  )}
-
-                  {values?.job_details?.length - 1 === index && (
-                    <button
-                      type="button"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        push({
-                          job_title: "",
-                          male: 0,
-                          female: 0,
-                          basic_salary_aed: 0,
-                          basic_salary_nrp: 0,
-                          working_hours: 0,
-                          working_days: 0,
-                          contract_period: 0,
-                          working_city: "",
-                          experience: false,
-                          years: 0,
-                          qualification: "",
-                        });
-                      }}
-                      className="inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm font-medium text-white bg-primary-500 hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 transition"
-                    >
-                      <Plus size={16} />
-                      Add Job
-                    </button>
-                  )}
-                </div>
-              </div>
-            </div>
-          ))
-        }
-      </FieldArray>
-
-      {/* Same field for all the jobs */}
-      <div className="grid grid-cols-6 gap-6">
-        <FormSwitch title="Food" name="food" />
-        <FormSwitch title="Accommodation" name="accomodation" />
-        <FormSwitch title="Transportation" name="transportation" />
-        <FormSwitch title="Free Visa" name="free_visa" />
-        <FormSwitch title="Free Ticket" name="free_ticket" />
-        <FormSwitch title="Over Time" name="overtime" />
+        <div className="grid grid-cols-4 gap-6">
+          <InputText
+            label="Working Hours"
+            name="working_hours"
+            placeholder=""
+          />
+          <InputText label="Working Days" name="working_days" placeholder="" />
+          <InputText
+            label="Contract Period (Years)"
+            name="contract_period"
+            placeholder=""
+          />
+          <InputText label="Working City" name="working_city" />
+          <div className="grid grid-cols-2">
+            <FormSwitch title="Experience" name="experience" />
+            {values?.experience ? (
+              <InputText label="In (Years)" name="years" />
+            ) : null}
+          </div>
+          <InputSearchSelect
+            label="Academic Qualification"
+            name="qualification"
+            options={[
+              { label: "Below 10", value: "below 10" },
+              { label: "10", value: "10" },
+              { label: "+2", value: "+2" },
+              { label: "Bachelor", value: "bachelor" },
+              { label: "Master Degree", value: "master degree" },
+              { label: "PHD", value: "phd" },
+            ]}
+          />
+          <div className="w-fit">
+            <Button varient="add" handleClick={handleAddJob}>
+              Add Job
+            </Button>
+          </div>
+        </div>
       </div>
+
+      <JobTable />
+    </div>
+  );
+};
+
+// Step - 3 Form
+export const PreApprovalFormStep3 = () => {
+  return (
+    <div className="grid grid-cols-6 gap-6">
+      <FormSwitch title="Food" name="food" />
+      <FormSwitch title="Accommodation" name="accomodation" />
+      <FormSwitch title="Transportation" name="transportation" />
+      <FormSwitch title="Free Visa" name="free_visa" />
+      <FormSwitch title="Free Ticket" name="free_ticket" />
+      <FormSwitch title="Over Time" name="overtime" />
+    </div>
+  );
+};
+
+// Button Varient used in this form
+type ButtonVarient = "add" | "delete";
+const Button = ({
+  children,
+  handleClick,
+  varient,
+}: {
+  children: React.ReactNode;
+  handleClick: () => void;
+  varient: ButtonVarient;
+}) => {
+  const baseStyle =
+    "px-3 py-1 flex items-center typo-mid-bd-reg rounded-4xl cursor-pointer";
+
+  const varients: Record<ButtonVarient, string> = {
+    add: "text-white bg-secondary-500 hover:bg-secondary-700",
+    delete: "text-white bg-error-delete",
+  };
+  return (
+    <button
+      onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault();
+        handleClick();
+      }}
+      className={cn(baseStyle, varients[varient], "")}
+    >
+      {children}
+    </button>
+  );
+};
+
+// JOb Details Table
+const JobTable = () => {
+  const formik = useFormikContext<PreApprovalDofeFormType>();
+  const jobDetails: Record<string, keyof PreApprovalJobDetails> = {
+    "Job Title": "job_title",
+    Male: "male",
+    Female: "female",
+    "Basic Salary (AED)": "basic_salary_aed",
+    "Basic Salary (NRP)": "basic_salary_nrp",
+    "Working Hours": "working_hours",
+    "Working Days": "working_days",
+    "Contract Period": "contract_period",
+    "Working City": "working_city",
+    Experience: "experience",
+    "Academic Qualification": "qualification",
+  };
+
+  return (
+    <div className="mt-10 w-full overflow-x-auto">
+      <table className="table-auto w-full border-collapse">
+        {/* Header */}
+        <thead className="bg-gray-100 border-b border-gray-200 sticky top-0">
+          <tr>
+            <td className="typo-mid-bd-reg text-text-500 px-5 py-3 whitespace-nowrap">
+              S.N.
+            </td>
+            {Object.keys(jobDetails).map((item) => (
+              <td
+                key={item}
+                className="typo-mid-bd-reg text-text-500 px-5 py-3 whitespace-nowrap"
+              >
+                {item}
+              </td>
+            ))}
+          </tr>
+        </thead>
+
+        {/* Body */}
+        {formik?.values?.job_details?.length > 0 ? (
+          <tbody className="divide-y divide-gray-200">
+            {formik.values?.job_details?.map((item, rowIndex) => (
+              <tr key={rowIndex} className="hover:bg-gray-50 transition-colors">
+                <td className="px-5 py-3 text-sm text-gray-700">
+                  {rowIndex + 1}
+                </td>
+                {Object.values(jobDetails).map((key) => (
+                  <td
+                    key={String(key)}
+                    className="px-5 py-3 text-sm text-gray-700 whitespace-nowrap"
+                  >
+                    <span>{key === "experience" ? "Required" : item[key]}</span>
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        ) : (
+          <tbody>
+            <tr>
+              <td colSpan={12} className="text-center text-xl">
+                No Job Found <br /> Add Job From Above Form
+              </td>
+            </tr>
+          </tbody>
+        )}
+      </table>
     </div>
   );
 };

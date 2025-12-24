@@ -44,6 +44,8 @@ const preApprovalSchemaStep1 = Yup.object().shape({
       if (value instanceof File) return true;
       return false;
     }),
+
+  // Step two form
   documents: Yup.array()
     .of(
       Yup.object({
@@ -73,47 +75,25 @@ const preApprovalSchemaStep2 = Yup.object().shape({
     .of(
       Yup.object({
         job_title: Yup.string().required("This field is required"),
-        male: Yup.number()
-          .typeError("Invalid number")
-          .required("This field is required"),
-        female: Yup.number()
-          .typeError("Invalid number")
-          .required("This field is required"),
-        basic_salary_aed: Yup.number()
-          .typeError("Invalid number")
-          .required("This field is required"),
-        basic_salary_nrp: Yup.number()
-          .typeError("Invalid number")
-          .required("This field is required"),
-        working_hours: Yup.number()
-          .typeError("Invalid number")
-          .required("This field is required"),
-        working_days: Yup.number()
-          .typeError("Invalid number")
-          .required("This field is required"),
-        contract_period: Yup.number()
-          .typeError("Invalid number")
-          .required("This field is required"),
-        working_city: Yup.string().required("This field is required"),
+        male: Yup.number().nullable(),
+        female: Yup.number().nullable(),
+        basic_salary_aed: Yup.number().nullable(),
+        basic_salary_nrp: Yup.number().nullable(),
+        working_hours: Yup.number().nullable(),
+        working_days: Yup.number().nullable(),
+        contract_period: Yup.number().nullable(),
+        working_city: Yup.string().nullable(),
         // experience
-        experience: Yup.boolean(),
-        years: Yup.number().when("experience", (experience, schema) => {
-          return experience
-            ? schema
-                .required("Years of experience is required")
-                .min(0, "Years cannot be negative")
-            : schema.notRequired();
-        }),
-        qualification: Yup.string().when("experience", (experience, schema) => {
-          return experience
-            ? schema.required("Qualification is required")
-            : schema.notRequired();
-        }),
+        experience: Yup.boolean().nullable(),
+        years: Yup.number().nullable(),
+        qualification: Yup.string().nullable(),
       })
     )
     .required()
     .min(1, ""),
-  // Food
+});
+
+const preApprovalSchemaStep3 = Yup.object().shape({
   food: Yup.boolean(),
   accomodation: Yup.boolean(),
   transportation: Yup.boolean(),
@@ -122,10 +102,14 @@ const preApprovalSchemaStep2 = Yup.object().shape({
   overtime: Yup.boolean(),
 });
 
-export const PreApprovalValidation = preApprovalSchemaStep1.concat(
-  preApprovalSchemaStep2
-);
+export const PreApprovalValidation = preApprovalSchemaStep1
+  .concat(preApprovalSchemaStep2)
+  .concat(preApprovalSchemaStep3);
+
+type PreApprovalJob = Yup.InferType<typeof preApprovalSchemaStep2>;
+export type PreApprovalJobDetails = PreApprovalJob["job_details"][0];
 
 export type PreApprovalDofeFormType = Yup.InferType<
   typeof PreApprovalValidation
->;
+> &
+  PreApprovalJobDetails;

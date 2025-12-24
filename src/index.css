@@ -31,6 +31,7 @@
   --color-secondary-900: #00274b;
   /* Text Color */
   --color-text-50: #ebebeb;
+  --color-text-300: #3b3b3b;
   --color-text-400: #292929;
   --color-text-500: #2e2e2e;
   --color-text-600: #2a2a2a;
@@ -43,6 +44,7 @@
 
   --color-button-background: #4b5a84;
   --color-border-color: #d1d5db;
+  --color-error-delete: #ef2424;
 }
 /* New Typography from vatsalya crm */
 @utility typo-mid-bd-light {

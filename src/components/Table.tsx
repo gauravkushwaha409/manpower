@@ -146,9 +146,8 @@ const Table = <T extends { id: string }>({
               maxWidth: cell.column.columnDef.maxSize,
             }}
             className={`
-            px-5 py-5.5 typography-caption-c1 
-            text-text-400 align-middle overflow-x-hidden
-            ${index % 2 === 0 ? "bg-[#F6EBF24D]" : ""}
+            px-5 py-5 typo-mid-bd-light text-text-400
+            ${index % 2 === 0 ? "" : "bg-secondary-50/50"}
           `}
           >
             {flexRender(cell.column.columnDef.cell, cell.getContext())}

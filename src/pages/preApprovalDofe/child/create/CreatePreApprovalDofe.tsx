@@ -7,6 +7,7 @@ import useCreatePreApprovalDofe from "./hooks/useCreatePreApprovalDofe";
 import {
   PreApprovalFormStep1,
   PreApprovalFormStep2,
+  PreApprovalFormStep3,
 } from "../../partials/PreApprovalDofeForm";
 
 const CreatePreApprovalDofe: React.FC = () => {
@@ -41,6 +42,11 @@ const CreatePreApprovalDofe: React.FC = () => {
             id: "pre-approval-step-2",
             title: "Step-2",
             content: <PreApprovalFormStep2 />,
+          },
+          {
+            id: "pre-approval-step-3",
+            title: "Step-3",
+            content: <PreApprovalFormStep3 />,
           },
         ]}
       />

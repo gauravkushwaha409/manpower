@@ -31,9 +31,8 @@ const TableAction: React.FC<IProps> = ({
       {viewActive && (
         <button title="View" {...viewProps}>
           <Eye
-            className="shrink-0 cursor-pointer hover:scale-125 transition-all duration-300"
-            color="#B36094"
-            size={20}
+            className="shrink-0 cursor-pointer hover:scale-125 transition-all duration-300 text-primary-400"
+            size={16}
           />
         </button>
       )}
@@ -41,9 +40,8 @@ const TableAction: React.FC<IProps> = ({
       {editActive && (
         <button title="Edit" {...editProps}>
           <Pen
-            className="shrink-0 cursor-pointer hover:scale-125 transition-all duration-300"
-            color="#D0021B"
-            size={20}
+            className="shrink-0 cursor-pointer hover:scale-125 transition-all duration-300 text-text-300"
+            size={16}
           />
         </button>
       )}
@@ -51,9 +49,8 @@ const TableAction: React.FC<IProps> = ({
       {deleteActive && (
         <button title="Delete" {...deleteProps}>
           <Trash2
-            className="shrink-0 cursor-pointer hover:scale-125 transition-all duration-300"
-            color="#D0021B"
-            size={20}
+            className="shrink-0 cursor-pointer hover:scale-125 transition-all duration-300 text-error-delete"
+            size={16}
           />
         </button>
       )}

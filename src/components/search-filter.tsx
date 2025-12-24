@@ -28,7 +28,7 @@ const SearchFilter = ({
 }) => {
   const updateSearchParams = useUpdateSearchParams();
   const getSearchParams = useGetSearchParams();
-
+  const isFilter = getSearchParams("filter");
   const handleFilterClick = () => {
     if (getSearchParams("filter") === "active")
       updateSearchParams({}, ["filter"]);
@@ -40,7 +40,16 @@ const SearchFilter = ({
         handleAddFilter={handleAddClick}
         handleClickFilter={handleFilterClick}
       />
-      <DynamicFilter selectFilter={selectFilter} dateFilter={dateFilter} />
+
+      <div
+        className={`grid transition-all duration-500 ease-in-out ${
+          isFilter ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+        }`}
+      >
+        <div className="overflow-hidden">
+          <DynamicFilter selectFilter={selectFilter} dateFilter={dateFilter} />
+        </div>
+      </div>
     </div>
   );
 };
@@ -67,13 +76,13 @@ const ActionButton = ({
       <div className="flex items-center gap-x-2">
         <button
           onClick={handleClickFilter}
-          className="px-3 py-1 flex items-center typo-mid-bd-reg rounded-4xl border border-text-50 text-text-600 cursor-pointer hover:bg-secondary-500 hover:text-white"
+          className="px-3 py-1 flex items-center typo-mid-bd-reg rounded-4xl border border-text-50 text-text-600 cursor-pointer hover:bg-secondary-500 hover:text-white transition-all ease-in-out duration-500"
         >
           <Funnel size={16} />
           Filter
         </button>
 
-        <button className="px-3 py-1 flex items-center typo-mid-bd-reg rounded-4xl border border-text-50 text-text-600 cursor-pointer hover:bg-secondary-500 hover:text-white">
+        <button className="px-3 py-1 flex items-center typo-mid-bd-reg rounded-4xl border border-text-50 text-text-600 cursor-pointer hover:bg-secondary-500 hover:text-white transition-all ease-in-out duration-500">
           <Download size={16} />
           Export
         </button>
@@ -83,7 +92,7 @@ const ActionButton = ({
             e.preventDefault();
             handleAddFilter();
           }}
-          className="px-3 py-1 flex items-center typo-mid-bd-reg rounded-4xl text-white bg-secondary-500 cursor-pointer hover:bg-secondary-700"
+          className="px-3 py-1 flex items-center typo-mid-bd-reg rounded-4xl text-white bg-secondary-500 cursor-pointer hover:bg-secondary-700 transition-all ease-in-out duration-500"
         >
           <Plus size={16} />
           Add

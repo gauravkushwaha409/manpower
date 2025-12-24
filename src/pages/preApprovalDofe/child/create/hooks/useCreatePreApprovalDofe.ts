@@ -18,24 +18,38 @@ const useCreatePreApprovalDofe = () => {
     document_type: "",
     documents: [],
 
-    // Step - 2
+    // Step - 2 (Temporary store the job details)
+    job_title: "",
+    male: null,
+    female: null,
+    basic_salary_aed: null,
+    basic_salary_nrp: null,
+    working_hours: null,
+    working_days: null,
+    contract_period: null,
+    working_city: null,
+    experience: false,
+    years: null,
+    qualification: null,
+
+    // Actual Job details
     job_details: [
-      {
-        job_title: "",
-        male: 0,
-        female: 0,
-        basic_salary_aed: 0,
-        basic_salary_nrp: 0,
-        working_hours: 0,
-        working_days: 0,
-        contract_period: 0,
-        working_city: "",
-        experience: false,
-        years: 0,
-        qualification: "",
-      },
+      // {
+      //   job_title: "",
+      //   male: 0,
+      //   female: 0,
+      //   basic_salary_aed: 0,
+      //   basic_salary_nrp: 0,
+      //   working_hours: 0,
+      //   working_days: 0,
+      //   contract_period: 0,
+      //   working_city: "",
+      //   experience: false,
+      //   years: 0,
+      //   qualification: "",
+      // },
     ],
-    // These field are same for all the jobs
+    // Step - 3
     food: false,
     accomodation: false,
     transportation: false,

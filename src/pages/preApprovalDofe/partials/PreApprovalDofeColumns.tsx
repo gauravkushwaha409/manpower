@@ -1,15 +1,11 @@
-// import { CustomColumnDef } from "@/components/Table";
-import { CustomColumnDef } from "@/components/Table";
-import PreApprovalDofeActionButtons from "./PreApprovalDofeActions";
-// import { List } from "lucide-react";
+import TableAction from "@/components/TableAction";
 import { IPreApprovalDofeListItem } from "../interface/IPreApprovalDofe";
-// import { IPreApprovalDofeListItem } from "../interface/IPreApprovalDofe";
+import { ColumnDef } from "@tanstack/react-table";
 
-export const PreApprovalDofeColumns: CustomColumnDef<IPreApprovalDofeListItem>[] = [
+export const PreApprovalDofeColumns: ColumnDef<IPreApprovalDofeListItem>[] = [
   {
     header: "SN",
     accessorKey: "sn",
-    search: false,
     cell: ({ row }) => row.index + 1,
   },
   {
@@ -36,6 +32,12 @@ export const PreApprovalDofeColumns: CustomColumnDef<IPreApprovalDofeListItem>[]
     header: "Action",
     accessorKey: "action",
 
-    cell: ({ row }) => <PreApprovalDofeActionButtons row={row?.original} />,
+    cell: () => (
+      <TableAction
+        del={{ active: true }}
+        edit={{ active: true }}
+        view={{ active: true }}
+      />
+    ),
   },
 ];
