@@ -68,11 +68,13 @@ export function DateRangePicker({ value, onChange }: DateRangePickerProps) {
           <Button
             variant="outline"
             className={cn(
-              "w-67.5 h-11 justify-between text-left font-normal bg-white p-3 border text-sm border-tertiary-50 rounded-full px-6 hover:bg-primary-50 cursor-pointer",
+              "w-67.5 h-11 justify-between text-left font-normal bg-white p-3 border text-sm border-tertiary-50 rounded-full px-6 cursor-pointer",
               !date?.from && "text-black"
             )}
           >
-            <span className="text-black">{formatted}</span>
+            <span className="text-black-300 typo-mid-bd-light">
+              {formatted}
+            </span>
             <CalendarIcon className="mr-2 h-4 w-4 text-black" />
           </Button>
         </PopoverTrigger>

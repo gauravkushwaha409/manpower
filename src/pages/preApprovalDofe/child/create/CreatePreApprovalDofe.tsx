@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Breadcrumb from "@/components/reusable-component/Breadcrumb";
-import PageHeader from "@/common/PageHeader";
 import { PATH } from "@/constant/path";
 
 import ExtendedMultiStepForm from "@/components/extended-components/ExtendedMultiStepForm";
@@ -24,11 +23,10 @@ const CreatePreApprovalDofe: React.FC = () => {
             to: PATH.preApprovalDofe.index,
           },
           {
-            label: "Add Create",
+            label: "Create",
           },
         ]}
       />
-      <PageHeader title="Create Pre Approval Dofe" showAddButton={false} />
       <ExtendedMultiStepForm
         formik={formik}
         currentStep={step}

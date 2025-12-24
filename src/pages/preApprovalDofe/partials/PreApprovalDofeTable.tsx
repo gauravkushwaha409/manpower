@@ -5,7 +5,7 @@ import { PreApprovalDofeTableData } from "../hooks/useGetPreApprovalDofe";
 
 const PreApprovalDofeTable = () => {
   return (
-    <TableWrapper isLoading={false}>
+    <TableWrapper wrapperClassName="mt-4" isLoading={false}>
       <Table columns={PreApprovalDofeColumns} data={PreApprovalDofeTableData} />
     </TableWrapper>
   );

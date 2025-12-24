@@ -1,10 +1,9 @@
 import { FormikProvider, FormikValues, FormikContextType } from "formik";
-import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import ExtendedButton from "./ExtendedButton";
 import { useNavigate } from "react-router-dom";
 import HorizontalDivider from "../reusable-component/HorizontalDivider";
-import { ChevronLeft } from "lucide-react";
+import { Loader } from "lucide-react";
+import React from "react";
 
 interface Step {
   id: string;
@@ -35,7 +34,6 @@ export default function ExtendedMultiStepForm<T extends FormikValues>({
   steps,
   currentStep,
   onStepChange,
-  // onClose,
   submitText = "Submit",
   cancelText = "Cancel",
   nextText = "Next",
@@ -43,7 +41,6 @@ export default function ExtendedMultiStepForm<T extends FormikValues>({
   isSubmitting = false,
   className = "",
   showCancelBtn = true,
-  btnDisabled = false,
   showStepIndicator = true,
   allowStepSkip = false,
 }: MultiStepFormProps<T>) {
@@ -51,6 +48,7 @@ export default function ExtendedMultiStepForm<T extends FormikValues>({
   const isFirstStep = currentStep === 0;
   const isLastStep = currentStep === steps.length - 1;
 
+  // handle Next click
   const handleNext = async () => {
     formik.handleSubmit();
     if (!isLastStep) {
@@ -58,6 +56,7 @@ export default function ExtendedMultiStepForm<T extends FormikValues>({
     }
   };
 
+  // handle previous
   const handlePrevious = () => {
     if (!isFirstStep) {
       onStepChange(currentStep - 1);
@@ -70,8 +69,7 @@ export default function ExtendedMultiStepForm<T extends FormikValues>({
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = () => {
     if (isLastStep) {
       formik.handleSubmit();
     } else {
@@ -84,7 +82,7 @@ export default function ExtendedMultiStepForm<T extends FormikValues>({
       <form
         onSubmit={handleSubmit}
         className={cn(
-          "space-y-6 bg-background-200 bg-white shadow-[0px_1px_22px_0px_rgba(0,0,0,0.04)] p-4 rounded-[0.5rem]",
+          "space-y-6 bg-background-200 bg-white shadow-[0px_1px_22px_0px_rgba(0,0,0,0.04)] p-4 rounded-xl",
           className
         )}
       >
@@ -139,7 +137,7 @@ export default function ExtendedMultiStepForm<T extends FormikValues>({
         )}
 
         {/* Current Step Content */}
-        <div className="min-h-[300px]">{steps[currentStep]?.content}</div>
+        <div className="min-h-75">{steps[currentStep]?.content}</div>
 
         <div className="px-4">
           <HorizontalDivider />
@@ -147,41 +145,29 @@ export default function ExtendedMultiStepForm<T extends FormikValues>({
 
         {/* Navigation Buttons */}
         <div className="flex justify-between items-center mt-10 w-full">
-          <div className="flex gap-2">
+          <Button
+            variant="previous"
+            disabled={isFirstStep}
+            onClick={handlePrevious}
+            text={prevText}
+          />
+          <div className="flex items-center gap-x-2">
             {showCancelBtn && (
               <Button
-                type="button"
-                className="mb-2 p-2 border-[1.5] border-primary-400 rounded-sm w-[110px] text-primary-400 hover:text-primary-400 cursor-pointer"
-                variant="outline"
+                variant="cancel"
+                text={cancelText}
                 onClick={() => {
                   formik.setErrors({});
                   navigate(-1);
                 }}
-              >
-                {cancelText}
-              </Button>
+              />
             )}
-          </div>
-
-          <div className="flex gap-2">
-            {!isFirstStep && (
-              <Button
-                type="button"
-                variant="outline"
-                className="mb-2 p-2 border-[1.5] border-gray-400 rounded-sm w-[110px] text-gray-600 hover:text-gray-600 cursor-pointer"
-                onClick={handlePrevious}
-              >
-                <ChevronLeft className="w-4 h-4 mr-1" />
-                {prevText}
-              </Button>
-            )}
-
-            <ExtendedButton
-              disabled={btnDisabled}
-              type="submit"
-              className="mr-2 mb-2 px-2 w-fit min-w-[110px] cursor-pointer"
-              text={isLastStep ? submitText : nextText}
+            <Button
+              variant="submit"
               isLoading={isSubmitting}
+              disabled={isSubmitting}
+              text={isLastStep ? submitText : nextText}
+              onClick={handleSubmit}
             />
           </div>
         </div>
@@ -189,3 +175,52 @@ export default function ExtendedMultiStepForm<T extends FormikValues>({
     </FormikProvider>
   );
 }
+
+type ButtonVariant = "submit" | "cancel" | "previous";
+
+interface ButtonProps {
+  text: string;
+  isLoading?: boolean;
+  disabled?: boolean;
+  onClick?: () => void;
+  variant: ButtonVariant;
+}
+
+const Button = ({
+  text,
+  isLoading = false,
+  disabled = false,
+  onClick,
+  variant,
+}: ButtonProps) => {
+  const baseClasses =
+    "px-3 py-1 flex items-center gap-x-2 typo-mid-bd-reg rounded-4xl transition-colors";
+
+  const variantClasses: Record<ButtonVariant, string> = {
+    submit: "bg-secondary-500 text-white hover:bg-secondary-700",
+    previous:
+      "border border-secondary-500 text-secondary-500 hover:bg-secondary-500 hover:text-white",
+    cancel: "bg-red-500 text-white hover:bg-red-700",
+  };
+
+  const isDisabled = disabled || isLoading;
+
+  return (
+    <button
+      type={variant === "submit" ? "submit" : "button"}
+      disabled={isDisabled}
+      onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault();
+        onClick?.();
+      }}
+      className={cn(
+        baseClasses,
+        variantClasses[variant],
+        isDisabled ? "opacity-60 cursor-not-allowed" : "cursor-pointer"
+      )}
+    >
+      {isLoading && <Loader />}
+      {text}
+    </button>
+  );
+};

@@ -5,7 +5,106 @@ import { useSearchParams } from "react-router-dom";
 import { useState } from "react";
 import { DateRange } from "react-day-picker";
 import { format, parseISO } from "date-fns";
-const SearchFilter = () => {
+import { Download, Funnel, Plus } from "lucide-react";
+import {
+  useGetSearchParams,
+  useUpdateSearchParams,
+} from "@/hooks/updateSearchParams";
+import { SelectFilter } from "./shadcn/SelectFilter";
+import { IOption } from "./form/ReactSelect";
+
+const SearchFilter = ({
+  dateFilter,
+  selectFilter,
+  handleAddClick,
+}: {
+  dateFilter: boolean;
+  selectFilter: {
+    placeholder: string;
+    option: IOption[];
+    paramsKey: string;
+  }[];
+  handleAddClick: () => void;
+}) => {
+  const updateSearchParams = useUpdateSearchParams();
+  const getSearchParams = useGetSearchParams();
+
+  const handleFilterClick = () => {
+    if (getSearchParams("filter") === "active")
+      updateSearchParams({}, ["filter"]);
+    else updateSearchParams({ filter: "active" });
+  };
+  return (
+    <div>
+      <ActionButton
+        handleAddFilter={handleAddClick}
+        handleClickFilter={handleFilterClick}
+      />
+      <DynamicFilter selectFilter={selectFilter} dateFilter={dateFilter} />
+    </div>
+  );
+};
+
+export default SearchFilter;
+
+// Components
+const ActionButton = ({
+  handleClickFilter,
+  handleAddFilter,
+}: {
+  handleClickFilter: () => void;
+  handleAddFilter: () => void;
+}) => {
+  const search = useSearch();
+  return (
+    <div className="my-2.5 flex items-center justify-between">
+      <SearchSection
+        search={search.get()}
+        setSearch={search.set}
+        styleClass="w-72 h-10 rounded-full bg-white"
+      />
+
+      <div className="flex items-center gap-x-2">
+        <button
+          onClick={handleClickFilter}
+          className="px-3 py-1 flex items-center typo-mid-bd-reg rounded-4xl border border-text-50 text-text-600 cursor-pointer hover:bg-secondary-500 hover:text-white"
+        >
+          <Funnel size={16} />
+          Filter
+        </button>
+
+        <button className="px-3 py-1 flex items-center typo-mid-bd-reg rounded-4xl border border-text-50 text-text-600 cursor-pointer hover:bg-secondary-500 hover:text-white">
+          <Download size={16} />
+          Export
+        </button>
+
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            handleAddFilter();
+          }}
+          className="px-3 py-1 flex items-center typo-mid-bd-reg rounded-4xl text-white bg-secondary-500 cursor-pointer hover:bg-secondary-700"
+        >
+          <Plus size={16} />
+          Add
+        </button>
+      </div>
+    </div>
+  );
+};
+
+// Filter Component
+const DynamicFilter = ({
+  dateFilter,
+  selectFilter,
+}: {
+  dateFilter: boolean;
+  selectFilter: {
+    placeholder: string;
+    option: IOption[];
+    paramsKey: string;
+  }[];
+}) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const fromParam = searchParams.get("from");
   const toParam = searchParams.get("to");
@@ -21,7 +120,6 @@ const SearchFilter = () => {
 
   const handleDateChange = (range: DateRange | undefined) => {
     setDateRange(range);
-
     const params = new URLSearchParams(searchParams);
 
     if (!range?.from || !range?.to) {
@@ -34,17 +132,20 @@ const SearchFilter = () => {
 
     setSearchParams(params);
   };
-  const search = useSearch();
   return (
-    <div className="my-2.5 flex items-center justify-between">
-      <SearchSection
-        search={search.get()}
-        setSearch={search.set}
-        styleClass="w-72 h-10 rounded-full bg-white"
-      />
-      <DateRangePicker onChange={handleDateChange} value={dateRange} />
+    <div className="flex items-center justify-between">
+      {/* Date Range Filter */}
+      {dateFilter && (
+        <DateRangePicker onChange={handleDateChange} value={dateRange} />
+      )}
+      {selectFilter?.map((item) => (
+        <SelectFilter
+          key={item?.paramsKey}
+          paramsKey={item?.paramsKey}
+          placeHolder={item?.placeholder}
+          option={item.option}
+        />
+      ))}
     </div>
   );
 };
-
-export default SearchFilter;

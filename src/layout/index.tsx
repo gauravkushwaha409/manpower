@@ -8,7 +8,7 @@ const Layout: React.FC = () => {
   const toggleSidebar = () => setSidebarOpen((prev) => !prev);
 
   return (
-    <div className="flex u-max-w-app bg-white h-screen overflow-hidden">
+    <div className="flex u-max-w-app bg-white h-screen overflow-hidden font-outfit">
       <Sidebar isSidebarOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
       <div className="u-flex-parent">
         <Header />
