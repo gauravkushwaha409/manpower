@@ -42,7 +42,7 @@ export const mainMenuItems = [
     icon: PiBuildingOffice,
     label: "Company",
     active: false,
-    link: PATH.dashboard.company,
+    link: PATH.company.index,
   },
   {
     id: "candidate",

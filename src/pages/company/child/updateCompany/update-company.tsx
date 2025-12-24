@@ -22,7 +22,7 @@ const UpdateCompany: React.FC = () => {
           },
         ]}
       />
-      <PageHeader title="Update Company" showAddButton={false} />
+      <PageHeader title="Update Company" />
       <ExtendedForm formik={formik}>
         <CompanyForm />
       </ExtendedForm>

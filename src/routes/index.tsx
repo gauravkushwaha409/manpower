@@ -4,6 +4,7 @@ import PublicRouteWrapper from "./public-route-wrapper";
 import { dashboardRoutes } from "./partials/private-route/dashboard-route";
 import { publicRoutes } from "./partials/public-route";
 import { preApprovalDofeRoutes } from "./partials/private-route/preApprovalDofeRoutes";
+import { companyRoutes } from "./partials/private-route/company-routes";
 
 /**
  * MainRoutes defines the routing configuration for the application.
@@ -19,7 +20,7 @@ const MainRoutes = [
         <Layout />
       </PrivateRouteWrapper>
     ),
-    children: [...dashboardRoutes, ...preApprovalDofeRoutes],
+    children: [...dashboardRoutes, ...preApprovalDofeRoutes, ...companyRoutes],
   },
 
   {

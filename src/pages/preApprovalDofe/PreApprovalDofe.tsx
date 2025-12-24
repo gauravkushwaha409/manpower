@@ -19,9 +19,9 @@ const PreApprovalDofe = () => {
         }}
         selectFilter={[
           {
-            placeholder: "Select Dofe",
-            option: [{ label: "filter-1", value: "filter-1" }],
-            paramsKey: "dofe-filter",
+            placeholder: "Select Comapny",
+            option: [{ label: "Dome Infosys", value: "dome-infosys" }],
+            paramsKey: "company",
           },
         ]}
       />

@@ -56,13 +56,13 @@
 
 /* Font Style Name */
 @utility typography-input-label {
-  @apply text-[12px] font-normal font-[Inter] leading-[150%] text-gray-800;
+  @apply text-[12px] font-normal leading-[150%] text-gray-800;
 }
 @utility typography-input-placeholder {
-  @apply placeholder:text-[11px] placeholder:font-[Inter] placeholder:leading-[150%] placeholder:text-[#9ca3af] placeholder:font-normal;
+  @apply placeholder:text-[11px] placeholder:font-outfit placeholder:leading-[150%] placeholder:text-[#9ca3af] placeholder:font-normal;
 }
 @utility typography-input-value {
-  @apply text-[11px] font-medium font-[Inter] leading-[150%] text-gray-700;
+  @apply text-[11px] font-medium leading-[150%] text-gray-700;
 }
 @utility typography-caption-c2 {
   @apply font-[Inter] font-normal text-[0.625rem] leading-[150%];
@@ -75,51 +75,9 @@
 @utility typography-button-text {
   @apply text-white font-[Inter] text-[12px] font-normal leading-4.5;
 }
-@utility typography-p1-regular {
-  @apply font-[Inter] font-normal text-[1rem] leading-[150%] tracking-normal;
-}
-@utility typography-p2-regular {
-  @apply font-[Inter] font-semibold text-sm leading-[150%] tracking-[0];
-}
-
-@utility typography-heading-poppins-medium {
-  @apply font-[Inter] text-[#172b4d] text-[1.2rem] font-semibold leading-[100%];
-}
-
-@utility typography-p1-medium {
-  @apply font-[Inter] font-medium text-base leading-[150%];
-}
-
-@utility typography-p2-medium {
-  @apply font-[Inter] font-medium text-sm leading-[150%] tracking-[0];
-}
-
-@utility typography-p1-semibold {
-  @apply font-[Inter] font-semibold text-base leading-[150%] tracking-[0];
-}
-
-@utility typography-p2-semibold {
-  @apply font-[Inter] font-semibold text-sm leading-[150%];
-}
-
-@utility typography-caption-c1 {
-  @apply font-[Inter] font-normal text-xs leading-[150%] tracking-[0];
-}
-
-@utility typography-caption-c3 {
-  @apply font-[Inter] font-normal text-[0.5rem] leading-[150%];
-}
-
-@utility typography-caption-c1-semibold {
-  @apply font-[Inter] font-semibold text-xs leading-[150%] tracking-[0];
-}
-
-@utility typography-poppins-medium-c1 {
-  @apply font-[Inter] font-medium text-xs leading-[130%];
-}
 
 @utility u-max-w-app {
-  @apply max-w-[120rem] mx-auto;
+  @apply max-w-480 mx-auto;
 }
 
 @utility u-flex-parent {

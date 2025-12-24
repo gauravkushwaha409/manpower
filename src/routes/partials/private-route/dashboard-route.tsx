@@ -51,9 +51,6 @@ import UpdateSeo from "@/pages/settings/seo/UpdateSeo";
 import Industry from "@/pages/industry/Industry";
 import AddIndustry from "@/pages/industry/AddIndustry";
 import UpdateIndustry from "@/pages/industry/UpdateIndustry";
-import Company from "@/pages/company/Company";
-import AddCompany from "@/pages/company/child/addCompany/AddCompany";
-import UpdateCompany from "@/pages/company/child/updateCompany/UpdateCompany";
 import PreApplication from "@/pages/preApplication/PreApplication";
 import AddPreApplication from "@/pages/preApplication/AddPreApplication";
 import UpdatePreApplication from "@/pages/preApplication/UpdatePreApplication";
@@ -124,20 +121,6 @@ export const dashboardRoutes = [
   {
     path: PATH.dashboard.updateIndustry,
     element: <UpdateIndustry />,
-  },
-
-  // company
-  {
-    path: PATH.dashboard.company,
-    element: <Company />,
-  },
-  {
-    path: PATH.dashboard.addCompany,
-    element: <AddCompany />,
-  },
-  {
-    path: PATH.dashboard.updateCompany,
-    element: <UpdateCompany />,
   },
 
   // payment

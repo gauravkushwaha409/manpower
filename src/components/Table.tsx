@@ -115,12 +115,12 @@ const Table = <T extends { id: string }>({
               maxWidth: header.column.columnDef.maxSize,
             }}
             className={cn(
-              `py-3 text-text-500 typo-manrope-small-body-text-semi-bold`,
+              `py-3 text-text-500 typo-mid-bd-reg`,
               tHeadCellClassName
             )}
           >
             <div className="flex flex-col gap-1.5 ml-5">
-              <span className="ml-1 text-start typography-caption-c1-semibold">
+              <span className="ml-1 text-start">
                 {flexRender(
                   header.column.columnDef.header,
                   header.getContext()
@@ -146,7 +146,7 @@ const Table = <T extends { id: string }>({
               maxWidth: cell.column.columnDef.maxSize,
             }}
             className={`
-            px-5 py-5 typo-mid-bd-light text-text-400
+            px-5 py-2.5 typo-mid-bd-light text-text-400
             ${index % 2 === 0 ? "" : "bg-secondary-50/50"}
           `}
           >

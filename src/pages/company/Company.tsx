@@ -1,23 +1,28 @@
 import React from "react";
 import PageHeader from "@/common/PageHeader";
-import Breadcrumb from "@/components/reusable-component/Breadcrumb";
 import { PATH } from "@/constant/path";
-import CompanyFilterList from "./partials/CompanyFilterList";
 import ComapnyTable from "./partials/ComapnyTable";
+import SearchFilter from "@/components/search-filter";
+import { useNavigate } from "react-router-dom";
 
 const Company: React.FC = () => {
+  const navigate = useNavigate();
   return (
     <div className="u-flex-parent">
-      <Breadcrumb
-        items={[
-          { label: "Dashboard" },
+      <PageHeader title="Company" />
+      <SearchFilter
+        dateFilter
+        handleAddClick={() => {
+          navigate(PATH.company.create);
+        }}
+        selectFilter={[
           {
-            label: "Company",
+            placeholder: "Select Country",
+            option: [{ label: "Nepal", value: "nepal" }],
+            paramsKey: "country",
           },
         ]}
       />
-      <PageHeader title="Company" routePath={PATH.dashboard.addCompany} />
-      <CompanyFilterList />
       <ComapnyTable />
     </div>
   );

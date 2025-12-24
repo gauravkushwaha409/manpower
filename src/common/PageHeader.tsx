@@ -2,10 +2,6 @@ import React from "react";
 
 interface IHeaderProps {
   title: string;
-  handleAddClick?: () => void;
-  handleClickExport?: () => void;
-  showAddButton?: boolean;
-  routePath?: string;
 }
 
 const PageHeader: React.FC<IHeaderProps> = ({ title }) => {

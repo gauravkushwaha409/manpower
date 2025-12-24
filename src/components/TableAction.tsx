@@ -31,7 +31,7 @@ const TableAction: React.FC<IProps> = ({
       {viewActive && (
         <button title="View" {...viewProps}>
           <Eye
-            className="shrink-0 cursor-pointer hover:scale-125 transition-all duration-300 text-primary-400"
+            className="shrink-0 cursor-pointer hover:scale-125 transition-all duration-300 text-secondary-400"
             size={16}
           />
         </button>

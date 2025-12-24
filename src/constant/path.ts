@@ -95,6 +95,11 @@ export const PATH = {
     create: "/pre-approval-dofe/create",
     update: "/pre-approval-dofe/update/:id",
   },
+  company: {
+    index: "/company",
+    create: "/company/create",
+    update: "/company/update/:id",
+  },
   jobProcess: JOB_PROCESS,
   visa: VISA,
   settings: SETTINGS,
