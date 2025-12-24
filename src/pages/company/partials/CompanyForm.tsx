@@ -1,12 +1,12 @@
 import { InputSearchSelect } from "@/components/form/InputSelect";
 import InputText from "@/components/form/FormInputText";
-import { InputFile } from "@/components/ui/FormComponent";
+import FormInputImage from "@/components/form/FormInputPhoto";
 
 const CompanyForm = () => {
   return (
     <div className="grid grid-cols-1 gap-5">
       {/* Company Info */}
-      <p className="mt-5 text-black text-sm font-medium">Company Information</p>
+      <p className="mt-5 typo-xl-bd-reg text-text-400">Company Information</p>
       <div className="grid grid-cols-5 gap-8">
         <div className="col-span-2">
           <InputText
@@ -77,12 +77,12 @@ const CompanyForm = () => {
           />
         </div>
         <div className="col-span-2">
-          <InputFile label="License Image" name="license_image" />
+          <FormInputImage label="License Image" name="license_image" />
         </div>
       </div>
 
       {/* Company Address */}
-      <p className="mt-5 text-black text-sm font-medium">Company Address</p>
+      <p className="mt-5 typo-xl-bd-reg text-text-400">Company Address</p>
       <div className="mt-2 grid grid-cols-4 gap-8">
         <InputText
           label="State/Region"
@@ -95,7 +95,7 @@ const CompanyForm = () => {
       </div>
 
       {/* Recruitment Contact Person */}
-      <p className="mt-5 text-black text-sm font-medium">
+      <p className="mt-5 typo-xl-bd-reg text-text-400">
         Recruitment Contact Person
       </p>
       <div className="grid grid-cols-2 gap-8 mt-2">

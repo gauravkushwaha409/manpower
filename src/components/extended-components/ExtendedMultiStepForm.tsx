@@ -145,7 +145,7 @@ export default function ExtendedMultiStepForm<T extends FormikValues>({
 
         {/* Navigation Buttons */}
         <div className="flex justify-between items-center mt-10 w-full">
-          <Button
+          <FormButton
             variant="previous"
             disabled={isFirstStep}
             onClick={handlePrevious}
@@ -153,7 +153,7 @@ export default function ExtendedMultiStepForm<T extends FormikValues>({
           />
           <div className="flex items-center gap-x-2">
             {showCancelBtn && (
-              <Button
+              <FormButton
                 variant="cancel"
                 text={cancelText}
                 onClick={() => {
@@ -162,7 +162,7 @@ export default function ExtendedMultiStepForm<T extends FormikValues>({
                 }}
               />
             )}
-            <Button
+            <FormButton
               variant="submit"
               isLoading={isSubmitting}
               disabled={isSubmitting}
@@ -186,7 +186,7 @@ interface ButtonProps {
   variant: ButtonVariant;
 }
 
-const Button = ({
+const FormButton = ({
   text,
   isLoading = false,
   disabled = false,

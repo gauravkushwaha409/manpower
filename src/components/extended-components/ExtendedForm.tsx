@@ -1,9 +1,8 @@
 import { FormikProvider, FormikValues, FormikContextType } from "formik";
-import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import ExtendedButton from "./ExtendedButton";
 import { useNavigate } from "react-router-dom";
 import HorizontalDivider from "../reusable-component/HorizontalDivider";
+import { Loader } from "lucide-react";
 
 interface ExtendedFormProps<T extends FormikValues> {
   formik: FormikContextType<T>;
@@ -20,7 +19,7 @@ interface ExtendedFormProps<T extends FormikValues> {
 export default function ExtendedForm<T extends FormikValues>({
   formik,
   children,
-  submitText = "Save",
+  submitText = "Submit",
   cancelText = "Cancel",
   isSubmitting = false,
   className = "",
@@ -33,7 +32,7 @@ export default function ExtendedForm<T extends FormikValues>({
       <form
         onSubmit={formik.handleSubmit}
         className={cn(
-          "space-y-6 bg-background-200 bg-white shadow-[0px_1px_22px_0px_rgba(0,0,0,0.04)] p-4 rounded-[0.5rem]",
+          "space-y-6 bg-background-200 bg-white shadow-[0px_1px_22px_0px_rgba(0,0,0,0.04)] p-4 rounded-xl",
           className
         )}
       >
@@ -45,27 +44,71 @@ export default function ExtendedForm<T extends FormikValues>({
 
         <div className="flex justify-end gap-2 mt-10 w-full">
           {showCancelBtn && (
-            <Button
-              type="button"
-              className="mb-2 p-2 border-[1.5] border-primary-400 rounded-sm w-[110px] text-primary-400 hover:text-primary-400 cursor-pointer"
-              variant="outline"
+            <FormButton
+              text={cancelText}
+              variant="cancel"
               onClick={() => {
                 formik.setErrors({});
                 navigate(-1);
               }}
-            >
-              {cancelText}
-            </Button>
+            />
           )}
-          <ExtendedButton
+          <FormButton
             disabled={btnDisabled}
-            type="submit"
-            className="mr-2 mb-2 px-2 w-fit min-w-[110px] cursor-pointer"
             text={submitText}
             isLoading={isSubmitting}
+            variant="submit"
           />
         </div>
       </form>
     </FormikProvider>
   );
 }
+
+type ButtonVariant = "submit" | "cancel" | "previous";
+
+interface ButtonProps {
+  text: string;
+  isLoading?: boolean;
+  disabled?: boolean;
+  onClick?: () => void;
+  variant: ButtonVariant;
+}
+const FormButton = ({
+  text,
+  isLoading = false,
+  disabled = false,
+  onClick,
+  variant,
+}: ButtonProps) => {
+  const baseClasses =
+    "px-3 py-1 flex items-center gap-x-2 typo-mid-bd-reg rounded-4xl transition-colors";
+
+  const variantClasses: Record<ButtonVariant, string> = {
+    submit: "bg-secondary-500 text-white hover:bg-secondary-700",
+    previous:
+      "border border-secondary-500 text-secondary-500 hover:bg-secondary-500 hover:text-white",
+    cancel: "bg-red-500 text-white hover:bg-red-700",
+  };
+
+  const isDisabled = disabled || isLoading;
+
+  return (
+    <button
+      type={variant === "submit" ? "submit" : "button"}
+      disabled={isDisabled}
+      onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault();
+        onClick?.();
+      }}
+      className={cn(
+        baseClasses,
+        variantClasses[variant],
+        isDisabled ? "opacity-60 cursor-not-allowed" : "cursor-pointer"
+      )}
+    >
+      {isLoading && <Loader />}
+      {text}
+    </button>
+  );
+};

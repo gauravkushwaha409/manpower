@@ -53,6 +53,9 @@
 @utility typo-mid-bd-reg {
   @apply font-outfit font-normal text-[14px] leading-5;
 }
+@utility typo-xl-bd-reg {
+  @apply font-outfit font-normal text-[18px] leading-7;
+}
 
 /* Font Style Name */
 @utility typography-input-label {
@@ -64,18 +67,11 @@
 @utility typography-input-value {
   @apply text-[11px] font-medium leading-[150%] text-gray-700;
 }
-@utility typography-caption-c2 {
-  @apply font-[Inter] font-normal text-[0.625rem] leading-[150%];
-}
-
-@utility typography-h3 {
-  @apply font-[Inter] font-semibold text-[2rem] tracking-normal leading-8;
-}
 
 @utility typography-button-text {
   @apply text-white font-[Inter] text-[12px] font-normal leading-4.5;
 }
-
+/*  */
 @utility u-max-w-app {
   @apply max-w-480 mx-auto;
 }

@@ -8,10 +8,7 @@ const PreApprovalDofe = () => {
   const navigate = useNavigate();
   return (
     <div className="u-flex-parent">
-      <PageHeader
-        title="Pre Approval DOFE"
-        routePath={PATH.preApprovalDofe.create}
-      />
+      <PageHeader title="Pre Approval DOFE" />
       <SearchFilter
         dateFilter
         handleAddClick={() => {
