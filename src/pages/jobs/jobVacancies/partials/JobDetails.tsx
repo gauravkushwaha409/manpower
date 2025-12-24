@@ -3,7 +3,7 @@ import plusGreenIcon from "../../../../assets/icons/plus_green.svg";
 import { useFormikContext } from "formik";
 import { IJobVacancyTableData } from "../interface/IAddJobVacancies";
 import InputText from "@/components/form/FormInputText";
-import { InputSearchSelect } from "@/components/form/InputSelect";
+import InputSearchSelect from "@/components/form/form-input-select";
 import InputTextArea from "@/components/form/InputTextArea";
 
 const JobDetails: React.FC = () => {

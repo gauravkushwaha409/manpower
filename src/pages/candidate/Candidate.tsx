@@ -1,36 +1,30 @@
-import PageHeader from "@/common/PageHeader"
-import Breadcrumb from "@/components/reusable-component/Breadcrumb"
-import Table from "@/components/Table"
-import { PATH } from "@/constant/path"
-import CandidateFilterList from "./partials/CandidateFilterList"
-import { CandidateColumns } from "./partials/CandidateColumns"
-import { CandidateTableData } from "./hooks/useGetCandidate"
-
+import PageHeader from "@/common/PageHeader";
+import SearchFilter from "@/components/search-filter";
+import { useNavigate } from "react-router-dom";
+import { PATH } from "@/constant/path";
+import CandidateTable from "./partials/candidate-table";
 
 const Candidate = () => {
+  const navigate = useNavigate();
   return (
-     <div className="bg-surface w-full min-h-full">
-      <Breadcrumb
-        items={[
-          { label: "Dashboard" },
+    <div className="u-flex-parent">
+      <PageHeader title="Candidate" />
+      <SearchFilter
+        dateFilter
+        handleAddClick={() => {
+          navigate(PATH.preApprovalDofe.create);
+        }}
+        selectFilter={[
           {
-            label: "Candidates",
+            placeholder: "Select Comapny",
+            option: [{ label: "Dome Infosys", value: "dome-infosys" }],
+            paramsKey: "company",
           },
         ]}
       />
-      <div>
-        <div className="w-full h-fit">
-          <PageHeader title="Candidates" routePath={PATH.dashboard.addCandidate} />
-        </div>
-        <div className="py-5">
-          <CandidateFilterList />
-        </div>
-        <div className="overflow-x-visible">
-          <Table columns={CandidateColumns} data={CandidateTableData} />
-        </div>
-      </div>
+      <CandidateTable />
     </div>
-  )
-} 
+  );
+};
 
-export default Candidate
+export default Candidate;

@@ -47,9 +47,9 @@ export const mainMenuItems = [
   {
     id: "candidate",
     icon: User2,
-    label: "Candidates",
+    label: "Candidate",
     active: false,
-    link: PATH.dashboard.candidate,
+    link: PATH.candidate.index,
   },
 
   // {

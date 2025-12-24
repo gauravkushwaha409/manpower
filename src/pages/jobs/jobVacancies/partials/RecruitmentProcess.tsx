@@ -1,6 +1,6 @@
 import InputCheckbox from "@/components/form/InputCheckBox";
-import InputDate from "@/components/form/FormInputDate";
-import { InputSearchSelect } from "@/components/form/InputSelect";
+import InputDate from "@/components/form/form-input-date";
+import InputSearchSelect from "@/components/form/form-input-select";
 import InputText from "@/components/form/FormInputText";
 import React from "react";
 

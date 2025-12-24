@@ -1,6 +1,6 @@
 import React from "react";
 import InputText from "@/components/form/FormInputText";
-import { InputSearchSelect } from "@/components/form/InputSelect";
+import InputSearchSelect from "@/components/form/form-input-select";
 import TextEditor from "@/components/form/TextEditor";
 
 const JobApplicationForm: React.FC = () => {

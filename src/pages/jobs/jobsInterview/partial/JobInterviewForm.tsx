@@ -1,9 +1,9 @@
 import React from "react";
 import InputText from "@/components/form/FormInputText";
-import { InputSearchSelect } from "@/components/form/InputSelect";
+import InputSearchSelect from "@/components/form/form-input-select";
 import TextEditor from "@/components/form/TextEditor";
 import { InputTime } from "@/components/ui/FormComponent";
-import InputDate from "@/components/form/FormInputDate";
+import InputDate from "@/components/form/form-input-date";
 
 const JobInterviewForm: React.FC = () => {
   return (

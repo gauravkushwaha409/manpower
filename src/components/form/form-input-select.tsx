@@ -11,7 +11,7 @@ interface IReactSelect extends ComponentProps<"input"> {
   labelClassName?: string;
 }
 
-export const InputSearchSelect: React.FC<IReactSelect> = ({
+const FormInputSelect: React.FC<IReactSelect> = ({
   name,
   label,
   options,
@@ -90,3 +90,5 @@ export const InputSearchSelect: React.FC<IReactSelect> = ({
     </div>
   );
 };
+
+export default FormInputSelect;

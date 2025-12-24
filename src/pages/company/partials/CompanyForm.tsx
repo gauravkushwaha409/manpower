@@ -1,4 +1,4 @@
-import { InputSearchSelect } from "@/components/form/InputSelect";
+import InputSearchSelect from "@/components/form/form-input-select";
 import InputText from "@/components/form/FormInputText";
 import FormInputImage from "@/components/form/FormInputPhoto";
 

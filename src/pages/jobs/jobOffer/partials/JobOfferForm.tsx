@@ -1,7 +1,7 @@
 import React from "react";
 import InputText from "@/components/form/FormInputText";
-import { InputSearchSelect } from "@/components/form/InputSelect";
-import InputDate from "@/components/form/FormInputDate";
+import InputSearchSelect from "@/components/form/form-input-select";
+import InputDate from "@/components/form/form-input-date";
 
 const JobOfferForm: React.FC = () => {
   return (

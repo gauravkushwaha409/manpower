@@ -1,5 +1,5 @@
-import InputDate from "@/components/form/FormInputDate";
-import { InputSearchSelect } from "@/components/form/InputSelect";
+import InputDate from "@/components/form/form-input-date";
+import FormSelect from "@/components/form/form-input-select";
 import InputText from "@/components/form/FormInputText";
 import FormInputPdf from "@/components/form/FormInputPdf";
 import { CircleX, FileIcon, Plus } from "lucide-react";
@@ -47,7 +47,7 @@ export const PreApprovalFormStep1 = () => {
   return (
     <div className="space-y-6">
       <div className="col-span-2 grid grid-cols-4 gap-8">
-        <InputSearchSelect
+        <FormSelect
           label="Country"
           name="country"
           options={[
@@ -63,7 +63,7 @@ export const PreApprovalFormStep1 = () => {
             { label: "Singapore", value: "singapore" },
           ]}
         />
-        <InputSearchSelect
+        <FormSelect
           label="Recuirtment Company"
           name="recuirtment_company"
           options={[{ label: "Dome Infosys", value: "dome_infosys" }]}
@@ -87,7 +87,7 @@ export const PreApprovalFormStep1 = () => {
 
       {/* Documents */}
       <div className="grid grid-cols-2 gap-6">
-        <InputSearchSelect
+        <FormSelect
           label="Document Type"
           name="document_type"
           options={[
@@ -190,7 +190,7 @@ export const PreApprovalFormStep2 = () => {
       <p>Job Details</p>
       <div className="space-y-4">
         <div className="grid grid-cols-3 gap-6">
-          <InputSearchSelect
+          <FormSelect
             label="Job Title"
             name="job_title"
             options={[
@@ -227,7 +227,7 @@ export const PreApprovalFormStep2 = () => {
               <InputText label="In (Years)" name="years" />
             ) : null}
           </div>
-          <InputSearchSelect
+          <FormSelect
             label="Academic Qualification"
             name="qualification"
             options={[

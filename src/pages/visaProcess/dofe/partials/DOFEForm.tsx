@@ -1,5 +1,5 @@
 import InputText from "@/components/form/FormInputText";
-import { InputSearchSelect } from "@/components/form/InputSelect.tsx";
+import InputSearchSelect from "@/components/form/form-input-select";
 
 const candidateOptions = [{ label: "Gaurav", value: "gaurav" }];
 const jobVacancyOptions = [{ label: "React Developer", value: "react" }];

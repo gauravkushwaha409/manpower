@@ -1,6 +1,6 @@
 import InputText from "@/components/form/FormInputText";
-import { InputSearchSelect } from "@/components/form/InputSelect.tsx";
-import InputDate from "@/components/form/FormInputDate";
+import InputSearchSelect from "@/components/form/form-input-select";
+import InputDate from "@/components/form/form-input-date";
 
 const TicketForm = () => {
   return (
