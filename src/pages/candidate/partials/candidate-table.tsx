@@ -1,6 +1,6 @@
 import Table from "@/components/Table";
 import TableWrapper from "@/components/TableWrapper";
-import { CandidateColumns } from "./CandidateColumns";
+import { CandidateColumns } from "./candidate-column";
 import { useState } from "react";
 import { CandidateTableData } from "../hooks/useGetCandidate";
 

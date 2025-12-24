@@ -2,7 +2,7 @@ import { CandidateValidationSchemaType } from "@/pages/candidate/schema/candidat
 import { useFormik } from "formik";
 import { useState } from "react";
 
-export const useCreateCandidate = () => {
+export const useUpdateCandidate = () => {
   const [step, setStep] = useState<number>(0);
   const initialValues: CandidateValidationSchemaType = {
     agent_name: "",
@@ -18,27 +18,9 @@ export const useCreateCandidate = () => {
     province: "",
     skills: "",
     wardNo: "",
-    documents: [
-      {
-        issueDate: "",
-        type: "citizenship",
-        document: "",
-        expireDate: "",
-      },
-    ],
-    education: [
-      {
-        course: "",
-        name_of_instute: "",
-        passed_year: "",
-      },
-    ],
-    languages: [
-      {
-        language: "",
-        languageLevel: "",
-      },
-    ],
+    documents: [],
+    education: [],
+    languages: [],
   };
   const formik = useFormik({
     initialValues,

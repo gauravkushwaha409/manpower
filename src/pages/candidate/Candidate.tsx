@@ -12,7 +12,7 @@ const Candidate = () => {
       <SearchFilter
         dateFilter
         handleAddClick={() => {
-          navigate(PATH.preApprovalDofe.create);
+          navigate(PATH.candidate.create);
         }}
         selectFilter={[
           {
