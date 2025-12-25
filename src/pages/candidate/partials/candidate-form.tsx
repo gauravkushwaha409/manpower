@@ -3,9 +3,9 @@ import { ICandidate } from "../interface/ICandidate";
 import FormInputText from "@/components/form/FormInputText";
 import FormInputDate from "@/components/form/form-input-date";
 import FormInputSelect from "@/components/form/form-input-select";
-import { InputFile } from "@/components/form/InputFile";
 import { Plus } from "lucide-react";
 import { cn } from "@/lib/utils";
+import FormInputImage from "@/components/form/FormInputPhoto";
 
 export const CandidateFormStep1 = () => {
   const formik = useFormikContext<ICandidate>();
@@ -220,77 +220,66 @@ export const CandidateFormStep2 = () => {
     </div>
   );
 };
-
+// Step - 3 Button
 export const CandidateFormStep3 = () => {
   const formik = useFormikContext<ICandidate>();
 
   return (
     <div className="h-fit w-full pb-16 bg-white">
-      <p className="typography-p2-medium text-Black-500 mt-2">
-        Step 3 - Documents
-      </p>
-      <div>
-        {/* Select Document Type */}
-        <FormInputSelect
-          label="Document Type"
-          name="document_type"
-          options={[
-            { label: "Citizenship", value: "citizenship" },
-            { label: "Passport", value: "passport" },
-            { label: "Resume", value: "resume" },
-            { label: "Police Report", value: "police_report" },
-          ]}
-        />
+      {/* Select Document Type */}
+      <FormInputSelect
+        label="Document Type"
+        name="document_type"
+        options={[
+          { label: "Citizenship", value: "citizenship" },
+          { label: "Passport", value: "passport" },
+          { label: "Resume", value: "resume" },
+          { label: "Police Report", value: "police_report" },
+        ]}
+      />
 
-        {/* Citizenship */}
-        {formik.values.document_type === "citizenship" && (
-          <div className="grid grid-cols-2 mt-2 gap-5 ">
-            <div className="">
-              <FormInputDate
-                label="Issued Date"
-                name="citizenship_issue_date"
-              />
-            </div>
-            <div className="">
-              <FormInputDate
-                label="Citizenship Number"
-                name="citizenship_number"
-              />
-            </div>
+      {/* Citizenship */}
+      {formik.values.document_type === "citizenship" && (
+        <div className="grid grid-cols-2 mt-2 gap-5 ">
+          <div className="">
+            <FormInputDate label="Issued Date" name="citizenship_issue_date" />
           </div>
-        )}
-
-        {/* Passport */}
-        {formik.values.document_type === "passport" && (
-          <div className="grid grid-cols-3 mt-2 gap-5 ">
-            <FormInputDate label="Issued Date" name="passport_issued_date" />
-            <FormInputDate label="Expiry Date" name="passport_expiry_date" />
-            <FormInputText
-              label="Passport Number"
-              name="passport_number"
-              placeholder="Enter Passport Number"
+          <div className="">
+            <FormInputDate
+              label="Citizenship Number"
+              name="citizenship_number"
             />
           </div>
-        )}
+        </div>
+      )}
 
-        {/* Police Report */}
-        {formik.values.document_type === "police_report" && (
-          <div className="grid grid-cols-2 mt-2 gap-5">
-            <FormInputText
-              label="Issued Date"
-              name="police_report_issued_date"
-            />
-            <FormInputText label="Dispatch Number" name="dispatch_number" />
-          </div>
-        )}
+      {/* Passport */}
+      {formik.values.document_type === "passport" && (
+        <div className="grid grid-cols-3 mt-2 gap-5 ">
+          <FormInputDate label="Issued Date" name="passport_issued_date" />
+          <FormInputDate label="Expiry Date" name="passport_expiry_date" />
+          <FormInputText
+            label="Passport Number"
+            name="passport_number"
+            placeholder="Enter Passport Number"
+          />
+        </div>
+      )}
 
-        {/* Attach Document */}
-        <InputFile label="Document" name="document" />
-      </div>
+      {/* Police Report */}
+      {formik.values.document_type === "police_report" && (
+        <div className="grid grid-cols-2 mt-2 gap-5">
+          <FormInputText label="Issued Date" name="police_report_issued_date" />
+          <FormInputText label="Dispatch Number" name="dispatch_number" />
+        </div>
+      )}
+
+      <FormInputImage label="Document" name="document" />
     </div>
   );
 };
 
+// Add and Delete Button
 type ButtonVarient = "add" | "delete";
 const Button = ({
   children,

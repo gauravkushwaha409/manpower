@@ -1,22 +1,52 @@
 import React from "react";
 import PageHeader from "@/common/PageHeader";
-import Breadcrumb from "@/components/reusable-component/Breadcrumb";
-import { PATH } from "@/constant/path";
-import IndustryFilter from "./partials/IndustryFilter";
-import IndustryTable from "./partials/IndustryTable";
+import SearchFilter from "@/components/search-filter";
+import { useAddModal } from "@/hooks/add-modal";
+import { useUpdateModal } from "@/hooks/update-modal";
+import ModalWrapper from "@/components/shadcn/modal-wrapper";
+import CreateIndustry from "./partials/create-industry";
+import UpdateIndustry from "./partials/update-industry";
+import IndustryTable from "./partials/industry-table";
 
 const Industry: React.FC = () => {
+  const addModal = useAddModal();
+  const updateModal = useUpdateModal();
+
   return (
     <div className="u-flex-parent">
-      <Breadcrumb
-        items={[
-          { label: "Dashboard", to: PATH.dashboard.dashboard },
-          { label: "Setting", to: PATH.setting.index },
+      <PageHeader title="Industry" />
+      <SearchFilter
+        dateFilter
+        handleAddClick={addModal.handleOpenModal}
+        selectFilter={[
+          {
+            placeholder: "Select Comapny",
+            option: [{ label: "Dome Infosys", value: "dome-infosys" }],
+            paramsKey: "company",
+          },
         ]}
       />
-      <PageHeader title="Industry" routePath="#" handleAddClick={() => {}} />
-      <IndustryFilter />
       <IndustryTable />
+
+      {/* Create Industry Modal */}
+      <ModalWrapper
+        className="xl:max-w-xl"
+        isOpen={addModal.isOpen}
+        name="Create Industry"
+        onOpenChange={addModal.handleCloseModal}
+      >
+        <CreateIndustry />
+      </ModalWrapper>
+
+      {/* Update Industry Modal */}
+      <ModalWrapper
+        className="xl:max-w-xl"
+        isOpen={updateModal.isOpen}
+        name="Update Industry"
+        onOpenChange={updateModal.handleCloseModal}
+      >
+        <UpdateIndustry />
+      </ModalWrapper>
     </div>
   );
 };

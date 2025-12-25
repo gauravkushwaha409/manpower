@@ -48,9 +48,6 @@ import UpdatePolicy from "@/pages/settings/policy/UpdatePolicy";
 import Seo from "@/pages/settings/seo/Seo";
 import AddSeo from "@/pages/settings/seo/AddSeo";
 import UpdateSeo from "@/pages/settings/seo/UpdateSeo";
-import Industry from "@/pages/industry/Industry";
-import AddIndustry from "@/pages/industry/AddIndustry";
-import UpdateIndustry from "@/pages/industry/UpdateIndustry";
 import PreApplication from "@/pages/preApplication/PreApplication";
 import AddPreApplication from "@/pages/preApplication/AddPreApplication";
 import UpdatePreApplication from "@/pages/preApplication/UpdatePreApplication";
@@ -90,20 +87,6 @@ export const dashboardRoutes = [
   {
     path: PATH.dashboard.updateLanguage,
     element: <UpdateLanguage />,
-  },
-
-  // industry
-  {
-    path: PATH.dashboard.industry,
-    element: <Industry />,
-  },
-  {
-    path: PATH.dashboard.addIndustry,
-    element: <AddIndustry />,
-  },
-  {
-    path: PATH.dashboard.updateIndustry,
-    element: <UpdateIndustry />,
   },
 
   // payment

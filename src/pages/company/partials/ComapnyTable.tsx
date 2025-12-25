@@ -1,5 +1,5 @@
 import Table from "@/components/Table";
-import { CompanyColumns } from "./CompanyColumns";
+import CompanyColumns from "./CompanyColumns";
 import { companyTableData } from "@/data/company";
 import TableWrapper from "@/components/TableWrapper";
 import { useState } from "react";
@@ -10,7 +10,7 @@ const ComapnyTable = () => {
   return (
     <TableWrapper wrapperClassName="mt-4" isLoading={false}>
       <Table
-        columns={CompanyColumns}
+        columns={CompanyColumns()}
         data={companyTableData}
         rowSelection={rowSelection}
         setRowSelection={setRowSelection}

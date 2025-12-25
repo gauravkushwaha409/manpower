@@ -3,6 +3,7 @@ import {
   flexRender,
   getCoreRowModel,
   getPaginationRowModel,
+  HeaderGroup,
   RowSelectionState,
   useReactTable,
 } from "@tanstack/react-table";
@@ -104,9 +105,9 @@ const Table = <T extends { id: string }>({
   );
 
   const renderHeader = useCallback(
-    (headerGroup: any) => (
+    (headerGroup: HeaderGroup<T>) => (
       <tr key={headerGroup.id} className="w-full h-fit">
-        {headerGroup.headers.map((header: any) => (
+        {headerGroup.headers.map((header) => (
           <th
             key={header.id}
             style={{

@@ -6,6 +6,7 @@ import { publicRoutes } from "./partials/public-route";
 import { preApprovalDofeRoutes } from "./partials/private-route/preApprovalDofeRoutes";
 import { companyRoutes } from "./partials/private-route/company-routes";
 import { candidateRoutes } from "./partials/private-route/candidate-routes";
+import { settingRoutes } from "./partials/private-route/setting-routes";
 
 /**
  * MainRoutes defines the routing configuration for the application.
@@ -26,6 +27,7 @@ const MainRoutes = [
       ...preApprovalDofeRoutes,
       ...companyRoutes,
       ...candidateRoutes,
+      ...settingRoutes,
     ],
   },
 
