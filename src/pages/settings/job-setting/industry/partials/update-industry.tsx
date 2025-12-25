@@ -1,6 +1,6 @@
 import ExtendedForm from "@/components/extended-components/ExtendedForm";
-import IndustryForm from "@/pages/settings/job-setting/industry/partials/IndustryForm";
-import useUpdateIndustry from "../hooks/update-industry";
+import IndustryForm from "@/pages/settings/job-setting/industry/partials/industry-form";
+import useUpdateIndustry from "../hooks/use-update-industry";
 
 const UpdateIndustry = () => {
   const updateIndustry = useUpdateIndustry();

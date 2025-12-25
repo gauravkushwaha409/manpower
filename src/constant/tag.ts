@@ -5,4 +5,8 @@ export const apiTags = {
     list: "get_all_industry",
     details: "get_industry_details",
   },
+  category: {
+    list: "get_all_category",
+    details: "get_category_details",
+  },
 };

@@ -2,11 +2,15 @@ import { useField } from "formik";
 import Select from "react-select";
 import { ComponentProps } from "react";
 import { ErrorMessage } from "formik";
+export interface IOption {
+  label: string;
+  value: string | number;
+}
 
 interface IReactSelect extends ComponentProps<"input"> {
   name: string;
   label: string;
-  options: { value: string | boolean; label: string }[];
+  options: IOption[];
   className?: string;
   labelClassName?: string;
 }

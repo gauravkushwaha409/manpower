@@ -1,7 +1,7 @@
 import Table from "@/components/Table";
 import TableWrapper from "@/components/TableWrapper";
-import IndustryColumn from "./IndustryColumns";
-import useGetAllIndustry, { industryData } from "../hooks/get-all-industry";
+import IndustryColumn from "./industry-column";
+import useGetAllIndustry, { industryData } from "../hooks/use-get-all-industry";
 
 const IndustryTable = () => {
   const industry = useGetAllIndustry();

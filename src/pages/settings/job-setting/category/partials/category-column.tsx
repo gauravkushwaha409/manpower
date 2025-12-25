@@ -1,14 +1,64 @@
-import { ColumnDef } from "@tanstack/react-table";
 import TableAction from "@/components/TableAction";
-import React from "react";
-import { useUpdateModal } from "@/hooks/update-modal";
-import { IndustryListItem } from "../hooks/get-all-industry";
-import { useDelete } from "@/hooks/useDelete";
+import { ColumnDef } from "@tanstack/react-table";
+import { ICategoryListItem } from "../hooks/use-category-list";
 import { Checkbox } from "@/components/ui/checkbox";
+import { useDelete } from "@/hooks/useDelete";
+import { useUpdateModal } from "@/hooks/update-modal";
 
-const IndustryColumn = (): ColumnDef<IndustryListItem>[] => {
-  const { handleOpenModal } = useUpdateModal();
+export const categoryData: ICategoryListItem[] = [
+  {
+    id: "1",
+    industry: " Information Technology",
+    category: "Software Development",
+    icon: "",
+  },
+  {
+    id: "1",
+    industry: " Information Technology",
+    category: "Infrastructure",
+    icon: "",
+  },
+  {
+    id: "1",
+    industry: "Healthcare & Medical",
+    category: "Clinical Staff",
+    icon: "",
+  },
+  {
+    id: "1",
+    industry: "Healthcare & Medical",
+    category: "Non-Clinical Staff",
+    icon: "",
+  },
+  {
+    id: "1",
+    industry: "Manufacturing & Engineering",
+    category: "Production",
+    icon: "",
+  },
+  {
+    id: "1",
+    industry: "Manufacturing & Engineering",
+    category: "Engineering",
+    icon: "",
+  },
+  {
+    id: "1",
+    industry: "Retail & Hospitality",
+    category: "Retail",
+    icon: "",
+  },
+  {
+    id: "1",
+    industry: "Professional Services",
+    category: "Finance & Accounting",
+    icon: "",
+  },
+];
+
+const CategoryColumns = (): ColumnDef<ICategoryListItem>[] => {
   const { handleOpenModal: handleOpenDeleteModal } = useDelete({});
+  const { handleOpenModal: handleOpenUpdateModal } = useUpdateModal();
   return [
     {
       id: "select",
@@ -47,19 +97,32 @@ const IndustryColumn = (): ColumnDef<IndustryListItem>[] => {
         );
       },
       size: 50,
-      maxSize: 50,
     },
     {
-      header: "SN",
-      accessorKey: "sn",
+      header: "S.N.",
       cell: ({ row }) => row.index + 1,
       size: 50,
-      maxSize: 50,
+    },
+    {
+      header: "Icon",
+      cell: ({ row }) => (
+        <img
+          src={row?.original?.icon}
+          alt=""
+          className="size-10 object-contain"
+        />
+      ),
+      size: 200,
     },
     {
       header: "Industry",
       accessorKey: "industry",
-      minSize: 1200,
+      size: 400,
+    },
+    {
+      header: "Category",
+      accessorKey: "category",
+      size: 400,
     },
     {
       header: "Action",
@@ -70,7 +133,7 @@ const IndustryColumn = (): ColumnDef<IndustryListItem>[] => {
             active: true,
             onClick: (e: React.MouseEvent<HTMLButtonElement>) => {
               e.preventDefault();
-              handleOpenModal(row?.original?.id);
+              handleOpenUpdateModal(row?.original?.id);
             },
           }}
           del={{
@@ -87,5 +150,4 @@ const IndustryColumn = (): ColumnDef<IndustryListItem>[] => {
     },
   ];
 };
-
-export default IndustryColumn;
+export default CategoryColumns;

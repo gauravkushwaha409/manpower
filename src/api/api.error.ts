@@ -1,4 +1,4 @@
-import { set } from 'lodash';
+import { set } from "lodash";
 
 type FieldError = {
   path: string;
@@ -20,7 +20,7 @@ export type ApiResponse = {
   };
 };
 
-type SetErrorCallback = (errors: Record<string, string>) => void;
+export type SetErrorCallback = (errors: Record<string, string>) => void;
 
 const handleErrors = (
   response: ApiResponse,
@@ -30,7 +30,6 @@ const handleErrors = (
     if (Array.isArray(response.error.data.errors)) {
       const errorObject: Record<string, string> = {};
       response.error.data.errors.forEach(({ path, msg }) => {
-        // errorObject[path] = msg;
         set(errorObject, path, msg);
       });
       setErrorCallback(errorObject);
