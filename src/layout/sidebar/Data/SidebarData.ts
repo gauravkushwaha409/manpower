@@ -175,42 +175,42 @@ export const mainMenuItems = [
     label: "Settings",
     active: false,
     children: [
-      {
-        id: "location",
-        label: "Location",
-        icon: IoLocationOutline,
-        link: PATH.settings.location,
-      },
-      {
-        id: "contact-us",
-        label: "Contact Us",
-        icon: IoCallOutline,
-        link: PATH.settings.contactUs,
-      },
-      {
-        id: "policy",
-        label: "Policy",
-        icon: ScrollText,
-        link: PATH.settings.policy,
-      },
-      {
-        id: "organization-settings",
-        label: "Organization Settings",
-        icon: LuSettings2,
-        // link: PATH.settings.organizationSettings.list,
-      },
-      {
-        id: "static-seo",
-        label: "Notice From DOFE",
-        icon: TbSeo,
-        link: PATH.settings.seo,
-      },
-      {
-        id: "license-setting",
-        label: "License Setting",
-        icon: TbSeo,
-        link: PATH.settings.seo,
-      },
+      // {
+      //   id: "location",
+      //   label: "Location",
+      //   icon: IoLocationOutline,
+      //   link: PATH.settings.location,
+      // },
+      // {
+      //   id: "contact-us",
+      //   label: "Contact Us",
+      //   icon: IoCallOutline,
+      //   link: PATH.settings.contactUs,
+      // },
+      // {
+      //   id: "policy",
+      //   label: "Policy",
+      //   icon: ScrollText,
+      //   link: PATH.settings.policy,
+      // },
+      // {
+      // id: "organization-settings",
+      // label: "Organization Settings",
+      // icon: LuSettings2,
+      // link: PATH.settings.organizationSettings.list,
+      // },
+      // {
+      //   id: "static-seo",
+      //   label: "Notice From DOFE",
+      //   icon: TbSeo,
+      //   link: PATH.settings.seo,
+      // },
+      // {
+      //   id: "license-setting",
+      //   label: "License Setting",
+      //   icon: TbSeo,
+      //   link: PATH.settings.seo,
+      // },
       {
         id: "job-Setting",
         label: "Job Setting",
@@ -236,12 +236,12 @@ export const mainMenuItems = [
           },
         ],
       },
-      {
-        id: "static-seo",
-        label: "Static SEO",
-        icon: TbSeo,
-        link: PATH.settings.seo,
-      },
+      // {
+      //   id: "static-seo",
+      //   label: "Static SEO",
+      //   icon: TbSeo,
+      //   link: PATH.settings.seo,
+      // },
     ],
   },
 ];

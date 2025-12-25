@@ -1,7 +1,7 @@
 import { PATH } from "@/constant/path";
 import Category from "@/pages/settings/job-setting/category/Category";
 import Industry from "@/pages/settings/job-setting/industry/Industry";
-import SubCategory from "@/pages/settings/job-setting/sub-category/SubCategory";
+import SubCategory from "@/pages/settings/job-setting/sub-category/sub-category";
 
 export const settingRoutes = [
   {
@@ -13,7 +13,7 @@ export const settingRoutes = [
     element: <Category />,
   },
   {
-    path: PATH.setting.jobSetting.category,
+    path: PATH.setting.jobSetting.subCategory,
     element: <SubCategory />,
   },
 ];

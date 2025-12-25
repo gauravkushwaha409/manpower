@@ -36,6 +36,13 @@ export const endpoints = {
     delete: "",
     details: "",
   },
+  subCategory: {
+    list: "",
+    create: "",
+    update: "",
+    delete: "",
+    details: "",
+  },
 };
 
 export const BASE_API_URL =

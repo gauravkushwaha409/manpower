@@ -9,4 +9,8 @@ export const apiTags = {
     list: "get_all_category",
     details: "get_category_details",
   },
+  subCategory: {
+    list: "get_all_sub_category",
+    details: "get_sub_category_details",
+  },
 };

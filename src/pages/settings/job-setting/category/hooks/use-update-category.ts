@@ -24,7 +24,7 @@ const useUpdateCategory = () => {
     icon: categoryDetails?.data?.icon || "",
   };
 
-  const formik = useFormik({
+  const formik = useFormik<CategorySchemaType>({
     initialValues,
     validationSchema: CategoryValidationSchema,
     onSubmit: async (value, { setErrors }) => {

@@ -5,28 +5,12 @@ import FormInputDate from "@/components/form/form-input-date";
 import FormInputSelect from "@/components/form/form-input-select";
 import { Plus } from "lucide-react";
 import { cn } from "@/lib/utils";
-import FormInputImage from "@/components/form/FormInputPhoto";
+import FormInputPdf from "@/components/form/FormInputPdf";
 
 export const CandidateFormStep1 = () => {
-  const formik = useFormikContext<ICandidate>();
-
-  const newField = {
-    language: "",
-    languageLevel: "",
-  };
-
-  const addLanguage = () => {
-    formik.setFieldValue("languages", [...formik.values.languages, newField]);
-  };
-
-  const removeLanguage = (index: number) => {
-    const languages = [...formik.values.languages];
-    languages.splice(index, 1);
-    formik.setFieldValue("languages", languages);
-  };
   return (
     <div className="space-y-4">
-      <div className="w-full grid grid-cols-1  sm:grid-cols-2 gap-5 mt-2">
+      <div className="w-full grid grid-cols-1  sm:grid-cols-3 gap-5 mt-2">
         <FormInputText
           label="First Name"
           name="first_name"
@@ -38,14 +22,33 @@ export const CandidateFormStep1 = () => {
           placeholder="Enter Your Last Name"
         />
         <FormInputText
-          label="Agent Name"
-          name="agent_name"
-          placeholder="Enter Agent Name"
+          label="Passport No."
+          name="passport_no"
+          placeholder="Enter Passport Number"
         />
+
+        <div className="col-span-3 grid grid-cols-4 gap-x-4">
+          <FormInputDate label="Date Of Birth" name="date_of_birth" />
+          <FormInputSelect
+            label="Birth Place"
+            name="country"
+            placeholder="Select Your Birth Place"
+            options={[{ label: "Nepal", value: "nepal" }]}
+          />
+          <FormInputText
+            label="Father Name"
+            name="father_name"
+            placeholder="Enter Father Name"
+          />
+          <FormInputText
+            label="Mother Name"
+            name="mother_name"
+            placeholder="Enter Mother Name"
+          />
+        </div>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 mt-5">
-        <FormInputDate label="Date Of Birth" name="date_of_birth" />
         <FormInputText
           label="Phone Number"
           name="phone"
@@ -56,18 +59,9 @@ export const CandidateFormStep1 = () => {
           name="email"
           placeholder="Enter Email"
         />
-        <FormInputSelect
-          label="Country"
-          name="country"
-          placeholder="Select Your Country"
-          options={[{ label: "Nepal", value: "nepal" }]}
-        />
       </div>
 
-      <div className="mt-5">
-        <p className="typography-p2-semibold text-Black-500">
-          Candidates Address
-        </p>
+      <div className="">
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 mt-5">
           <FormInputSelect
             label="Province"
@@ -91,50 +85,12 @@ export const CandidateFormStep1 = () => {
           />
         </div>
       </div>
-
-      {/* Language proficiency */}
-      <div className="mt-5">
-        <p className="typography-p2-semibold text-Black-500">Languages</p>
-
-        {formik.values.languages.map((_, index) => (
-          <div key={index} className="grid grid-cols-2 mt-2 gap-5">
-            <FormInputSelect
-              label="Language"
-              name={`languages[${index}].language`}
-              options={[{ label: "Nepali", value: "nepali" }]}
-            />
-            <FormInputSelect
-              label="Language Level"
-              name={`languages[${index}].languageLevel`}
-              options={[{ label: "Fluent", value: "fluent" }]}
-            />
-            {formik.values.languages.length > 0 && (
-              <div className="mt-3 flex items-center gap-5 col-span-2">
-                {index === formik.values.languages.length - 1 && (
-                  <Button handleClick={addLanguage} varient="add">
-                    Add More
-                    <Plus />
-                  </Button>
-                )}
-                {index >= 0 && (
-                  <Button
-                    handleClick={() => removeLanguage(index)}
-                    varient="delete"
-                  >
-                    Delete
-                  </Button>
-                )}
-              </div>
-            )}
-          </div>
-        ))}
-      </div>
     </div>
   );
 };
 
 export const CandidateFormStep2 = () => {
-  const newField = {
+  const newFieldEducation = {
     nameOfInstute: "",
     course: "",
     passedYear: "",
@@ -142,7 +98,10 @@ export const CandidateFormStep2 = () => {
   const formik = useFormikContext<ICandidate>();
 
   const addEducation = () => {
-    formik.setFieldValue("education", [...formik.values.education, newField]);
+    formik.setFieldValue("education", [
+      ...formik.values.education,
+      newFieldEducation,
+    ]);
   };
 
   const removeEducation = (index: number) => {
@@ -150,10 +109,27 @@ export const CandidateFormStep2 = () => {
     education.splice(index, 1);
     formik.setFieldValue("education", education);
   };
+
+  const newFieldLanguage = {
+    language: "",
+    languageLevel: "",
+  };
+
+  const addLanguage = () => {
+    formik.setFieldValue("languages", [
+      ...formik.values.languages,
+      newFieldLanguage,
+    ]);
+  };
+
+  const removeLanguage = (index: number) => {
+    const languages = [...formik.values.languages];
+    languages.splice(index, 1);
+    formik.setFieldValue("languages", languages);
+  };
   return (
-    <div className="h-fit w-full pb-16 bg-white">
-      <div className="w-full grid grid-cols-2 gap-5 mt-2">
-        {/* Skills */}
+    <div className="h-fit w-full space-y-4">
+      <div className="w-full grid grid-cols-2 gap-x-4">
         <FormInputText
           label="Skills"
           name="skills"
@@ -166,57 +142,82 @@ export const CandidateFormStep2 = () => {
         />
       </div>
 
-      {/* Education / certification */}
-      <div className="mt-5">
-        <p className="typography-p2-semibold text-Black-500">
-          Education / Certification
-        </p>
-
-        {formik.values.education.map((_, index) => (
-          <div
-            key={index}
-            className="grid grid-cols-3 mt-2 gap-5 relative group"
-          >
-            {/* Name of Institute */}
-            <FormInputText
-              label="Name Of Institute"
-              name={`education[${index}].name_of_instute`}
-              placeholder="Enter Name Of Institute"
-            />
-            <FormInputText
-              label="Course"
-              name={`education[${index}].course`}
-              placeholder="Enter Name Of Course"
-            />
-            <FormInputDate
-              label="Passed Year"
-              name={`education[${index}].passed_year`}
-              placeholder="Enter Passed Year"
-            />
-
-            {/* Add/Remove buttons */}
-            {index === formik.values.education.length - 1 && (
-              <div className="mt-3 flex items-center gap-5 col-span-3">
-                <Button handleClick={addEducation} varient="add">
+      {/* Language proficiency */}
+      {formik.values.languages.map((_, index) => (
+        <div key={index} className="grid grid-cols-2 mt-2 gap-5">
+          <FormInputSelect
+            label="Language"
+            name={`languages[${index}].language`}
+            options={[{ label: "Nepali", value: "nepali" }]}
+          />
+          <FormInputSelect
+            label="Language Level"
+            name={`languages[${index}].languageLevel`}
+            options={[{ label: "Fluent", value: "fluent" }]}
+          />
+          {formik.values.languages.length > 0 && (
+            <div className="mt-3 flex items-center gap-5 col-span-2">
+              {index === formik.values.languages.length - 1 && (
+                <Button handleClick={addLanguage} varient="add">
                   Add More
                   <Plus />
                 </Button>
+              )}
+              {index >= 0 && (
+                <Button
+                  handleClick={() => removeLanguage(index)}
+                  varient="delete"
+                >
+                  Delete
+                </Button>
+              )}
+            </div>
+          )}
+        </div>
+      ))}
 
-                {index > 0 && (
-                  <Button
-                    varient="delete"
-                    handleClick={() => {
-                      removeEducation(index);
-                    }}
-                  >
-                    Remove
-                  </Button>
-                )}
-              </div>
-            )}
-          </div>
-        ))}
-      </div>
+      {/* Education / certification */}
+      {formik.values.education.map((_, index) => (
+        <div key={index} className="grid grid-cols-3 mt-2 gap-5 relative group">
+          {/* Name of Institute */}
+          <FormInputText
+            label="Name Of Institute"
+            name={`education[${index}].name_of_instute`}
+            placeholder="Enter Name Of Institute"
+          />
+          <FormInputText
+            label="Course"
+            name={`education[${index}].course`}
+            placeholder="Enter Name Of Course"
+          />
+          <FormInputDate
+            label="Passed Year"
+            name={`education[${index}].passed_year`}
+            placeholder="Enter Passed Year"
+          />
+
+          {/* Add/Remove buttons */}
+          {index === formik.values.education.length - 1 && (
+            <div className="mt-3 flex items-center gap-5 col-span-3">
+              <Button handleClick={addEducation} varient="add">
+                Add More
+                <Plus />
+              </Button>
+
+              {index > 0 && (
+                <Button
+                  varient="delete"
+                  handleClick={() => {
+                    removeEducation(index);
+                  }}
+                >
+                  Remove
+                </Button>
+              )}
+            </div>
+          )}
+        </div>
+      ))}
     </div>
   );
 };
@@ -225,7 +226,7 @@ export const CandidateFormStep3 = () => {
   const formik = useFormikContext<ICandidate>();
 
   return (
-    <div className="h-fit w-full pb-16 bg-white">
+    <div className="space-y-4">
       {/* Select Document Type */}
       <FormInputSelect
         label="Document Type"
@@ -240,16 +241,18 @@ export const CandidateFormStep3 = () => {
 
       {/* Citizenship */}
       {formik.values.document_type === "citizenship" && (
-        <div className="grid grid-cols-2 mt-2 gap-5 ">
-          <div className="">
-            <FormInputDate label="Issued Date" name="citizenship_issue_date" />
-          </div>
-          <div className="">
-            <FormInputDate
-              label="Citizenship Number"
-              name="citizenship_number"
-            />
-          </div>
+        <div className="grid grid-cols-3 mt-2 gap-5 ">
+          <FormInputDate label="Issued Date" name="citizenship_issue_date" />
+          <FormInputDate label="Citizenship Number" name="citizenship_number" />
+          <FormInputSelect
+            label="Issued District"
+            name="issued_district"
+            options={[
+              { label: "Kathmandu", value: "kathmandu" },
+              { label: "Lalitpur", value: "lalitput" },
+              { label: "Bhaktapur", value: "bhaktapur" },
+            ]}
+          />
         </div>
       )}
 
@@ -274,7 +277,7 @@ export const CandidateFormStep3 = () => {
         </div>
       )}
 
-      <FormInputImage label="Document" name="document" />
+      <FormInputPdf label="Document" name="document" />
     </div>
   );
 };
