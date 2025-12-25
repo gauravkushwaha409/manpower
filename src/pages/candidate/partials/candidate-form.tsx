@@ -156,14 +156,14 @@ export const CandidateFormStep2 = () => {
             options={[{ label: "Fluent", value: "fluent" }]}
           />
           {formik.values.languages.length > 0 && (
-            <div className="mt-3 flex items-center gap-5 col-span-2">
+            <div className="mt-3 flex items-center justify-between gap-5 col-span-2">
               {index === formik.values.languages.length - 1 && (
                 <Button handleClick={addLanguage} varient="add">
                   Add More
                   <Plus />
                 </Button>
               )}
-              {index >= 0 && (
+              {index > 0 && (
                 <Button
                   handleClick={() => removeLanguage(index)}
                   varient="delete"

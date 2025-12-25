@@ -8,7 +8,7 @@ const Candidate = () => {
   const navigate = useNavigate();
   return (
     <div className="u-flex-parent">
-      <PageHeader title="Candidate" />
+      <PageHeader title="All Candidate" />
       <SearchFilter
         dateFilter
         handleAddClick={() => {

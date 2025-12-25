@@ -105,6 +105,7 @@ export const PATH = {
       industry: "/setting/job-setting/industry",
       category: "/setting/job-setting/category",
       subCategory: "/setting/job-setting/sub-category",
+      jobTitle: "/setting/job-setting/job-title",
     },
   },
 };

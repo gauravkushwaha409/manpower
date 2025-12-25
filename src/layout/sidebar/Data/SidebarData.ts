@@ -38,11 +38,11 @@ export const mainMenuItems = [
     link: PATH.preApprovalDofe.index,
   },
   {
-    id: "company",
-    icon: PiBuildingOffice,
-    label: "Company",
+    id: "Job",
+    icon: CheckCheck,
+    label: "Job",
     active: false,
-    link: PATH.company.index,
+    link: PATH.preApprovalDofe.index,
   },
   {
     id: "candidate",
@@ -50,6 +50,13 @@ export const mainMenuItems = [
     label: "Candidate",
     active: false,
     link: PATH.candidate.index,
+  },
+  {
+    id: "company",
+    icon: PiBuildingOffice,
+    label: "Company",
+    active: false,
+    link: PATH.company.index,
   },
 
   // {
@@ -115,12 +122,12 @@ export const mainMenuItems = [
   //       icon: IoListOutline,
   //       link: PATH.jobProcess.jobCategories,
   //     },
-  //     {
-  //       id: "job-vacancies",
-  //       label: "Job Vacancies",
-  //       icon: HiOutlineUserPlus,
-  //       link: PATH.jobProcess.jobVacancies,
-  //     },
+  // {
+  //   id: "job-vacancies",
+  //   label: "Job Vacancies",
+  //   icon: HiOutlineUserPlus,
+  //   link: PATH.jobProcess.jobVacancies,
+  // },
   //     {
   //       id: "job-applications",
   //       label: "Job Applications",
@@ -139,7 +146,7 @@ export const mainMenuItems = [
   //       icon: LuUsers,
   //       link: PATH.jobProcess.interviewCandidates,
   //     },
-  //   ],
+  // ],
   // },
   // {
   //   id: "users",
@@ -233,6 +240,12 @@ export const mainMenuItems = [
             icon: LiaIndustrySolid,
             label: "Sub Category",
             link: PATH.setting.jobSetting.subCategory,
+          },
+          {
+            id: "job-title",
+            icon: LiaIndustrySolid,
+            label: "Job Title",
+            link: PATH.setting.jobSetting.jobTitle,
           },
         ],
       },
