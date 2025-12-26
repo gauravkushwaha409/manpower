@@ -56,7 +56,7 @@ const JobTitle = () => {
 
       {/* Delete Modal */}
       <DeleteModal
-        isOpen={deleteModal.idOpen}
+        isOpen={deleteModal.isOpen}
         onCancel={deleteModal.handleCancel}
         onConfirm={deleteModal.handleDelete}
       />

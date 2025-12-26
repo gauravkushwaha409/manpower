@@ -56,7 +56,7 @@ const DocumentSetting = () => {
 
       {/* Delete Modal */}
       <DeleteModal
-        isOpen={deleteDocument.idOpen}
+        isOpen={deleteDocument.isOpen}
         onCancel={deleteDocument.handleCancel}
         onConfirm={deleteDocument.handleDelete}
       />

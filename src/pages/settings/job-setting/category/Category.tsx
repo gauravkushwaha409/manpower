@@ -56,7 +56,7 @@ const Category = () => {
 
       {/* Category */}
       <DeleteModal
-        isOpen={deleteModal.idOpen}
+        isOpen={deleteModal.isOpen}
         onCancel={deleteModal.handleCancel}
         onConfirm={deleteModal.handleDelete}
       />
