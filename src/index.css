@@ -128,7 +128,6 @@
 }
 
 /* Custom Text editor css  */
-
 .button-group button.is-active {
   background-color: #338ae6;
   color: white;
@@ -163,7 +162,7 @@
   @apply bg-gray-300 shadow-sm px-2 py-1 rounded-md font-mono text-sm;
 }
 .ProseMirror h1 {
-  @apply font-bold text-3xl; /* Increase font size */
+  @apply font-bold text-3xl;
 }
 
 .ProseMirror h2 {
@@ -175,6 +174,120 @@
 }
 .ProseMirror-focused {
   @apply outline-none;
+}
+
+/* New */
+/* Placeholder styling */
+.tiptap p.is-editor-empty:first-child::before {
+  color: #adb5bd;
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+
+/* Editor styling */
+.tiptap {
+  min-height: 200px;
+  padding: 1rem;
+}
+
+.tiptap:focus {
+  outline: none;
+}
+
+/* Heading styles */
+.tiptap h1 {
+  font-size: 2em;
+  font-weight: bold;
+  margin: 0.67em 0;
+}
+
+.tiptap h2 {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: 0.83em 0;
+}
+
+.tiptap h3 {
+  font-size: 1.17em;
+  font-weight: bold;
+  margin: 1em 0;
+}
+
+.tiptap h4 {
+  font-size: 1em;
+  font-weight: bold;
+  margin: 1.33em 0;
+}
+
+.tiptap h5 {
+  font-size: 0.83em;
+  font-weight: bold;
+  margin: 1.67em 0;
+}
+
+.tiptap h6 {
+  font-size: 0.67em;
+  font-weight: bold;
+  margin: 2.33em 0;
+}
+
+/* List styles */
+.tiptap ul {
+  list-style-type: disc;
+  padding-left: 1.5em;
+  margin: 1em 0;
+}
+
+.tiptap ol {
+  list-style-type: decimal;
+  padding-left: 1.5em;
+  margin: 1em 0;
+}
+
+/* Blockquote */
+.tiptap blockquote {
+  border-left: 3px solid #d1d5db;
+  padding-left: 1rem;
+  margin: 1rem 0;
+  font-style: italic;
+  color: #6b7280;
+}
+
+/* Code */
+.tiptap code {
+  background-color: #f3f4f6;
+  padding: 0.2em 0.4em;
+  border-radius: 0.25rem;
+  font-family: monospace;
+  font-size: 0.875em;
+}
+
+/* Horizontal rule */
+.tiptap hr {
+  border: none;
+  border-top: 2px solid #e5e7eb;
+  margin: 2rem 0;
+}
+
+/* Image */
+.tiptap img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  margin: 1rem 0;
+}
+
+/* Subscript and Superscript */
+.tiptap sub {
+  font-size: 0.75em;
+  vertical-align: sub;
+}
+
+.tiptap sup {
+  font-size: 0.75em;
+  vertical-align: super;
 }
 
 @theme inline {

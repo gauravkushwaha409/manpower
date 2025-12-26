@@ -5,8 +5,8 @@ import TextEditor from "@/components/form/TextEditor";
 
 const JobApplicationForm: React.FC = () => {
   return (
-    <div className="flex flex-col gap-5">
-      <div className="gap-8 grid grid-cols-2">
+    <div className="flex flex-col gap-4">
+      <div className="gap-4 grid grid-cols-2">
         <InputSearchSelect
           label="Candidate Name"
           name="candidate_name"

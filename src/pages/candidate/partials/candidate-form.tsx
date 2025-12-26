@@ -6,11 +6,12 @@ import FormInputSelect from "@/components/form/form-input-select";
 import { Plus } from "lucide-react";
 import { cn } from "@/lib/utils";
 import FormInputPdf from "@/components/form/FormInputPdf";
+import TextEditor from "@/components/form/TextEditor";
 
 export const CandidateFormStep1 = () => {
   return (
     <div className="space-y-4">
-      <div className="w-full grid grid-cols-1  sm:grid-cols-3 gap-5 mt-2">
+      <div className="w-full grid grid-cols-1 sm:grid-cols-3 gap-4">
         <FormInputText
           label="First Name"
           name="first_name"
@@ -48,7 +49,7 @@ export const CandidateFormStep1 = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 mt-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
         <FormInputText
           label="Phone Number"
           name="phone"
@@ -62,7 +63,7 @@ export const CandidateFormStep1 = () => {
       </div>
 
       <div className="">
-        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 mt-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5">
           <FormInputSelect
             label="Province"
             name="province"
@@ -221,10 +222,9 @@ export const CandidateFormStep2 = () => {
     </div>
   );
 };
-// Step - 3 Button
+
 export const CandidateFormStep3 = () => {
   const formik = useFormikContext<ICandidate>();
-
   return (
     <div className="space-y-4">
       {/* Select Document Type */}
@@ -278,6 +278,58 @@ export const CandidateFormStep3 = () => {
       )}
 
       <FormInputPdf label="Document" name="document" />
+    </div>
+  );
+};
+
+export const CandidateFormStep4 = () => {
+  return (
+    <div className="grid grid-cols-2 gap-4">
+      <FormInputSelect
+        label="Applied Country"
+        name="applied_country"
+        options={[
+          { value: "Dubai", label: "dubai" },
+          { value: "USA", label: "USA" },
+          { value: "Canada", label: "Canada" },
+          { value: "UK", label: "UK" },
+          { value: "Australia", label: "Australia" },
+        ]}
+      />
+      <FormInputSelect
+        label="Company Name"
+        name="company Name"
+        options={[
+          { value: "Dubai", label: "dubai" },
+          { value: "USA", label: "USA" },
+          { value: "Canada", label: "Canada" },
+          { value: "UK", label: "UK" },
+          { value: "Australia", label: "Australia" },
+        ]}
+      />
+
+      <FormInputSelect
+        label="Job Vacancy"
+        name="job_vacancy"
+        options={[
+          { value: "Software Engineer", label: "Software Engineer" },
+          { value: "Data Analyst", label: "Data Analyst" },
+          { value: "Product Manager", label: "Product Manager" },
+          { value: "UI/UX Designer", label: "UI/UX Designer" },
+        ]}
+      />
+      <FormInputSelect
+        label="Status"
+        name="status"
+        options={[
+          { value: "Pending", label: "Pending" },
+          { value: "Approved", label: "Approved" },
+          { value: "Rejected", label: "Rejected" },
+        ]}
+      />
+      <div className="col-span-2">
+        <TextEditor label="Description" name="description" />
+      </div>
     </div>
   );
 };
