@@ -289,7 +289,17 @@ const JobVacancyColumns = (): ColumnDef<IJobVacancyListItem>[] => {
     {
       header: "Job Title",
       accessorKey: "job_title",
+      cell: ({ row }) => (
+        <div className="flex items-center gap-x-2">
+          {row?.original?.job_title}
+          <button className="px-2 py-1">300+</button>
+        </div>
+      ),
       size: 400,
+    },
+    {
+      header: "Company Name",
+      accessorKey: "",
     },
     {
       header: "No. Of Male",

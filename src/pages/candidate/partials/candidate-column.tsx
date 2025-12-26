@@ -55,26 +55,33 @@ export const CandidateColumns = (): ColumnDef<CandidateTable>[] => {
       header: "SN",
       accessorKey: "sn",
       cell: ({ row }) => row.index + 1,
+      size: 100,
     },
     {
       header: "Candidate Name",
       accessorKey: "firstname",
+      size: 400,
     },
-    {
-      header: "Agent Name",
-      accessorKey: "agentName",
-    },
+
     {
       header: "Phone Number",
       accessorKey: "phone",
+      size: 200,
     },
     {
       header: "Address",
       accessorKey: "district",
+      size: 300,
     },
     {
       header: "Passport Number",
       accessorKey: "passport_number",
+      size: 300,
+    },
+    {
+      header: "Employer Name",
+      accessorKey: "employer_name",
+      size: 200,
     },
     {
       header: "Action",

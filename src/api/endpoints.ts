@@ -22,6 +22,13 @@ export const endpoints = {
     delete: "",
     details: "",
   },
+  jobVacancy: {
+    list: "",
+    create: "",
+    update: "",
+    delete: "",
+    details: "",
+  },
   country: {
     list: "",
     create: "",

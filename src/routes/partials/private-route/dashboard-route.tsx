@@ -1,8 +1,6 @@
 import { PATH } from "@/constant/path";
 import JobOffer from "@/pages/jobs/jobOffer/JobOffer";
 import JobInterview from "@/pages/jobs/jobsInterview/JobInterview";
-import Language from "@/pages/language/Language";
-import Country from "@/pages/country/Country";
 import EmbassyInterview from "@/pages/visaProcess/embassyInterview/EmbassyInterview";
 import MedicalReport from "@/pages/visaProcess/medicalReport/MedicalReport";
 import Orientation from "@/pages/visaProcess/orientation/Orientation";
@@ -18,27 +16,10 @@ import AddOrientation from "@/pages/visaProcess/orientation/AddOrientation";
 import UpdateOrientation from "@/pages/visaProcess/orientation/UpdateOrientation";
 import AddTicket from "@/pages/visaProcess/ticket/AddTicket";
 import UpdateTicket from "@/pages/visaProcess/ticket/UpdateTicket";
-import AddLanguage from "@/pages/language/AddLanguage";
-import UpdateLanguage from "@/pages/language/UpdateLanguage";
 import AddJobOffer from "@/pages/jobs/jobOffer/AddJobOffer";
 import UpdateJobOffer from "@/pages/jobs/jobOffer/UpdateJobOffer";
 import AddJobInterview from "@/pages/jobs/jobsInterview/AddJobInterview";
 import UpdateJobInterview from "@/pages/jobs/jobsInterview/UpdateJobInterview";
-import Location from "@/pages/settings/location/Location";
-import AddLocation from "@/pages/settings/location/AddLocation";
-import UpdateLocation from "@/pages/settings/location/UpdateLocation";
-import AddContactUs from "@/pages/settings/contactUs/AddContactUs";
-import UpdateContactUs from "@/pages/settings/contactUs/UpdateContactUs";
-import ContactUs from "@/pages/settings/contactUs/ContactUs";
-import Policy from "@/pages/settings/policy/PolicyForm";
-import AddPolicy from "@/pages/settings/policy/AddPolicy";
-import UpdatePolicy from "@/pages/settings/policy/UpdatePolicy";
-import Seo from "@/pages/settings/seo/Seo";
-import AddSeo from "@/pages/settings/seo/AddSeo";
-import UpdateSeo from "@/pages/settings/seo/UpdateSeo";
-import PreApplication from "@/pages/preApplication/PreApplication";
-import AddPreApplication from "@/pages/preApplication/AddPreApplication";
-import UpdatePreApplication from "@/pages/preApplication/UpdatePreApplication";
 import User from "@/pages/users/User";
 import AddUser from "@/pages/users/AddUser";
 import UpdateUser from "@/pages/users/UpdateUser";
@@ -62,21 +43,6 @@ export const dashboardRoutes = [
     path: PATH.dashboard.notification,
     element: <Notification />,
   },
-
-  // language
-  {
-    path: PATH.dashboard.language,
-    element: <Language />,
-  },
-  {
-    path: PATH.dashboard.addLanguage,
-    element: <AddLanguage />,
-  },
-  {
-    path: PATH.dashboard.updateLanguage,
-    element: <UpdateLanguage />,
-  },
-
   // payment
   {
     path: PATH.dashboard.payment,
@@ -89,20 +55,6 @@ export const dashboardRoutes = [
   {
     path: PATH.dashboard.updatePayment,
     element: <UpdatePayment />,
-  },
-
-  // pre application
-  {
-    path: PATH.dashboard.preApplication,
-    element: <PreApplication />,
-  },
-  {
-    path: PATH.dashboard.addPreAppliction,
-    element: <AddPreApplication />,
-  },
-  {
-    path: PATH.dashboard.updatePreAppliction,
-    element: <UpdatePreApplication />,
   },
 
   // user

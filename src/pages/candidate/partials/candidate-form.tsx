@@ -319,11 +319,12 @@ export const CandidateFormStep4 = () => {
         ]}
       />
       <FormInputSelect
-        label="Status"
-        name="status"
+        label="Interview Process"
+        name="interview_process"
         options={[
+          { value: "Short Listed", label: "short_listed" },
           { value: "Pending", label: "Pending" },
-          { value: "Approved", label: "Approved" },
+          { value: "Selected", label: "Selected" },
           { value: "Rejected", label: "Rejected" },
         ]}
       />
