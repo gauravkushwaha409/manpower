@@ -11,7 +11,7 @@ import {
   useUpdateSearchParams,
 } from "@/hooks/updateSearchParams";
 import { SelectFilter } from "./shadcn/SelectFilter";
-import { IOption } from "./form/ReactSelect";
+import { IOption } from "./form/form-input-select";
 
 const SearchFilter = ({
   dateFilter,

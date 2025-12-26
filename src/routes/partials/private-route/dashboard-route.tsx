@@ -3,7 +3,6 @@ import JobOffer from "@/pages/jobs/jobOffer/JobOffer";
 import JobInterview from "@/pages/jobs/jobsInterview/JobInterview";
 import Language from "@/pages/language/Language";
 import Country from "@/pages/country/Country";
-import Dofe from "@/pages/visaProcess/dofe/DOFE";
 import EmbassyInterview from "@/pages/visaProcess/embassyInterview/EmbassyInterview";
 import MedicalReport from "@/pages/visaProcess/medicalReport/MedicalReport";
 import Orientation from "@/pages/visaProcess/orientation/Orientation";
@@ -17,8 +16,6 @@ import AddMedicalReport from "@/pages/visaProcess/medicalReport/AddMedicalReport
 import UpdateMedicalReport from "@/pages/visaProcess/medicalReport/UpdateMedicalReport";
 import AddOrientation from "@/pages/visaProcess/orientation/AddOrientation";
 import UpdateOrientation from "@/pages/visaProcess/orientation/UpdateOrientation";
-import AddDOFE from "@/pages/visaProcess/dofe/AddDOFE";
-import UpdateDOFE from "@/pages/visaProcess/dofe/UpdateDOFE";
 import AddTicket from "@/pages/visaProcess/ticket/AddTicket";
 import UpdateTicket from "@/pages/visaProcess/ticket/UpdateTicket";
 import AddCountry from "@/pages/country/AddCountry";
@@ -212,18 +209,6 @@ export const dashboardRoutes = [
   {
     path: PATH.visa.updateOrientation,
     element: <UpdateOrientation />,
-  },
-  {
-    path: PATH.visa.dofe,
-    element: <Dofe />,
-  },
-  {
-    path: PATH.visa.addDOFE,
-    element: <AddDOFE />,
-  },
-  {
-    path: PATH.visa.updateDOFE,
-    element: <UpdateDOFE />,
   },
   {
     path: PATH.visa.ticket,

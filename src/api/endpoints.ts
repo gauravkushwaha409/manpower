@@ -22,6 +22,13 @@ export const endpoints = {
     delete: "/organization-settings/delete",
     details: "/organization/detail/id/",
   },
+  jobVacancy: {
+    list: "/organization-settings/list",
+    create: "/organization-settings/create",
+    update: "/organization-settings/update",
+    delete: "/organization-settings/delete",
+    details: "/organization/detail/id/",
+  },
   industry: {
     list: "",
     create: "",
