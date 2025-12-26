@@ -1,27 +1,19 @@
-import { useGetDataQuery, useUpdateDataMutation } from "@/api/api";
+import { useUpdateDataMutation } from "@/api/api";
+import { endpoints } from "@/api/endpoints";
+import { apiTags } from "@/constant/tag";
 import {
   companyValidationSchema,
   CompanyValidationSchemaType,
 } from "@/pages/company/schema/companyValidationSchema";
 import { useFormik } from "formik";
+import { useParams } from "react-router-dom";
+import useCompanyDetails from "./use-company-details";
 
 const useUpdateCompany = () => {
-  const [
-    updateCompany,
-    {
-      isError: isUpdateCompanyError,
-      isLoading: isUpdateCompanyLoading,
-      isSuccess: isUpdateCompanySuccess,
-    },
-  ] = useUpdateDataMutation();
+  const { id } = useParams();
+  const [updateCompany, { isLoading }] = useUpdateDataMutation();
 
-  const {
-    data,
-    isError: isGetCompanyDetailsError,
-    isLoading: isGetCompanyDetailsLoading,
-    isSuccess: isGetCompanyDetailsSuccess,
-  } = useGetDataQuery({ url: "/company", params: {}, tag: "" });
-
+  const { isLoading: isInitialLoading } = useCompanyDetails({ id: id ?? "" });
   const initialValues: CompanyValidationSchemaType = {
     recruitment_company: "",
     country: "",
@@ -49,21 +41,16 @@ const useUpdateCompany = () => {
     onSubmit: async (values) => {
       updateCompany({
         data: values,
-        url: ``,
-        invalidateTag: "",
+        url: endpoints.company.update.replace(":id", id ?? ""),
+        invalidateTag: [apiTags.company.list, apiTags.company.details],
       });
     },
   });
 
   return {
-    data,
     formik,
-    isGetCompanyDetailsError,
-    isGetCompanyDetailsLoading,
-    isGetCompanyDetailsSuccess,
-    isUpdateCompanySuccess,
-    isUpdateCompanyLoading,
-    isUpdateCompanyError,
+    isLoading,
+    isInitialLoading,
   };
 };
 

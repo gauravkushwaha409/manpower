@@ -1,6 +1,14 @@
 export const apiTags = {
   getAllOrganizationSettings: "get_all_organization_settings",
   getAllPreApprovalDofe: "get_all_organization_settings",
+  preApprovalDofe: {
+    list: "get_all_pre_approval_dofe",
+    details: "get_pre_approval_dofe_details",
+  },
+  company: {
+    list: "get_all_company",
+    details: "get_company_details",
+  },
   industry: {
     list: "get_all_industry",
     details: "get_industry_details",

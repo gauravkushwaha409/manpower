@@ -1,7 +1,7 @@
 import { PATH } from "@/constant/path";
-import CreatePreApprovalDofe from "@/pages/preApprovalDofe/child/create/CreatePreApprovalDofe";
-import UpdatePreApprovalDofe from "@/pages/preApprovalDofe/child/update/UpdatePreApprovalDofe";
-import PreApprovalDofe from "@/pages/preApprovalDofe/PreApprovalDofe";
+import CreatePreApprovalDofe from "@/pages/preApprovalDofe/child/create/create-pre-approval-dofe";
+import UpdatePreApprovalDofe from "@/pages/preApprovalDofe/child/update/update-pre-approval-dofe";
+import PreApprovalDofe from "@/pages/preApprovalDofe/pre-approval-dofe";
 
 export const preApprovalDofeRoutes = [
   {

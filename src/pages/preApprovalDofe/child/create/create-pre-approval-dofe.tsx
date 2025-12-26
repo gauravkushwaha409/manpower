@@ -3,7 +3,7 @@ import Breadcrumb from "@/components/reusable-component/Breadcrumb";
 import { PATH } from "@/constant/path";
 
 import ExtendedMultiStepForm from "@/components/extended-components/ExtendedMultiStepForm";
-import useCreatePreApprovalDofe from "./hooks/useCreatePreApprovalDofe";
+import useCreatePreApprovalDofe from "./hooks/use-create-pre-approval-dofe";
 import {
   PreApprovalFormStep1,
   PreApprovalFormStep2,

@@ -1,10 +1,11 @@
+import { useFormik } from "formik";
+
 import {
   PreApprovalDofeFormType,
   PreApprovalValidation,
 } from "@/pages/preApprovalDofe/schema/preApprovalDofeValidationSchema";
-import { useFormik } from "formik";
 
-const useCreatePreApprovalDofe = () => {
+const useUpdatePreApprovalDofe = () => {
   const initialValues: PreApprovalDofeFormType = {
     country: "",
     recuirtment_company: "",
@@ -33,22 +34,7 @@ const useCreatePreApprovalDofe = () => {
     qualification: null,
 
     // Actual Job details
-    job_details: [
-      // {
-      //   job_title: "",
-      //   male: 0,
-      //   female: 0,
-      //   basic_salary_aed: 0,
-      //   basic_salary_nrp: 0,
-      //   working_hours: 0,
-      //   working_days: 0,
-      //   contract_period: 0,
-      //   working_city: "",
-      //   experience: false,
-      //   years: 0,
-      //   qualification: "",
-      // },
-    ],
+    job_details: [],
     // Step - 3
     food: false,
     accomodation: false,
@@ -58,9 +44,10 @@ const useCreatePreApprovalDofe = () => {
     overtime: false,
   };
 
-  const formik = useFormik<PreApprovalDofeFormType>({
+  const formik = useFormik({
     initialValues,
     validationSchema: PreApprovalValidation,
+    enableReinitialize: true,
     onSubmit: async () => {},
   });
 
@@ -69,4 +56,4 @@ const useCreatePreApprovalDofe = () => {
   };
 };
 
-export default useCreatePreApprovalDofe;
+export default useUpdatePreApprovalDofe;

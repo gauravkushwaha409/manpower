@@ -3,7 +3,7 @@ import Breadcrumb from "@/components/reusable-component/Breadcrumb";
 import PageHeader from "@/common/PageHeader";
 import { PATH } from "@/constant/path";
 import ExtendedMultiStepForm from "@/components/extended-components/ExtendedMultiStepForm";
-import useUpdatePreApprovalDofe from "./hooks/useUpdatePreApprovalDofe";
+import useUpdatePreApprovalDofe from "./hooks/use-update-pre-approval-dofe";
 import {
   PreApprovalFormStep1,
   PreApprovalFormStep2,
@@ -26,7 +26,7 @@ const UpdatePreApprovalDofe: React.FC = () => {
           },
         ]}
       />
-      <PageHeader title="Update Pre Approval Dofe" showAddButton={false} />
+      <PageHeader title="Update Pre Approval Dofe" />
       <ExtendedMultiStepForm
         formik={update.formik}
         currentStep={step}

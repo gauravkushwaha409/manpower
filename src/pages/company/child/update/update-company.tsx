@@ -1,12 +1,13 @@
 import React from "react";
 import ExtendedForm from "@/components/extended-components/ExtendedForm";
 import Breadcrumb from "@/components/reusable-component/Breadcrumb";
-import useCreateIndustry from "./hooks/useCreateCompany";
+import PageHeader from "@/common/PageHeader";
 import CompanyForm from "../../partials/CompanyForm";
 import { PATH } from "@/constant/path";
+import useUpdateCompany from "./hooks/use-update-company";
 
-const CreateCompany: React.FC = () => {
-  const { formik } = useCreateIndustry();
+const UpdateCompany: React.FC = () => {
+  const { formik } = useUpdateCompany();
   return (
     <div className="u-flex-child">
       <Breadcrumb
@@ -14,13 +15,14 @@ const CreateCompany: React.FC = () => {
           { label: "Dashboard" },
           {
             label: "Company",
-            to: PATH.dashboard.company,
+            to: PATH.company.index,
           },
           {
-            label: "Create",
+            label: "Update Company",
           },
         ]}
       />
+      <PageHeader title="Update Company" />
       <ExtendedForm formik={formik}>
         <CompanyForm />
       </ExtendedForm>
@@ -28,4 +30,4 @@ const CreateCompany: React.FC = () => {
   );
 };
 
-export default CreateCompany;
+export default UpdateCompany;

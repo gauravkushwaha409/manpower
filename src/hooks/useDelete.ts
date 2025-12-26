@@ -49,7 +49,7 @@ export const useDelete = ({ endpoints, invalidates }: IProps) => {
     });
   return {
     handleCancel,
-    idOpen: deleteState.isOpen,
+    isOpen: deleteState.isOpen,
     deleteId: deleteIdState.values,
     handleDelete,
     isLoading,

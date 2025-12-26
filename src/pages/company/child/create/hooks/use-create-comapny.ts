@@ -4,6 +4,8 @@ import {
   companyValidationSchema,
   CompanyValidationSchemaType,
 } from "../../../schema/companyValidationSchema";
+import { endpoints } from "@/api/endpoints";
+import { apiTags } from "@/constant/tag";
 
 const useCreateCompany = () => {
   const [
@@ -40,9 +42,9 @@ const useCreateCompany = () => {
     validationSchema: companyValidationSchema,
     onSubmit: async (values) => {
       await createCompany({
-        url: "/industry",
+        url: endpoints.company.create,
         data: values,
-        invalidateTag: "",
+        invalidateTag: [apiTags.company.list],
       });
     },
   });
