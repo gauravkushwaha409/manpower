@@ -1,34 +1,60 @@
 import React from "react";
-import Table from "@/components/Table";
-import { CountryTableData } from "@/data/country";
-import { CountryColumns } from "./partials/CountryColumns";
 import PageHeader from "@/common/PageHeader";
-import Breadcrumb from "@/components/reusable-component/Breadcrumb";
-import CountryFilterList from "./partials/CountryFilterList";
-import { PATH } from "@/constant/path";
+import { useAddModal } from "@/hooks/add-modal";
+import { useUpdateModal } from "@/hooks/update-modal";
+import { useDelete } from "@/hooks/useDelete";
+import { endpoints } from "@/api/endpoints";
+import { apiTags } from "@/constant/tag";
+import SearchFilter from "@/components/search-filter";
+import CountryTable from "./partials/country-table";
+import ModalWrapper from "@/components/shadcn/modal-wrapper";
+import DeleteModal from "@/components/DeleteModal";
+import UpdateCountry from "./partials/update-country";
+import CreateCountry from "./partials/create-country";
 
 const Country: React.FC = () => {
+  const addModal = useAddModal();
+  const updateModal = useUpdateModal();
+  const deleteDocument = useDelete({
+    endpoints: endpoints.document.delete,
+    invalidates: [apiTags.document.list],
+  });
   return (
-    <div className="bg-surface w-full min-h-full">
-      <Breadcrumb
-        items={[
-          { label: "Dashboard" },
-          {
-            label: "Country",
-          },
-        ]}
+    <div className="u-flex-parent">
+      <PageHeader title="Country" />
+      <SearchFilter
+        dateFilter
+        handleAddClick={addModal.handleOpenModal}
+        selectFilter={[]}
       />
-      <div>
-        <div className="w-full h-fit">
-          <PageHeader title="Country" routePath={PATH.dashboard.addCountry} />
-        </div>
-        <div className="py-5">
-          <CountryFilterList />
-        </div>
-        <div className="overflow-x-visible">
-          <Table columns={CountryColumns} data={CountryTableData} />
-        </div>
-      </div>
+      <CountryTable />
+
+      {/* Create Country */}
+      <ModalWrapper
+        className="xl:max-w-xl"
+        isOpen={addModal.isOpen}
+        name="Create Country"
+        onOpenChange={addModal.handleCloseModal}
+      >
+        <CreateCountry />
+      </ModalWrapper>
+
+      {/* Update Country */}
+      <ModalWrapper
+        className="xl:max-w-xl"
+        isOpen={updateModal.isOpen}
+        name="Update Country"
+        onOpenChange={updateModal.handleCloseModal}
+      >
+        <UpdateCountry />
+      </ModalWrapper>
+
+      {/* Delete Modal */}
+      <DeleteModal
+        isOpen={deleteDocument.isOpen}
+        onCancel={deleteDocument.handleCancel}
+        onConfirm={deleteDocument.handleDelete}
+      />
     </div>
   );
 };

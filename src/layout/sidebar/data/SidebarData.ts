@@ -31,6 +31,13 @@ export const mainMenuItems = [
     link: PATH.dashboard.dashboard,
   },
   {
+    id: "country",
+    icon: TfiWorld,
+    label: "Country",
+    active: false,
+    link: PATH.country.index,
+  },
+  {
     id: "preApprovalDofe",
     icon: CheckCheck,
     label: "Pre Approval Dofe",
@@ -155,13 +162,7 @@ export const mainMenuItems = [
   //   active: false,
   //   link: PATH.dashboard.users,
   // },
-  // {
-  //   id: "country",
-  //   icon: TfiWorld,
-  //   label: "Country",
-  //   active: false,
-  //   link: PATH.dashboard.country,
-  // },
+
   // {
   //   id: "language",
   //   icon: HiOutlineLanguage,

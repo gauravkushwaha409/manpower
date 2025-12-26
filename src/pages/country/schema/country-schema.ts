@@ -1,14 +1,10 @@
 import * as Yup from "yup";
 
-export const countryValidationSchema = Yup.object().shape({
-  id: Yup.string().required("Country Id is required"),
-
+const countrySchema = Yup.object().shape({
   country: Yup.string()
     .required("Country name is required")
     .min(3, "Country name must be at least 3 characters")
     .max(50, "Country name cannot exceed 50 characters"),
-
-  flag: Yup.string().required("Country flag is required"),
 
   currency: Yup.string()
     .required("Currency is required")
@@ -30,6 +26,5 @@ export const countryValidationSchema = Yup.object().shape({
     .max(30, "Language cannot exceed 30 characters"),
 });
 
-export type CountryValidationSchemaType = Yup.InferType<
-  typeof countryValidationSchema
->;
+export type CountrySchemaType = Yup.InferType<typeof countrySchema>;
+export const CountryValidationSchema = countrySchema;

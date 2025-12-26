@@ -11,12 +11,6 @@ const DASHBOARD_PATH = {
   language: "/language",
   addLanguage: "/add-language",
   updateLanguage: "/update-language",
-  country: "/country",
-  addCountry: "/add-country",
-  updateCountry: "/update-country",
-  preApplication: "/pre-application",
-  addPreAppliction: "/add-pre-application",
-  updatePreAppliction: "/update-pre-application",
   users: "/user",
   addUser: "/add-user",
   updateUser: "/update-user",
@@ -90,6 +84,9 @@ export const PATH = {
     index: "/company",
     create: "/company/create",
     update: "/company/update/:id",
+  },
+  country: {
+    index: "/country",
   },
   candidate: {
     index: "/candidate",

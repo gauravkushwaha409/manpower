@@ -18,8 +18,6 @@ import AddOrientation from "@/pages/visaProcess/orientation/AddOrientation";
 import UpdateOrientation from "@/pages/visaProcess/orientation/UpdateOrientation";
 import AddTicket from "@/pages/visaProcess/ticket/AddTicket";
 import UpdateTicket from "@/pages/visaProcess/ticket/UpdateTicket";
-import AddCountry from "@/pages/country/AddCountry";
-import UpdateCountry from "@/pages/country/UpdateCountry";
 import AddLanguage from "@/pages/language/AddLanguage";
 import UpdateLanguage from "@/pages/language/UpdateLanguage";
 import AddJobOffer from "@/pages/jobs/jobOffer/AddJobOffer";
@@ -145,20 +143,6 @@ export const dashboardRoutes = [
   {
     path: PATH.jobProcess.updateInterviewCandidates,
     element: <UpdateJobInterview />,
-  },
-
-  // country
-  {
-    path: PATH.dashboard.country,
-    element: <Country />,
-  },
-  {
-    path: PATH.dashboard.addCountry,
-    element: <AddCountry />,
-  },
-  {
-    path: PATH.dashboard.updateCountry,
-    element: <UpdateCountry />,
   },
 
   // visa process

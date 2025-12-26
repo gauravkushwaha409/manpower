@@ -8,6 +8,7 @@ import { companyRoutes } from "./partials/private-route/company-routes";
 import { candidateRoutes } from "./partials/private-route/candidate-routes";
 import { settingRoutes } from "./partials/private-route/setting-routes";
 import { jobVacancyRoutes } from "./partials/private-route/job-vacancy";
+import { countryRoutes } from "./partials/private-route/country-routes";
 
 /**
  * MainRoutes defines the routing configuration for the application.
@@ -30,6 +31,7 @@ const MainRoutes = [
       ...candidateRoutes,
       ...jobVacancyRoutes,
       ...settingRoutes,
+      ...countryRoutes,
     ],
   },
 
