@@ -6,11 +6,18 @@ import SubCategoryTable from "./partials/sub-category-table";
 import ModalWrapper from "@/components/shadcn/modal-wrapper";
 import CreateSubCategory from "./partials/create-sub-category";
 import UpdateSubCategory from "./partials/update-sub-category";
+import DeleteModal from "@/components/DeleteModal";
+import { useDelete } from "@/hooks/useDelete";
+import { endpoints } from "@/api/endpoints";
+import { apiTags } from "@/constant/tag";
 
 const SubCategory = () => {
   const addModal = useAddModal();
   const updateModal = useUpdateModal();
-
+  const deleteModal = useDelete({
+    endpoints: endpoints.subCategory.delete,
+    invalidates: [apiTags.subCategory.list],
+  });
   return (
     <div className="u-flex-parent">
       <PageHeader title="Industry" />
@@ -46,6 +53,13 @@ const SubCategory = () => {
       >
         <UpdateSubCategory />
       </ModalWrapper>
+
+      {/* Delete Modal */}
+      <DeleteModal
+        isOpen={deleteModal.idOpen}
+        onCancel={deleteModal.handleCancel}
+        onConfirm={deleteModal.handleDelete}
+      />
     </div>
   );
 };

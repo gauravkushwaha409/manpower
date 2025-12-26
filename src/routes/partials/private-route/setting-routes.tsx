@@ -1,10 +1,15 @@
 import { PATH } from "@/constant/path";
+import DocumentSetting from "@/pages/settings/document-setting/document-setting";
 import Category from "@/pages/settings/job-setting/category/Category";
 import Industry from "@/pages/settings/job-setting/industry/Industry";
 import JobTitle from "@/pages/settings/job-setting/job-title/job-title";
 import SubCategory from "@/pages/settings/job-setting/sub-category/sub-category";
 
 export const settingRoutes = [
+  {
+    path: PATH.setting.documentSetting,
+    element: <DocumentSetting />,
+  },
   {
     path: PATH.setting.jobSetting.industry,
     element: <Industry />,

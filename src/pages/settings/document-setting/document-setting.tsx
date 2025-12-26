@@ -2,66 +2,65 @@ import PageHeader from "@/common/PageHeader";
 import SearchFilter from "@/components/search-filter";
 import { useAddModal } from "@/hooks/add-modal";
 import { useUpdateModal } from "@/hooks/update-modal";
+import DocumentTable from "./partials/document-table";
 import ModalWrapper from "@/components/shadcn/modal-wrapper";
-import JobTitleTable from "./partials/job-title-table";
-import CreateJobTitle from "./partials/create-job-title";
-import UpdateJobTitle from "./partials/update-job-title";
+import CreateDocument from "./partials/create-document";
+import UpdateDocument from "./partials/update-document";
+import DeleteModal from "@/components/DeleteModal";
 import { useDelete } from "@/hooks/useDelete";
 import { endpoints } from "@/api/endpoints";
 import { apiTags } from "@/constant/tag";
-import DeleteModal from "@/components/DeleteModal";
 
-const JobTitle = () => {
+const DocumentSetting = () => {
   const addModal = useAddModal();
   const updateModal = useUpdateModal();
-  const deleteModal = useDelete({
-    endpoints: endpoints.jobTitle.delete,
-    invalidates: [apiTags.jobTitle.list],
+  const deleteDocument = useDelete({
+    endpoints: endpoints.document.delete,
+    invalidates: [apiTags.document.list],
   });
   return (
     <div className="u-flex-parent">
-      <PageHeader title="Job Title" />
+      <PageHeader title="Document Setting" />
       <SearchFilter
         dateFilter
         handleAddClick={addModal.handleOpenModal}
         selectFilter={[
           {
-            placeholder: "Select Comapny",
-            option: [{ label: "Dome Infosys", value: "dome-infosys" }],
-            paramsKey: "company",
+            placeholder: "Select Country",
+            option: [{ label: "Nepal", value: "nepal" }],
+            paramsKey: "country",
           },
         ]}
       />
-      <JobTitleTable />
+      <DocumentTable />
 
-      {/* Create Job Title */}
+      {/* Create Industry Modal */}
       <ModalWrapper
         className="xl:max-w-xl"
         isOpen={addModal.isOpen}
-        name="Create Job Title"
+        name="Create Document"
         onOpenChange={addModal.handleCloseModal}
       >
-        <CreateJobTitle />
+        <CreateDocument />
       </ModalWrapper>
 
-      {/* Update Job Title */}
+      {/* Update Industry Modal */}
       <ModalWrapper
         className="xl:max-w-xl"
         isOpen={updateModal.isOpen}
-        name="Update Job Title"
+        name="Update Document"
         onOpenChange={updateModal.handleCloseModal}
       >
-        <UpdateJobTitle />
+        <UpdateDocument />
       </ModalWrapper>
 
       {/* Delete Modal */}
       <DeleteModal
-        isOpen={deleteModal.idOpen}
-        onCancel={deleteModal.handleCancel}
-        onConfirm={deleteModal.handleDelete}
+        isOpen={deleteDocument.idOpen}
+        onCancel={deleteDocument.handleCancel}
+        onConfirm={deleteDocument.handleDelete}
       />
     </div>
   );
 };
-
-export default JobTitle;
+export default DocumentSetting;

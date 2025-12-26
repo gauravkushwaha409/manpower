@@ -7,11 +7,18 @@ import ModalWrapper from "@/components/shadcn/modal-wrapper";
 import CreateIndustry from "./partials/create-industry";
 import UpdateIndustry from "./partials/update-industry";
 import IndustryTable from "./partials/industry-table";
+import { useDelete } from "@/hooks/useDelete";
+import { endpoints } from "@/api/endpoints";
+import { apiTags } from "@/constant/tag";
+import DeleteModal from "@/components/DeleteModal";
 
 const Industry: React.FC = () => {
   const addModal = useAddModal();
   const updateModal = useUpdateModal();
-
+  const deleteModal = useDelete({
+    endpoints: endpoints.industry.delete,
+    invalidates: [apiTags.industry.list],
+  });
   return (
     <div className="u-flex-parent">
       <PageHeader title="Industry" />
@@ -47,6 +54,13 @@ const Industry: React.FC = () => {
       >
         <UpdateIndustry />
       </ModalWrapper>
+
+      {/* Delete Modal */}
+      <DeleteModal
+        isOpen={deleteModal.idOpen}
+        onCancel={deleteModal.handleCancel}
+        onConfirm={deleteModal.handleDelete}
+      />
     </div>
   );
 };

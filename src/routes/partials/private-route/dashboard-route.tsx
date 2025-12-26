@@ -274,52 +274,52 @@ export const dashboardRoutes = [
   },
 
   // settings
-  {
-    path: PATH.settings.location,
-    element: <Location />,
-  },
-  {
-    path: PATH.settings.addLocation,
-    element: <AddLocation />,
-  },
-  {
-    path: PATH.settings.updateLocation,
-    element: <UpdateLocation />,
-  },
-  {
-    path: PATH.settings.contactUs,
-    element: <ContactUs />,
-  },
-  {
-    path: PATH.settings.addContactUs,
-    element: <AddContactUs />,
-  },
-  {
-    path: PATH.settings.updateContactUs,
-    element: <UpdateContactUs />,
-  },
-  {
-    path: PATH.settings.policy,
-    element: <Policy />,
-  },
-  {
-    path: PATH.settings.addPolicy,
-    element: <AddPolicy />,
-  },
-  {
-    path: PATH.settings.updatePolicy,
-    element: <UpdatePolicy />,
-  },
-  {
-    path: PATH.settings.seo,
-    element: <Seo />,
-  },
-  {
-    path: PATH.settings.addSeo,
-    element: <AddSeo />,
-  },
-  {
-    path: PATH.settings.updateSeo,
-    element: <UpdateSeo />,
-  },
+  // {
+  //   path: PATH.settings.location,
+  //   element: <Location />,
+  // },
+  // {
+  //   path: PATH.settings.addLocation,
+  //   element: <AddLocation />,
+  // },
+  // {
+  //   path: PATH.settings.updateLocation,
+  //   element: <UpdateLocation />,
+  // },
+  // {
+  //   path: PATH.settings.contactUs,
+  //   element: <ContactUs />,
+  // },
+  // {
+  //   path: PATH.settings.addContactUs,
+  //   element: <AddContactUs />,
+  // },
+  // {
+  //   path: PATH.settings.updateContactUs,
+  //   element: <UpdateContactUs />,
+  // },
+  // {
+  //   path: PATH.settings.policy,
+  //   element: <Policy />,
+  // },
+  // {
+  //   path: PATH.settings.addPolicy,
+  //   element: <AddPolicy />,
+  // },
+  // {
+  //   path: PATH.settings.updatePolicy,
+  //   element: <UpdatePolicy />,
+  // },
+  // {
+  //   path: PATH.settings.seo,
+  //   element: <Seo />,
+  // },
+  // {
+  //   path: PATH.settings.addSeo,
+  //   element: <AddSeo />,
+  // },
+  // {
+  //   path: PATH.settings.updateSeo,
+  //   element: <UpdateSeo />,
+  // },
 ];

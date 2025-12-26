@@ -218,6 +218,13 @@ export const mainMenuItems = [
       //   icon: TbSeo,
       //   link: PATH.settings.seo,
       // },
+
+      {
+        id: "document-setting",
+        label: "Document Setting",
+        icon: TbSeo,
+        link: PATH.setting.documentSetting,
+      },
       {
         id: "job-Setting",
         label: "Job Setting",

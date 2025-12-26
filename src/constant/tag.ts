@@ -17,4 +17,8 @@ export const apiTags = {
     list: "get_all_job_title",
     details: "get_job_title_details",
   },
+  document: {
+    list: "get_all_document",
+    details: "get_document_details",
+  },
 };

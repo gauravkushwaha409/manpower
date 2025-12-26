@@ -50,6 +50,13 @@ export const endpoints = {
     delete: "",
     details: "",
   },
+  document: {
+    list: "",
+    create: "",
+    update: "",
+    delete: "",
+    details: "",
+  },
 };
 
 export const BASE_API_URL =
