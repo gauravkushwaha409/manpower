@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { IoChevronDownOutline, IoChevronForward } from "react-icons/io5";
 import { Link } from "react-router-dom";
-import { mainMenuItems } from "./Data/SidebarData";
+import { mainMenuItems } from "./data/SidebarData";
 import { MenuItem } from "./interface/sidebar_interface";
 import { SidebarProps } from "@/types";
 import { IoIosMenu } from "react-icons/io";

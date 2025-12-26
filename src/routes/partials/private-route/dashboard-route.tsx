@@ -1,8 +1,6 @@
 import { PATH } from "@/constant/path";
-import JobCategory from "@/pages/jobs/jobCategory/JobCategory";
 import JobOffer from "@/pages/jobs/jobOffer/JobOffer";
 import JobInterview from "@/pages/jobs/jobsInterview/JobInterview";
-import JobVacancies from "@/pages/jobs/jobVacancies/JobVacancies";
 import Language from "@/pages/language/Language";
 import Country from "@/pages/country/Country";
 import Dofe from "@/pages/visaProcess/dofe/DOFE";
@@ -27,11 +25,6 @@ import AddCountry from "@/pages/country/AddCountry";
 import UpdateCountry from "@/pages/country/UpdateCountry";
 import AddLanguage from "@/pages/language/AddLanguage";
 import UpdateLanguage from "@/pages/language/UpdateLanguage";
-import AddJobCategory from "@/pages/jobs/jobCategory/AddJobCategory";
-import UpdateJobCategory from "@/pages/jobs/jobCategory/UpdateJobCategory";
-import JobApplications from "@/pages/jobs/jobApplication/JobApplications";
-import AddJobApplication from "@/pages/jobs/jobApplication/AddJobApplication";
-import UpdateJobApplication from "@/pages/jobs/jobApplication/UpdateJobApplication";
 import AddJobOffer from "@/pages/jobs/jobOffer/AddJobOffer";
 import UpdateJobOffer from "@/pages/jobs/jobOffer/UpdateJobOffer";
 import AddJobInterview from "@/pages/jobs/jobsInterview/AddJobInterview";
@@ -132,34 +125,6 @@ export const dashboardRoutes = [
   },
 
   // job process
-  {
-    path: PATH.jobProcess.jobCategories,
-    element: <JobCategory />,
-  },
-  {
-    path: PATH.jobProcess.addJobCategories,
-    element: <AddJobCategory />,
-  },
-  {
-    path: PATH.jobProcess.updateJobCategories,
-    element: <UpdateJobCategory />,
-  },
-  {
-    path: PATH.jobProcess.jobVacancies,
-    element: <JobVacancies />,
-  },
-  {
-    path: PATH.jobProcess.addJobApplication,
-    element: <AddJobApplication />,
-  },
-  {
-    path: PATH.jobProcess.updateJobApplication,
-    element: <UpdateJobApplication />,
-  },
-  {
-    path: PATH.jobProcess.jobApplications,
-    element: <JobApplications />,
-  },
   {
     path: PATH.jobProcess.jobOffer,
     element: <JobOffer />,

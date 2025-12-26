@@ -96,6 +96,11 @@ export const PATH = {
     create: "/candidate/create",
     update: "/candidate/update/:id",
   },
+  jobVacancy: {
+    index: "/job-vacancy",
+    create: "/job-vacancy/create",
+    update: "/job-vacancy/update/:id",
+  },
   jobProcess: JOB_PROCESS,
   visa: VISA,
   setting: {
@@ -106,6 +111,6 @@ export const PATH = {
       subCategory: "/setting/job-setting/sub-category",
       jobTitle: "/setting/job-setting/job-title",
     },
-    documentSetting: '/setting/document-setting'
+    documentSetting: "/setting/document-setting",
   },
 };
