@@ -1,8 +1,7 @@
 import Table from "@/components/Table";
 import TableWrapper from "@/components/TableWrapper";
-import { CandidateColumns } from "./candidate-column";
+import { CandidateColumns, candidateData } from "./candidate-column";
 import { useState } from "react";
-import { CandidateTableData } from "../hooks/useGetCandidate";
 
 const CandidateTable = () => {
   const [rowSelection, setRowSelection] = useState({});
@@ -10,7 +9,7 @@ const CandidateTable = () => {
     <TableWrapper wrapperClassName="mt-4" isLoading={false}>
       <Table
         columns={CandidateColumns()}
-        data={CandidateTableData}
+        data={candidateData}
         rowSelection={rowSelection}
         setRowSelection={setRowSelection}
       />

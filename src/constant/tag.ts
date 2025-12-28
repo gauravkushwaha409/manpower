@@ -9,6 +9,10 @@ export const apiTags = {
     list: "get_all_pre_approval_dofe",
     details: "get_pre_approval_dofe_details",
   },
+  candidate: {
+    list: "get_all_candidate",
+    details: "get_candidate_details",
+  },
   jobVacancy: {
     list: "get_all_job_vacancy_dofe",
     details: "get_job_vacancy_details",
