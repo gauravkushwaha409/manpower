@@ -9,6 +9,13 @@ import { useState } from "react";
 export interface IInterviewListItem {
   id: string;
   candidate: string;
+  job: string;
+  date: string;
+  mode: string;
+  interviewer_name: string;
+  remarks: string;
+  result: string;
+  created_at: string;
 }
 type InterviewListResponse = IPaginationResponse<IInterviewListItem>;
 
