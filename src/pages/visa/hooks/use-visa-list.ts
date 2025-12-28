@@ -9,6 +9,13 @@ import { useState } from "react";
 export interface IVisaListItem {
   id: string;
   candidate: string;
+  job: string;
+  visa_type: string;
+  application_date: string;
+  approval_date: string;
+  visa_expire: string;
+  status: string;
+  visa_file: string;
 }
 type VisaListResponse = IPaginationResponse<IVisaListItem>;
 
