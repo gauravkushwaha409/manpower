@@ -25,6 +25,10 @@ export const apiTags = {
     list: "get_all_medical",
     details: "get_medical_details",
   },
+  visa: {
+    list: "get_all_visa",
+    details: "get_visa_details",
+  },
   jobVacancy: {
     list: "get_all_job_vacancy_dofe",
     details: "get_job_vacancy_details",

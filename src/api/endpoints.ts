@@ -64,6 +64,13 @@ export const endpoints = {
     delete: "",
     details: "",
   },
+  visa: {
+    list: "",
+    create: "",
+    update: "",
+    delete: "",
+    details: "",
+  },
   industry: {
     list: "",
     create: "",
