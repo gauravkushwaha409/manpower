@@ -4,36 +4,36 @@ import { apiTags } from "@/constant/tag";
 import { usePagination } from "@/hooks/usePagination";
 import useSearch from "@/hooks/useSearch";
 import { IPaginationResponse } from "@/interface/apiResponse.interface";
+import { useState } from "react";
 
-export interface ICandidateListItem {
+export interface IInterviewListItem {
   id: string;
-  first_name: string;
-  last_name: string;
-  phone_no: string;
-  passport_no: string;
-  address: string;
-  company_name: string;
-  interview_process: string;
+  candidate: string;
 }
-type CandidateListResponse = IPaginationResponse<ICandidateListItem>;
+type InterviewListResponse = IPaginationResponse<IInterviewListItem>;
 
-const useCandidateList = () => {
+const useInterviewList = () => {
   const { pagination } = usePagination();
+  const [rowSelection, setRowSelection] = useState({});
   const { get } = useSearch();
-
   const { data, isLoading } = useGetDataQuery<{
-    data: CandidateListResponse;
+    data: InterviewListResponse;
     isLoading: boolean;
   }>({
-    url: endpoints.candidate.list,
+    url: endpoints.interview.list,
     params: {
       page: pagination.pageIndex,
       page_size: pagination.pageSize,
       search: get(),
     },
-    tag: apiTags.candidate.list,
+    tag: apiTags.interview.list,
   });
-  return { candidateList: data, isLoading };
-};
 
-export default useCandidateList;
+  return {
+    interviewListResponse: data,
+    isLoading,
+    rowSelection,
+    setRowSelection,
+  };
+};
+export default useInterviewList;

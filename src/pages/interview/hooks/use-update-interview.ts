@@ -1,39 +1,38 @@
 import { useUpdateDataMutation } from "@/api/api";
 import { useFormik } from "formik";
-import {
-  CountrySchemaType,
-  CountryValidationSchema,
-} from "../schema/country-schema";
 import { apiTags } from "@/constant/tag";
 import { endpoints } from "@/api/endpoints";
 import { useUpdateModal } from "@/hooks/update-modal";
 import { ApiResponse } from "@/api/api.error";
 import { handleResponse } from "@/utils/handleResponse";
-import useCountryDetails from "./use-country-details";
+import useInterviewDetails from "./use-interview-details";
+import {
+  InterviewSchemaType,
+  InterviewValidationSchema,
+} from "../schema/interview-schema";
 
-const useUpdateCountry = () => {
+const useUpdateInterview = () => {
   const [updateCountry, { isLoading }] = useUpdateDataMutation();
   const { handleCloseModal, updateId } = useUpdateModal();
-  const { countryDetails, isLoading: isInitialLoading } = useCountryDetails({
-    id: updateId,
-  });
+  const { interviewDetails, isLoading: isInitialLoading } = useInterviewDetails(
+    {
+      id: updateId,
+    }
+  );
 
-  const initialValues: CountrySchemaType = {
-    country: countryDetails?.data?.country || "",
-    capital: countryDetails?.data?.capital || "",
-    currency: countryDetails?.data?.currency || "",
-    language: countryDetails?.data?.language || "",
+  const initialValues: InterviewSchemaType = {
+    candidate_name: interviewDetails?.data?.candidate_name || "",
   };
 
-  const formik = useFormik<CountrySchemaType>({
+  const formik = useFormik<InterviewSchemaType>({
     initialValues,
-    validationSchema: CountryValidationSchema,
+    validationSchema: InterviewValidationSchema,
     enableReinitialize: true,
     onSubmit: async (values, { setErrors, resetForm }) => {
       const response = (await updateCountry({
         data: values,
-        url: endpoints.country.update.replace(":id", updateId),
-        invalidateTag: [apiTags.country.details, apiTags.country.list],
+        url: endpoints.interview.update.replace(":id", updateId),
+        invalidateTag: [apiTags.interview.details, apiTags.interview.list],
       })) as ApiResponse;
       handleResponse({
         response,
@@ -51,4 +50,4 @@ const useUpdateCountry = () => {
   };
 };
 
-export default useUpdateCountry;
+export default useUpdateInterview;

@@ -43,6 +43,13 @@ export const endpoints = {
     delete: "",
     details: "",
   },
+  interview: {
+    list: "",
+    create: "",
+    update: "",
+    delete: "",
+    details: "",
+  },
   industry: {
     list: "",
     create: "",
