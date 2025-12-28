@@ -6,6 +6,17 @@ import { LiaIndustrySolid } from "react-icons/lia";
 import { PiBuildingOffice } from "react-icons/pi";
 import { MdDashboard } from "react-icons/md";
 import { PATH } from "@/constant/path";
+import { IconType } from "react-icons";
+
+export interface MenuItem {
+  id: string;
+  icon?: IconType;
+  link?: string;
+  label: string;
+  active?: boolean;
+  children?: MenuItem[];
+  showArrow?: boolean;
+}
 
 export const mainMenuItems = [
   {

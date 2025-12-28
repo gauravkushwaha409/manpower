@@ -21,6 +21,10 @@ export const apiTags = {
     list: "get_all_job_offer",
     details: "get_job_offer_details",
   },
+  medical: {
+    list: "get_all_medical",
+    details: "get_medical_details",
+  },
   jobVacancy: {
     list: "get_all_job_vacancy_dofe",
     details: "get_job_vacancy_details",

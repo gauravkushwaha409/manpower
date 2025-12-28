@@ -57,6 +57,13 @@ export const endpoints = {
     delete: "",
     details: "",
   },
+  medical: {
+    list: "",
+    create: "",
+    update: "",
+    delete: "",
+    details: "",
+  },
   industry: {
     list: "",
     create: "",

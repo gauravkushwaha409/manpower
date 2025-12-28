@@ -1,21 +1,12 @@
 import React, { useState } from "react";
 import { IoChevronDownOutline, IoChevronForward } from "react-icons/io5";
 import { Link } from "react-router-dom";
-import { mainMenuItems } from "./data/SidebarData";
-import { MenuItem } from "./interface/sidebar_interface";
+import { mainMenuItems, MenuItem } from "./data/SidebarData";
 import { SidebarProps } from "@/types";
 import { IoIosMenu } from "react-icons/io";
 
 const Sidebar: React.FC<SidebarProps> = ({ isSidebarOpen, toggleSidebar }) => {
-  const defaultOpenIds = [
-    ...mainMenuItems
-      .filter((item) => item.active)
-      .map((item) => item.id)
-      .filter((item: any) => item.active)
-      .map((item: any) => item.id),
-  ];
-
-  const [openDropdowns, setOpenDropdowns] = useState<string[]>(defaultOpenIds);
+  const [openDropdowns, setOpenDropdowns] = useState<string[]>([]);
   const [hoveredParenId, setHoveredParentId] = useState<string | null>(null);
   const [hoveredChildId, setHoveredChildId] = useState<string | null>(null);
   const [activeParentId, setActiveParentId] = useState<string | null>(null);
