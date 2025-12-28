@@ -17,6 +17,10 @@ export const apiTags = {
     list: "get_all_interview",
     details: "get_interview_details",
   },
+  jobOffer: {
+    list: "get_all_job_offer",
+    details: "get_job_offer_details",
+  },
   jobVacancy: {
     list: "get_all_job_vacancy_dofe",
     details: "get_job_vacancy_details",

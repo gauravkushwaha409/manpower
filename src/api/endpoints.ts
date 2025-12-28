@@ -50,6 +50,13 @@ export const endpoints = {
     delete: "",
     details: "",
   },
+  jobOffer: {
+    list: "",
+    create: "",
+    update: "",
+    delete: "",
+    details: "",
+  },
   industry: {
     list: "",
     create: "",
