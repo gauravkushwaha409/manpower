@@ -181,7 +181,7 @@ const JobOfferColumns = (): ColumnDef<IJobOfferListItem>[] => {
           }}
         />
       ),
-      size: 100,
+      size: 200,
     },
     {
       header: "Issued By",
@@ -194,7 +194,7 @@ const JobOfferColumns = (): ColumnDef<IJobOfferListItem>[] => {
       cell: ({ getValue }) => {
         return <span>{new Date(getValue() as string).toLocaleString()}</span>;
       },
-      size: 400,
+      size: 250,
     },
     {
       header: "Action",

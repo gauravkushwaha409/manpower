@@ -9,6 +9,12 @@ import { useState } from "react";
 export interface IMedicalListItem {
   id: string;
   candidate: string;
+  exam_date: string;
+  medical_center: string;
+  report_file: string;
+  status: string;
+  remarks: string;
+  created_at: string;
 }
 type MedicalListResponse = IPaginationResponse<IMedicalListItem>;
 
