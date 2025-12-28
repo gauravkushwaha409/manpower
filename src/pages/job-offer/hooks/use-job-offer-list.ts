@@ -9,6 +9,13 @@ import { useState } from "react";
 export interface IJobOfferListItem {
   id: string;
   candidate: string;
+  job: string;
+  offer_letter_no: string;
+  offer_date: string;
+  joining_date: string;
+  offer_document: string;
+  issued_by: string;
+  created_at: string;
 }
 type JobOfferListResponse = IPaginationResponse<IJobOfferListItem>;
 
