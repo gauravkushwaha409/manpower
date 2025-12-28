@@ -9,6 +9,13 @@ import { candidateRoutes } from "./partials/private-route/candidate-routes";
 import { settingRoutes } from "./partials/private-route/setting-routes";
 import { jobVacancyRoutes } from "./partials/private-route/job-vacancy";
 import { countryRoutes } from "./partials/private-route/country-routes";
+import { interviewRoutes } from "./partials/private-route/interview-routes";
+import { jobOfferRoutes } from "./partials/private-route/job-offer-routes";
+import { medicalRoutes } from "./partials/private-route/medical-routes";
+import { visaRoutes } from "./partials/private-route/visa-routes";
+import { orientationRoutes } from "./partials/private-route/orientation-routes";
+import { shramRoutes } from "./partials/private-route/shram-routes";
+import { ticketRoutes } from "./partials/private-route/ticket-routes";
 
 /**
  * MainRoutes defines the routing configuration for the application.
@@ -26,12 +33,19 @@ const MainRoutes = [
     ),
     children: [
       ...dashboardRoutes,
-      ...preApprovalDofeRoutes,
-      ...companyRoutes,
-      ...candidateRoutes,
-      ...jobVacancyRoutes,
-      ...settingRoutes,
       ...countryRoutes,
+      ...companyRoutes,
+      ...preApprovalDofeRoutes,
+      ...jobVacancyRoutes,
+      ...candidateRoutes,
+      ...interviewRoutes,
+      ...jobOfferRoutes,
+      ...medicalRoutes,
+      ...visaRoutes,
+      ...orientationRoutes,
+      ...shramRoutes,
+      ...ticketRoutes,
+      ...settingRoutes,
     ],
   },
 
