@@ -22,6 +22,7 @@ const Candidate = () => {
             paramsKey: "company",
           },
         ]}
+        moveToModule={{ moduleName: "Interview", handleClick: () => {} }}
       />
       <CandidateTable />
 

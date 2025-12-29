@@ -23,7 +23,7 @@ const JobVacancy = () => {
     <div className="u-flex-parent">
       <PageHeader title="Job Vacancy" />
       <SearchFilter
-        dateFilter
+        dateFilter={true}
         handleAddClick={() => {
           navigate(PATH.preApprovalDofe.create);
         }}

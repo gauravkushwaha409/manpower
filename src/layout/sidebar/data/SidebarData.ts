@@ -101,16 +101,14 @@ export const mainMenuItems = [
     icon: User2,
     label: "Shram",
     active: false,
-    // link: PATH.shram.index,
-    link: PATH.orientation.index,
+    link: PATH.shram.index,
   },
   {
     id: "ticket",
     icon: User2,
     label: "Ticket",
     active: false,
-    // link: PATH.ticket.index,
-    link: PATH.orientation.index,
+    link: PATH.ticket.index,
   },
   {
     id: "settings",

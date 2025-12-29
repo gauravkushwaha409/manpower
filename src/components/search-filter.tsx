@@ -2,21 +2,28 @@ import SearchSection from "@/components/reusable-component/SearchSection";
 import useSearch from "@/hooks/useSearch";
 import { DateRangePicker } from "./shadcn/DateFilterRange";
 import { useSearchParams } from "react-router-dom";
-import { useState } from "react";
+import React, { useState } from "react";
 import { DateRange } from "react-day-picker";
 import { format, parseISO } from "date-fns";
-import { Download, Funnel, Plus } from "lucide-react";
+import { Download, Funnel, Move, Plus } from "lucide-react";
 import {
+  useDeleteSearchParams,
   useGetSearchParams,
   useUpdateSearchParams,
 } from "@/hooks/updateSearchParams";
 import { SelectFilter } from "./shadcn/SelectFilter";
 import { IOption } from "./form/form-input-select";
 
+interface IMoveToModule {
+  moduleName: string;
+  handleClick: () => void;
+}
+
 const SearchFilter = ({
   dateFilter,
   selectFilter,
   handleAddClick,
+  moveToModule,
 }: {
   dateFilter: boolean;
   selectFilter: {
@@ -25,32 +32,38 @@ const SearchFilter = ({
     paramsKey: string;
   }[];
   handleAddClick: (() => void) | null;
+  moveToModule?: IMoveToModule;
 }) => {
   const updateSearchParams = useUpdateSearchParams();
+  const deleteSearchParams = useDeleteSearchParams();
   const getSearchParams = useGetSearchParams();
-  const isFilter = getSearchParams("filter");
+  
+  const isFilterActive = getSearchParams("filter");
   const handleFilterClick = () => {
-    if (getSearchParams("filter") === "active")
-      updateSearchParams({}, ["filter"]);
+    if (getSearchParams("filter") === "active") deleteSearchParams(["filter"]);
     else updateSearchParams({ filter: "active" });
   };
   return (
-    <div>
+    <React.Fragment>
       <ActionButton
         handleAddClick={handleAddClick}
         handleClickFilter={handleFilterClick}
+        moveT0Module={moveToModule}
       />
 
+      {/* Filter Component  */}
       <div
         className={`grid transition-all duration-500 ease-in-out ${
-          isFilter ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+          isFilterActive
+            ? "grid-rows-[1fr] opacity-100"
+            : "grid-rows-[0fr] opacity-0"
         }`}
       >
         <div className="overflow-hidden">
           <DynamicFilter selectFilter={selectFilter} dateFilter={dateFilter} />
         </div>
       </div>
-    </div>
+    </React.Fragment>
   );
 };
 
@@ -59,9 +72,11 @@ export default SearchFilter;
 // Components
 const ActionButton = ({
   handleClickFilter,
+  moveT0Module,
   handleAddClick,
 }: {
   handleClickFilter: () => void;
+  moveT0Module?: IMoveToModule;
   handleAddClick: (() => void) | null;
 }) => {
   const search = useSearch();
@@ -74,6 +89,17 @@ const ActionButton = ({
       />
 
       <div className="flex items-center gap-x-2">
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            moveT0Module?.handleClick();
+          }}
+          className="px-3 py-1 flex items-center gap-x-2 typo-mid-bd-reg rounded-4xl border border-text-50 text-text-600 cursor-pointer hover:bg-secondary-500 hover:text-white transition-all ease-in-out duration-500"
+        >
+          Move To {moveT0Module?.moduleName}
+          <Move size={16} />
+        </button>
+
         <button
           onClick={handleClickFilter}
           className="px-3 py-1 flex items-center gap-x-2 typo-mid-bd-reg rounded-4xl border border-text-50 text-text-600 cursor-pointer hover:bg-secondary-500 hover:text-white transition-all ease-in-out duration-500"
