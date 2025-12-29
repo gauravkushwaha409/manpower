@@ -2,10 +2,19 @@ import { useGetDataQuery } from "@/api/api";
 import { endpoints } from "@/api/endpoints";
 import { apiTags } from "@/constant/tag";
 import { IApiDetailsResponse } from "@/interface/apiResponse.interface";
+import { InterviewResult } from "../schema/interview-schema";
 
 interface IInterviewDetails {
   id: string;
-  candidate_name: string;
+  candidate: string;
+  job: string;
+  employer_name: string;
+  date: string;
+  mode: string;
+  interviewer_name: string;
+  remarks: string;
+  result: InterviewResult;
+  created_at: string;
 }
 type InterviewDetailsResponse = IApiDetailsResponse<IInterviewDetails>;
 

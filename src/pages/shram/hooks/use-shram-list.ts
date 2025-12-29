@@ -9,10 +9,9 @@ import { useState } from "react";
 export interface IShramListItem {
   id: string;
   candidate_name: string;
-  candidate_job: string;
-  ols_reference_number: string;
-  approval_date: string;
-  approval_file: string;
+  institute_name: string;
+  orientation_date: string;
+  status: "Attended" | "Not-Attended";
 }
 type ShramListResponse = IPaginationResponse<IShramListItem>;
 

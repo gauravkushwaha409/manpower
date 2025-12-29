@@ -15,7 +15,7 @@ export const jobOfferData: IJobOfferListItem[] = [
     offer_date: "2024-12-05",
     joining_date: "2025-01-10",
     offer_document: "offer_letters/OL-2024-001.pdf",
-    issued_by: "HR Department",
+    employer_name: "HR Department",
     created_at: "2024-12-05T09:15:00Z",
   },
   {
@@ -26,7 +26,7 @@ export const jobOfferData: IJobOfferListItem[] = [
     offer_date: "2024-12-06",
     joining_date: "2025-01-15",
     offer_document: "offer_letters/OL-2024-002.pdf",
-    issued_by: "HR Department",
+    employer_name: "HR Department",
     created_at: "2024-12-06T10:30:00Z",
   },
   {
@@ -37,7 +37,7 @@ export const jobOfferData: IJobOfferListItem[] = [
     offer_date: "2024-12-07",
     joining_date: "2025-01-20",
     offer_document: "offer_letters/OL-2024-003.pdf",
-    issued_by: "Recruitment Team",
+    employer_name: "Recruitment Team",
     created_at: "2024-12-07T11:45:00Z",
   },
   {
@@ -48,7 +48,7 @@ export const jobOfferData: IJobOfferListItem[] = [
     offer_date: "2024-12-08",
     joining_date: "2025-02-01",
     offer_document: "offer_letters/OL-2024-004.pdf",
-    issued_by: "HR Manager",
+    employer_name: "HR Manager",
     created_at: "2024-12-08T08:50:00Z",
   },
   {
@@ -59,7 +59,7 @@ export const jobOfferData: IJobOfferListItem[] = [
     offer_date: "2024-12-09",
     joining_date: "2025-02-10",
     offer_document: "offer_letters/OL-2024-005.pdf",
-    issued_by: "Technical Lead",
+    employer_name: "Technical Lead",
     created_at: "2024-12-09T14:20:00Z",
   },
   {
@@ -70,7 +70,7 @@ export const jobOfferData: IJobOfferListItem[] = [
     offer_date: "2024-12-10",
     joining_date: "2025-02-15",
     offer_document: "offer_letters/OL-2024-006.pdf",
-    issued_by: "Engineering Manager",
+    employer_name: "Engineering Manager",
     created_at: "2024-12-10T09:40:00Z",
   },
   {
@@ -81,7 +81,7 @@ export const jobOfferData: IJobOfferListItem[] = [
     offer_date: "2024-12-11",
     joining_date: "2025-02-20",
     offer_document: "offer_letters/OL-2024-007.pdf",
-    issued_by: "Analytics Lead",
+    employer_name: "Analytics Lead",
     created_at: "2024-12-11T12:10:00Z",
   },
   {
@@ -92,7 +92,7 @@ export const jobOfferData: IJobOfferListItem[] = [
     offer_date: "2024-12-12",
     joining_date: "2025-03-01",
     offer_document: "offer_letters/OL-2024-008.pdf",
-    issued_by: "IT Manager",
+    employer_name: "IT Manager",
     created_at: "2024-12-12T10:00:00Z",
   },
 ];
@@ -163,7 +163,7 @@ const JobOfferColumns = (): ColumnDef<IJobOfferListItem>[] => {
       header: "Offer Date",
       accessorKey: "offer_date",
       size: 200,
-    },
+  },
     {
       header: "Joining Date",
       accessorKey: "joining_date",
@@ -184,8 +184,8 @@ const JobOfferColumns = (): ColumnDef<IJobOfferListItem>[] => {
       size: 200,
     },
     {
-      header: "Issued By",
-      accessorKey: "issued_by",
+      header: "Employer Name",
+      accessorKey: "employer_name",
       size: 400,
     },
     {

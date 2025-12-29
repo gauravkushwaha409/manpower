@@ -24,7 +24,7 @@ const SearchFilter = ({
     option: IOption[];
     paramsKey: string;
   }[];
-  handleAddClick: () => void;
+  handleAddClick: (() => void) | null;
 }) => {
   const updateSearchParams = useUpdateSearchParams();
   const getSearchParams = useGetSearchParams();
@@ -37,7 +37,7 @@ const SearchFilter = ({
   return (
     <div>
       <ActionButton
-        handleAddFilter={handleAddClick}
+        handleAddClick={handleAddClick}
         handleClickFilter={handleFilterClick}
       />
 
@@ -59,10 +59,10 @@ export default SearchFilter;
 // Components
 const ActionButton = ({
   handleClickFilter,
-  handleAddFilter,
+  handleAddClick,
 }: {
   handleClickFilter: () => void;
-  handleAddFilter: () => void;
+  handleAddClick: (() => void) | null;
 }) => {
   const search = useSearch();
   return (
@@ -87,16 +87,18 @@ const ActionButton = ({
           Export
         </button>
 
-        <button
-          onClick={(e) => {
-            e.preventDefault();
-            handleAddFilter();
-          }}
-          className="px-3 py-1 flex items-center gap-x-2 typo-mid-bd-reg rounded-4xl text-white bg-secondary-500 cursor-pointer hover:bg-secondary-700 transition-all ease-in-out duration-500"
-        >
-          <Plus size={16} />
-          Add
-        </button>
+        {handleAddClick && (
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              handleAddClick();
+            }}
+            className="px-3 py-1 flex items-center gap-x-2 typo-mid-bd-reg rounded-4xl text-white bg-secondary-500 cursor-pointer hover:bg-secondary-700 transition-all ease-in-out duration-500"
+          >
+            <Plus size={16} />
+            Add
+          </button>
+        )}
       </div>
     </div>
   );

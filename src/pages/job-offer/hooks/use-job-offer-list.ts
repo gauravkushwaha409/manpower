@@ -14,7 +14,7 @@ export interface IJobOfferListItem {
   offer_date: string;
   joining_date: string;
   offer_document: string;
-  issued_by: string;
+  employer_name: string;
   created_at: string;
 }
 type JobOfferListResponse = IPaginationResponse<IJobOfferListItem>;
