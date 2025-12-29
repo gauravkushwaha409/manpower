@@ -12,6 +12,7 @@ export const apiTags = {
   candidate: {
     list: "get_all_candidate",
     details: "get_candidate_details",
+    jobTitleByCandidate: "get_job_title_by_candidate",
   },
   interview: {
     list: "get_all_interview",

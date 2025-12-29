@@ -3,6 +3,7 @@ import SearchFilter from "@/components/search-filter";
 import { useNavigate } from "react-router-dom";
 import { PATH } from "@/constant/path";
 import CandidateTable from "./partials/candidate-table";
+import JobByCandidate from "./partials/job-by-candidate";
 
 const Candidate = () => {
   const navigate = useNavigate();
@@ -23,6 +24,9 @@ const Candidate = () => {
         ]}
       />
       <CandidateTable />
+
+      {/* Job By Candidate */}
+      <JobByCandidate />
     </div>
   );
 };

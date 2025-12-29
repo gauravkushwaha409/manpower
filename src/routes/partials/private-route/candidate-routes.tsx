@@ -1,5 +1,5 @@
 import { PATH } from "@/constant/path";
-import Candidate from "@/pages/candidate/Candidate";
+import Candidate from "@/pages/candidate";
 import CreateCandidate from "@/pages/candidate/child/create/CreateCandidate";
 import UpdateCandidate from "@/pages/candidate/child/update/UpdateCandidate";
 

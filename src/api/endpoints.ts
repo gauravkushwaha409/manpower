@@ -28,6 +28,7 @@ export const endpoints = {
     update: "",
     delete: "",
     details: "",
+    jobByCandidate: "",
   },
   jobVacancy: {
     list: "",

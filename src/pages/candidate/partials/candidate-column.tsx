@@ -5,6 +5,7 @@ import { useDelete } from "@/hooks/useDelete";
 import { PATH } from "@/constant/path";
 import { Checkbox } from "@/components/ui/checkbox";
 import { ICandidateListItem } from "../hooks/use-candidate-list";
+import { useJobByCandidateModal } from "../hooks/use-job-by-candidate";
 
 export const candidateData: ICandidateListItem[] = [
   {
@@ -111,6 +112,7 @@ export const candidateData: ICandidateListItem[] = [
 
 export const CandidateColumns = (): ColumnDef<ICandidateListItem>[] => {
   const navigate = useNavigate();
+  const { handleOpenJobByCandidate } = useJobByCandidateModal();
   const { handleOpenModal } = useDelete({});
   const handleUpdateClick = (id: string) => {
     navigate(PATH.candidate.update.replace(":id", id));
@@ -163,9 +165,15 @@ export const CandidateColumns = (): ColumnDef<ICandidateListItem>[] => {
     {
       header: "Candidate Name",
       cell: ({ row }) => (
-        <span>
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            handleOpenJobByCandidate(row?.original?.id);
+          }}
+          className="cursor-pointer"
+        >
           {row?.original?.first_name + " " + row?.original?.last_name}
-        </span>
+        </button>
       ),
       size: 400,
     },
