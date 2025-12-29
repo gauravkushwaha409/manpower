@@ -13,13 +13,13 @@ const ShramForm = () => {
     <div className="grid grid-cols-1 gap-4">
       <FormInputSelect
         label="Candidate Name"
-        name="candidate"
+        name="candidate_name"
         options={candidateName}
       />
       <FormInputText label="Candidate Job" name="candidate_job" disabled />
-      <FormInputText label="OLS Reference No." name="ols_reference_no" />
+      <FormInputText label="OLS Reference No." name="ols_reference_number" />
       <FormInputDate label="Approval Date" name="approval_date" />
-      <FormInputPdf label="Document" name="document" />
+      <FormInputPdf label="Approval File" name="approval_file" />
     </div>
   );
 };

@@ -13,6 +13,7 @@ const FormInputText: React.FC<IInputText> = ({
   label,
   labelClassName,
   className,
+  disabled,
   ...props
 }) => {
   const [field, meta] = useField(name);
@@ -38,7 +39,10 @@ const FormInputText: React.FC<IInputText> = ({
       <input
         id={name}
         type="text"
-        className={`w-full px-4 py-2 typography-input-value typography-input-placeholder rounded-[10px] border focus:outline-gray-500 ${className} ${getBorderClass()}`}
+        className={`w-full px-4 py-2 typography-input-value typography-input-placeholder rounded-[10px] border focus:outline-gray-500 ${
+          disabled ? "cursor-not-allowed" : ""
+        } ${className} ${getBorderClass()}`}
+        disabled={disabled}
         {...field}
         {...props}
       />

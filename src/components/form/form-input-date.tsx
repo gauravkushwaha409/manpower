@@ -41,7 +41,7 @@ const FormInputDate: React.FC<InputDateProps> = ({
 
   return (
     <div className="w-full flex flex-col gap-2">
-      <label className="block mb-1 typography-input-label">
+      <label className="block typography-input-label">
         {label}
         {required && <span className="text-red-600">*</span>}
       </label>

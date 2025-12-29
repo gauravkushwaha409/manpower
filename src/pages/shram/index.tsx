@@ -24,7 +24,17 @@ const Sharam = () => {
       <SearchFilter
         dateFilter
         handleAddClick={addModal.handleOpenModal}
-        selectFilter={[]}
+        selectFilter={[
+          {
+            placeholder: "Select Job Title",
+            paramsKey: "job-title",
+            option: [
+              { label: "Frontend Developer", value: "frontend-developer" },
+              { label: "Backend Developer", value: "backend-developer" },
+              { label: "UI/UX Designer", value: "ui-ux designer" },
+            ],
+          },
+        ]}
       />
       <ShramTable />
 

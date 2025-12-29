@@ -9,41 +9,41 @@ import { File } from "lucide-react";
 export const shramData: IShramListItem[] = [
   {
     id: "1",
-    candidate: "Ramesh Kumar",
-    job: "Frontend Developer",
-    ols_reference_no: "OLS-2024-00123",
+    candidate_name: "Ramesh Kumar",
+    candidate_job: "Frontend Developer",
+    ols_reference_number: "OLS-2024-00123",
     approval_date: "2024-02-15",
     approval_file: "approval_ramesh_kumar.pdf",
   },
   {
     id: "2",
-    candidate: "Sita Sharma",
-    job: "Backend Engineer",
-    ols_reference_no: "OLS-2024-00124",
+    candidate_name: "Sita Sharma",
+    candidate_job: "Backend Engineer",
+    ols_reference_number: "OLS-2024-00124",
     approval_date: "2024-02-18",
     approval_file: "approval_sita_sharma.pdf",
   },
   {
     id: "3",
-    candidate: "Amit Singh",
-    job: "Full Stack Developer",
-    ols_reference_no: "OLS-2024-00125",
+    candidate_name: "Amit Singh",
+    candidate_job: "Full Stack Developer",
+    ols_reference_number: "OLS-2024-00125",
     approval_date: "2024-02-20",
     approval_file: "approval_amit_singh.pdf",
   },
   {
     id: "4",
-    candidate: "Priya Verma",
-    job: "UI/UX Designer",
-    ols_reference_no: "OLS-2024-00126",
+    candidate_name: "Priya Verma",
+    candidate_job: "UI/UX Designer",
+    ols_reference_number: "OLS-2024-00126",
     approval_date: "2024-02-22",
     approval_file: "approval_priya_verma.pdf",
   },
   {
     id: "5",
-    candidate: "Rahul Das",
-    job: "QA Engineer",
-    ols_reference_no: "OLS-2024-00127",
+    candidate_name: "Rahul Das",
+    candidate_job: "QA Engineer",
+    ols_reference_number: "OLS-2024-00127",
     approval_date: "2024-02-25",
     approval_file: "approval_rahul_das.pdf",
   },
@@ -98,17 +98,17 @@ const ShramColumns = (): ColumnDef<IShramListItem>[] => {
     },
     {
       header: "Candidate Name",
-      accessorKey: "candidate",
+      accessorKey: "candidate_name",
       size: 400,
     },
     {
       header: "Candidate Job",
-      accessorKey: "job",
+      accessorKey: "candidate_job",
       size: 400,
     },
     {
       header: "OLS Reference No.",
-      accessorKey: "ols_reference_no",
+      accessorKey: "ols_reference_number",
       size: 200,
     },
     {
@@ -117,9 +117,10 @@ const ShramColumns = (): ColumnDef<IShramListItem>[] => {
       size: 200,
     },
     {
-      header: "Document",
+      header: "Approval File",
       cell: () => (
         <File
+          className="cursor-pointer"
           onClick={() => {
             window.open(
               "https://www.embassyofcambodiadc.org/uploads/9/8/1/8/98182996/a-sample-spouse-signed_orig.jpg",

@@ -12,6 +12,10 @@ const useCreateShram = () => {
   const { handleCloseModal } = useAddModal();
   const initialValues: shramSchemaType = {
     candidate_name: "",
+    candidate_job: "",
+    ols_reference_number: "",
+    approval_date: "",
+    approval_file: "",
   };
 
   const formik = useFormik<shramSchemaType>({

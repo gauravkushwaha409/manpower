@@ -6,6 +6,10 @@ import { IApiDetailsResponse } from "@/interface/apiResponse.interface";
 interface IShramDetails {
   id: string;
   candidate_name: string;
+  candidate_job: string;
+  ols_reference_number: string;
+  approval_date: string;
+  approval_file: string;
 }
 type ShramDetailsResponse = IApiDetailsResponse<IShramDetails>;
 
