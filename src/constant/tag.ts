@@ -29,6 +29,10 @@ export const apiTags = {
     list: "get_all_visa",
     details: "get_visa_details",
   },
+  orientation: {
+    list: "get_all_orientation",
+    details: "get_orientation_details",
+  },
   jobVacancy: {
     list: "get_all_job_vacancy_dofe",
     details: "get_job_vacancy_details",

@@ -71,6 +71,13 @@ export const endpoints = {
     delete: "",
     details: "",
   },
+  orientation: {
+    list: "",
+    create: "",
+    update: "",
+    delete: "",
+    details: "",
+  },
   industry: {
     list: "",
     create: "",

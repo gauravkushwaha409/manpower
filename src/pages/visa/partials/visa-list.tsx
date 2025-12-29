@@ -1,10 +1,10 @@
 import TableWrapper from "@/components/TableWrapper";
 import Table from "@/components/Table";
-import useMedicalList from "../hooks/use-visa-list";
 import VisaColumns, { visaData } from "./visa-column";
+import useVisaList from "../hooks/use-visa-list";
 
 const VisaTable = () => {
-  const visaList = useMedicalList();
+  const visaList = useVisaList();
   return (
     <TableWrapper wrapperClassName="mt-4" isLoading={false}>
       <Table
