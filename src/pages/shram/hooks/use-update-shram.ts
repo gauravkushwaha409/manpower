@@ -1,0 +1,48 @@
+import { useUpdateDataMutation } from "@/api/api";
+import { useFormik } from "formik";
+import { apiTags } from "@/constant/tag";
+import { endpoints } from "@/api/endpoints";
+import { useUpdateModal } from "@/hooks/update-modal";
+import { ApiResponse } from "@/api/api.error";
+import { handleResponse } from "@/utils/handleResponse";
+import useShramDetails from "./use-shram-details";
+import { shramSchemaType, shramValidationSchema } from "../schema/shram-schema";
+
+const useUpdateShram = () => {
+  const [updateShram, { isLoading }] = useUpdateDataMutation();
+  const { handleCloseModal, updateId } = useUpdateModal();
+  const { shramDetails, isLoading: isInitialLoading } = useShramDetails({
+    id: updateId,
+  });
+
+  const initialValues: shramSchemaType = {
+    candidate_name: shramDetails?.data?.candidate_name || "",
+  };
+
+  const formik = useFormik<shramSchemaType>({
+    initialValues,
+    validationSchema: shramValidationSchema,
+    enableReinitialize: true,
+    onSubmit: async (values, { setErrors, resetForm }) => {
+      const response = (await updateShram({
+        data: values,
+        url: endpoints.shram.update.replace(":id", updateId),
+        invalidateTag: [apiTags.shram.details, apiTags.shram.list],
+      })) as ApiResponse;
+      handleResponse({
+        response,
+        setErrorCallBack: setErrors,
+        handleCloseModal: handleCloseModal,
+        resetForm: resetForm,
+      });
+    },
+  });
+
+  return {
+    formik,
+    isLoading,
+    isInitialLoading,
+  };
+};
+
+export default useUpdateShram;

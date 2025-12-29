@@ -100,9 +100,10 @@ const FormInputPdf: React.FC<IPdfUpload> = ({
               type="button"
               onClick={(e) => {
                 e.preventDefault();
+                e.stopPropagation();
                 handleDeleteFile();
               }}
-              className="ml-2 flex-shrink-0 p-1 rounded-full hover:bg-gray-100"
+              className="ml-2 shrink-0 p-1 rounded-full hover:bg-gray-100"
             >
               <CircleX size={16} className="text-red-500" />
             </button>

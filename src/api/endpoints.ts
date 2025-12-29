@@ -78,6 +78,13 @@ export const endpoints = {
     delete: "",
     details: "",
   },
+  shram: {
+    list: "",
+    create: "",
+    update: "",
+    delete: "",
+    details: "",
+  },
   industry: {
     list: "",
     create: "",
