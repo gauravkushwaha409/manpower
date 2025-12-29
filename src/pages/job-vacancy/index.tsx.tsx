@@ -7,9 +7,14 @@ import { useDelete } from "@/hooks/useDelete";
 import { useNavigate } from "react-router-dom";
 import JobVacancyTable from "./partials/job-vacancy-table";
 import DeleteModal from "@/components/DeleteModal";
+import { useCandidateByJobModal } from "./hooks/use-candidate-by-job";
+import ModalWrapper from "@/components/shadcn/modal-wrapper";
+import CandidateByJobTable from "./partials/candidate-by-job";
 
 const JobVacancy = () => {
   const navigate = useNavigate();
+  const { handleCloseCandidateByJob, isCandidateByJobOpen } =
+    useCandidateByJobModal();
   const deleteModal = useDelete({
     endpoints: endpoints.jobVacancy.delete,
     invalidates: [apiTags.jobVacancy.list],
@@ -31,6 +36,17 @@ const JobVacancy = () => {
         ]}
       />
       <JobVacancyTable />
+
+      <ModalWrapper
+        name="Candidate List"
+        description="Candidate List Based on Job"
+        childrenWrapperClassName="overflow-x-hidden py-1"
+        isOpen={isCandidateByJobOpen}
+        onOpenChange={handleCloseCandidateByJob}
+        className=""
+      >
+        <CandidateByJobTable />
+      </ModalWrapper>
 
       {/* Delete Modal */}
       <DeleteModal

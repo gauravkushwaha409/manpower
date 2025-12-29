@@ -1,7 +1,7 @@
 import { PATH } from "@/constant/path";
 import CreateJobVacancy from "@/pages/job-vacancy/child/create/create-job-vacancy";
 import UpdateJobVacancy from "@/pages/job-vacancy/child/update/update-job-vacancy";
-import JobVacancy from "@/pages/job-vacancy/job-vacancy";
+import JobVacancy from "@/pages/job-vacancy/index.tsx";
 
 export const jobVacancyRoutes = [
   {

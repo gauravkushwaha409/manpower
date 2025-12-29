@@ -35,6 +35,7 @@ export const endpoints = {
     update: "",
     delete: "",
     details: "",
+    candidateByJob: "",
   },
   country: {
     list: "",

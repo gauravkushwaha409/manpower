@@ -7,7 +7,7 @@ import { preApprovalDofeRoutes } from "./partials/private-route/preApprovalDofeR
 import { companyRoutes } from "./partials/private-route/company-routes";
 import { candidateRoutes } from "./partials/private-route/candidate-routes";
 import { settingRoutes } from "./partials/private-route/setting-routes";
-import { jobVacancyRoutes } from "./partials/private-route/job-vacancy";
+import { jobVacancyRoutes } from "./partials/private-route/job-vacancy-routes";
 import { countryRoutes } from "./partials/private-route/country-routes";
 import { interviewRoutes } from "./partials/private-route/interview-routes";
 import { jobOfferRoutes } from "./partials/private-route/job-offer-routes";

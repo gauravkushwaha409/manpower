@@ -44,6 +44,7 @@ export const apiTags = {
   jobVacancy: {
     list: "get_all_job_vacancy_dofe",
     details: "get_job_vacancy_details",
+    candidateByJobVacancy: "get_candidate_by_job_vacancy",
   },
   company: {
     list: "get_all_company",

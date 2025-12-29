@@ -6,6 +6,7 @@ import { PATH } from "@/constant/path";
 import React from "react";
 import { useDelete } from "@/hooks/useDelete";
 import { IJobVacancyListItem } from "../hooks/use-job-vacancy-list";
+import { useCandidateByJobModal } from "../hooks/use-candidate-by-job";
 
 export const jobVacancyData: IJobVacancyListItem[] = [
   {
@@ -238,6 +239,7 @@ export const jobVacancyData: IJobVacancyListItem[] = [
 const JobVacancyColumns = (): ColumnDef<IJobVacancyListItem>[] => {
   const navigate = useNavigate();
   const { handleOpenModal } = useDelete({});
+  const { handleOpenCandidateByJob } = useCandidateByJobModal();
   const handleUpdateClick = (id: string) => {
     navigate(PATH.jobVacancy.update.replace(":id", id));
   };
@@ -290,10 +292,16 @@ const JobVacancyColumns = (): ColumnDef<IJobVacancyListItem>[] => {
       header: "Job Title",
       accessorKey: "job_title",
       cell: ({ row }) => (
-        <div className="flex items-center gap-x-2">
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            handleOpenCandidateByJob(row?.original?.id);
+          }}
+          className="flex items-center gap-x-4 cursor-pointer"
+        >
           {row?.original?.job_title}
-          <button className="px-2 py-1">300+</button>
-        </div>
+          <span className="inline-block px-2 py-1">300+</span>
+        </button>
       ),
       size: 400,
     },

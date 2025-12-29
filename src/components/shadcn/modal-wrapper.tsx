@@ -16,6 +16,7 @@ interface IProps {
   description?: string;
   children: React.ReactNode;
   className?: string;
+  childrenWrapperClassName?: string;
   isLoading?: boolean;
   showCloseButton?: boolean;
 }
@@ -27,6 +28,7 @@ const ModalWrapper: React.FC<IProps> = ({
   description,
   isLoading = false,
   className,
+  childrenWrapperClassName,
   showCloseButton = true,
   children,
 }) => {
@@ -50,7 +52,7 @@ const ModalWrapper: React.FC<IProps> = ({
           )}
         </DialogHeader>
 
-        <div className="relative min-h-25">
+        <div className={cn("relative min-h-25", childrenWrapperClassName)}>
           {isLoading ? (
             <div className="flex items-center justify-center h-full">
               <LoadingScreen />
