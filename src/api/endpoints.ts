@@ -85,6 +85,13 @@ export const endpoints = {
     delete: "",
     details: "",
   },
+  ticket: {
+    list: "",
+    create: "",
+    update: "",
+    delete: "",
+    details: "",
+  },
   industry: {
     list: "",
     create: "",

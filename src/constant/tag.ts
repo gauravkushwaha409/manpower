@@ -37,6 +37,10 @@ export const apiTags = {
     list: "get_all_shram",
     details: "get_shram_details",
   },
+  ticket: {
+    list: "get_all_ticket",
+    details: "get_ticket_details",
+  },
   jobVacancy: {
     list: "get_all_job_vacancy_dofe",
     details: "get_job_vacancy_details",

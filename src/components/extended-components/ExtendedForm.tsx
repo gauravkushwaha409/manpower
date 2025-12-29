@@ -58,6 +58,7 @@ export default function ExtendedForm<T extends FormikValues>({
             text={submitText}
             isLoading={isSubmitting}
             variant="submit"
+            onClick={formik.handleSubmit}
           />
         </div>
       </form>
