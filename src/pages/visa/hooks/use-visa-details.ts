@@ -6,6 +6,13 @@ import { IApiDetailsResponse } from "@/interface/apiResponse.interface";
 interface IVisaDetails {
   id: string;
   candidate_name: string;
+  candidate_job: string;
+  visa_type: string;
+  application_date: string;
+  approval_date: string;
+  visa_expire: string;
+  status: string;
+  visa_file: string;
 }
 type VisaDetailsResponse = IApiDetailsResponse<IVisaDetails>;
 

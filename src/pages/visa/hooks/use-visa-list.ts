@@ -8,8 +8,8 @@ import { useState } from "react";
 
 export interface IVisaListItem {
   id: string;
-  candidate: string;
-  job: string;
+  candidate_name: string;
+  candidate_job: string;
   visa_type: string;
   application_date: string;
   approval_date: string;

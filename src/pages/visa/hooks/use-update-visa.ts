@@ -17,6 +17,13 @@ const useUpdateVisa = () => {
 
   const initialValues: visaSchemaType = {
     candidate_name: visaDetails?.data?.candidate_name || "",
+    candidate_job: visaDetails?.data?.candidate_job || "",
+    visa_type: visaDetails?.data?.visa_type || "",
+    application_date: visaDetails?.data?.application_date || "",
+    approval_date: visaDetails?.data?.approval_date || "",
+    visa_expire: visaDetails?.data?.visa_expire || "",
+    status: visaDetails?.data?.status || "",
+    visa_file: visaDetails?.data?.visa_file || "",
   };
 
   const formik = useFormik<visaSchemaType>({

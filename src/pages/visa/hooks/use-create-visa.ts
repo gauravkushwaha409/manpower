@@ -12,6 +12,13 @@ const useCreateVisa = () => {
   const { handleCloseModal } = useAddModal();
   const initialValues: visaSchemaType = {
     candidate_name: "",
+    candidate_job: "",
+    visa_type: "",
+    application_date: "",
+    approval_date: "",
+    visa_expire: "",
+    status: "",
+    visa_file: "",
   };
 
   const formik = useFormik<visaSchemaType>({

@@ -1,5 +1,6 @@
 import FormInputDate from "@/components/form/form-input-date";
 import FormInputSelect, { IOption } from "@/components/form/form-input-select";
+import FormInputPdf from "@/components/form/FormInputPdf";
 import FormInputText from "@/components/form/FormInputText";
 
 const VisaForm = () => {
@@ -21,7 +22,7 @@ const VisaForm = () => {
     <div className="grid grid-cols-1 gap-4">
       <FormInputSelect
         label="Candidate Name"
-        name="candidate"
+        name="candidate_name"
         options={candidateName}
       />
       <FormInputText label="Candidate Job" name="candidate_job" disabled />
@@ -35,9 +36,10 @@ const VisaForm = () => {
       <FormInputDate label="Visa Expire" name="visa_expire" />
       <FormInputSelect
         label="Visa Status"
-        name="visa_status"
+        name="status"
         options={visaStatusOption}
       />
+      <FormInputPdf label="Visa File" name="visa_file" />
     </div>
   );
 };

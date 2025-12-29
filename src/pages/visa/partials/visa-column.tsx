@@ -9,8 +9,8 @@ import { File } from "lucide-react";
 export const visaData: IVisaListItem[] = [
   {
     id: "1",
-    candidate: "Arjun Singh",
-    job: "Frontend Developer",
+    candidate_name: "Arjun Singh",
+    candidate_job: "Frontend Developer",
     visa_type: "Work Visa",
     application_date: "2024-11-15",
     approval_date: "2024-12-05",
@@ -20,8 +20,8 @@ export const visaData: IVisaListItem[] = [
   },
   {
     id: "2",
-    candidate: "Ramesh Sharma",
-    job: "Backend Developer",
+    candidate_name: "Ramesh Sharma",
+    candidate_job: "Backend Developer",
     visa_type: "Work Visa",
     application_date: "2024-11-18",
     approval_date: "2024-12-08",
@@ -31,8 +31,8 @@ export const visaData: IVisaListItem[] = [
   },
   {
     id: "3",
-    candidate: "Sita Thapa",
-    job: "UI/UX Designer",
+    candidate_name: "Sita Thapa",
+    candidate_job: "UI/UX Designer",
     visa_type: "Employment Visa",
     application_date: "2024-11-20",
     approval_date: "",
@@ -42,8 +42,8 @@ export const visaData: IVisaListItem[] = [
   },
   {
     id: "4",
-    candidate: "Anil Gurung",
-    job: "DevOps Engineer",
+    candidate_name: "Anil Gurung",
+    candidate_job: "DevOps Engineer",
     visa_type: "Work Visa",
     application_date: "2024-11-22",
     approval_date: "2024-12-12",
@@ -53,8 +53,8 @@ export const visaData: IVisaListItem[] = [
   },
   {
     id: "5",
-    candidate: "Maya Rai",
-    job: "QA Engineer",
+    candidate_name: "Maya Rai",
+    candidate_job: "QA Engineer",
     visa_type: "Work Visa",
     application_date: "2024-11-25",
     approval_date: "",
@@ -64,8 +64,8 @@ export const visaData: IVisaListItem[] = [
   },
   {
     id: "6",
-    candidate: "Binod Khanal",
-    job: "Full Stack Developer",
+    candidate_name: "Binod Khanal",
+    candidate_job: "Full Stack Developer",
     visa_type: "Employment Visa",
     application_date: "2024-11-28",
     approval_date: "",
@@ -75,8 +75,8 @@ export const visaData: IVisaListItem[] = [
   },
   {
     id: "7",
-    candidate: "Sushma Magar",
-    job: "HR Executive",
+    candidate_name: "Sushma Magar",
+    candidate_job: "HR Executive",
     visa_type: "Work Visa",
     application_date: "2024-12-01",
     approval_date: "2024-12-15",
@@ -86,8 +86,8 @@ export const visaData: IVisaListItem[] = [
   },
   {
     id: "8",
-    candidate: "Rajesh Basnet",
-    job: "Data Analyst",
+    candidate_name: "Rajesh Basnet",
+    candidate_job: "Data Analyst",
     visa_type: "Work Visa",
     application_date: "2024-12-03",
     approval_date: "",
@@ -146,12 +146,12 @@ const VisaColumns = (): ColumnDef<IVisaListItem>[] => {
     },
     {
       header: "Candidate Name",
-      accessorKey: "candidate",
+      accessorKey: "candidate_name",
       size: 400,
     },
     {
       header: "Candidate Job",
-      accessorKey: "job",
+      accessorKey: "candidate_job",
       size: 400,
     },
     {
@@ -167,11 +167,6 @@ const VisaColumns = (): ColumnDef<IVisaListItem>[] => {
     {
       header: "Approval Date",
       accessorKey: "approval_date",
-      size: 200,
-    },
-    {
-      header: "Visa Expire",
-      accessorKey: "visa_expire",
       size: 200,
     },
     {
