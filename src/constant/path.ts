@@ -63,6 +63,11 @@ export const PATH = {
     create: "/job-vacancy/create",
     update: "/job-vacancy/update/:id",
   },
+  invoice: {
+    index: "/invoice",
+    create: "/invoice/create",
+    update: "/invoice/update/:id",
+  },
   setting: {
     index: "/setting",
     jobSetting: {

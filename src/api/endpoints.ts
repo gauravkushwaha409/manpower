@@ -87,6 +87,13 @@ export const endpoints = {
     delete: "",
     details: "",
   },
+invoice: {
+    list: "",
+    create: "",
+    update: "",
+    delete: "",
+    details: "",
+  },
   shram: {
     list: "",
     create: "",
