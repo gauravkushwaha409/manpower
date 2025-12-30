@@ -1,13 +1,36 @@
 import { useFormikContext } from "formik";
 import FormInputText from "@/components/form/FormInputText";
 import FormInputDate from "@/components/form/form-input-date";
-import FormInputSelect from "@/components/form/form-input-select";
+import FormInputSelect, { IOption } from "@/components/form/form-input-select";
 import { Plus } from "lucide-react";
 import { cn } from "@/lib/utils";
 import FormInputPdf from "@/components/form/FormInputPdf";
 import TextEditor from "@/components/form/TextEditor";
+import { CandidateSchemaType } from "../schema/candidate-schema";
 
 export const CandidateFormStep1 = () => {
+  const provienceOption: IOption[] = [
+    { label: "Koshi", value: "koshi" },
+    { label: "Madhesh", value: "madhesh" },
+    { label: "Bagmati", value: "bagmati" },
+    { label: "Gandaki", value: "gandaki" },
+    { label: "Lumbini", value: "lumbini" },
+    { label: "Karnali", value: "karnali" },
+    { label: "Sudurpaschim", value: "sudurpaschim" },
+  ];
+
+  const districtOption: IOption[] = [
+    { label: "Kathmandu", value: "kathmandu" },
+    { label: "Lalitpur", value: "lalitpur" },
+    { label: "Bhaktapur", value: "bhaktapur" },
+    { label: "Chitwan", value: "chitwan" },
+    { label: "Kaski", value: "kaski" },
+    { label: "Morang", value: "morang" },
+    { label: "Jhapa", value: "jhapa" },
+    { label: "Sunsari", value: "sunsari" },
+    { label: "Rupandehi", value: "rupandehi" },
+    { label: "Banke", value: "banke" },
+  ];
   return (
     <div className="space-y-4">
       <div className="w-full grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -31,7 +54,7 @@ export const CandidateFormStep1 = () => {
           <FormInputDate label="Date Of Birth" name="date_of_birth" />
           <FormInputSelect
             label="Birth Place"
-            name="country"
+            name="birth_place"
             placeholder="Select Your Birth Place"
             options={[{ label: "Nepal", value: "nepal" }]}
           />
@@ -66,12 +89,12 @@ export const CandidateFormStep1 = () => {
           <FormInputSelect
             label="Province"
             name="province"
-            options={[{ label: "province 1", value: "provience_1" }]}
+            options={provienceOption}
           />
           <FormInputSelect
             label="District"
             name="district"
-            options={[{ label: "Kathmandu", value: "kathmandu" }]}
+            options={districtOption}
           />
           <FormInputText
             label="Municipality"
@@ -95,7 +118,7 @@ export const CandidateFormStep2 = () => {
     course: "",
     passedYear: "",
   };
-  const formik = useFormikContext<CandidateValidationSchemaType>();
+  const formik = useFormikContext<CandidateSchemaType>();
 
   const addEducation = () => {
     formik.setFieldValue("education", [
@@ -223,7 +246,7 @@ export const CandidateFormStep2 = () => {
 };
 
 export const CandidateFormStep3 = () => {
-  const formik = useFormikContext<ICandidate>();
+  const formik = useFormikContext<CandidateSchemaType>();
   return (
     <div className="space-y-4">
       {/* Select Document Type */}

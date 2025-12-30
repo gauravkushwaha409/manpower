@@ -1,7 +1,7 @@
 import ExtendedMultiStepForm from "@/components/extended-components/ExtendedMultiStepForm";
 import Breadcrumb from "@/components/reusable-component/Breadcrumb";
 import { PATH } from "@/constant/path";
-import { useCreateCandidate } from "./hooks/create-candidate";
+import { useCreateCandidate } from "./hooks/use-create-candidate";
 import {
   CandidateFormStep1,
   CandidateFormStep2,
