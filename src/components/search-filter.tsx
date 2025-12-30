@@ -37,7 +37,7 @@ const SearchFilter = ({
   const updateSearchParams = useUpdateSearchParams();
   const deleteSearchParams = useDeleteSearchParams();
   const getSearchParams = useGetSearchParams();
-  
+
   const isFilterActive = getSearchParams("filter");
   const handleFilterClick = () => {
     if (getSearchParams("filter") === "active") deleteSearchParams(["filter"]);
@@ -89,17 +89,18 @@ const ActionButton = ({
       />
 
       <div className="flex items-center gap-x-2">
-        <button
-          onClick={(e) => {
-            e.preventDefault();
-            moveT0Module?.handleClick();
-          }}
-          className="px-3 py-1 flex items-center gap-x-2 typo-mid-bd-reg rounded-4xl border border-text-50 text-text-600 cursor-pointer hover:bg-secondary-500 hover:text-white transition-all ease-in-out duration-500"
-        >
-          Move To {moveT0Module?.moduleName}
-          <Move size={16} />
-        </button>
-
+        {moveT0Module && (
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              moveT0Module?.handleClick();
+            }}
+            className="px-3 py-1 flex items-center gap-x-2 typo-mid-bd-reg rounded-4xl border border-text-50 text-text-600 cursor-pointer hover:bg-secondary-500 hover:text-white transition-all ease-in-out duration-500"
+          >
+            Move To {moveT0Module?.moduleName}
+            <Move size={16} />
+          </button>
+        )}
         <button
           onClick={handleClickFilter}
           className="px-3 py-1 flex items-center gap-x-2 typo-mid-bd-reg rounded-4xl border border-text-50 text-text-600 cursor-pointer hover:bg-secondary-500 hover:text-white transition-all ease-in-out duration-500"
@@ -175,14 +176,16 @@ const DynamicFilter = ({
       {dateFilter && (
         <DateRangePicker onChange={handleDateChange} value={dateRange} />
       )}
-      {selectFilter?.map((item) => (
-        <SelectFilter
-          key={item?.paramsKey}
-          paramsKey={item?.paramsKey}
-          placeHolder={item?.placeholder}
-          option={item.option}
-        />
-      ))}
+      <div className="flex items-center gap-x-2">
+        {selectFilter?.map((item) => (
+          <SelectFilter
+            key={item?.paramsKey}
+            paramsKey={item?.paramsKey}
+            placeHolder={item?.placeholder}
+            option={item.option}
+          />
+        ))}
+      </div>
     </div>
   );
 };

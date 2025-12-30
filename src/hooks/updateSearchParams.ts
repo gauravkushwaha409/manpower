@@ -29,7 +29,7 @@ export const useDeleteSearchParams = () => {
 
 export const useGetSearchParams = () => {
   const [searchParams] = useSearchParams();
-  const getSearchParamsValue = (key: string, defaultValue?: string) => {
+  const getSearchParamsValue = (key: string, defaultValue?: string | null) => {
     return searchParams.get(key) ?? defaultValue;
   };
   return getSearchParamsValue;

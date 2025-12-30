@@ -42,14 +42,14 @@ export function SelectFilter({
   return (
     <div className="relative">
       <Select
-        value={getValue(paramsKey) ?? ""}
+        value={getValue(paramsKey) ?? undefined}
         onValueChange={(val) => {
           if (val) handleChangeParams(val);
           else handleDeleteFilter();
         }}
       >
         <SelectTrigger
-          value={getValue(paramsKey) ?? ""}
+          value={getValue(paramsKey) ?? undefined}
           className="w-45 rounded-2xl"
         >
           <SelectValue placeholder={placeHolder} />
