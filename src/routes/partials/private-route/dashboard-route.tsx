@@ -1,7 +1,4 @@
 import { PATH } from "@/constant/path";
-import User from "@/pages/users/User";
-import AddUser from "@/pages/users/AddUser";
-import UpdateUser from "@/pages/users/UpdateUser";
 import Payment from "@/pages/payment/Payment";
 import AddPayment from "@/pages/payment/AddPayment";
 import UpdatePayment from "@/pages/payment/UpdatePayment";
@@ -34,19 +31,5 @@ export const dashboardRoutes = [
   {
     path: PATH.dashboard.updatePayment,
     element: <UpdatePayment />,
-  },
-
-  // user
-  {
-    path: PATH.dashboard.users,
-    element: <User />,
-  },
-  {
-    path: PATH.dashboard.addUser,
-    element: <AddUser />,
-  },
-  {
-    path: PATH.dashboard.updateUser,
-    element: <UpdateUser />,
   },
 ];
