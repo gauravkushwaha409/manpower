@@ -5,11 +5,17 @@ import { usePagination } from "@/hooks/usePagination";
 import useSearch from "@/hooks/useSearch";
 import { IPaginationResponse } from "@/interface/apiResponse.interface";
 import { useState } from "react";
+import { OrientationStatusType } from "../schema/orientation-schema";
 
 export interface IOrientationListItem {
   id: string;
-  candidate: string;
-  job: string;
+  candidate_name: string;
+  candidate_job: string;
+  employer_name: string;
+  institute_name: string;
+  orientation_date: string;
+  orientation_location: string;
+  status: OrientationStatusType;
 }
 type OrientationListResponse = IPaginationResponse<IOrientationListItem>;
 
