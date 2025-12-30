@@ -10,10 +10,13 @@ import ModalWrapper from "@/components/shadcn/modal-wrapper";
 import CreateVisa from "./partials/create-visa";
 import DeleteModal from "@/components/DeleteModal";
 import UpdateVisa from "./partials/update-visa";
+import useVisaToOrientationModal from "./hooks/use-visa-to-orientation-modal";
+import VisaToOrientation from "./partials/visa-to-orientation";
 
 const Visa = () => {
   const addModal = useAddModal();
   const updateModal = useUpdateModal();
+  const { handleOpenVisaToOrientation } = useVisaToOrientationModal();
   const deleteInterview = useDelete({
     endpoints: endpoints.visa.delete,
     invalidates: [apiTags.visa.list],
@@ -25,8 +28,15 @@ const Visa = () => {
         dateFilter
         handleAddClick={addModal.handleOpenModal}
         selectFilter={[]}
+        moveToModule={{
+          moduleName: "orientation",
+          handleClick: handleOpenVisaToOrientation,
+        }}
       />
       <VisaTable />
+
+      {/* Move Visa Candidate to Orientation */}
+      <VisaToOrientation />
 
       {/* Create Medical */}
       <ModalWrapper
