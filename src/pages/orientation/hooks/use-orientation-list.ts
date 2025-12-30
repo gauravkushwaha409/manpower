@@ -15,7 +15,7 @@ export interface IOrientationListItem {
   institute_name: string;
   orientation_date: string;
   orientation_location: string;
-  status: OrientationStatusType;
+  orientation_status: OrientationStatusType;
 }
 type OrientationListResponse = IPaginationResponse<IOrientationListItem>;
 

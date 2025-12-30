@@ -2,7 +2,7 @@ import { useUpdateDataMutation } from "@/api/api";
 import { useFormik } from "formik";
 
 const useOrientationToInsurance = () => {
-  const [visaToOrientation, { isLoading }] = useUpdateDataMutation();
+  const [_, { isLoading }] = useUpdateDataMutation();
 
   const initialValues = {};
   const formik = useFormik({

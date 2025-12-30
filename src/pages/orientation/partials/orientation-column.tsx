@@ -17,7 +17,7 @@ export const orientationData: IOrientationListItem[] = [
     institute_name: "Global Training Institute",
     orientation_date: "2024-03-01",
     orientation_location: "Kathmandu",
-    status: "attended",
+    orientation_status: "attended",
   },
   {
     id: "2",
@@ -27,7 +27,7 @@ export const orientationData: IOrientationListItem[] = [
     institute_name: "IT Learning Center",
     orientation_date: "2024-03-03",
     orientation_location: "Lalitpur",
-    status: "schedule",
+    orientation_status: "schedule",
   },
   {
     id: "3",
@@ -37,7 +37,7 @@ export const orientationData: IOrientationListItem[] = [
     institute_name: "Design Academy",
     orientation_date: "2024-03-05",
     orientation_location: "Bhaktapur",
-    status: "not-attended",
+    orientation_status: "not-attended",
   },
   {
     id: "4",
@@ -47,7 +47,7 @@ export const orientationData: IOrientationListItem[] = [
     institute_name: "TechHub Training",
     orientation_date: "2024-03-07",
     orientation_location: "Kathmandu",
-    status: "attended",
+    orientation_status: "attended",
   },
   {
     id: "5",
@@ -57,7 +57,7 @@ export const orientationData: IOrientationListItem[] = [
     institute_name: "QA Institute",
     orientation_date: "2024-03-09",
     orientation_location: "Lalitpur",
-    status: "schedule",
+    orientation_status: "schedule",
   },
   {
     id: "6",
@@ -67,7 +67,7 @@ export const orientationData: IOrientationListItem[] = [
     institute_name: "Global Training Institute",
     orientation_date: "2024-03-11",
     orientation_location: "Bhaktapur",
-    status: "attended",
+    orientation_status: "attended",
   },
   {
     id: "7",
@@ -77,7 +77,7 @@ export const orientationData: IOrientationListItem[] = [
     institute_name: "IT Learning Center",
     orientation_date: "2024-03-13",
     orientation_location: "Kathmandu",
-    status: "not-attended",
+    orientation_status: "not-attended",
   },
   {
     id: "8",
@@ -87,7 +87,7 @@ export const orientationData: IOrientationListItem[] = [
     institute_name: "Design Academy",
     orientation_date: "2024-03-15",
     orientation_location: "Lalitpur",
-    status: "schedule",
+    orientation_status: "schedule",
   },
   {
     id: "9",
@@ -97,7 +97,7 @@ export const orientationData: IOrientationListItem[] = [
     institute_name: "TechHub Training",
     orientation_date: "2024-03-17",
     orientation_location: "Bhaktapur",
-    status: "attended",
+    orientation_status: "attended",
   },
   {
     id: "10",
@@ -107,7 +107,7 @@ export const orientationData: IOrientationListItem[] = [
     institute_name: "QA Institute",
     orientation_date: "2024-03-19",
     orientation_location: "Kathmandu",
-    status: "schedule",
+    orientation_status: "schedule",
   },
 ];
 
@@ -197,7 +197,7 @@ const OrientationColumns = (): ColumnDef<IOrientationListItem>[] => {
       cell: ({ row }) => (
         <OrientationStatusButton
           handleClick={handleOpenOrientationStatusModal}
-          status={row?.original?.status}
+          status={row?.original?.orientation_status}
         />
       ),
       size: 400,

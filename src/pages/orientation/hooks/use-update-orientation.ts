@@ -21,6 +21,13 @@ const useUpdateOrientation = () => {
 
   const initialValues: orientationSchemaType = {
     candidate_name: orientationDetails?.data?.candidate_name || "",
+    candidate_job: orientationDetails?.data?.candidate_name || "",
+    employer_name: orientationDetails?.data?.employer_name || "",
+    institute_name: orientationDetails?.data?.institute_name || "",
+    orientation_date: orientationDetails?.data?.orientation_date || "",
+    orientation_location: orientationDetails?.data?.orientation_location || "",
+    orientation_status:
+      orientationDetails?.data?.orientation_status || "schedule",
   };
 
   const formik = useFormik<orientationSchemaType>({
