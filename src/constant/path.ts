@@ -56,6 +56,9 @@ export const PATH = {
   orientation: {
     index: "/orientation",
   },
+  insurance: {
+    index: "/insurance",
+  },
   shram: {
     index: "/shram",
   },

@@ -31,7 +31,7 @@ const SearchFilter = ({
     option: IOption[];
     paramsKey: string;
   }[];
-  handleAddClick: (() => void) | null;
+  handleAddClick?: () => void;
   moveToModule?: IMoveToModule;
 }) => {
   const updateSearchParams = useUpdateSearchParams();
@@ -77,7 +77,7 @@ const ActionButton = ({
 }: {
   handleClickFilter: () => void;
   moveT0Module?: IMoveToModule;
-  handleAddClick: (() => void) | null;
+  handleAddClick?: () => void;
 }) => {
   const search = useSearch();
   return (

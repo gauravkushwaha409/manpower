@@ -4,39 +4,35 @@ import DeleteModal from "@/components/DeleteModal";
 import SearchFilter from "@/components/search-filter";
 import ModalWrapper from "@/components/shadcn/modal-wrapper";
 import { apiTags } from "@/constant/tag";
-import { useAddModal } from "@/hooks/add-modal";
 import { useUpdateModal } from "@/hooks/update-modal";
 import { useDelete } from "@/hooks/useDelete";
 import OrientationTable from "./partials/orientation-list";
-import CreateOrientation from "./partials/create-orientation";
 import UpdateOrientation from "./partials/update-orientation";
+import OrientationToShram from "./partials/orientation-to-insurance";
+import useOrientationToInsuranceModal from "./hooks/use-orientation-to-insurance-modal";
 
 const Orientation = () => {
-  const addModal = useAddModal();
   const updateModal = useUpdateModal();
   const deleteInterview = useDelete({
     endpoints: endpoints.orientation.delete,
     invalidates: [apiTags.orientation.list],
   });
+  const { handleOpenOrientationToInsurance } = useOrientationToInsuranceModal();
   return (
     <div className="u-flex-parent">
       <PageHeader title="Orientation" />
       <SearchFilter
         dateFilter
-        handleAddClick={addModal.handleOpenModal}
         selectFilter={[]}
+        moveToModule={{
+          moduleName: "insurance",
+          handleClick: handleOpenOrientationToInsurance,
+        }}
       />
       <OrientationTable />
 
-      {/* Create Medical */}
-      <ModalWrapper
-        className="xl:max-w-xl"
-        isOpen={addModal.isOpen}
-        name="Create Orientation"
-        onOpenChange={addModal.handleCloseModal}
-      >
-        <CreateOrientation />
-      </ModalWrapper>
+      {/* Orientation to shram */}
+      <OrientationToShram />
 
       {/* Update Medical */}
       <ModalWrapper

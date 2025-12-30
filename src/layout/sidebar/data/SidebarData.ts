@@ -97,6 +97,13 @@ export const mainMenuItems = [
     link: PATH.orientation.index,
   },
   {
+    id: "insurance",
+    icon: User2,
+    label: "Insurance",
+    active: false,
+    link: PATH.insurance.index,
+  },
+  {
     id: "shram",
     icon: User2,
     label: "Shram",

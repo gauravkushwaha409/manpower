@@ -2,19 +2,16 @@ import { endpoints } from "@/api/endpoints";
 import PageHeader from "@/common/PageHeader";
 import SearchFilter from "@/components/search-filter";
 import { apiTags } from "@/constant/tag";
-import { useAddModal } from "@/hooks/add-modal";
 import { useUpdateModal } from "@/hooks/update-modal";
 import { useDelete } from "@/hooks/useDelete";
 import JobOfferTable from "./partials/job-offer-list";
 import ModalWrapper from "@/components/shadcn/modal-wrapper";
-import CreateJobOffer from "./partials/create-job-offer";
 import UpdateJobOffer from "./partials/update-job-offer";
 import DeleteModal from "@/components/DeleteModal";
 import useJobOfferToMedicalModal from "./hooks/use-job-offer-to-medical-modal";
 import JobOfferToMedical from "./partials/job-offer-to-medical";
 
 const JobOffer = () => {
-  const addModal = useAddModal();
   const updateModal = useUpdateModal();
   const { handleOpenJobOfferToMedical } = useJobOfferToMedicalModal();
   const deleteInterview = useDelete({
@@ -26,7 +23,6 @@ const JobOffer = () => {
       <PageHeader title="Job Offer" />
       <SearchFilter
         dateFilter
-        handleAddClick={addModal.handleOpenModal}
         selectFilter={[]}
         moveToModule={{
           moduleName: "Medical",
@@ -37,16 +33,6 @@ const JobOffer = () => {
 
       {/* Move job offer to medical */}
       <JobOfferToMedical />
-
-      {/* Create Job Offer */}
-      <ModalWrapper
-        className="xl:max-w-xl"
-        isOpen={addModal.isOpen}
-        name="Create Job Offer"
-        onOpenChange={addModal.handleCloseModal}
-      >
-        <CreateJobOffer />
-      </ModalWrapper>
 
       {/* Update Job Offer */}
       <ModalWrapper
