@@ -5,7 +5,7 @@ import ExtendedForm from "@/components/extended-components/ExtendedForm";
 import FormInputSelect from "@/components/form/form-input-select";
 import { medicalStatusOption } from "@/pages/medical/partials/medical-form";
 
-const MoveJobOfferToMedical = () => {
+const JobOfferToMedical = () => {
   const { isJobOfferToMedicalOpen, handleCloseJobOfferToMedical } =
     useJobOfferToMedicalModal();
   const { formik, isLoading } = useJobOfferToMedical();
@@ -29,4 +29,4 @@ const MoveJobOfferToMedical = () => {
     </ModalWrapper>
   );
 };
-export default MoveJobOfferToMedical;
+export default JobOfferToMedical;

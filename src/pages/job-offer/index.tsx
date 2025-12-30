@@ -10,8 +10,8 @@ import ModalWrapper from "@/components/shadcn/modal-wrapper";
 import CreateJobOffer from "./partials/create-job-offer";
 import UpdateJobOffer from "./partials/update-job-offer";
 import DeleteModal from "@/components/DeleteModal";
-import MoveJobOfferToMedical from "./partials/move-job-offer-to-medical";
 import useJobOfferToMedicalModal from "./hooks/use-job-offer-to-medical-modal";
+import JobOfferToMedical from "./partials/job-offer-to-medical";
 
 const JobOffer = () => {
   const addModal = useAddModal();
@@ -36,7 +36,7 @@ const JobOffer = () => {
       <JobOfferTable />
 
       {/* Move job offer to medical */}
-      <MoveJobOfferToMedical />
+      <JobOfferToMedical />
 
       {/* Create Job Offer */}
       <ModalWrapper

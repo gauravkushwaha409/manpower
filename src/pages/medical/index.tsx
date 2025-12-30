@@ -10,10 +10,13 @@ import ModalWrapper from "@/components/shadcn/modal-wrapper";
 import DeleteModal from "@/components/DeleteModal";
 import CreateMedical from "./partials/create-medical";
 import UpdateMedical from "./partials/update-medical";
+import MedicalToVisa from "./partials/medical-to-visa";
+import useMedicalToVisaModal from "./hooks/use-medical-to-visa-modal";
 
 const Medical = () => {
   const addModal = useAddModal();
   const updateModal = useUpdateModal();
+  const { handleOpenMedicalToVisa } = useMedicalToVisaModal();
   const deleteInterview = useDelete({
     endpoints: endpoints.medical.delete,
     invalidates: [apiTags.medical.list],
@@ -25,8 +28,15 @@ const Medical = () => {
         dateFilter
         handleAddClick={addModal.handleOpenModal}
         selectFilter={[]}
+        moveToModule={{
+          moduleName: "visa",
+          handleClick: handleOpenMedicalToVisa,
+        }}
       />
       <MedicalTable />
+
+      {/* Move medical to visa */}
+      <MedicalToVisa />
 
       {/* Create Medical */}
       <ModalWrapper

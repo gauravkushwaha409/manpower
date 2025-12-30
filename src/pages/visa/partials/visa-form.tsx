@@ -3,6 +3,12 @@ import FormInputSelect, { IOption } from "@/components/form/form-input-select";
 import FormInputPdf from "@/components/form/FormInputPdf";
 import FormInputText from "@/components/form/FormInputText";
 
+export const visaStatusOption: IOption[] = [
+  { label: "Approved", value: "approved" },
+  { label: "Pending", value: "pending" },
+  { label: "Rejected", value: "rejected" },
+];
+
 const VisaForm = () => {
   const candidateName: IOption[] = [
     { label: "Gaurav Singh", value: "gaurav-singh" },
@@ -13,11 +19,6 @@ const VisaForm = () => {
     { label: "Visit Visa", value: "visit_visa" },
   ];
 
-  const visaStatusOption: IOption[] = [
-    { label: "Approved", value: "approved" },
-    { label: "Pending", value: "approved" },
-    { label: "Rejected", value: "rejected" },
-  ];
   return (
     <div className="grid grid-cols-1 gap-4">
       <FormInputSelect
