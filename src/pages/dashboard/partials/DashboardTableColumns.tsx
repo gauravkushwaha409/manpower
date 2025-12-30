@@ -1,4 +1,4 @@
-import { CustomColumnDef } from "@/components/Table";
+import { ColumnDef } from "@tanstack/react-table";
 import DashboardTableActions from "./DashboardTableActions";
 
 interface DashboardTableRow {
@@ -6,7 +6,7 @@ interface DashboardTableRow {
   candidate: string;
   country: string;
 }
-export const DashboardTableColumns: CustomColumnDef<DashboardTableRow>[] = [
+export const DashboardTableColumns: ColumnDef<DashboardTableRow>[] = [
   {
     header: "Activity",
     accessorKey: "activity",

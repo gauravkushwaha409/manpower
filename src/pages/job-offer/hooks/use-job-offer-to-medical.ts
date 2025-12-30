@@ -2,7 +2,7 @@ import { useUpdateDataMutation } from "@/api/api";
 import { useFormik } from "formik";
 
 const useJobOfferToMedical = () => {
-  const [moveJobOfferToMedical, { isLoading }] = useUpdateDataMutation();
+  const [_, { isLoading }] = useUpdateDataMutation();
   const initialValues = {};
   const formik = useFormik({
     initialValues,

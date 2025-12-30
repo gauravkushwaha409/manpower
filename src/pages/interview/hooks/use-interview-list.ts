@@ -5,15 +5,16 @@ import { usePagination } from "@/hooks/usePagination";
 import useSearch from "@/hooks/useSearch";
 import { IPaginationResponse } from "@/interface/apiResponse.interface";
 import { useState } from "react";
-import { InterviewResultType } from "../schema/interview-schema";
+import { InterviewModeType, InterviewResultType } from "../schema/interview-schema";
 
 export interface IInterviewListItem {
   id: string;
-  candidate: string;
-  job: string;
+  candidate_name: string;
+  candidate_job: string;
   employer_name: string;
-  date: string;
-  mode: string;
+  interview_date: string;
+  interview_mode: InterviewModeType;
+  interview_location: string;
   interviewer_name: string;
   remarks: string;
   result: InterviewResultType;

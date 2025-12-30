@@ -22,6 +22,13 @@ const useUpdateInterview = () => {
 
   const initialValues: InterviewSchemaType = {
     candidate_name: interviewDetails?.data?.candidate_name || "",
+    candidate_job: interviewDetails?.data?.candidate_job || "",
+    employer_name: interviewDetails?.data?.employer_name || "",
+    interview_date: interviewDetails?.data?.interview_date || "",
+    interview_location: interviewDetails?.data?.interview_location || "",
+    interview_mode: interviewDetails?.data?.interview_mode || "offline",
+    remarks: interviewDetails?.data?.remarks || "",
+    result: interviewDetails?.data?.result || "pending",
   };
 
   const formik = useFormik<InterviewSchemaType>({

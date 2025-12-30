@@ -11,10 +11,6 @@ const DASHBOARD_PATH = {
   language: "/language",
   addLanguage: "/add-language",
   updateLanguage: "/update-language",
-  payment: "/payment",
-  addPayment: "/add-payment",
-  updatePayment: "/update-payment",
-  notification: "/notifications",
 };
 
 export const PATH = {

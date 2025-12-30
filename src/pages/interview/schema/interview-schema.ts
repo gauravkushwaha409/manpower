@@ -1,8 +1,8 @@
 import * as Yup from "yup";
 
-export type InterviewModeType = "offline" | "onsite";
+export type InterviewModeType = "online" | "onsite";
 export type InterviewResultType = "selected" | "rejected" | "pending";
-export const InterviewMode: InterviewModeType[] = ["offline", "onsite"];
+export const InterviewMode: InterviewModeType[] = ["online", "onsite"];
 export const InterviewResult: InterviewResultType[] = [
   "pending",
   "selected",
@@ -20,7 +20,7 @@ const interviewSchema = Yup.object().shape({
     .required("This field is required"),
   interview_location: Yup.string().required("This field is required"),
   interviewer_name: Yup.string().when("interview_location", {
-    is: (mode: InterviewModeType) => mode === "offline",
+    is: (mode: InterviewModeType) => mode === "online",
     then: (schema) => schema.required("This field is required"),
     otherwise: (schema) => schema.notRequired(),
   }),

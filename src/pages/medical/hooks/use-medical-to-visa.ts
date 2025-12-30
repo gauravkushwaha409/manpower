@@ -2,7 +2,7 @@ import { useUpdateDataMutation } from "@/api/api";
 import { useFormik } from "formik";
 
 const useMedicalToVisa = () => {
-  const [medicalToVisa, { isLoading }] = useUpdateDataMutation();
+  const [_, { isLoading }] = useUpdateDataMutation();
   const initialValues = {};
   const formik = useFormik({
     initialValues,
