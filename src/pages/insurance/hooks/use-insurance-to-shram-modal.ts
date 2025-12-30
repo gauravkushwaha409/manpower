@@ -1,19 +1,19 @@
-import useQuerryParams from "@/hooks/use-querry-params";
+import useQuerryParams from "@/hooks/use-query-params";
 
 const INSURANCE_TO_SHRAM_PARAMS = "insurance-to-shram";
 
 const useInsuranceToShramModal = () => {
-  const { updateQuerryParams, deleteQuerryParams, getQuerryParams } =
+  const { updateQueryParams, deleteQueryParams, getQueryParams } =
     useQuerryParams();
 
-  const isInsuranceToShram = !!getQuerryParams(INSURANCE_TO_SHRAM_PARAMS);
+  const isInsuranceToShram = !!getQueryParams(INSURANCE_TO_SHRAM_PARAMS);
 
   const handleOpenInsuranceToShram = () => {
-    updateQuerryParams({ [INSURANCE_TO_SHRAM_PARAMS]: "active" });
+    updateQueryParams({ [INSURANCE_TO_SHRAM_PARAMS]: "active" });
   };
 
   const handleCloseInsuranceToShram = () => {
-    deleteQuerryParams([INSURANCE_TO_SHRAM_PARAMS]);
+    deleteQueryParams([INSURANCE_TO_SHRAM_PARAMS]);
   };
 
   return {

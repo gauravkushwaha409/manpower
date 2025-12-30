@@ -32,7 +32,6 @@ const Interview = () => {
       <PageHeader title="Interview" />
       <SearchFilter
         dateFilter
-        handleAddClick={null}
         selectFilter={[
           {
             placeholder: "select job",

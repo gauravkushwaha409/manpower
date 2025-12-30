@@ -1,17 +1,17 @@
-import useQuerryParams from "@/hooks/use-querry-params";
+import useQuerryParams from "@/hooks/use-query-params";
 
 const JOB_OFFER_TO_MEDICAL_PARAMS = "move-job-offer-to-medical";
 
 const useMedicalToVisaModal = () => {
-  const { deleteQuerryParams, getQuerryParams, updateQuerryParams } =
+  const { deleteQueryParams, getQueryParams, updateQueryParams } =
     useQuerryParams();
-  const isMedicalToVisaOpen = !!getQuerryParams(JOB_OFFER_TO_MEDICAL_PARAMS);
+  const isMedicalToVisaOpen = !!getQueryParams(JOB_OFFER_TO_MEDICAL_PARAMS);
 
   const handleOpenMedicalToVisa = () => {
-    updateQuerryParams({ [JOB_OFFER_TO_MEDICAL_PARAMS]: "active" });
+    updateQueryParams({ [JOB_OFFER_TO_MEDICAL_PARAMS]: "active" });
   };
   const handleCloseMedicalToVisa = () => {
-    deleteQuerryParams([JOB_OFFER_TO_MEDICAL_PARAMS]);
+    deleteQueryParams([JOB_OFFER_TO_MEDICAL_PARAMS]);
   };
 
   return {

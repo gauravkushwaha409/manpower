@@ -285,14 +285,7 @@ function StatusButton({ status, handleClick }: StatusButtonProps) {
         e.preventDefault();
         handleClick();
       }}
-      className={`
-        px-4 py-1.5
-        rounded-full
-        text-sm font-medium
-        transition-colors
-        focus:outline-none focus:ring-2 focus:ring-offset-2
-        ${STATUS_STYLES[status]}
-      `}
+      className={`   u-status-button-base-style ${STATUS_STYLES[status]}`}
     >
       {status.charAt(0).toUpperCase() + status.slice(1)}
     </button>

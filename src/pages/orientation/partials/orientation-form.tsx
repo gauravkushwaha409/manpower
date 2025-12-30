@@ -1,6 +1,13 @@
 import FormInputDate from "@/components/form/form-input-date";
 import FormInputSelect, { IOption } from "@/components/form/form-input-select";
 import FormInputText from "@/components/form/FormInputText";
+import { OrientationStatusType } from "../schema/orientation-schema";
+
+export const orientationStatusOption: IOption<OrientationStatusType>[] = [
+  { label: "Schedule", value: "schedule" },
+  { label: "Attended", value: "attended" },
+  { label: "Not Attended", value: "not-attended" },
+];
 
 const OrientationForm = () => {
   const candidateName: IOption[] = [
@@ -12,11 +19,6 @@ const OrientationForm = () => {
     { label: "Visit Orientation", value: "visit_orientation" },
   ];
 
-  const orientationStatusOption: IOption[] = [
-    { label: "Approved", value: "approved" },
-    { label: "Pending", value: "approved" },
-    { label: "Rejected", value: "rejected" },
-  ];
   return (
     <div className="grid grid-cols-1 gap-4">
       <FormInputSelect

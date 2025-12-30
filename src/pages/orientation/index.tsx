@@ -10,6 +10,7 @@ import OrientationTable from "./partials/orientation-list";
 import UpdateOrientation from "./partials/update-orientation";
 import OrientationToShram from "./partials/orientation-to-insurance";
 import useOrientationToInsuranceModal from "./hooks/use-orientation-to-insurance-modal";
+import OrientationStatusModal from "./partials/orientation-status-modal";
 
 const Orientation = () => {
   const updateModal = useUpdateModal();
@@ -33,6 +34,9 @@ const Orientation = () => {
 
       {/* Orientation to shram */}
       <OrientationToShram />
+
+      {/* Update Orentation Status Modal  */}
+      <OrientationStatusModal />
 
       {/* Update Medical */}
       <ModalWrapper

@@ -130,6 +130,24 @@ export const mainMenuItems = [
         link: PATH.setting.documentSetting,
       },
       {
+        id: "insurance-setting",
+        label: "Insurance Comapany",
+        icon: TbSeo,
+        link: PATH.setting.documentSetting,
+      },
+      {
+        id: "orientation-setting",
+        label: "Orientation Institute",
+        icon: TbSeo,
+        link: PATH.setting.documentSetting,
+      },
+      {
+        id: "medical-setting",
+        label: "Medical Institute",
+        icon: TbSeo,
+        link: PATH.setting.documentSetting,
+      },
+      {
         id: "job-Setting",
         label: "Job Setting",
         icon: IoListOutline,

@@ -1,10 +1,10 @@
 import { useSearchParams } from "react-router-dom";
 
-const useQuerryParams = () => {
+const useQueryParams = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   //   Update Querry Params
-  const updateQuerryParams = (
+  const updateQueryParams = (
     newParams: Record<string, string>,
     deleteParams?: string[]
   ) => {
@@ -16,7 +16,7 @@ const useQuerryParams = () => {
   };
 
   //   Delete Querry Params
-  const deleteQuerryParams = (keysToDelete: string[]) => {
+  const deleteQueryParams = (keysToDelete: string[]) => {
     const newParams = new URLSearchParams(searchParams);
     keysToDelete.forEach((key) => {
       newParams.delete(key);
@@ -25,10 +25,10 @@ const useQuerryParams = () => {
   };
 
   //   Get Search Querry Params
-  const getQuerryParams = (key: string, defaultValue?: string | null) => {
+  const getQueryParams = (key: string, defaultValue?: string | null) => {
     return searchParams.get(key) ?? defaultValue;
   };
-  return { updateQuerryParams, deleteQuerryParams, getQuerryParams };
+  return { updateQueryParams, deleteQueryParams, getQueryParams };
 };
 
-export default useQuerryParams;
+export default useQueryParams;

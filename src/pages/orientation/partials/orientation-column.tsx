@@ -5,6 +5,8 @@ import { useUpdateModal } from "@/hooks/update-modal";
 import { Checkbox } from "@/components/ui/checkbox";
 import { IOrientationListItem } from "../hooks/use-orientation-list";
 import { File } from "lucide-react";
+import { OrientationStatusType } from "../schema/orientation-schema";
+import useUpdateOrientationStatusModal from "../hooks/use-update-orientation-status-modal";
 
 export const orientationData: IOrientationListItem[] = [
   {
@@ -112,6 +114,9 @@ export const orientationData: IOrientationListItem[] = [
 const OrientationColumns = (): ColumnDef<IOrientationListItem>[] => {
   const { handleOpenModal: handleOpenDeleteModal } = useDelete({});
   const { handleOpenModal: handleOpenUpdateModal } = useUpdateModal();
+  const { handleOpenOrientationStatusModal } =
+    useUpdateOrientationStatusModal();
+
   return [
     {
       id: "select",
@@ -189,6 +194,12 @@ const OrientationColumns = (): ColumnDef<IOrientationListItem>[] => {
     {
       header: "Status",
       accessorKey: "status",
+      cell: ({ row }) => (
+        <OrientationStatusButton
+          handleClick={handleOpenOrientationStatusModal}
+          status={row?.original?.status}
+        />
+      ),
       size: 400,
     },
     {
@@ -233,3 +244,32 @@ const OrientationColumns = (): ColumnDef<IOrientationListItem>[] => {
 };
 
 export default OrientationColumns;
+
+type StatusButtonProps = {
+  status: OrientationStatusType;
+  handleClick: (status: OrientationStatusType) => void;
+};
+
+const STATUS_STYLES: Record<OrientationStatusType, string> = {
+  attended:
+    "bg-green-100 text-green-700 border border-green-300 hover:bg-green-200",
+  "not-attended":
+    "bg-red-100 text-red-700 border border-red-300 hover:bg-red-200",
+  schedule:
+    "bg-yellow-100 text-yellow-800 border border-yellow-300 hover:bg-yellow-200",
+};
+
+function OrientationStatusButton({ status, handleClick }: StatusButtonProps) {
+  return (
+    <button
+      type="button"
+      onClick={(e) => {
+        e.preventDefault();
+        handleClick(status);
+      }}
+      className={`u-status-button-base-style ${STATUS_STYLES[status]}`}
+    >
+      {status.charAt(0).toUpperCase() + status.slice(1)}
+    </button>
+  );
+}

@@ -1,6 +1,11 @@
 import * as Yup from "yup";
 
 export type OrientationStatusType = "attended" | "not-attended" | "schedule";
+export const orientationStatus: OrientationStatusType[] = [
+  "schedule",
+  "attended",
+  "not-attended",
+];
 
 const orientationSchema = Yup.object().shape({
   candidate_name: Yup.string().required("This field is required"),
@@ -10,7 +15,7 @@ const orientationSchema = Yup.object().shape({
   orientation_date: Yup.string().required("This field is required"),
   orientation_location: Yup.string().required("This field is required"),
   orientation_status: Yup.string<OrientationStatusType>()
-    .oneOf(["attended", "not-attended", "schedule"])
+    .oneOf(orientationStatus)
     .required("This field is required"),
 });
 

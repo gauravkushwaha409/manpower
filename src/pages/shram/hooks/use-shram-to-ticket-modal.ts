@@ -1,19 +1,19 @@
-import useQuerryParams from "@/hooks/use-querry-params";
+import useQuerryParams from "@/hooks/use-query-params";
 
 const SHRAM_TO_TICKET_PARAMS = "shram-to-ticket";
 
 const useShramToTicketModal = () => {
-  const { updateQuerryParams, deleteQuerryParams, getQuerryParams } =
+  const { updateQueryParams, deleteQueryParams, getQueryParams } =
     useQuerryParams();
 
-  const isShramToTicket = !!getQuerryParams(SHRAM_TO_TICKET_PARAMS);
+  const isShramToTicket = !!getQueryParams(SHRAM_TO_TICKET_PARAMS);
 
   const handleOpenShramToTicket = () => {
-    updateQuerryParams({ [SHRAM_TO_TICKET_PARAMS]: "active" });
+    updateQueryParams({ [SHRAM_TO_TICKET_PARAMS]: "active" });
   };
 
   const handleCloseShramToTicket = () => {
-    deleteQuerryParams([SHRAM_TO_TICKET_PARAMS]);
+    deleteQueryParams([SHRAM_TO_TICKET_PARAMS]);
   };
 
   return {
