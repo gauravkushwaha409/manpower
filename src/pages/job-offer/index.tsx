@@ -10,10 +10,13 @@ import ModalWrapper from "@/components/shadcn/modal-wrapper";
 import CreateJobOffer from "./partials/create-job-offer";
 import UpdateJobOffer from "./partials/update-job-offer";
 import DeleteModal from "@/components/DeleteModal";
+import MoveJobOfferToMedical from "./partials/move-job-offer-to-medical";
+import useJobOfferToMedicalModal from "./hooks/use-job-offer-to-medical-modal";
 
 const JobOffer = () => {
   const addModal = useAddModal();
   const updateModal = useUpdateModal();
+  const { handleOpenJobOfferToMedical } = useJobOfferToMedicalModal();
   const deleteInterview = useDelete({
     endpoints: endpoints.jobOffer.delete,
     invalidates: [apiTags.jobOffer.list],
@@ -25,8 +28,15 @@ const JobOffer = () => {
         dateFilter
         handleAddClick={addModal.handleOpenModal}
         selectFilter={[]}
+        moveToModule={{
+          moduleName: "Medical",
+          handleClick: handleOpenJobOfferToMedical,
+        }}
       />
       <JobOfferTable />
+
+      {/* Move job offer to medical */}
+      <MoveJobOfferToMedical />
 
       {/* Create Job Offer */}
       <ModalWrapper

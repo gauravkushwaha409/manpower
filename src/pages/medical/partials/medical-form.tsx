@@ -4,16 +4,18 @@ import FormTextArea from "@/components/form/form-text-area";
 import FormInputPdf from "@/components/form/FormInputPdf";
 import FormInputText from "@/components/form/FormInputText";
 
+export const medicalStatusOption: IOption[] = [
+  { label: "Pending", value: "pending" },
+  { label: "Passed", value: "passed" },
+  { label: "Failed", value: "failed" },
+];
+
 const MedicalForm = () => {
   const candidateName: IOption[] = [
     { label: "Gaurav Singh", value: "gaurav-singh" },
     { label: "Aditya Roshan", value: "aditya-roshan" },
   ];
 
-  const medicalStatus: IOption[] = [
-    { label: "Passed", value: "passed" },
-    { label: "Failed", value: "failed" },
-  ];
   return (
     <div className="grid grid-cols-1 gap-4">
       <FormInputSelect
@@ -24,7 +26,11 @@ const MedicalForm = () => {
       <FormInputDate label="Exam Date" name="exam_date" />
       <FormInputText label="Medical Center" name="medical_center" />
       <FormInputPdf label="Report File" name="report_file" />
-      <FormInputSelect label="Status" name="status" options={medicalStatus} />
+      <FormInputSelect
+        label="Status"
+        name="status"
+        options={medicalStatusOption}
+      />
       <FormTextArea label="Remarks" name="remarks" />
     </div>
   );
