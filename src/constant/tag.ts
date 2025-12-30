@@ -34,6 +34,10 @@ export const apiTags = {
     list: "get_all_orientation",
     details: "get_orientation_details",
   },
+  insurance: {
+    list: "get_all_insurance",
+    details: "get_insurance_details",
+  },
   shram: {
     list: "get_all_shram",
     details: "get_shram_details",

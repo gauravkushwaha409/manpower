@@ -16,6 +16,7 @@ import { visaRoutes } from "./partials/private-route/visa-routes";
 import { orientationRoutes } from "./partials/private-route/orientation-routes";
 import { shramRoutes } from "./partials/private-route/shram-routes";
 import { ticketRoutes } from "./partials/private-route/ticket-routes";
+import { insuranceRoutes } from "./partials/private-route/insurance-routes";
 
 /**
  * MainRoutes defines the routing configuration for the application.
@@ -43,6 +44,7 @@ const MainRoutes = [
       ...medicalRoutes,
       ...visaRoutes,
       ...orientationRoutes,
+      ...insuranceRoutes,
       ...shramRoutes,
       ...ticketRoutes,
       ...settingRoutes,

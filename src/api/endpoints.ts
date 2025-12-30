@@ -80,6 +80,13 @@ export const endpoints = {
     delete: "",
     details: "",
   },
+  insurance: {
+    list: "",
+    create: "",
+    update: "",
+    delete: "",
+    details: "",
+  },
   shram: {
     list: "",
     create: "",
