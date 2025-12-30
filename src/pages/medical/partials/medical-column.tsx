@@ -155,6 +155,7 @@ const MedicalColumns = (): ColumnDef<IMedicalListItem>[] => {
       header: "Report File",
       cell: () => (
         <File
+          className="cursor-pointer"
           onClick={() => {
             window.open(
               "https://images.sampletemplates.com/wp-content/uploads/2017/02/Medical-Reports-of-Patients.png",

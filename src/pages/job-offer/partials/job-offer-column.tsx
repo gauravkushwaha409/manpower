@@ -163,7 +163,7 @@ const JobOfferColumns = (): ColumnDef<IJobOfferListItem>[] => {
       header: "Offer Date",
       accessorKey: "offer_date",
       size: 200,
-  },
+    },
     {
       header: "Joining Date",
       accessorKey: "joining_date",
@@ -173,6 +173,7 @@ const JobOfferColumns = (): ColumnDef<IJobOfferListItem>[] => {
       header: "Offer Document",
       cell: () => (
         <File
+          className="cursor-pointer"
           onClick={() => {
             window.open(
               "https://images.unsplash.com/photo-1694432293460-6b1d7c12d21b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDB8fG9mZmVyJTIwbGV0dGVyfGVufDB8fDB8fHww",

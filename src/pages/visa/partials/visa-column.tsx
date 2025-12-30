@@ -183,6 +183,7 @@ const VisaColumns = (): ColumnDef<IVisaListItem>[] => {
       header: "Visa File",
       cell: () => (
         <File
+          className="cursor-pointer"
           onClick={() => {
             window.open(
               "https://www.embassyofcambodiadc.org/uploads/9/8/1/8/98182996/a-sample-spouse-signed_orig.jpg",

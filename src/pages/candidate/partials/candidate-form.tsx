@@ -1,5 +1,4 @@
 import { useFormikContext } from "formik";
-import { ICandidate } from "../interface/ICandidate";
 import FormInputText from "@/components/form/FormInputText";
 import FormInputDate from "@/components/form/form-input-date";
 import FormInputSelect from "@/components/form/form-input-select";
@@ -96,7 +95,7 @@ export const CandidateFormStep2 = () => {
     course: "",
     passedYear: "",
   };
-  const formik = useFormikContext<ICandidate>();
+  const formik = useFormikContext<CandidateValidationSchemaType>();
 
   const addEducation = () => {
     formik.setFieldValue("education", [

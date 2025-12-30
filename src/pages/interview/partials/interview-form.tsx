@@ -9,14 +9,15 @@ export const interviewResultOption: IOption[] = [
   { label: "Rejected", value: "rejected" },
 ];
 
+export const interviewModeOption: IOption[] = [
+  { label: "Offline", value: "offline" },
+  { label: "Onsite", value: "onsite" },
+];
+
 const InterviewForm = () => {
   const candidateName: IOption[] = [
     { label: "Gaurav Singh", value: "gaurav-singh" },
     { label: "Aditya Roshan", value: "aditya-roshan" },
-  ];
-  const interviewMode: IOption[] = [
-    { label: "Offline", value: "offline" },
-    { label: "Onsite", value: "onsite" },
   ];
 
   return (
@@ -33,21 +34,17 @@ const InterviewForm = () => {
       <FormInputSelect
         label="Interview Mode"
         name="interview_mode"
-        options={interviewMode}
+        options={interviewModeOption}
       />
 
-      <FormInputText
-        label="Interview Location"
-        name="interview_location"
-        disabled
-      />
+      <FormInputText label="Interview Location" name="interview_location" />
 
-      <FormInputText
-        label="Interviewer Name"
-        name="interviewer_name"
-        disabled
+      <FormInputText label="Interviewer Name" name="interviewer_name" />
+      <FormInputSelect
+        label="Result"
+        name="result"
+        options={interviewResultOption}
       />
-      <FormInputSelect label="Result" name="result" options={interviewResultOption} />
       <FormTextArea label="Remarks" name="remarks" />
     </div>
   );
