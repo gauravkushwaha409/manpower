@@ -18,7 +18,21 @@ const Ticket = () => {
   return (
     <div className="u-flex-parent">
       <PageHeader title="Ticket" />
-      <SearchFilter dateFilter selectFilter={[]} />
+      <SearchFilter
+        dateFilter
+        selectFilter={[
+          {
+            option: [{ label: "Dome Infosyss", value: "dome-infosyss" }],
+            paramsKey: "employer",
+            placeholder: "Select employer...",
+          },
+          {
+            option: [{ label: "Node js", value: "node-js" }],
+            paramsKey: "job-title",
+            placeholder: "Select job title....",
+          },
+        ]}
+      />
       <TicketTable />
 
       {/* Update Medical */}

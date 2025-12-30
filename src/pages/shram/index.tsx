@@ -33,6 +33,11 @@ const Sharam = () => {
               { label: "UI/UX Designer", value: "ui-ux designer" },
             ],
           },
+          {
+            placeholder: "Select employer",
+            paramsKey: "employer",
+            option: [{ label: "Dome Infosyss", value: "dome-infosyss" }],
+          },
         ]}
         moveToModule={{
           moduleName: "ticket",

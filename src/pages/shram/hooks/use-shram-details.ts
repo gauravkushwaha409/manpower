@@ -2,14 +2,17 @@ import { useGetDataQuery } from "@/api/api";
 import { endpoints } from "@/api/endpoints";
 import { apiTags } from "@/constant/tag";
 import { IApiDetailsResponse } from "@/interface/apiResponse.interface";
+import { shramSchemaType } from "../schema/shram-schema";
 
 interface IShramDetails {
   id: string;
   candidate_name: string;
   candidate_job: string;
+  employer_name: string;
   ols_reference_number: string;
   approval_date: string;
   approval_file: string;
+  status: shramSchemaType;
 }
 type ShramDetailsResponse = IApiDetailsResponse<IShramDetails>;
 

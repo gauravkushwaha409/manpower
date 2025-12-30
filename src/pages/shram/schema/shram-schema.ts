@@ -1,8 +1,11 @@
 import * as Yup from "yup";
 
+export type ShramStatusType = "pending" | "approved" | "rejected";
+
 const shramSchema = Yup.object().shape({
   candidate_name: Yup.string().required("This field is required"),
   candidate_job: Yup.string().required("This field is required"),
+  employer_name: Yup.string().required("This field is required"),
   ols_reference_number: Yup.string().required("This field is required"),
   approval_date: Yup.string().required("This field is required"),
   approval_file: Yup.mixed<string | File>()

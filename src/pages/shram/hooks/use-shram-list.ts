@@ -5,13 +5,17 @@ import { usePagination } from "@/hooks/usePagination";
 import useSearch from "@/hooks/useSearch";
 import { IPaginationResponse } from "@/interface/apiResponse.interface";
 import { useState } from "react";
+import { ShramStatusType } from "../schema/shram-schema";
 
 export interface IShramListItem {
   id: string;
   candidate_name: string;
-  institute_name: string;
-  orientation_date: string;
-  status: "Attended" | "Not-Attended";
+  candidate_job: string;
+  employer_name: string;
+  ols_reference_number: string;
+  approval_date: string;
+  approval_file: string;
+  status: ShramStatusType;
 }
 type ShramListResponse = IPaginationResponse<IShramListItem>;
 

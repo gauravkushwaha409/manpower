@@ -18,6 +18,7 @@ const useUpdateShram = () => {
   const initialValues: shramSchemaType = {
     candidate_name: shramDetails?.data?.candidate_name || "",
     candidate_job: shramDetails?.data?.candidate_job || "",
+    employer_name: shramDetails?.data?.employer_name || "",
     ols_reference_number: shramDetails?.data?.ols_reference_number || "",
     approval_date: shramDetails?.data?.approval_date || "",
     approval_file: shramDetails?.data?.approval_file || "",

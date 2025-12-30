@@ -10,42 +10,52 @@ export const ticketData: ITicketListItem[] = [
   {
     id: "1",
     candidate_name: "Ramesh Kumar",
+    candidate_job: "Frontend Developer",
+    employer_name: "Tech Solutions Pvt Ltd",
     airline_name: "Qatar Airways",
     flight_no: "QR-652",
     depature_date: "2024-03-05",
-    ticket_file: "ticket_ramesh_kumar.pdf",
+    ticket_document: "ticket_ramesh_kumar.pdf",
   },
   {
     id: "2",
     candidate_name: "Sita Sharma",
+    candidate_job: "Backend Developer",
+    employer_name: "Global Tech Ltd",
     airline_name: "Emirates",
     flight_no: "EK-215",
     depature_date: "2024-03-08",
-    ticket_file: "ticket_sita_sharma.pdf",
+    ticket_document: "ticket_sita_sharma.pdf",
   },
   {
     id: "3",
     candidate_name: "Amit Singh",
+    candidate_job: "UI/UX Designer",
+    employer_name: "Creative Labs",
     airline_name: "Etihad Airways",
     flight_no: "EY-401",
     depature_date: "2024-03-10",
-    ticket_file: "ticket_amit_singh.pdf",
+    ticket_document: "ticket_amit_singh.pdf",
   },
   {
     id: "4",
     candidate_name: "Priya Verma",
+    candidate_job: "DevOps Engineer",
+    employer_name: "CloudOps Inc",
     airline_name: "Turkish Airlines",
     flight_no: "TK-726",
     depature_date: "2024-03-12",
-    ticket_file: "ticket_priya_verma.pdf",
+    ticket_document: "ticket_priya_verma.pdf",
   },
   {
     id: "5",
     candidate_name: "Rahul Das",
+    candidate_job: "QA Engineer",
+    employer_name: "QualitySoft",
     airline_name: "Flydubai",
     flight_no: "FZ-577",
     depature_date: "2024-03-15",
-    ticket_file: "ticket_rahul_das.pdf",
+    ticket_document: "ticket_rahul_das.pdf",
   },
 ];
 
@@ -102,6 +112,16 @@ const TicketColumns = (): ColumnDef<ITicketListItem>[] => {
       size: 400,
     },
     {
+      header: "Candidate Job",
+      accessorKey: "candidate_job",
+      size: 400,
+    },
+    {
+      header: "Employer Name",
+      accessorKey: "employer_name",
+      size: 400,
+    },
+    {
       header: "Airline Name",
       accessorKey: "airline_name",
       size: 400,
@@ -117,7 +137,7 @@ const TicketColumns = (): ColumnDef<ITicketListItem>[] => {
       size: 200,
     },
     {
-      header: "Ticket File",
+      header: "Ticket Document",
       cell: () => (
         <File
           className="cursor-pointer"

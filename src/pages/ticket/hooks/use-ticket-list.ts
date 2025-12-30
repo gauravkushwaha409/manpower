@@ -9,10 +9,12 @@ import { useState } from "react";
 export interface ITicketListItem {
   id: string;
   candidate_name: string;
+  candidate_job: string;
+  employer_name: string;
   airline_name: string;
   flight_no: string;
   depature_date: string;
-  ticket_file: string;
+  ticket_document: string;
 }
 type TicketListResponse = IPaginationResponse<ITicketListItem>;
 
