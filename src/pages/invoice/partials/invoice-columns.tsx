@@ -13,8 +13,6 @@ export const invoiceData: IInvoiceListItem[] = [
     referance_no: "REF-2025-001",
     invoice_date: "2025-01-05",
     due_date: "2025-01-15",
-    currency: "USD",
-    exchange_rate_to_nrp: "132.50",
     products: [
       {
         product: "Recruitment Service Fee",
@@ -39,8 +37,6 @@ export const invoiceData: IInvoiceListItem[] = [
     referance_no: "REF-2025-002",
     invoice_date: "2025-01-08",
     due_date: "2025-01-18",
-    currency: "NPR",
-    exchange_rate_to_nrp: "1",
     products: [
       {
         product: "Visa Processing Fee",
@@ -58,8 +54,6 @@ export const invoiceData: IInvoiceListItem[] = [
     referance_no: "REF-2025-003",
     invoice_date: "2025-01-10",
     due_date: "2025-01-25",
-    currency: "EUR",
-    exchange_rate_to_nrp: "145.20",
     products: [
       {
         product: "Medical Examination",

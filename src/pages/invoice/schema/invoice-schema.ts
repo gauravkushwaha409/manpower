@@ -21,8 +21,6 @@ const invoiceSchema = yup.object({
   referance_no: yup.string().required(REQUIRED_MESSAGE),
   invoice_date: yup.string().required(REQUIRED_MESSAGE),
   due_date: yup.string().required(REQUIRED_MESSAGE),
-  currency: yup.string().required(REQUIRED_MESSAGE),
-  exchange_rate_to_nrp: yup.string().required(REQUIRED_MESSAGE),
   tempProductSchema,
   products: yup
     .array()

@@ -38,12 +38,6 @@ const CustomerDetailsForm = () => {
       <FormInputText label="Reference No." name="reference_no" />
       <FormInputDate label="Invoice Date" name="invoice_date" />
       <FormInputDate label="Due Date" name="due_date" />
-      <FormInputSelect
-        label="Currency"
-        name="currency"
-        options={[{ label: "NRP", value: "nrp" }]}
-      />
-      <FormInputText label="Exchange Rate To NRP" name="exchange_rate_to_nrp" />
     </div>
   );
 };

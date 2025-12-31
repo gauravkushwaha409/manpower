@@ -16,9 +16,7 @@ const useCreateInvoice = () => {
   const navigate = useNavigate();
   const initialValues: InvoiceSchemaType = {
     candidate_name: "",
-    currency: "",
     due_date: "",
-    exchange_rate_to_nrp: "",
     invoice_date: "",
     referance_no: "",
     products: [],
@@ -31,7 +29,7 @@ const useCreateInvoice = () => {
     },
   };
 
-  const formik = useFormik({
+  const formik = useFormik<InvoiceSchemaType>({
     initialValues,
     validationSchema: invoiceValidationSchema,
     onSubmit: async (values, { setErrors, resetForm }) => {

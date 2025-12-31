@@ -13,8 +13,6 @@ export interface IInvoiceListItem {
   referance_no: string;
   invoice_date: string;
   due_date: string;
-  currency: string;
-  exchange_rate_to_nrp: string;
   products: {
     product: string;
     quantity: string;
