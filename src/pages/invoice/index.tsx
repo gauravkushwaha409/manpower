@@ -6,8 +6,7 @@ const Invoice = () => {
   return (
     <div className="u-flex-parent">
       <PageHeader title="Invoice" />
-      <SearchFilter dateFilter selectFilter={[]} />
-
+      <SearchFilter dateFilter />
       <InvoiceTable />
     </div>
   );

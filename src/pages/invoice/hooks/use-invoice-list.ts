@@ -8,6 +8,7 @@ import { useState } from "react";
 
 export interface IInvoiceListItem {
   id: string;
+  invoice_no: string;
   candidate_name: string;
   referance_no: string;
   invoice_date: string;

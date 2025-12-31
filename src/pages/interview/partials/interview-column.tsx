@@ -128,12 +128,12 @@ const InterviewColumns = (): ColumnDef<IInterviewListItem>[] => {
     },
     {
       header: "Candidate Name",
-      accessorKey: "candidate",
+      accessorKey: "candidate_name",
       size: 400,
     },
     {
       header: "Candidate Job",
-      accessorKey: "job",
+      accessorKey: "candidate_job",
       size: 400,
     },
     {
@@ -143,12 +143,12 @@ const InterviewColumns = (): ColumnDef<IInterviewListItem>[] => {
     },
     {
       header: "Interview Date",
-      accessorKey: "date",
+      accessorKey: "interview_date",
       size: 400,
     },
     {
       header: "Interview Mode",
-      accessorKey: "mode",
+      accessorKey: "interview_mode",
       size: 400,
     },
     {

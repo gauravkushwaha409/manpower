@@ -26,7 +26,7 @@ const SearchFilter = ({
   moveToModule,
 }: {
   dateFilter: boolean;
-  selectFilter: {
+  selectFilter?: {
     placeholder: string;
     option: IOption[];
     paramsKey: string;
@@ -137,7 +137,7 @@ const DynamicFilter = ({
   selectFilter,
 }: {
   dateFilter: boolean;
-  selectFilter: {
+  selectFilter?: {
     placeholder: string;
     option: IOption[];
     paramsKey: string;

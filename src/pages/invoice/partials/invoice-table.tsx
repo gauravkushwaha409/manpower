@@ -7,10 +7,10 @@ const InvoiceTable = () => {
   const { invoiceListResponse, isLoading, rowSelection, setRowSelection } =
     useInvoiceList();
   return (
-    <TableWrapper isLoading={isLoading}>
+    <TableWrapper wrapperClassName="mt-4" isLoading={isLoading}>
       <Table
         columns={InvoiceColumns()}
-        data={invoiceData}
+        data={invoiceListResponse?.data?.records || invoiceData}
         rowSelection={rowSelection}
         setRowSelection={setRowSelection}
       />

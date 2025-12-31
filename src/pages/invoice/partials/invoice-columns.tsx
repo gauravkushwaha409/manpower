@@ -8,6 +8,7 @@ import TableAction from "@/components/TableAction";
 export const invoiceData: IInvoiceListItem[] = [
   {
     id: "INV-001",
+    invoice_no: "INV-0001",
     candidate_name: "Aarav Sharma",
     referance_no: "REF-2025-001",
     invoice_date: "2025-01-05",
@@ -33,6 +34,7 @@ export const invoiceData: IInvoiceListItem[] = [
   },
   {
     id: "INV-002",
+    invoice_no: "INV-0002",
     candidate_name: "Sita Koirala",
     referance_no: "REF-2025-002",
     invoice_date: "2025-01-08",
@@ -51,6 +53,7 @@ export const invoiceData: IInvoiceListItem[] = [
   },
   {
     id: "INV-003",
+    invoice_no: "INV-0003",
     candidate_name: "Bikash Thapa",
     referance_no: "REF-2025-003",
     invoice_date: "2025-01-10",
@@ -120,25 +123,50 @@ const InvoiceColumns = (): ColumnDef<IInvoiceListItem>[] => {
       size: 50,
     },
     {
-      header: "S.N.",
-      cell: ({ row }) => row.index + 1,
-      size: 100,
+      header: "Invoice No.",
+      accessorKey: "invoice_no",
+      size: 250,
     },
     {
       header: "Candidate Name",
       accessorKey: "candidate_name",
+      size: 400,
     },
     {
       header: "Reference No",
       accessorKey: "referance_no",
+      size: 400,
     },
     {
       header: "Invoice Date",
       accessorKey: "invoice_date",
+      size: 200,
     },
     {
       header: "Due Date",
       accessorKey: "due_date",
+      size: 200,
+    },
+    {
+      header: "Total",
+      cell: ({ row }) => {
+        const total =
+          row?.original?.products?.reduce((acc, product) => {
+            const quantity = Number(product.quantity || 0);
+            const rate = Number(product.rate || 0);
+            const discount = Number(product.discount || 0);
+            const tax = Number(product.tax || 0);
+
+            const grossPrice = quantity * rate;
+            const discountedPrice = grossPrice - grossPrice * (discount / 100);
+
+            const vatAmount = discountedPrice * (tax / 100);
+
+            return acc + discountedPrice + vatAmount;
+          }, 0) ?? 0;
+
+        return <span>{total.toFixed(2)}</span>;
+      },
     },
     {
       header: "Action",
