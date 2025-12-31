@@ -16,18 +16,21 @@ import { usePagination } from "@/hooks/usePagination";
 interface TableProps<T> {
   data: T[];
   columns: ColumnDef<T>[];
+  getRowId?: (row: T, index: number) => string;
   rowSelection?: RowSelectionState;
-  mainClassName?: string;
-  tHeadCellClassName?: string;
   setRowSelection?: React.Dispatch<React.SetStateAction<RowSelectionState>>;
   onSelectedRowsChange?: (rows: T[]) => void;
+  // Table Meta Data
+  mainClassName?: string;
+  tHeadCellClassName?: string;
   totalItems?: number;
   totalPages?: number;
 }
 
-const Table = <T extends { id: string }>({
+const Table = <T,>({
   data,
   columns,
+  getRowId,
   rowSelection,
   setRowSelection,
   totalItems = 0,
@@ -56,7 +59,7 @@ const Table = <T extends { id: string }>({
       onPaginationChange: pagination.handlePaginationChange,
       getPaginationRowModel: getPaginationRowModel(),
 
-      getRowId: (row: T) => row.id,
+      getRowId,
     }),
     [
       data,
@@ -162,7 +165,7 @@ const Table = <T extends { id: string }>({
   return (
     <div
       className={cn(
-        `h-full flex flex-col justify-between bg-white border-x border-b rounded-b-xl shadow-lg w-full overflow-hidden`,
+        `h-full flex flex-col justify-between border-x border-b rounded-b-xl w-full overflow-hidden`,
         mainClassName
       )}
     >

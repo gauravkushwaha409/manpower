@@ -1,40 +1,59 @@
 import handleErrors, { ApiResponse, SetErrorCallback } from "@/api/api.error";
 import { showErrorMessage, showSuccessMessage } from "./toast";
-import { NavigateFunction } from "react-router-dom";
+
+type NormalizedResponse =
+  | { type: "success"; message?: string }
+  | { type: "field-error"; errors: Record<string, string>[] }
+  | { type: "error"; message: string };
+
+export function normalizeResponse(response: ApiResponse): NormalizedResponse {
+  if (response?.error?.data?.errors) {
+    return {
+      type: "field-error",
+      errors: response.error.data.errors,
+    };
+  }
+
+  if (response?.error?.data?.message) {
+    return {
+      type: "error",
+      message: response.error.data.message,
+    };
+  }
+
+  return {
+    type: "success",
+    message: response?.data?.message,
+  };
+}
 
 interface IProps {
   response: ApiResponse;
-  redirectUrl?: string;
   setErrorCallBack: SetErrorCallback;
-  navigate?: NavigateFunction;
-  handleCloseModal?: () => void;
-  resetForm?: () => void;
+  handleOnSuccess: () => void;
 }
 
 export const handleResponse = ({
   response,
-  redirectUrl,
   setErrorCallBack,
-  navigate,
-  handleCloseModal,
-  resetForm,
+  handleOnSuccess,
 }: IProps) => {
-  if (response?.data?.message) {
-    showSuccessMessage(response?.data?.message);
-    handleCloseModal?.();
-    redirectUrl && navigate?.(redirectUrl);
-    resetForm?.();
-  }
+  const result = normalizeResponse(response);
 
-  // show error message
-  if (response?.error?.data?.message && !response?.error?.data?.errors) {
-    showErrorMessage(response?.error?.data?.message);
-    return;
-  }
+  switch (result.type) {
+    case "success":
+      if (result.message) {
+        showSuccessMessage(result.message);
+      }
+      handleOnSuccess();
+      break;
 
-  // show field error
-  if (response?.error?.data?.errors) {
-    handleErrors(response, setErrorCallBack);
-    return;
+    case "error":
+      showErrorMessage(result.message);
+      break;
+
+    case "field-error":
+      handleErrors(response, setErrorCallBack);
+      break;
   }
 };

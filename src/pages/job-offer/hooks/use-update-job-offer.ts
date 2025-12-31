@@ -35,8 +35,10 @@ const useUpdateJobOffer = () => {
       handleResponse({
         response,
         setErrorCallBack: setErrors,
-        handleCloseModal: handleCloseModal,
-        resetForm: resetForm,
+        handleOnSuccess: () => {
+          resetForm();
+          handleCloseModal();
+        },
       });
     },
   });

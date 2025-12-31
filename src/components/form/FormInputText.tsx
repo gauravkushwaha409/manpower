@@ -1,22 +1,25 @@
 import React from "react";
 import { ErrorMessage, useField } from "formik";
+import { cn } from "@/lib/utils";
 
 interface IInputText extends React.InputHTMLAttributes<HTMLInputElement> {
   name: string;
   label: string;
   className?: string;
   labelClassName?: string;
+  wrapperClassName?: string;
 }
 
 const FormInputText: React.FC<IInputText> = ({
   name,
   label,
   labelClassName,
+  wrapperClassName,
   className,
   disabled,
   ...props
 }) => {
-  const [field, meta] = useField(name);
+  const [{ ...field }, meta] = useField(name);
 
   const getBorderClass = () => {
     if (meta.touched && meta.error) {
@@ -29,7 +32,7 @@ const FormInputText: React.FC<IInputText> = ({
   };
 
   return (
-    <div className={`flex flex-col gap-2`}>
+    <div className={cn(`flex flex-col gap-2`, wrapperClassName)}>
       <label
         className={`typography-input-label ${labelClassName}`}
         htmlFor={name}

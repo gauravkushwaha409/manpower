@@ -167,6 +167,7 @@ const InvoiceColumns = (): ColumnDef<IInvoiceListItem>[] => {
 
         return <span>{total.toFixed(2)}</span>;
       },
+      size: 200,
     },
     {
       header: "Action",
