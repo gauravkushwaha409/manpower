@@ -1,3 +1,4 @@
+import { cn } from "@/lib/utils";
 import { useField } from "formik";
 import { ComponentProps } from "react";
 
@@ -6,6 +7,7 @@ interface ITextArea extends ComponentProps<"textarea"> {
   label: string;
   placeholder?: string;
   labelClassName?: string;
+  wrapperClassName?: string;
   textareaClassName?: string;
   errorClassName?: string;
   rows?: number;
@@ -17,6 +19,7 @@ const FormTextArea: React.FC<ITextArea> = ({
   label,
   placeholder,
   className,
+  wrapperClassName,
   rows = 4,
   required,
   ...props
@@ -24,7 +27,7 @@ const FormTextArea: React.FC<ITextArea> = ({
   const [field, meta] = useField(name);
 
   return (
-    <div className={`flex flex-col gap-2`}>
+    <div className={cn(`flex flex-col gap-2`, wrapperClassName)}>
       <label htmlFor={name} className="typography-input-label">
         {label}
         {required && <span className="text-red-600">*</span>}

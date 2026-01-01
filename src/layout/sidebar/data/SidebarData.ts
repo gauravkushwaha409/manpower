@@ -132,6 +132,13 @@ export const mainMenuItems = [
     link: PATH.expense.index,
   },
   {
+    id: "quick-payment",
+    icon: User2,
+    label: "Quick Payment",
+    active: false,
+    link: PATH.quickPayment.index,
+  },
+  {
     id: "settings",
     icon: IoSettingsOutline,
     label: "Settings",

@@ -26,6 +26,10 @@ export const apiTags = {
     list: "get_all_expense",
     details: "get_expense_details",
   },
+  quickPayment: {
+    list: "get_all_quick_payment",
+    details: "get_quick_payment_details",
+  },
   jobOffer: {
     list: "get_all_job_offer",
     details: "get_job_offer_details",

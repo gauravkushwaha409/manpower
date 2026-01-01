@@ -101,6 +101,13 @@ export const endpoints = {
     delete: "",
     details: "",
   },
+  quickPayment: {
+    list: "",
+    create: "",
+    update: "",
+    delete: "",
+    details: "",
+  },
   shram: {
     list: "",
     create: "",
