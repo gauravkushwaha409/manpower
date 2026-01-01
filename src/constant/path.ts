@@ -68,6 +68,11 @@ export const PATH = {
     create: "/invoice/create",
     update: "/invoice/update/:id",
   },
+  expense: {
+    index: "/expense",
+    create: "/expense/create",
+    update: "/expense/update/:id",
+  },
   setting: {
     index: "/setting",
     jobSetting: {

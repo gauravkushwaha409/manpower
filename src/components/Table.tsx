@@ -25,6 +25,7 @@ interface TableProps<T> {
   tHeadCellClassName?: string;
   totalItems?: number;
   totalPages?: number;
+  isPagination?: boolean;
 }
 
 const Table = <T,>({
@@ -38,6 +39,7 @@ const Table = <T,>({
   onSelectedRowsChange,
   mainClassName,
   tHeadCellClassName,
+  isPagination = true,
 }: TableProps<T>) => {
   const pagination = usePagination();
   // Memoize table configuration to prevent unnecessary recalculations
@@ -140,7 +142,12 @@ const Table = <T,>({
 
   const renderRow = useCallback(
     (row: any, index: number) => (
-      <tr key={row.id} className="w-full">
+      <tr
+        key={row.id}
+        className={`w-full hover:bg-secondary-50/50 ${
+          index % 2 === 0 ? "" : "bg-secondary-50/20"
+        }`}
+      >
         {row.getVisibleCells().map((cell: any) => (
           <td
             key={cell.id}
@@ -151,7 +158,6 @@ const Table = <T,>({
             }}
             className={`
             px-5 py-2.5 typo-mid-bd-light text-text-400
-            ${index % 2 === 0 ? "" : "bg-secondary-50/50"}
           `}
           >
             {flexRender(cell.column.columnDef.cell, cell.getContext())}
@@ -184,14 +190,16 @@ const Table = <T,>({
       </div>
 
       {/* Pagination */}
-      <CustomPagination
-        currentPage={pagination.pagination.pageIndex}
-        totalItems={totalItems}
-        pageCount={totalPages}
-        perPage={pagination.pagination.pageSize}
-        onPageChange={handlePageChange}
-        onPerPageChange={handlePerPageChange}
-      />
+      {isPagination && (
+        <CustomPagination
+          currentPage={pagination.pagination.pageIndex}
+          totalItems={totalItems}
+          pageCount={totalPages}
+          perPage={pagination.pagination.pageSize}
+          onPageChange={handlePageChange}
+          onPerPageChange={handlePerPageChange}
+        />
+      )}
     </div>
   );
 };

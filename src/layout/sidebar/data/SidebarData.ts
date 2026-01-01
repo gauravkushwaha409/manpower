@@ -125,6 +125,13 @@ export const mainMenuItems = [
     link: PATH.invoice.index,
   },
   {
+    id: "expense",
+    icon: User2,
+    label: "Expense",
+    active: false,
+    link: PATH.expense.index,
+  },
+  {
     id: "settings",
     icon: IoSettingsOutline,
     label: "Settings",

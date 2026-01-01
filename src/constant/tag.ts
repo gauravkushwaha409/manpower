@@ -22,6 +22,10 @@ export const apiTags = {
     list: "get_all_invoice",
     details: "get_invoice_details",
   },
+  expense: {
+    list: "get_all_expense",
+    details: "get_expense_details",
+  },
   jobOffer: {
     list: "get_all_job_offer",
     details: "get_job_offer_details",

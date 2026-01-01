@@ -10,7 +10,6 @@ import {
 } from "../schema/invoice-schema";
 import { useFormikContext } from "formik";
 import Table from "@/components/Table";
-import { useState } from "react";
 import TableWrapper from "@/components/TableWrapper";
 
 const InvoiceForm = () => {
@@ -44,7 +43,7 @@ const CustomerDetailsForm = () => {
 
 // Product Details Form
 const ProductDetailsForm = () => {
-  const { setValues, values } = useFormikContext<InvoiceSchemaType>();
+  const { setValues } = useFormikContext<InvoiceSchemaType>();
   const handleAddProduct = () => {
     setValues((prev) => ({
       ...prev,
@@ -67,7 +66,6 @@ const ProductDetailsForm = () => {
       },
     }));
   };
-  console.log(values);
   return (
     <div className="grid grid-cols-10 gap-4">
       <FormInputText
@@ -92,15 +90,14 @@ const ProductDetailsForm = () => {
 // Product List Table
 const ProductTable = () => {
   const formik = useFormikContext<InvoiceSchemaType>();
-  const [rowSelection, setRowSelection] = useState({});
-
   return (
     <TableWrapper isLoading={false}>
       <Table<InvoiceProductSchemaType>
         columns={ProductColumn()}
         data={formik.values?.products || []}
-        rowSelection={rowSelection}
-        setRowSelection={setRowSelection}
+        // rowSelection={rowSelection}
+        // setRowSelection={setRowSelection}
+        isPagination={false}
       />
     </TableWrapper>
   );

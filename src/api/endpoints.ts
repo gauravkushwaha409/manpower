@@ -87,7 +87,14 @@ export const endpoints = {
     delete: "",
     details: "",
   },
-invoice: {
+  invoice: {
+    list: "",
+    create: "",
+    update: "",
+    delete: "",
+    details: "",
+  },
+  expense: {
     list: "",
     create: "",
     update: "",
