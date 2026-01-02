@@ -3,12 +3,23 @@ import { useFormikContext } from "formik";
 import { useCallback } from "react";
 
 const useQuickPaymentForm = () => {
-  const { values, setValues, setTouched } =
+  const { values, setValues, setTouched, validateForm } =
     useFormikContext<QuickPaymentSchema>();
 
   //   =============================== Add Temporary Payment to Payment Array ==========================
-  const handleAddPayment = useCallback(() => {
-    if (!values?.temp_payment?.account) return;
+  const handleAddPayment = useCallback(async () => {
+    const errors = await validateForm();
+    const tempPaymentError = errors?.temp_payment;
+    if (tempPaymentError && Object.keys(tempPaymentError).length > 0) {
+      setTouched({
+        temp_payment: {
+          account: true,
+          amount: true,
+          description: true,
+        },
+      });
+      return;
+    }
     setValues({
       ...values,
       payments: [
@@ -32,7 +43,7 @@ const useQuickPaymentForm = () => {
         description: false,
       },
     });
-  }, [values, setValues, setTouched]);
+  }, [values, setValues, setTouched, validateForm]);
 
   // ============================== Edit Payment Item ===============================
   const handleEditPayment = useCallback(
@@ -53,9 +64,20 @@ const useQuickPaymentForm = () => {
   );
 
   // ============================== Update Payment Item ===============================
-  const handleUpdatePayment = useCallback(() => {
+  const handleUpdatePayment = useCallback(async () => {
     if (values?.edit_index === null || values?.edit_index === undefined) return;
-    if (!values?.temp_payment?.account) return;
+    const errors = await validateForm();
+    const tempPaymentError = errors?.temp_payment;
+    if (tempPaymentError && Object.keys(tempPaymentError).length > 0) {
+      setTouched({
+        temp_payment: {
+          account: true,
+          amount: true,
+          description: true,
+        },
+      });
+      return;
+    }
 
     const updatePayment = [...values.payments];
     updatePayment[values?.edit_index] = {
@@ -85,7 +107,6 @@ const useQuickPaymentForm = () => {
 
   // ============================== Cancel Update Payment Item ===============================
   const handleCancelUpdatePayment = useCallback(() => {
-    console.log("values---------->", values);
     setValues({
       ...values,
       temp_payment: {
