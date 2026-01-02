@@ -13,7 +13,7 @@ import UpdateCountry from "./partials/update-country";
 import CreateCountry from "./partials/create-country";
 
 const Country: React.FC = () => {
-  const addModal = useAddModal();
+  const addModal = useAddModal("add-country-modal", "open");
   const updateModal = useUpdateModal();
   const deleteDocument = useDelete({
     endpoints: endpoints.document.delete,
@@ -34,6 +34,7 @@ const Country: React.FC = () => {
         className="xl:max-w-xl"
         isOpen={addModal.isOpen}
         name="Create Country"
+        description="This will create the country"
         onOpenChange={addModal.handleCloseModal}
       >
         <CreateCountry />
@@ -44,6 +45,7 @@ const Country: React.FC = () => {
         className="xl:max-w-xl"
         isOpen={updateModal.isOpen}
         name="Update Country"
+        description="This will update the country"
         onOpenChange={updateModal.handleCloseModal}
       >
         <UpdateCountry />

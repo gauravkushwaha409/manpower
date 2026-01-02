@@ -1,33 +1,24 @@
-import { useSearchParams } from "react-router-dom";
-import useDisclosure from "./useDisclousre";
-import { useEffect } from "react";
-import {
-  useDeleteSearchParams,
-  useUpdateSearchParams,
-} from "./updateSearchParams";
+import useQueryParams from "./use-query-params";
 
-export const useAddModal = () => {
-  const [searchParams] = useSearchParams();
-  const updateSearchParams = useUpdateSearchParams();
-  const deleteParams = useDeleteSearchParams();
-  const isOpen = useDisclosure();
-  const addParams = searchParams.get("add") ?? "inactive";
-  useEffect(() => {
-    if (addParams === "active") isOpen.open();
-    else isOpen.close();
-  }, [searchParams]);
+export const useAddModal = (
+  key: string = "add-modal",
+  value: string = "active"
+) => {
+  const { updateQueryParams, getQueryParams, deleteQueryParams } =
+    useQueryParams();
+  const isOpen = getQueryParams(key) === value;
 
   const handleOpenModal = () => {
-    updateSearchParams({ add: "active" });
+    updateQueryParams({ [key]: value });
   };
 
   const handleCloseModal = () => {
-    deleteParams(["add"]);
+    deleteQueryParams([key]);
   };
 
   return {
+    isOpen,
     handleOpenModal,
-    isOpen: isOpen.isOpen,
-    handleCloseModal: handleCloseModal,
+    handleCloseModal,
   };
 };
