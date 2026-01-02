@@ -7,7 +7,7 @@ import useUpdatePreApprovalDofe from "./hooks/use-update-pre-approval-dofe";
 import {
   PreApprovalFormStep1,
   PreApprovalFormStep2,
-} from "../../partials/PreApprovalDofeForm";
+} from "../../partials/pre-approval-dofe-form";
 
 const UpdatePreApprovalDofe: React.FC = () => {
   const [step, setStep] = useState(0);

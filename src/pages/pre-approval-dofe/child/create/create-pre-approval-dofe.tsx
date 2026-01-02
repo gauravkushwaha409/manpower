@@ -8,7 +8,7 @@ import {
   PreApprovalFormStep1,
   PreApprovalFormStep2,
   PreApprovalFormStep3,
-} from "../../partials/PreApprovalDofeForm";
+} from "../../partials/pre-approval-dofe-form";
 
 const CreatePreApprovalDofe: React.FC = () => {
   const { formik } = useCreatePreApprovalDofe();

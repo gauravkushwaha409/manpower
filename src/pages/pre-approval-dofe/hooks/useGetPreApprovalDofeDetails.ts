@@ -2,7 +2,7 @@ import { useGetDataQuery } from "@/api/api";
 import { endpoints } from "@/api/endpoints";
 import { PreApprovalDofeDetailsResponse } from "../interface/IPreApprovalDofe";
 
-interface IDetailsProps{
+interface IDetailsProps {
   id: string;
 }
 

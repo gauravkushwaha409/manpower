@@ -1,7 +1,8 @@
 import Table from "@/components/Table";
 import TableWrapper from "@/components/TableWrapper";
-import PreApprovalDofeColumns from "./PreApprovalDofeColumns";
-import { PreApprovalDofeTableData } from "../hooks/useGetPreApprovalDofe";
+import PreApprovalDofeColumns, {
+  PreApprovalDofeTableData,
+} from "./pre-approval-dofe-column";
 import { useState } from "react";
 
 const PreApprovalDofeTable = () => {

@@ -1,7 +1,7 @@
 import {
   PreApprovalDofeFormType,
   PreApprovalValidation,
-} from "@/pages/preApprovalDofe/schema/preApprovalDofeValidationSchema";
+} from "@/pages/pre-approval-dofe/schema/pre-approval-dofe-schema";
 import { useFormik } from "formik";
 
 const useCreatePreApprovalDofe = () => {
@@ -19,18 +19,20 @@ const useCreatePreApprovalDofe = () => {
     documents: [],
 
     // Step - 2 (Temporary store the job details)
-    job_title: "",
-    male: null,
-    female: null,
-    basic_salary_aed: null,
-    basic_salary_nrp: null,
-    working_hours: null,
-    working_days: null,
-    contract_period: null,
-    working_city: null,
-    experience: false,
-    years: null,
-    qualification: null,
+    temp_job_details: {
+      job_title: "",
+      male: "",
+      female: "",
+      basic_salary_aed: "",
+      basic_salary_nrp: "",
+      working_hours: "",
+      working_days: "",
+      contract_period: "",
+      working_city: "",
+      experience: false,
+      years: "",
+      qualification: "",
+    },
 
     // Actual Job details
     job_details: [],

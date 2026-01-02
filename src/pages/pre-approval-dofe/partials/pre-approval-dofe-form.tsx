@@ -7,11 +7,18 @@ import FormSwitch from "@/components/form/FormSwitch";
 import { useFormikContext } from "formik";
 import {
   PreApprovalDofeFormType,
-  PreApprovalJobDetails,
-} from "../schema/preApprovalDofeValidationSchema";
+  PreApprovalJobListItem,
+} from "../schema/pre-approval-dofe-schema";
 import React, { useRef } from "react";
 import { cn } from "@/lib/utils";
+import usePreApprovalDofeForm from "../hooks/use-pre-approval-dofe-form";
+import TableWrapper from "@/components/TableWrapper";
+import Table from "@/components/Table";
+import { ColumnDef } from "@tanstack/react-table";
+import useQuickPaymentForm from "@/pages/quick-payment/hooks/use-quick-payment-form";
+import TableAction from "@/components/TableAction";
 
+// =========================== Pre Approval Step - 1 Form ===============================
 export const PreApprovalFormStep1 = () => {
   const formik = useFormikContext<PreApprovalDofeFormType>();
   const fileInputRef = useRef<{ reset: () => void }>(null);
@@ -111,7 +118,7 @@ export const PreApprovalFormStep1 = () => {
       </div>
 
       <div className="col-span-2">
-        <Button varient="add" handleClick={handleAddDocument}>
+        <Button variant="add" handleClick={handleAddDocument}>
           <Plus size={26} className="text-white rounded-lg" />
           ADD
         </Button>
@@ -148,43 +155,15 @@ export const PreApprovalFormStep1 = () => {
   );
 };
 
+// =========================== Pre Approval Step - 2 Form ===============================
 export const PreApprovalFormStep2 = () => {
-  const { values, setValues } = useFormikContext<PreApprovalDofeFormType>();
-  const handleAddJob = () => {
-    setValues({
-      ...values,
-      job_details: [
-        ...values?.job_details,
-        {
-          job_title: values?.job_title,
-          male: values?.male,
-          female: values?.female,
-          basic_salary_nrp: values?.basic_salary_nrp,
-          basic_salary_aed: values?.basic_salary_aed,
-          contract_period: values?.contract_period,
-          working_city: values?.working_city,
-          working_days: values?.working_days,
-          working_hours: values?.working_hours,
-          experience: values?.experience,
-          qualification: values?.qualification,
-          years: values?.years,
-        },
-      ],
-
-      job_title: "",
-      male: 0,
-      female: 0,
-      basic_salary_nrp: 0,
-      basic_salary_aed: 0,
-      contract_period: 0,
-      working_city: "",
-      working_days: 0,
-      working_hours: 0,
-      experience: false,
-      qualification: "",
-      years: 0,
-    });
-  };
+  const {
+    values,
+    handleAddJob,
+    isEditMode,
+    handleUpdateJob,
+    handleCancelUpdateJob,
+  } = usePreApprovalDofeForm();
   return (
     <div className="space-y-6">
       <p>Job Details</p>
@@ -192,44 +171,57 @@ export const PreApprovalFormStep2 = () => {
         <div className="grid grid-cols-3 gap-6">
           <FormSelect
             label="Job Title"
-            name="job_title"
+            name="temp_job_details.job_title"
             options={[
               { label: "QA", value: "qa" },
               { label: "BA", value: "ba" },
             ]}
           />
           <div className="grid grid-cols-2 gap-x-4">
-            <InputText label="Male" name="male" />
-            <InputText label="Female" name="female" />
+            <InputText label="Male" name="temp_job_details.male" />
+            <InputText label="Female" name="temp_job_details.female" />
           </div>
           <div className="grid grid-cols-2 gap-x-4">
-            <InputText label="Basic Salary (AED)" name="basic_salary_aed" />
-            <InputText label="Basic Salary (NRP)" name="basic_salary_nrp" />
+            <InputText
+              label="Basic Salary (AED)"
+              name="temp_job_details.basic_salary_aed"
+            />
+            <InputText
+              label="Basic Salary (NRP)"
+              name="temp_job_details.basic_salary_nrp"
+            />
           </div>
         </div>
 
         <div className="grid grid-cols-4 gap-6">
           <InputText
             label="Working Hours"
-            name="working_hours"
+            name="temp_job_details.working_hours"
             placeholder=""
           />
-          <InputText label="Working Days" name="working_days" placeholder="" />
+          <InputText
+            label="Working Days"
+            name="temp_job_details.working_days"
+            placeholder=""
+          />
           <InputText
             label="Contract Period (Years)"
-            name="contract_period"
+            name="temp_job_details.contract_period"
             placeholder=""
           />
-          <InputText label="Working City" name="working_city" />
+          <InputText
+            label="Working City"
+            name="temp_job_details.working_city"
+          />
           <div className="grid grid-cols-2">
-            <FormSwitch title="Experience" name="experience" />
-            {values?.experience ? (
-              <InputText label="In (Years)" name="years" />
+            <FormSwitch title="Experience" name="temp_job_details.experience" />
+            {values?.temp_job_details?.experience ? (
+              <InputText label="In (Years)" name="temp_job_details.years" />
             ) : null}
           </div>
           <FormSelect
             label="Academic Qualification"
-            name="qualification"
+            name="temp_job_details.qualification"
             options={[
               { label: "Below 10", value: "below 10" },
               { label: "10", value: "10" },
@@ -240,19 +232,32 @@ export const PreApprovalFormStep2 = () => {
             ]}
           />
           <div className="w-fit">
-            <Button varient="add" handleClick={handleAddJob}>
-              Add Job
-            </Button>
+            {isEditMode ? (
+              <div className="flex items-center gap-x-4">
+                <Button variant="update" handleClick={handleUpdateJob}>
+                  Update
+                </Button>
+                <Button variant="delete" handleClick={handleCancelUpdateJob}>
+                  Cancel
+                </Button>
+              </div>
+            ) : (
+              <div className="flex items-center gap-x-4">
+                <Button variant="add" handleClick={handleAddJob}>
+                  Add
+                </Button>
+              </div>
+            )}
           </div>
         </div>
       </div>
 
-      <JobTable />
+      <JobDetailsTable />
     </div>
   );
 };
 
-// Step - 3 Form
+// =========================== Pre Approval Step - 3 Form ===============================
 export const PreApprovalFormStep3 = () => {
   return (
     <div className="grid grid-cols-6 gap-6">
@@ -266,105 +271,122 @@ export const PreApprovalFormStep3 = () => {
   );
 };
 
-// Button Varient used in this form
-type ButtonVarient = "add" | "delete";
+// ============================ Payments Table =================================
+const JobDetailsTable = () => {
+  const { values } = usePreApprovalDofeForm();
+  return (
+    <TableWrapper
+      isLoading={false}
+      isDataAvailable={values?.job_details?.length > 0}
+    >
+      <Table
+        isPagination={false}
+        columns={JobDetailsColumn()}
+        data={values?.job_details}
+      />
+    </TableWrapper>
+  );
+};
+
+// ============================= Payment Columns =====================================
+const JobDetailsColumn = (): ColumnDef<PreApprovalJobListItem>[] => {
+  const { handleEditPayment, handleDeletePayment } = useQuickPaymentForm();
+  return [
+    {
+      header: "Job Title",
+      accessorKey: "job_title",
+    },
+    {
+      header: "Male",
+      accessorKey: "male",
+    },
+    {
+      header: "Female",
+      accessorKey: "female",
+    },
+    {
+      header: "Basic Salary NRP",
+      accessorKey: "basic_salary_nrp",
+    },
+    {
+      header: "Basic Salary AED",
+      accessorKey: "basic_salary_aed",
+    },
+    {
+      header: "Working City",
+      accessorKey: "working_city",
+    },
+    {
+      header: "Working Days",
+      accessorKey: "working_days",
+    },
+    {
+      header: "Working Hours",
+      accessorKey: "working_hours",
+    },
+    {
+      header: "Contract Period",
+      accessorKey: "contract_period",
+    },
+    {
+      header: "Action",
+      accessorKey: "action",
+      cell: ({ row }) => (
+        <TableAction
+          edit={{
+            active: true,
+            onClick: (e: React.MouseEvent<HTMLButtonElement>) => {
+              e.preventDefault();
+              handleEditPayment(row?.index);
+            },
+          }}
+          del={{
+            active: true,
+            onClick: (e: React.MouseEvent<HTMLButtonElement>) => {
+              e.preventDefault();
+              handleDeletePayment(row?.index);
+            },
+          }}
+        />
+      ),
+      size: 200,
+      maxSize: 200,
+    },
+  ];
+};
+
+// ==================================== Button Component ================================
+type ButtonVariant = "add" | "update" | "delete";
 const Button = ({
   children,
   handleClick,
-  varient,
+  variant,
+  disabled = false,
 }: {
   children: React.ReactNode;
   handleClick: () => void;
-  varient: ButtonVarient;
+  variant: ButtonVariant;
+  disabled?: boolean;
 }) => {
   const baseStyle =
-    "px-3 py-1 flex items-center typo-mid-bd-reg rounded-4xl cursor-pointer";
+    "px-4 py-2 flex items-center justify-center typo-mid-bd-reg rounded-lg cursor-pointer transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed";
 
-  const varients: Record<ButtonVarient, string> = {
+  const variants: Record<ButtonVariant, string> = {
     add: "text-white bg-secondary-500 hover:bg-secondary-700",
-    delete: "text-white bg-error-delete",
+    update: "text-white bg-primary-500 hover:bg-primary-700",
+    delete: "text-white bg-error-delete hover:bg-red-700",
   };
   return (
     <button
+      type="button"
+      disabled={disabled}
       onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
         handleClick();
       }}
-      className={cn(baseStyle, varients[varient], "")}
+      className={cn(baseStyle, variants[variant])}
     >
       {children}
     </button>
   );
 };
-
-// JOb Details Table
-const JobTable = () => {
-  const formik = useFormikContext<PreApprovalDofeFormType>();
-  const jobDetails: Record<string, keyof PreApprovalJobDetails> = {
-    "Job Title": "job_title",
-    Male: "male",
-    Female: "female",
-    "Basic Salary (AED)": "basic_salary_aed",
-    "Basic Salary (NRP)": "basic_salary_nrp",
-    "Working Hours": "working_hours",
-    "Working Days": "working_days",
-    "Contract Period": "contract_period",
-    "Working City": "working_city",
-    Experience: "experience",
-    "Academic Qualification": "qualification",
-  };
-
-  return (
-    <div className="mt-10 w-full overflow-x-auto">
-      <table className="table-auto w-full border-collapse">
-        {/* Header */}
-        <thead className="bg-gray-100 border-b border-gray-200 sticky top-0">
-          <tr>
-            <td className="typo-mid-bd-reg text-text-500 px-5 py-3 whitespace-nowrap">
-              S.N.
-            </td>
-            {Object.keys(jobDetails).map((item) => (
-              <td
-                key={item}
-                className="typo-mid-bd-reg text-text-500 px-5 py-3 whitespace-nowrap"
-              >
-                {item}
-              </td>
-            ))}
-          </tr>
-        </thead>
-
-        {/* Body */}
-        {formik?.values?.job_details?.length > 0 ? (
-          <tbody className="divide-y divide-gray-200">
-            {formik.values?.job_details?.map((item, rowIndex) => (
-              <tr key={rowIndex} className="hover:bg-gray-50 transition-colors">
-                <td className="px-5 py-3 text-sm text-gray-700">
-                  {rowIndex + 1}
-                </td>
-                {Object.values(jobDetails).map((key) => (
-                  <td
-                    key={String(key)}
-                    className="px-5 py-3 text-sm text-gray-700 whitespace-nowrap"
-                  >
-                    <span>{key === "experience" ? "Required" : item[key]}</span>
-                  </td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        ) : (
-          <tbody>
-            <tr>
-              <td colSpan={12} className="text-center text-xl">
-                No Job Found <br /> Add Job From Above Form
-              </td>
-            </tr>
-          </tbody>
-        )}
-      </table>
-    </div>
-  );
-};
-
-
