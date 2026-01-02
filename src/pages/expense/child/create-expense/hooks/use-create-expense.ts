@@ -20,12 +20,12 @@ const useCreateExpense = () => {
     supplier_invoice_reference_no: "",
     date: "",
     due_date: "",
-    temp_account: {
+    temp_expense: {
       account: "",
-      amount: 0,
+      amount: "",
       tax: false,
     },
-    accounts: [],
+    expenses: [],
     remarks: "",
   };
   // ======================== Formik Instance ================================

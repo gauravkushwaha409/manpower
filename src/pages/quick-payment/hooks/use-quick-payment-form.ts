@@ -116,7 +116,7 @@ const useQuickPaymentForm = () => {
       },
       edit_index: null,
     });
-  }, [setValues]);
+  }, [values, setValues]);
 
   // ============================== Handle Delete Payment Item ===============================
   const handleDeletePayment = useCallback(
