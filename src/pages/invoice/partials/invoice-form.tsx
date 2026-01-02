@@ -3,14 +3,12 @@ import FormInputSelect from "@/components/form/form-input-select";
 import FormInputText from "@/components/form/FormInputText";
 import { cn } from "@/lib/utils";
 import { ColumnDef } from "@tanstack/react-table";
-import { PlusCircle } from "lucide-react";
-import {
-  InvoiceProductSchemaType,
-  InvoiceSchemaType,
-} from "../schema/invoice-schema";
-import { useFormikContext } from "formik";
+import { InvoiceProductSchemaType } from "../schema/invoice-schema";
 import Table from "@/components/Table";
 import TableWrapper from "@/components/TableWrapper";
+import useInvoiceForm from "../hooks/use-invoice-form";
+import TableAction from "@/components/TableAction";
+import FormSwitch from "@/components/form/FormSwitch";
 
 const InvoiceForm = () => {
   return (
@@ -43,60 +41,56 @@ const CustomerDetailsForm = () => {
 
 // Product Details Form
 const ProductDetailsForm = () => {
-  const { setValues } = useFormikContext<InvoiceSchemaType>();
-  const handleAddProduct = () => {
-    setValues((prev) => ({
-      ...prev,
-      products: [
-        ...prev.products,
-        {
-          product: prev.tempProductSchema.product,
-          quantity: Number(prev.tempProductSchema.quantity),
-          rate: Number(prev.tempProductSchema.rate),
-          discount: Number(prev.tempProductSchema.discount),
-          tax: Number(prev.tempProductSchema.tax),
-        },
-      ],
-      tempProductSchema: {
-        product: "",
-        quantity: 0,
-        rate: 0,
-        discount: 0,
-        tax: 0,
-      },
-    }));
-  };
+  const {
+    handleAddProduct,
+    getTaxAmount,
+    isEditing,
+    handleUpdateProduct,
+    handleCancelUpdateProduct,
+  } = useInvoiceForm();
   return (
-    <div className="grid grid-cols-10 gap-4">
+    <div className="grid grid-cols-6 gap-4">
       <FormInputText
-        wrapperClassName="col-span-5"
+        wrapperClassName="col-span-2"
         label="Product/Service"
-        name="tempProductSchema.product"
+        name="tempProduct.product"
       />
-      <FormInputText label="Quantity" name="tempProductSchema.quantity" />
-      <FormInputText label="Rate" name="tempProductSchema.rate" />
-      <FormInputText label="Discount" name="tempProductSchema.discount" />
-      <FormInputText label="Vat" name="tempProductSchema.tax" />
-      <div className="flex flex-col items-center justify-center">
-        <Button varient="add" handleClick={handleAddProduct}>
-          <PlusCircle size={16} />
-          Add
-        </Button>
-      </div>
+      <FormInputText label="Quantity" name="tempProduct.quantity" />
+      <FormInputText label="Rate" name="tempProduct.rate" />
+      <FormInputText label="Discount" name="tempProduct.discount" />
+      <FormSwitch
+        title="Vat (13%)"
+        activeText={`Rs. ${getTaxAmount()}`}
+        name="tempProduct.tax"
+      />
+      {isEditing ? (
+        <div className="flex items-center gap-x-4">
+          <Button variant="update" handleClick={handleUpdateProduct}>
+            Update
+          </Button>
+          <Button variant="delete" handleClick={handleCancelUpdateProduct}>
+            Cancel
+          </Button>
+        </div>
+      ) : (
+        <div className="flex items-center">
+          <Button variant="add" handleClick={handleAddProduct}>
+            Add
+          </Button>
+        </div>
+      )}
     </div>
   );
 };
 
 // Product List Table
 const ProductTable = () => {
-  const formik = useFormikContext<InvoiceSchemaType>();
+  const { isProductAvailable, values } = useInvoiceForm();
   return (
-    <TableWrapper isLoading={false}>
+    <TableWrapper isLoading={false} isDataAvailable={isProductAvailable}>
       <Table<InvoiceProductSchemaType>
         columns={ProductColumn()}
-        data={formik.values?.products || []}
-        // rowSelection={rowSelection}
-        // setRowSelection={setRowSelection}
+        data={values?.products || []}
         isPagination={false}
       />
     </TableWrapper>
@@ -104,34 +98,47 @@ const ProductTable = () => {
 };
 
 const ProductColumn = (): ColumnDef<InvoiceProductSchemaType>[] => {
+  const { handleEditProduct, handleDeleteProduct } = useInvoiceForm();
   return [
     {
       header: "S.N.",
       cell: ({ row }) => <span>{row?.index + 1}</span>,
+      size: 100,
     },
     {
       header: "Product / Service",
       accessorKey: "product",
+      size: 400,
     },
     {
       header: "Quantity",
       accessorKey: "quantity",
       cell: ({ row }) => row?.original?.quantity || undefined,
+      size: 100,
     },
     {
       header: "Rate",
       accessorKey: "rate",
       cell: ({ row }) => row?.original?.rate || undefined,
+      size: 100,
     },
     {
-      header: "Discount",
+      header: "Discount (%)",
       accessorKey: "discount",
       cell: ({ row }) => row?.original?.discount || undefined,
+      size: 100,
     },
     {
-      header: "Tax",
-      accessorKey: "tax",
-      cell: ({ row }) => row?.original?.tax || undefined,
+      header: "Discount Amount",
+      accessorKey: "discount",
+      cell: ({ row }) => row?.original?.discount_amount || undefined,
+      size: 100,
+    },
+    {
+      header: "Tax Amount",
+      accessorKey: "tax_amount",
+      cell: ({ row }) => row?.original?.tax_amount || 0,
+      size: 100,
     },
     {
       header: "Amount",
@@ -139,46 +146,70 @@ const ProductColumn = (): ColumnDef<InvoiceProductSchemaType>[] => {
         const rate = Number(row.original.rate || 0);
         const quantity = Number(row.original.quantity || 0);
         const discount = Number(row.original.discount || 0);
-        const tax = Number(row.original.tax || 0);
 
         const gross = rate * quantity;
         const discountAmount = gross * (discount / 100);
         const net = gross - discountAmount;
-        const taxAmount = net * (tax / 100);
 
-        const total = net + taxAmount;
+        const total = net + +row?.original?.tax_amount;
 
         return <span>{total.toFixed(2)}</span>;
       },
     },
+    {
+      header: "Action",
+      cell: ({ row }) => (
+        <TableAction
+          edit={{
+            active: true,
+            onClick: (e: React.MouseEvent<HTMLButtonElement>) => {
+              e.preventDefault();
+              handleEditProduct(row?.index);
+            },
+          }}
+          del={{
+            active: true,
+            onClick: (e: React.MouseEvent<HTMLButtonElement>) => {
+              e.preventDefault();
+              handleDeleteProduct(row?.index);
+            },
+          }}
+        />
+      ),
+    },
   ];
 };
 
-// Button Varient used in this form
-type ButtonVarient = "add" | "delete";
+// ============ Button Component ============
+type ButtonVariant = "add" | "update" | "delete";
 const Button = ({
   children,
   handleClick,
-  varient,
+  variant,
+  disabled = false,
 }: {
   children: React.ReactNode;
   handleClick: () => void;
-  varient: ButtonVarient;
+  variant: ButtonVariant;
+  disabled?: boolean;
 }) => {
   const baseStyle =
-    "px-3 py-1 flex items-center typo-mid-bd-reg rounded-4xl cursor-pointer";
+    "px-4 py-2 flex items-center justify-center typo-mid-bd-reg rounded-lg cursor-pointer transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed";
 
-  const varients: Record<ButtonVarient, string> = {
+  const variants: Record<ButtonVariant, string> = {
     add: "text-white bg-secondary-500 hover:bg-secondary-700",
-    delete: "text-white bg-error-delete",
+    update: "text-white bg-primary-500 hover:bg-primary-700",
+    delete: "text-white bg-error-delete hover:bg-red-700",
   };
   return (
     <button
+      type="button"
+      disabled={disabled}
       onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
         handleClick();
       }}
-      className={cn(baseStyle, varients[varient], "")}
+      className={cn(baseStyle, variants[variant])}
     >
       {children}
     </button>

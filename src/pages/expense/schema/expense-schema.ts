@@ -2,12 +2,24 @@ import * as Yup from "yup";
 
 const temp_expense = Yup.object({
   account: Yup.string().required("This field is required"),
-  amount: Yup.string().required("This field is required"),
+  amount: Yup.string()
+    .required("This field is required")
+    .test(
+      "is-valid-number",
+      "Amount must be a valid number",
+      (value) => value !== undefined && value !== "" && !isNaN(Number(value))
+    ),
   tax: Yup.boolean().required("This field is required"),
 });
 const expenses = Yup.object({
   account: Yup.string().required("This field is required"),
-  amount: Yup.string().required("This field is required"),
+  amount: Yup.string()
+    .required("This field is required")
+    .test(
+      "is-valid-number",
+      "Amount must be a valid number",
+      (value) => value !== undefined && value !== "" && !isNaN(Number(value))
+    ),
   tax: Yup.boolean().required("This field is required"),
 });
 

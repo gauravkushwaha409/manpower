@@ -20,13 +20,14 @@ const useCreateInvoice = () => {
     invoice_date: "",
     referance_no: "",
     products: [],
-    tempProductSchema: {
+    tempProduct: {
       product: "",
-      discount: 0,
-      quantity: 0,
-      rate: 0,
-      tax: 0,
+      discount: "",
+      quantity: "",
+      rate: "",
+      tax: false,
     },
+    edit_index: null,
   };
 
   const formik = useFormik<InvoiceSchemaType>({
