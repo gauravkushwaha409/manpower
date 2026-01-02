@@ -3,7 +3,7 @@ import { useUpdateModal } from "@/hooks/update-modal";
 import {
   ChartOfAccountSchemaType,
   chartOfAccountValidation,
-} from "../schema/account-schema";
+} from "../schema/chart-of-account-schema";
 import { useFormik } from "formik";
 import { endpoints } from "@/api/endpoints";
 import { apiTags } from "@/constant/tag";

@@ -1,33 +1,32 @@
 import { usePostDataMutation } from "@/api/api";
-import {
-  ChartOfAccountSchemaType,
-  chartOfAccountValidation,
-} from "../schema/chart-of-account-schema";
 import { useFormik } from "formik";
 import { endpoints } from "@/api/endpoints";
 import { apiTags } from "@/constant/tag";
 import { ApiResponse } from "@/api/api.error";
 import { handleResponse } from "@/utils/handleResponse";
 import { useAddModal } from "@/hooks/add-modal";
+import {
+  ChartOfGroupSchemaType,
+  chartOfGroupValidation,
+} from "../schema/chart-of-group-schema";
 
 const useCreateChartOfAccount = () => {
   const [createAccount, { isLoading }] = usePostDataMutation();
   const { handleCloseModal } = useAddModal();
 
-  const initialValues: ChartOfAccountSchemaType = {
-    account_name: "",
-    under: "",
-    code: "",
+  const initialValues: ChartOfGroupSchemaType = {
+    group_name: "",
     description: "",
+    under: "",
   };
-  const formik = useFormik<ChartOfAccountSchemaType>({
+  const formik = useFormik<ChartOfGroupSchemaType>({
     initialValues,
-    validationSchema: chartOfAccountValidation,
+    validationSchema: chartOfGroupValidation,
     onSubmit: async (values, { setErrors }) => {
       const response = (await createAccount({
-        url: endpoints.chartOfAccount.account.create,
+        url: endpoints.chartOfAccount.group.create,
         data: values,
-        invalidateTag: [apiTags.chartOfAccount.account.list],
+        invalidateTag: [apiTags.chartOfAccount.group.list],
       })) as ApiResponse;
       handleResponse({
         response,

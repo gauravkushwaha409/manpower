@@ -92,7 +92,7 @@ export const apiTags = {
       list: "get_all_chart_of_account",
       details: "get_chart_of_account_details",
     },
-    groups: {
+    group: {
       list: "get_all_chart_of_group",
       details: "get_chart_of_group_details",
     },

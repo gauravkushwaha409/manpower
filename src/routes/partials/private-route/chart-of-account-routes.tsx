@@ -1,6 +1,6 @@
 import { PATH } from "@/constant/path";
 import ChartOfAccount from "@/pages/chart-of-account/chart-of-account";
-import ChartOfGroup from "@/pages/chart-of-account/group";
+import ChartOfGroup from "@/pages/chart-of-account/chart-of-group";
 
 export const chartOfAccountRoutes = [
   {

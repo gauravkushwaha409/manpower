@@ -6,46 +6,46 @@ import { useAddModal } from "@/hooks/add-modal";
 import { useUpdateModal } from "@/hooks/update-modal";
 import { useDelete } from "@/hooks/useDelete";
 import React from "react";
-import CreateChartOfAccount from "./create-chart-of-account";
-import UpdateChartOfAccount from "./update-chart-of-account";
+import CreateChartOfGroup from "./create-chart-of-group";
+import UpdateChartOfGroup from "./update-chart-of-group";
 
-const ChartOfAccountModal = () => {
+const ChartOfGroupModal = () => {
   const addModal = useAddModal();
   const updateModal = useUpdateModal();
-  const deleteChartOfAccount = useDelete({
-    endpoints: endpoints.chartOfAccount.account.delete,
-    invalidates: [apiTags.chartOfAccount.account.list],
+  const deleteChartOfGroup = useDelete({
+    endpoints: endpoints.chartOfAccount.group.delete,
+    invalidates: [apiTags.chartOfAccount.group.list],
   });
   return (
     <React.Fragment>
       {/* Delete Modal */}
       <DeleteModal
-        isOpen={deleteChartOfAccount.isOpen}
-        onCancel={deleteChartOfAccount.handleCancel}
-        onConfirm={deleteChartOfAccount.handleDelete}
+        isOpen={deleteChartOfGroup.isOpen}
+        onCancel={deleteChartOfGroup.handleCancel}
+        onConfirm={deleteChartOfGroup.handleDelete}
       />
 
       {/* Create Chart Of Account */}
       <ModalWrapper
         className="xl:max-w-xl"
         isOpen={addModal.isOpen}
-        name="Create chart of account"
+        name="Create chart of group"
         onOpenChange={addModal.handleCloseModal}
       >
-        <CreateChartOfAccount />
+        <CreateChartOfGroup />
       </ModalWrapper>
 
       {/* Update Chart Of Account */}
       <ModalWrapper
         className="xl:max-w-xl"
         isOpen={updateModal.isOpen}
-        name="Update chart of account"
+        name="Update chart of group"
         onOpenChange={updateModal.handleCloseModal}
       >
-        <UpdateChartOfAccount />
+        <UpdateChartOfGroup />
       </ModalWrapper>
     </React.Fragment>
   );
 };
 
-export default ChartOfAccountModal;
+export default ChartOfGroupModal;
