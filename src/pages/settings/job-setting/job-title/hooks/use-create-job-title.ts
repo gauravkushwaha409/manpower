@@ -1,5 +1,5 @@
 import { usePostDataMutation } from "@/api/api";
-import { useAddModal } from "@/hooks/add-modal";
+import { useAddModal } from "@/hooks/use-add-modal";
 import {
   JobTitleSchemaType,
   JobTitleValidationSchema,

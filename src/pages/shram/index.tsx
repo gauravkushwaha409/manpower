@@ -3,7 +3,7 @@ import PageHeader from "@/common/PageHeader";
 import SearchFilter from "@/components/search-filter";
 import ModalWrapper from "@/components/shadcn/modal-wrapper";
 import { apiTags } from "@/constant/tag";
-import { useUpdateModal } from "@/hooks/update-modal";
+import { useUpdateModal } from "@/hooks/use-update-modal";
 import { useDelete } from "@/hooks/useDelete";
 import ShramTable from "./partials/orientation-list";
 import UpdateShram from "./partials/update-shram";

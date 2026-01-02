@@ -1,7 +1,7 @@
 import React from "react";
 import PageHeader from "@/common/PageHeader";
-import { useAddModal } from "@/hooks/add-modal";
-import { useUpdateModal } from "@/hooks/update-modal";
+import { useAddModal } from "@/hooks/use-add-modal";
+import { useUpdateModal } from "@/hooks/use-update-modal";
 import { useDelete } from "@/hooks/useDelete";
 import { endpoints } from "@/api/endpoints";
 import { apiTags } from "@/constant/tag";

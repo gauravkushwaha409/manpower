@@ -2,7 +2,7 @@ import PageHeader from "@/common/PageHeader";
 import SearchFilter from "@/components/search-filter";
 import InterviewTable from "./partials/interview-table";
 import ModalWrapper from "@/components/shadcn/modal-wrapper";
-import { useUpdateModal } from "@/hooks/update-modal";
+import { useUpdateModal } from "@/hooks/use-update-modal";
 import { useDelete } from "@/hooks/useDelete";
 import { endpoints } from "@/api/endpoints";
 import { apiTags } from "@/constant/tag";

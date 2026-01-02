@@ -3,7 +3,7 @@ import { ColumnDef } from "@tanstack/react-table";
 import { ICategoryListItem } from "../hooks/use-category-list";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useDelete } from "@/hooks/useDelete";
-import { useUpdateModal } from "@/hooks/update-modal";
+import { useUpdateModal } from "@/hooks/use-update-modal";
 
 export const categoryData: ICategoryListItem[] = [
   {

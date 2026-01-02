@@ -1,6 +1,6 @@
 import PageHeader from "@/common/PageHeader";
 import SearchFilter from "@/components/search-filter";
-import { useAddModal } from "@/hooks/add-modal";
+import { useAddModal } from "@/hooks/use-add-modal";
 import React from "react";
 
 const ChartOfAccountHeader = () => {

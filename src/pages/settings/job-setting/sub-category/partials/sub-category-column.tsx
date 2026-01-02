@@ -1,7 +1,7 @@
 import TableAction from "@/components/TableAction";
 import { ColumnDef } from "@tanstack/react-table";
 import { ISubCategoryListItem } from "../hooks/use-sub-category-list";
-import { useUpdateModal } from "@/hooks/update-modal";
+import { useUpdateModal } from "@/hooks/use-update-modal";
 import { useDelete } from "@/hooks/useDelete";
 import { Checkbox } from "@/components/ui/checkbox";
 

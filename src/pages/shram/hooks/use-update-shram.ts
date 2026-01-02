@@ -2,7 +2,7 @@ import { useUpdateDataMutation } from "@/api/api";
 import { useFormik } from "formik";
 import { apiTags } from "@/constant/tag";
 import { endpoints } from "@/api/endpoints";
-import { useUpdateModal } from "@/hooks/update-modal";
+import { useUpdateModal } from "@/hooks/use-update-modal";
 import { ApiResponse } from "@/api/api.error";
 import { handleResponse } from "@/utils/handleResponse";
 import useShramDetails from "./use-shram-details";

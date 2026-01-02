@@ -1,5 +1,5 @@
 import { useUpdateDataMutation } from "@/api/api";
-import { useUpdateModal } from "@/hooks/update-modal";
+import { useUpdateModal } from "@/hooks/use-update-modal";
 import useCategoryDetails from "./use-category-details";
 import {
   CategorySchemaType,

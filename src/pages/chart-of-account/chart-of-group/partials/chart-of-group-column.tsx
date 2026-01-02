@@ -3,7 +3,7 @@ import { IChartOfGroupListItem } from "../hooks/use-chart-of-group-list";
 import { Checkbox } from "@/components/ui/checkbox";
 import TableAction from "@/components/TableAction";
 import { useDelete } from "@/hooks/useDelete";
-import { useUpdateModal } from "@/hooks/update-modal";
+import { useUpdateModal } from "@/hooks/use-update-modal";
 
 const ChartOfGroupColumn = (): ColumnDef<IChartOfGroupListItem>[] => {
   const { handleOpenModal: handleOpenDeleteModal } = useDelete({});

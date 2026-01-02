@@ -1,7 +1,7 @@
 import PageHeader from "@/common/PageHeader";
 import SearchFilter from "@/components/search-filter";
-import { useAddModal } from "@/hooks/add-modal";
-import { useUpdateModal } from "@/hooks/update-modal";
+import { useAddModal } from "@/hooks/use-add-modal";
+import { useUpdateModal } from "@/hooks/use-update-modal";
 import SubCategoryTable from "./partials/sub-category-table";
 import ModalWrapper from "@/components/shadcn/modal-wrapper";
 import CreateSubCategory from "./partials/create-sub-category";

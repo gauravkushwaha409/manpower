@@ -6,7 +6,7 @@ import {
 } from "../schema/country-schema";
 import { apiTags } from "@/constant/tag";
 import { endpoints } from "@/api/endpoints";
-import { useUpdateModal } from "@/hooks/update-modal";
+import { useUpdateModal } from "@/hooks/use-update-modal";
 import { ApiResponse } from "@/api/api.error";
 import { handleResponse } from "@/utils/handleResponse";
 import useCountryDetails from "./use-country-details";

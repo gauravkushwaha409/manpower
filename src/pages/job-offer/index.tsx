@@ -2,7 +2,7 @@ import { endpoints } from "@/api/endpoints";
 import PageHeader from "@/common/PageHeader";
 import SearchFilter from "@/components/search-filter";
 import { apiTags } from "@/constant/tag";
-import { useUpdateModal } from "@/hooks/update-modal";
+import { useUpdateModal } from "@/hooks/use-update-modal";
 import { useDelete } from "@/hooks/useDelete";
 import JobOfferTable from "./partials/job-offer-list";
 import ModalWrapper from "@/components/shadcn/modal-wrapper";

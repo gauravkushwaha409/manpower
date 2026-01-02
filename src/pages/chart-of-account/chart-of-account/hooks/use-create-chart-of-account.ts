@@ -8,7 +8,7 @@ import { endpoints } from "@/api/endpoints";
 import { apiTags } from "@/constant/tag";
 import { ApiResponse } from "@/api/api.error";
 import { handleResponse } from "@/utils/handleResponse";
-import { useAddModal } from "@/hooks/add-modal";
+import { useAddModal } from "@/hooks/use-add-modal";
 
 const useCreateChartOfAccount = () => {
   const [createAccount, { isLoading }] = usePostDataMutation();

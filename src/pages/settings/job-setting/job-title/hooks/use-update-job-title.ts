@@ -1,5 +1,5 @@
 import { useUpdateDataMutation } from "@/api/api";
-import { useUpdateModal } from "@/hooks/update-modal";
+import { useUpdateModal } from "@/hooks/use-update-modal";
 import useJobTitleDetails from "./use-job-title-details";
 import {
   JobTitleSchemaType,

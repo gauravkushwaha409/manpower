@@ -8,7 +8,7 @@ import { apiTags } from "@/constant/tag";
 import { endpoints } from "@/api/endpoints";
 import { ApiResponse } from "@/api/api.error";
 import { handleResponse } from "@/utils/handleResponse";
-import { useAddModal } from "@/hooks/add-modal";
+import { useAddModal } from "@/hooks/use-add-modal";
 
 const useCreateCountry = () => {
   const [createCountry, { isLoading }] = usePostDataMutation();

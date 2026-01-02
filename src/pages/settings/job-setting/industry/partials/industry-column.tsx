@@ -1,7 +1,7 @@
 import { ColumnDef } from "@tanstack/react-table";
 import TableAction from "@/components/TableAction";
 import React from "react";
-import { useUpdateModal } from "@/hooks/update-modal";
+import { useUpdateModal } from "@/hooks/use-update-modal";
 import { IndustryListItem } from "../hooks/use-get-all-industry";
 import { useDelete } from "@/hooks/useDelete";
 import { Checkbox } from "@/components/ui/checkbox";

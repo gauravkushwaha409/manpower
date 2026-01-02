@@ -4,7 +4,7 @@ import DeleteModal from "@/components/DeleteModal";
 import SearchFilter from "@/components/search-filter";
 import ModalWrapper from "@/components/shadcn/modal-wrapper";
 import { apiTags } from "@/constant/tag";
-import { useUpdateModal } from "@/hooks/update-modal";
+import { useUpdateModal } from "@/hooks/use-update-modal";
 import { useDelete } from "@/hooks/useDelete";
 import OrientationTable from "./partials/orientation-list";
 import UpdateOrientation from "./partials/update-orientation";

@@ -1,7 +1,7 @@
 import PageHeader from "@/common/PageHeader";
 import SearchFilter from "@/components/search-filter";
-import { useAddModal } from "@/hooks/add-modal";
-import { useUpdateModal } from "@/hooks/update-modal";
+import { useAddModal } from "@/hooks/use-add-modal";
+import { useUpdateModal } from "@/hooks/use-update-modal";
 import DocumentTable from "./partials/document-table";
 import ModalWrapper from "@/components/shadcn/modal-wrapper";
 import CreateDocument from "./partials/create-document";

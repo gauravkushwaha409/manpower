@@ -4,7 +4,7 @@ import {
   IndustrySchemaType,
   IndustryValidationSchema,
 } from "../schema/industry-schema";
-import { useUpdateModal } from "@/hooks/update-modal";
+import { useUpdateModal } from "@/hooks/use-update-modal";
 import { endpoints } from "@/api/endpoints";
 import { apiTags } from "@/constant/tag";
 

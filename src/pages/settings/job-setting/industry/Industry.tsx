@@ -1,8 +1,8 @@
 import React from "react";
 import PageHeader from "@/common/PageHeader";
 import SearchFilter from "@/components/search-filter";
-import { useAddModal } from "@/hooks/add-modal";
-import { useUpdateModal } from "@/hooks/update-modal";
+import { useAddModal } from "@/hooks/use-add-modal";
+import { useUpdateModal } from "@/hooks/use-update-modal";
 import ModalWrapper from "@/components/shadcn/modal-wrapper";
 import CreateIndustry from "./partials/create-industry";
 import UpdateIndustry from "./partials/update-industry";

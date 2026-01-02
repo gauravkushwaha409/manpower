@@ -1,6 +1,6 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { useDelete } from "@/hooks/useDelete";
-import { useUpdateModal } from "@/hooks/update-modal";
+import { useUpdateModal } from "@/hooks/use-update-modal";
 import { Checkbox } from "@/components/ui/checkbox";
 import TableAction from "@/components/TableAction";
 import { ICountryListItem } from "../hooks/use-country-list";

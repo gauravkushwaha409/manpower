@@ -2,7 +2,7 @@ import { endpoints } from "@/api/endpoints";
 import PageHeader from "@/common/PageHeader";
 import SearchFilter from "@/components/search-filter";
 import { apiTags } from "@/constant/tag";
-import { useUpdateModal } from "@/hooks/update-modal";
+import { useUpdateModal } from "@/hooks/use-update-modal";
 import { useDelete } from "@/hooks/useDelete";
 import VisaTable from "./partials/visa-list";
 import ModalWrapper from "@/components/shadcn/modal-wrapper";

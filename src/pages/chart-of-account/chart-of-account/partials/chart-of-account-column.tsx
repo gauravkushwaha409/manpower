@@ -3,7 +3,7 @@ import { IChartOfAccountListItem } from "../hooks/use-chart-of-account-list";
 import { Checkbox } from "@/components/ui/checkbox";
 import TableAction from "@/components/TableAction";
 import { useDelete } from "@/hooks/useDelete";
-import { useUpdateModal } from "@/hooks/update-modal";
+import { useUpdateModal } from "@/hooks/use-update-modal";
 
 const ChartOfAccountColumn = (): ColumnDef<IChartOfAccountListItem>[] => {
   const { handleOpenModal: handleOpenDeleteModal } = useDelete({});
