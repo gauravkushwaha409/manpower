@@ -139,6 +139,26 @@ export const mainMenuItems = [
     link: PATH.quickPayment.index,
   },
   {
+    id: "chart-of-account",
+    icon: User2,
+    label: "Chart Of Account",
+    active: false,
+    children: [
+      {
+        id: "chart-of-account-account",
+        label: "Account",
+        icon: TbSeo,
+        link: PATH.chartOfAccount.account.index,
+      },
+      {
+        id: "chart-of-account-group",
+        label: "Group",
+        icon: TbSeo,
+        link: PATH.chartOfAccount.group.index,
+      },
+    ],
+  },
+  {
     id: "settings",
     icon: IoSettingsOutline,
     label: "Settings",

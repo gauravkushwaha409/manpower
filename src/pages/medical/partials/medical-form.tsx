@@ -1,6 +1,6 @@
 import FormInputDate from "@/components/form/form-input-date";
 import FormInputSelect, { IOption } from "@/components/form/form-input-select";
-import FormTextArea from "@/components/form/form-text-area";
+import FormTextArea from "@/components/form/form-input-text-area";
 import FormInputPdf from "@/components/form/FormInputPdf";
 import FormInputText from "@/components/form/FormInputText";
 

@@ -1,6 +1,6 @@
 import FormInputDate from "@/components/form/form-input-date";
 import FormInputSelect, { IOption } from "@/components/form/form-input-select";
-import FormTextArea from "@/components/form/form-text-area";
+import FormTextArea from "@/components/form/form-input-text-area";
 import FormInputText from "@/components/form/FormInputText";
 import Table from "@/components/Table";
 import TableWrapper from "@/components/TableWrapper";

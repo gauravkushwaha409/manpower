@@ -14,7 +14,7 @@ interface ITextArea extends ComponentProps<"textarea"> {
   required?: boolean;
 }
 
-const FormTextArea: React.FC<ITextArea> = ({
+const FormInputTextArea: React.FC<ITextArea> = ({
   name,
   label,
   placeholder,
@@ -46,4 +46,4 @@ const FormTextArea: React.FC<ITextArea> = ({
     </div>
   );
 };
-export default FormTextArea;
+export default FormInputTextArea;

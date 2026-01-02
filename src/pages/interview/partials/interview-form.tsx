@@ -1,7 +1,7 @@
 import FormInputDate from "@/components/form/form-input-date";
 import FormInputSelect, { IOption } from "@/components/form/form-input-select";
 import FormInputText from "@/components/form/FormInputText";
-import FormTextArea from "@/components/form/form-text-area";
+import FormTextArea from "@/components/form/form-input-text-area";
 
 export const interviewResultOption: IOption[] = [
   { label: "Pending", value: "pending" },

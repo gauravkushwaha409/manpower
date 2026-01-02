@@ -73,6 +73,14 @@ export const PATH = {
     create: "/expense/create",
     update: "/expense/update/:id",
   },
+  chartOfAccount: {
+    account: {
+      index: "/chart-of-account/account",
+    },
+    group: {
+      index: "/chart-of-account/group",
+    },
+  },
   quickPayment: {
     index: "/quick-payment",
     create: "/quick-payment/create",

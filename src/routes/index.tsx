@@ -20,6 +20,7 @@ import { insuranceRoutes } from "./partials/private-route/insurance-routes";
 import { invoiceRoutes } from "./partials/private-route/invoice-routes";
 import { expenseRoutes } from "./partials/private-route/expense-routes";
 import { quickPaymentRoutes } from "./partials/private-route/quick-payment-routes";
+import { chartOfAccountRoutes } from "./partials/private-route/chart-of-account-routes";
 
 /**
  * MainRoutes defines the routing configuration for the application.
@@ -53,6 +54,7 @@ const MainRoutes = [
       ...invoiceRoutes,
       ...expenseRoutes,
       ...quickPaymentRoutes,
+      ...chartOfAccountRoutes,
       ...settingRoutes,
     ],
   },

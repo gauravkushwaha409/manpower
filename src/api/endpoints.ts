@@ -164,6 +164,22 @@ export const endpoints = {
     delete: "",
     details: "",
   },
+  chartOfAccount: {
+    account: {
+      list: "",
+      create: "",
+      update: "",
+      delete: "",
+      details: "",
+    },
+    group: {
+      list: "",
+      create: "",
+      update: "",
+      delete: "",
+      details: "",
+    },
+  },
 };
 
 export const BASE_API_URL =
