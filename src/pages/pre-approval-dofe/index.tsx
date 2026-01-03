@@ -1,43 +1,14 @@
-import PageHeader from "@/common/PageHeader";
-import { PATH } from "@/constant/path";
 import PreApprovalDofeTable from "./partials/pre-approval-dofe-table";
-import SearchFilter from "@/components/search-filter";
-import { useNavigate } from "react-router-dom";
-import { useDelete } from "@/hooks/useDelete";
-import { endpoints } from "@/api/endpoints";
-import { apiTags } from "@/constant/tag";
-import DeleteModal from "@/components/DeleteModal";
+import PreApprovalDofeHeader from "./partials/pre-approval-dofe-header";
+import PreApprovalDofeModal from "./partials/pre-approval-dofe-modal";
 
 const PreApprovalDofe = () => {
-  const navigate = useNavigate();
-  const deleteModal = useDelete({
-    endpoints: endpoints.preApprovalDofe.delete,
-    invalidates: [apiTags.preApprovalDofe.list],
-  });
   return (
     <div className="u-flex-parent">
-      <PageHeader title="Pre Approval DOFE" />
-      <SearchFilter
-        dateFilter
-        handleAddClick={() => {
-          navigate(PATH.preApprovalDofe.create);
-        }}
-        selectFilter={[
-          {
-            placeholder: "Select Comapny",
-            option: [{ label: "Dome Infosys", value: "dome-infosys" }],
-            paramsKey: "company",
-          },
-        ]}
-      />
+      <PreApprovalDofeHeader />
       <PreApprovalDofeTable />
-
-      {/* Delete Modal */}
-      <DeleteModal
-        isOpen={deleteModal.isOpen}
-        onCancel={deleteModal.handleCancel}
-        onConfirm={deleteModal.handleDelete}
-      />
+      {/* Pre Approval DOFE Modal */}
+      <PreApprovalDofeModal />
     </div>
   );
 };

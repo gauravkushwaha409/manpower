@@ -15,7 +15,6 @@ import usePreApprovalDofeForm from "../hooks/use-pre-approval-dofe-form";
 import TableWrapper from "@/components/TableWrapper";
 import Table from "@/components/Table";
 import { ColumnDef } from "@tanstack/react-table";
-import useQuickPaymentForm from "@/pages/quick-payment/hooks/use-quick-payment-form";
 import TableAction from "@/components/TableAction";
 
 // =========================== Pre Approval Step - 1 Form ===============================
@@ -290,7 +289,7 @@ const JobDetailsTable = () => {
 
 // ============================= Payment Columns =====================================
 const JobDetailsColumn = (): ColumnDef<PreApprovalJobListItem>[] => {
-  const { handleEditPayment, handleDeletePayment } = useQuickPaymentForm();
+  const { handleEditJob, handleDeleteJob } = usePreApprovalDofeForm();
   return [
     {
       header: "Job Title",
@@ -337,14 +336,14 @@ const JobDetailsColumn = (): ColumnDef<PreApprovalJobListItem>[] => {
             active: true,
             onClick: (e: React.MouseEvent<HTMLButtonElement>) => {
               e.preventDefault();
-              handleEditPayment(row?.index);
+              handleEditJob(row?.index);
             },
           }}
           del={{
             active: true,
             onClick: (e: React.MouseEvent<HTMLButtonElement>) => {
               e.preventDefault();
-              handleDeletePayment(row?.index);
+              handleDeleteJob(row?.index);
             },
           }}
         />
