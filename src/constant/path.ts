@@ -81,6 +81,14 @@ export const PATH = {
       index: "/chart-of-account/group",
     },
   },
+  chequeRegister: {
+    chequeIssued: {
+      index: "/cheque-register/cheque-issued",
+    },
+    chequeReceived: {
+      index: "/cheque-register/cheque-received",
+    },
+  },
   quickPayment: {
     index: "/quick-payment",
     create: "/quick-payment/create",
