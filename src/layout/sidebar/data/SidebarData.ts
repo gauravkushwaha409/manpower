@@ -1,7 +1,7 @@
 import { IoSettingsOutline, IoListOutline } from "react-icons/io5";
 import { TbSeo } from "react-icons/tb";
 import { TfiWorld } from "react-icons/tfi";
-import { CheckCheck, User2 } from "lucide-react";
+import { CheckCheck, User2, AirVent } from "lucide-react";
 import { LiaIndustrySolid } from "react-icons/lia";
 import { PiBuildingOffice } from "react-icons/pi";
 import { MdDashboard } from "react-icons/md";
@@ -142,7 +142,14 @@ export const mainMenuItems = [
             icon: User2,
             label: "Expense",
             active: false,
-            link: PATH.expense.index,
+            link: PATH.accounting.purchase.expense.index,
+          },
+          {
+            id: "supplier",
+            icon: AirVent,
+            label: "Supplier",
+            active: false,
+            link: PATH.accounting.purchase.supplier.index,
           },
         ],
       },

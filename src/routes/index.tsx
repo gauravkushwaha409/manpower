@@ -18,10 +18,10 @@ import { shramRoutes } from "./partials/private-route/shram-routes";
 import { ticketRoutes } from "./partials/private-route/ticket-routes";
 import { insuranceRoutes } from "./partials/private-route/insurance-routes";
 import { invoiceRoutes } from "./partials/private-route/invoice-routes";
-import { expenseRoutes } from "./partials/private-route/expense-routes";
 import { quickPaymentRoutes } from "./partials/private-route/quick-payment-routes";
 import { chartOfAccountRoutes } from "./partials/private-route/chart-of-account-routes";
 import { chequeRegistered } from "./partials/private-route/cheque-register-routes";
+import { accountingRoutes } from "./partials/private-route/accounting-routes";
 
 /**
  * MainRoutes defines the routing configuration for the application.
@@ -53,11 +53,11 @@ const MainRoutes = [
       ...shramRoutes,
       ...ticketRoutes,
       ...invoiceRoutes,
-      ...expenseRoutes,
       ...quickPaymentRoutes,
       ...chartOfAccountRoutes,
       ...chequeRegistered,
       ...settingRoutes,
+      ...accountingRoutes,
     ],
   },
 

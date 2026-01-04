@@ -68,11 +68,6 @@ export const PATH = {
     create: "/invoice/create",
     update: "/invoice/update/:id",
   },
-  expense: {
-    index: "/expense",
-    create: "/expense/create",
-    update: "/expense/update/:id",
-  },
   chartOfAccount: {
     account: {
       index: "/chart-of-account/account",
@@ -93,6 +88,22 @@ export const PATH = {
     index: "/quick-payment",
     create: "/quick-payment/create",
     update: "/quick-payment/update/:id",
+  },
+  accounting: {
+    purchase: {
+      expense: {
+        index: "/accounting/purchase/expense",
+        create: "/accounting/purchase/expense/create",
+        update: "/accounting/purchase/expense/create/:id",
+      },
+      supplier: {
+        index: "/accounting/purchase/supplier",
+      },
+    },
+    sales: {},
+    quickPayment: {},
+    chartOfAccount: {},
+    chequeRegister: {},
   },
   setting: {
     index: "/setting",

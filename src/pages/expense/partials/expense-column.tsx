@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 import { useCallback } from "react";
 import { PATH } from "@/constant/path";
 import { useDelete } from "@/hooks/useDelete";
+import { endpoints } from "@/api/endpoints";
+import { apiTags } from "@/constant/tag";
 
 export const expenseListData: IExpenseListItem[] = [
   {
@@ -53,9 +55,12 @@ export const expenseListData: IExpenseListItem[] = [
 const ExpenseColumn = (): ColumnDef<IExpenseListItem>[] => {
   const navigate = useNavigate();
   const handleClickEdit = useCallback((id: string) => {
-    navigate(PATH.expense.update.replace(":id", id));
+    navigate(PATH.accounting.purchase.expense.update.replace(":id", id));
   }, []);
-  const { handleOpenModal: handleOpenDeleteModal } = useDelete({});
+  const { handleOpenModal: handleOpenDeleteModal } = useDelete({
+    endpoints: endpoints.expense.delete,
+    invalidates: [apiTags.expense.list],
+  });
 
   return [
     {

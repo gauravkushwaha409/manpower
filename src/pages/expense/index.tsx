@@ -7,14 +7,13 @@ import ExpenseModal from "./partials/expense-modal";
 
 const Expense = () => {
   const navigate = useNavigate();
-  console.log("re-render");
   return (
     <div className="u-flex-parent">
       <PageHeader title="Expense" />
       <SearchFilter
         dateFilter
         handleAddClick={() => {
-          navigate(PATH.expense.create);
+          navigate(PATH.accounting.purchase.expense.create);
         }}
       />
       <ExpenseTable />
