@@ -25,5 +25,15 @@ const QUERY_PARAMS = {
       },
     },
   },
+  // Supplier
+  supplier: {
+    createSupplier: {
+      key: "create-supplier",
+      value: "active",
+    },
+    updateSupplier: {
+      key: "update-supplier",
+    },
+  },
 };
 export default QUERY_PARAMS;

@@ -194,6 +194,13 @@ export const endpoints = {
     delete: "",
     details: "",
   },
+  supplier: {
+    list: "",
+    create: "",
+    update: "",
+    delete: "",
+    details: "",
+  },
 };
 
 export const BASE_API_URL =
