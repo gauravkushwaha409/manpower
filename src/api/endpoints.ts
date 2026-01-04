@@ -201,6 +201,13 @@ export const endpoints = {
     delete: "",
     details: "",
   },
+  user: {
+    list: "",
+    create: "",
+    update: "",
+    delete: "",
+    details: "",
+  },
 };
 
 export const BASE_API_URL =

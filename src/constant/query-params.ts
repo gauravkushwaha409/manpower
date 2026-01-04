@@ -35,5 +35,15 @@ const QUERY_PARAMS = {
       key: "update-supplier",
     },
   },
+  // User
+  user: {
+    createUser: {
+      key: "create-user",
+      value: "active",
+    },
+    updateUser: {
+      key: "update-user",
+    },
+  },
 };
 export default QUERY_PARAMS;

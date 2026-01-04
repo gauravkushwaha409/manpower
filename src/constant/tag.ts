@@ -111,4 +111,8 @@ export const apiTags = {
       details: "get_cheque-received_details",
     },
   },
+  user: {
+    list: "get_all_user",
+    details: "get_user_details",
+  },
 };

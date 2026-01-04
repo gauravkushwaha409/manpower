@@ -1,7 +1,7 @@
 import { IoSettingsOutline, IoListOutline } from "react-icons/io5";
 import { TbSeo } from "react-icons/tb";
 import { TfiWorld } from "react-icons/tfi";
-import { CheckCheck, User2, AirVent } from "lucide-react";
+import { CheckCheck, User2, AirVent, UserMinus2Icon } from "lucide-react";
 import { LiaIndustrySolid } from "react-icons/lia";
 import { PiBuildingOffice } from "react-icons/pi";
 import { MdDashboard } from "react-icons/md";
@@ -305,5 +305,12 @@ export const mainMenuItems = [
     active: false,
     // link: PATH.ticket.index,
     link: PATH.orientation.index,
+  },
+  {
+    id: "user",
+    icon: UserMinus2Icon,
+    label: "User",
+    active: false,
+    link: PATH.user.index,
   },
 ];

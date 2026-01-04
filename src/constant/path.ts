@@ -115,4 +115,7 @@ export const PATH = {
     },
     documentSetting: "/setting/document-setting",
   },
+  user: {
+    index: "/user",
+  },
 };
