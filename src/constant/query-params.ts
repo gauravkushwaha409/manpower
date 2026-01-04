@@ -15,7 +15,15 @@ const QUERY_PARAMS = {
         key: "update-cheque-issued",
       },
     },
-    chequeRegister: {},
+    chequeReceived: {
+      createChequeReceived: {
+        key: "create-cheque-received",
+        value: "active",
+      },
+      updateChequeReceived: {
+        key: "update-cheque-received",
+      },
+    },
   },
 };
 export default QUERY_PARAMS;
