@@ -1,7 +1,7 @@
 import { PATH } from "@/constant/path";
-import Expense from "@/pages/expense";
-import CreateExpense from "@/pages/expense/child/create-expense";
-import UpdateExpense from "@/pages/expense/child/update-expense";
+import Expense from "@/pages/purchase/expense";
+import CreateExpense from "@/pages/purchase/expense/child/create-expense";
+import UpdateExpense from "@/pages/purchase/expense/child/update-expense";
 import Supplier from "@/pages/purchase/supplier";
 
 export const accountingRoutes = [

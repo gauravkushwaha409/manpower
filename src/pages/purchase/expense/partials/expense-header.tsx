@@ -1,14 +1,14 @@
 import PageHeader from "@/common/PageHeader";
 import SearchFilter from "@/components/search-filter";
 import { PATH } from "@/constant/path";
+import React from "react";
 import { useNavigate } from "react-router-dom";
-import ExpenseTable from "./partials/expense-table";
-import ExpenseModal from "./partials/expense-modal";
 
-const Expense = () => {
+export default function ExpenseHeader() {
   const navigate = useNavigate();
+
   return (
-    <div className="u-flex-parent">
+    <React.Fragment>
       <PageHeader title="Expense" />
       <SearchFilter
         dateFilter
@@ -16,12 +16,6 @@ const Expense = () => {
           navigate(PATH.accounting.purchase.expense.create);
         }}
       />
-      <ExpenseTable />
-
-      {/* ====================== Modal of Expense ================= */}
-      <ExpenseModal />
-    </div>
+    </React.Fragment>
   );
-};
-
-export default Expense;
+}

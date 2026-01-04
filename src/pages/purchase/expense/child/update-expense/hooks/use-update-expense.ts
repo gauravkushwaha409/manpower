@@ -6,7 +6,7 @@ import { apiTags } from "@/constant/tag";
 import {
   ExpenseSchemaType,
   expenseValidationSchema,
-} from "@/pages/expense/schema/expense-schema";
+} from "@/pages/purchase/expense/schema/expense-schema";
 import { handleResponse } from "@/utils/handleResponse";
 import { useFormik } from "formik";
 import { useNavigate, useParams } from "react-router-dom";
@@ -23,12 +23,12 @@ const useUpdateExpense = () => {
     supplier_invoice_reference_no: "",
     date: "",
     due_date: "",
-    temp_account: {
+    temp_expense: {
       account: "",
-      amount: 0,
+      amount: "",
       tax: false,
     },
-    accounts: [],
+    expenses: [],
     remarks: "",
   };
   // ======================== Formik Instance ================================
@@ -47,7 +47,7 @@ const useUpdateExpense = () => {
         setErrorCallBack: setErrors,
         handleOnSuccess: () => {
           resetForm();
-          navigate(PATH.expense.index);
+          navigate(PATH.accounting.purchase.expense.index);
         },
       });
     },

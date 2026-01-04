@@ -3,13 +3,13 @@ import { ApiResponse } from "@/api/api.error";
 import { endpoints } from "@/api/endpoints";
 import { PATH } from "@/constant/path";
 import { apiTags } from "@/constant/tag";
-import {
-  ExpenseSchemaType,
-  expenseValidationSchema,
-} from "@/pages/expense/schema/expense-schema";
 import { handleResponse } from "@/utils/handleResponse";
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
+import {
+  ExpenseSchemaType,
+  expenseValidationSchema,
+} from "@/pages/purchase/expense/schema/expense-schema";
 
 const useCreateExpense = () => {
   const [createExpense, { isLoading }] = usePostDataMutation();
@@ -44,7 +44,7 @@ const useCreateExpense = () => {
         setErrorCallBack: setErrors,
         handleOnSuccess: () => {
           resetForm();
-          navigate(PATH.expense.index);
+          navigate(PATH.accounting.purchase.expense.index);
         },
       });
     },

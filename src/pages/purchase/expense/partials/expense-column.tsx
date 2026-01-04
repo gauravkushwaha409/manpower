@@ -109,7 +109,7 @@ const ExpenseColumn = (): ColumnDef<IExpenseListItem>[] => {
     {
       header: "Supplier",
       accessorKey: "supplier",
-      size: 800,
+      size: 400,
     },
     {
       header: "Bill No.",

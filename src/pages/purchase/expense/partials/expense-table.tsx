@@ -12,6 +12,7 @@ const ExpenseTable = () => {
         // expenseList.expenseListResponse?.data?.records?.length > 0
         true
       }
+      wrapperClassName="mt-4"
     >
       <Table
         columns={ExpenseColumn()}

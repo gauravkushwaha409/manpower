@@ -1,4 +1,4 @@
-import { ExpenseSchemaType } from "@/pages/expense/schema/expense-schema";
+import { ExpenseSchemaType } from "@/pages/purchase/expense/schema/expense-schema";
 import { useFormikContext } from "formik";
 import { useCallback } from "react";
 
