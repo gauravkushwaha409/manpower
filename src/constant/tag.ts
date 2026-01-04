@@ -97,4 +97,14 @@ export const apiTags = {
       details: "get_chart_of_group_details",
     },
   },
+  chequeRegister: {
+    chequeIssued: {
+      list: "get_all_cheque-issued",
+      details: "get_cheque-issued_details",
+    },
+    chequeReceived: {
+      list: "get_all_cheque-received",
+      details: "get_cheque-received_details",
+    },
+  },
 };

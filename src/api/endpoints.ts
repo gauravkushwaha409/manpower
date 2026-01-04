@@ -180,6 +180,13 @@ export const endpoints = {
       details: "",
     },
   },
+  chequeIssued: {
+    list: "",
+    create: "",
+    update: "",
+    delete: "",
+    details: "",
+  },
 };
 
 export const BASE_API_URL =

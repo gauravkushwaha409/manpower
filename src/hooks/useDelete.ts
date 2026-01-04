@@ -1,58 +1,49 @@
 import { useDeleteDataMutation } from "@/api/api";
-import useDisclosure from "@/hooks/useDisclousre";
 import { showSuccessMessage } from "@/utils/toast";
-import useStringState from "@/utils/useStringState";
-import { useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
-import { useUpdateSearchParams } from "./updateSearchParams";
+import useQueryParams from "./use-query-params";
 
 interface IProps {
-  endpoints?: string;
+  endpoints: string;
   invalidates?: string[];
 }
 
-export const useDelete = ({ endpoints, invalidates }: IProps) => {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const updateSearchParams = useUpdateSearchParams();
+export const useDelete = ({ endpoints, invalidates = [] }: IProps) => {
+  const { getQueryParams, updateQueryParams, deleteQueryParams } =
+    useQueryParams();
   const [deleteEntry, { isLoading }] = useDeleteDataMutation();
-  const deleteState = useDisclosure(false);
-  const deleteIdState = useStringState();
-  useEffect(() => {
-    const deleteIdParams = searchParams.get("delete_id");
-    const deleteParams = searchParams.get("delete");
-    if (deleteParams === "active") deleteState.open();
-    if (deleteIdParams) deleteIdState.setValue(deleteIdParams);
-  }, [searchParams]);
+
+  // URL is the source of truth
+  const deleteId = getQueryParams("delete_id");
+  const isOpen = Boolean(deleteId);
+
+  const handleOpenModal = (id: string) => {
+    updateQueryParams({ delete_id: id });
+  };
 
   const handleCancel = () => {
-    searchParams.delete("delete");
-    searchParams.delete("delete_id");
-    setSearchParams(searchParams, { replace: true });
-    deleteState.close();
+    deleteQueryParams(["delete_id"]);
   };
 
   const handleDelete = async () => {
-    if (!endpoints) throw new Error("Endpoint not defined");
+    if (!deleteId) return;
+
     const response = (await deleteEntry({
-      url:
-        endpoints?.replace(":id", deleteIdState.values) ||
-        "endpoint_not_defined",
-      invalidateTag: [...invalidates!],
-    })) as { data: { message: string } };
-    if (response?.data?.message) showSuccessMessage(response?.data?.message);
+      url: endpoints.replace(":id", deleteId),
+      invalidateTag: invalidates,
+    })) as { data?: { message?: string } };
+
+    if (response?.data?.message) {
+      showSuccessMessage(response.data.message);
+      handleCancel(); // close modal after success
+    }
   };
 
-  const handleOpenModal = (id: string) =>
-    updateSearchParams({
-      delete: "active",
-      delete_id: id,
-    });
   return {
-    handleCancel,
-    isOpen: deleteState.isOpen,
-    deleteId: deleteIdState.values,
-    handleDelete,
+    isOpen,
+    deleteId,
     isLoading,
     handleOpenModal,
+    handleCancel,
+    handleDelete,
   };
 };

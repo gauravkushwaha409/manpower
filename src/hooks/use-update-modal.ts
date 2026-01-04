@@ -1,24 +1,18 @@
 import useQueryParams from "./use-query-params";
 
-export const useUpdateModal = () => {
+export const useUpdateModal = (key: string = "update-id") => {
   const { updateQueryParams, deleteQueryParams, getQueryParams } =
     useQueryParams();
 
-  const isOpen =
-    getQueryParams("update") === "active" &&
-    Boolean(getQueryParams("update-id"));
-
-  const updateId = getQueryParams("update-id");
+  const isOpen = Boolean(getQueryParams(key));
+  const updateId = getQueryParams(key);
 
   const handleOpenModal = (id: string) => {
-    updateQueryParams({
-      update: "active",
-      "update-id": id,
-    });
+    updateQueryParams({ [key]: id });
   };
 
   const handleCloseModal = () => {
-    deleteQueryParams(["update", "update-id"]);
+    deleteQueryParams([key]);
   };
 
   return {

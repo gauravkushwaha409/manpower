@@ -4,5 +4,18 @@ const QUERY_PARAMS = {
     updateOrientationStatus: "update-orientation-status",
     orientationStatus: "orientation-status",
   },
+  // Cheque Register
+  chequeRegister: {
+    chequeIssued: {
+      createChequeIssued: {
+        key: "create-cheque-issued",
+        value: "active",
+      },
+      updateChequeIssued: {
+        key: "update-cheque-issued",
+      },
+    },
+    chequeRegister: {},
+  },
 };
 export default QUERY_PARAMS;

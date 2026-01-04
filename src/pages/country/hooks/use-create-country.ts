@@ -10,15 +10,16 @@ import { ApiResponse } from "@/api/api.error";
 import { handleResponse } from "@/utils/handleResponse";
 import { useAddModal } from "@/hooks/use-add-modal";
 
+const initialValues: CountrySchemaType = {
+  country: "",
+  currency: "",
+  capital: "",
+  language: "",
+};
+
 const useCreateCountry = () => {
   const [createCountry, { isLoading }] = usePostDataMutation();
   const { handleCloseModal } = useAddModal();
-  const initialValues: CountrySchemaType = {
-    country: "",
-    currency: "",
-    capital: "",
-    language: "",
-  };
 
   const formik = useFormik<CountrySchemaType>({
     initialValues,
@@ -32,8 +33,10 @@ const useCreateCountry = () => {
       handleResponse({
         response,
         setErrorCallBack: setErrors,
-        handleCloseModal: handleCloseModal,
-        resetForm: resetForm,
+        handleOnSuccess: () => {
+          resetForm();
+          handleCloseModal();
+        },
       });
     },
   });
