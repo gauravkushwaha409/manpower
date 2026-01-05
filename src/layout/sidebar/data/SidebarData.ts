@@ -313,4 +313,19 @@ export const mainMenuItems = [
     active: false,
     link: PATH.user.index,
   },
+  {
+    id: "role and permission",
+    icon: UserMinus2Icon,
+    label: "User & Permission",
+    active: false,
+    children: [
+      {
+        id: "Role",
+        icon: UserMinus2Icon,
+        label: "Role",
+        active: false,
+        link: PATH.roleAndPermission.role,
+      },
+    ],
+  },
 ];

@@ -4,6 +4,8 @@ import { useUpdateModal } from "@/hooks/use-update-modal";
 import { Checkbox } from "@/components/ui/checkbox";
 import TableAction from "@/components/TableAction";
 import { ICountryListItem } from "../hooks/use-country-list";
+import { endpoints } from "@/api/endpoints";
+import { apiTags } from "@/constant/tag";
 
 export const countryData: ICountryListItem[] = [
   {
@@ -79,7 +81,10 @@ export const countryData: ICountryListItem[] = [
 ];
 
 const CountryColumns = (): ColumnDef<ICountryListItem>[] => {
-  const { handleOpenModal: handleOpenDeleteModal } = useDelete({});
+  const { handleOpenModal: handleOpenDeleteModal } = useDelete({
+    endpoints: endpoints.country.delete,
+    invalidates: [apiTags.country.list],
+  });
   const { handleOpenModal: handleOpenUpdateModal } = useUpdateModal();
   return [
     {

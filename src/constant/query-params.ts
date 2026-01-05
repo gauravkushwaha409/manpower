@@ -45,5 +45,14 @@ const QUERY_PARAMS = {
       key: "update-user",
     },
   },
+  rolePermission: {
+    createRole: {
+      key: "create-role",
+      value: "active",
+    },
+    updateRole: {
+      key: "update-role",
+    },
+  },
 };
 export default QUERY_PARAMS;

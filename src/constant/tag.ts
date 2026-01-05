@@ -115,4 +115,8 @@ export const apiTags = {
     list: "get_all_user",
     details: "get_user_details",
   },
+  role: {
+    list: "get_all_role",
+    details: "get_role_details",
+  },
 };

@@ -99,12 +99,12 @@ export default function UserColumns(): ColumnDef<IUserListItem>[] {
     {
       header: "Name",
       accessorKey: "name",
-      size: 200,
+      size: 400,
     },
     {
       header: "Email",
       accessorKey: "email",
-      size: 200,
+      size: 400,
     },
     {
       header: "Phone",

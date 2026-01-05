@@ -118,4 +118,7 @@ export const PATH = {
   user: {
     index: "/user",
   },
+  roleAndPermission: {
+    role: "/role-and-permission/role",
+  },
 };
