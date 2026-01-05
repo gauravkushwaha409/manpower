@@ -229,6 +229,13 @@ export const endpoints = {
     delete: "",
     details: "",
   },
+  orientationInstitute: {
+    list: "",
+    create: "",
+    update: "",
+    delete: "",
+    details: "",
+  },
 };
 
 export const BASE_API_URL =

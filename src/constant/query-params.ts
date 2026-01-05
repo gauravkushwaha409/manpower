@@ -64,7 +64,15 @@ const QUERY_PARAMS = {
         key: "update-insurance-comapany",
       },
     },
-    orientationInstitute: {},
+    OrientationInstitute: {
+      createOrientationInstitute: {
+        key: "create-orientation-institute-modal",
+        value: "active",
+      },
+      updateOrientationInstitute: {
+        key: "update-orientation-institute",
+      },
+    },
     medicalInstitute: {
       createMedicalInstitute: {
         key: "medical-institute",

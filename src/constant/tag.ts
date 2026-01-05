@@ -127,4 +127,8 @@ export const apiTags = {
     list: "get_all_medical_institute",
     details: "get_medical_institute_details",
   },
+  orientationInstitute: {
+    list: "get_all_orientation_institute",
+    details: "get_orientation_institute_details",
+  },
 };
