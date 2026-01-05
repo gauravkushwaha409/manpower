@@ -120,5 +120,7 @@ export const PATH = {
   },
   roleAndPermission: {
     role: "/role-and-permission/role",
+    permission: "/role-and-permission/permission",
+    moduleManagement: "/role-and-permission/module-management",
   },
 };

@@ -320,11 +320,25 @@ export const mainMenuItems = [
     active: false,
     children: [
       {
-        id: "Role",
+        id: "role",
         icon: UserMinus2Icon,
         label: "Role",
         active: false,
         link: PATH.roleAndPermission.role,
+      },
+      {
+        id: "permission",
+        icon: UserMinus2Icon,
+        label: "Permission",
+        active: false,
+        link: PATH.roleAndPermission.permission,
+      },
+      {
+        id: "module",
+        icon: UserMinus2Icon,
+        label: "Module",
+        active: false,
+        link: PATH.roleAndPermission.moduleManagement,
       },
     ],
   },
