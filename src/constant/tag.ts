@@ -119,4 +119,8 @@ export const apiTags = {
     list: "get_all_role",
     details: "get_role_details",
   },
+  insuranceCompany: {
+    list: "get_all_insurance_company",
+    details: "get_insurance_company_details",
+  },
 };

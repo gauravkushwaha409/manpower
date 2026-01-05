@@ -54,5 +54,18 @@ const QUERY_PARAMS = {
       key: "update-role",
     },
   },
+  setting: {
+    insuranceComapany: {
+      createInsuranceComapany: {
+        key: "create-insurance-comapany-modal",
+        value: "active",
+      },
+      updateInsuranceComapany: {
+        key: "update-insurance-comapany",
+      },
+    },
+    orientationInstitute: {},
+    medicalInstitute: {},
+  },
 };
 export default QUERY_PARAMS;

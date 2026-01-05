@@ -1,4 +1,4 @@
-import React from "react";
+import React, { HTMLAttributes } from "react";
 import LoadingScreen from "./reusable-component/LoadingScreen";
 import { cn } from "@/lib/utils";
 import NoDataFound from "./NoDataFound";
@@ -6,7 +6,7 @@ import NoDataFound from "./NoDataFound";
 interface IProps {
   children: React.ReactNode;
   isLoading: boolean;
-  wrapperClassName?: string;
+  wrapperClassName?: HTMLAttributes<HTMLDivElement>["className"];
   isDataAvailable?: boolean;
 }
 

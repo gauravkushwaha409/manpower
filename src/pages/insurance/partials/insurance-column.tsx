@@ -5,6 +5,8 @@ import { useUpdateModal } from "@/hooks/use-update-modal";
 import { Checkbox } from "@/components/ui/checkbox";
 import { File } from "lucide-react";
 import { IInsuranceListItem } from "../hooks/use-insurance-list";
+import { endpoints } from "@/api/endpoints";
+import { apiTags } from "@/constant/tag";
 
 export const insuranceData: IInsuranceListItem[] = [
   {
@@ -28,8 +30,11 @@ export const insuranceData: IInsuranceListItem[] = [
 ];
 
 const InsuranceColumns = (): ColumnDef<IInsuranceListItem>[] => {
-  const { handleOpenModal: handleOpenDeleteModal } = useDelete({});
-  const { handleOpenModal: handleOpenUpdateModal } = useUpdateModal();
+  const deleteInsurance = useDelete({
+    endpoints: endpoints.insurance.delete,
+    invalidates: [apiTags.insurance.list],
+  });
+  const updateInsurance = useUpdateModal();
 
   return [
     {
@@ -112,14 +117,14 @@ const InsuranceColumns = (): ColumnDef<IInsuranceListItem>[] => {
             active: true,
             onClick: (e: React.MouseEvent<HTMLButtonElement>) => {
               e.preventDefault();
-              handleOpenUpdateModal(row.original.id);
+              updateInsurance.handleOpenModal(row.original.id);
             },
           }}
           del={{
             active: true,
             onClick: (e: React.MouseEvent<HTMLButtonElement>) => {
               e.preventDefault();
-              handleOpenDeleteModal(row.original.id);
+              deleteInsurance.handleOpenModal(row.original.id);
             },
           }}
         />

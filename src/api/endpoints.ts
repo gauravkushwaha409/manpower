@@ -215,6 +215,13 @@ export const endpoints = {
     delete: "",
     details: "",
   },
+  insuranceCompany: {
+    list: "",
+    create: "",
+    update: "",
+    delete: "",
+    details: "",
+  },
 };
 
 export const BASE_API_URL =
