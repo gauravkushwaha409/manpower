@@ -114,6 +114,9 @@ export const PATH = {
       jobTitle: "/setting/job-setting/job-title",
     },
     documentSetting: "/setting/document-setting",
+    medicalInstitute: "/setting/medical-institute",
+    orientationInstitute: "/setting/orientation-institute",
+    insuranceCompany: "/setting/insurance-comapany",
   },
   user: {
     index: "/user",
