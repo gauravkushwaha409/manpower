@@ -123,4 +123,8 @@ export const apiTags = {
     list: "get_all_insurance_company",
     details: "get_insurance_company_details",
   },
+  medicalInstitute: {
+    list: "get_all_medical_institute",
+    details: "get_medical_institute_details",
+  },
 };

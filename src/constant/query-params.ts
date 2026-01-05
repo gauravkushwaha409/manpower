@@ -65,7 +65,15 @@ const QUERY_PARAMS = {
       },
     },
     orientationInstitute: {},
-    medicalInstitute: {},
+    medicalInstitute: {
+      createMedicalInstitute: {
+        key: "medical-institute",
+        value: "create-modal",
+      },
+      updateMedicalInstitute: {
+        key: "medical-institute-update-key",
+      },
+    },
   },
 };
 export default QUERY_PARAMS;

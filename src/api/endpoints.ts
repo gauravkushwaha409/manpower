@@ -222,6 +222,13 @@ export const endpoints = {
     delete: "",
     details: "",
   },
+  medicalInstitute: {
+    list: "",
+    create: "",
+    update: "",
+    delete: "",
+    details: "",
+  },
 };
 
 export const BASE_API_URL =

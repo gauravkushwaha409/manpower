@@ -1,9 +1,15 @@
-import PageHeader from "@/common/PageHeader";
+import MedicalInstituteModal from "./partials/medical-institute-modal";
+import MedicalInstituteHeader from "./partials/medical-institute-header";
+import MedicalInstituteTable from "./partials/medical-institute-table";
 
 export default function MedicalInstitute() {
   return (
     <div className="u-flex-parent">
-      <PageHeader title="Medical Institute" />
+      <MedicalInstituteHeader />
+      <MedicalInstituteTable />
+
+      {/* ========================== Medical Institute Modal ====================== */}
+      <MedicalInstituteModal />
     </div>
   );
 }
