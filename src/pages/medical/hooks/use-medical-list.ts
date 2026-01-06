@@ -3,27 +3,15 @@ import { endpoints } from "@/api/endpoints";
 import { apiTags } from "@/constant/tag";
 import { usePagination } from "@/hooks/usePagination";
 import useSearch from "@/hooks/useSearch";
-import { IPaginationResponse } from "@/interface/apiResponse.interface";
+import Medical from "@/types/medical.types";
 import { useState } from "react";
-
-export interface IMedicalListItem {
-  id: string;
-  candidate: string;
-  exam_date: string;
-  medical_center: string;
-  report_file: string;
-  status: string;
-  remarks: string;
-  created_at: string;
-}
-type MedicalListResponse = IPaginationResponse<IMedicalListItem>;
 
 const useMedicalList = () => {
   const { pagination } = usePagination();
   const [rowSelection, setRowSelection] = useState({});
   const { get } = useSearch();
   const { data, isLoading } = useGetDataQuery<{
-    data: MedicalListResponse;
+    data: Medical.List;
     isLoading: boolean;
   }>({
     url: endpoints.medical.list,

@@ -6,8 +6,9 @@ import CandidateTable from "./partials/candidate-table";
 import JobByCandidate from "./partials/job-by-candidate";
 import { useMoveToInterviewModal } from "./hooks/use-move-to-interview";
 import MoveToInterview from "./partials/move-to-interview";
+import React from "react";
 
-const Candidate = () => {
+const Candidate: React.FC = () => {
   const navigate = useNavigate();
   const { handleOpenMoveToInterview } = useMoveToInterviewModal();
   return (

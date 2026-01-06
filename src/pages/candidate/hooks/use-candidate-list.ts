@@ -3,26 +3,14 @@ import { endpoints } from "@/api/endpoints";
 import { apiTags } from "@/constant/tag";
 import { usePagination } from "@/hooks/usePagination";
 import useSearch from "@/hooks/useSearch";
-import { IPaginationResponse } from "@/interface/apiResponse.interface";
-
-export interface ICandidateListItem {
-  id: string;
-  first_name: string;
-  last_name: string;
-  phone_no: string;
-  passport_no: string;
-  address: string;
-  company_name: string;
-  interview_process: string;
-}
-type CandidateListResponse = IPaginationResponse<ICandidateListItem>;
+import Candidate from "@/types/candidate.types";
 
 const useCandidateList = () => {
   const { pagination } = usePagination();
   const { get } = useSearch();
 
   const { data, isLoading } = useGetDataQuery<{
-    data: CandidateListResponse;
+    data: Candidate.List;
     isLoading: boolean;
   }>({
     url: endpoints.candidate.list,

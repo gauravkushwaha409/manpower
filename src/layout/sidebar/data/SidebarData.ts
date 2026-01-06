@@ -232,7 +232,7 @@ export const mainMenuItems = [
       },
       {
         id: "insurance-setting",
-        label: "Insurance Comapany",
+        label: "Insurance Company",
         icon: TbSeo,
         link: PATH.setting.insuranceCompany,
       },

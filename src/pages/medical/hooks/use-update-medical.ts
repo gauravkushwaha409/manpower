@@ -10,6 +10,7 @@ import {
   medicalSchemaType,
   medicalValidationSchema,
 } from "../schema/medical-schema";
+import React from "react";
 
 const useUpdateMedical = () => {
   const [updateMedical, { isLoading }] = useUpdateDataMutation();
@@ -19,7 +20,7 @@ const useUpdateMedical = () => {
   });
 
   const initialValues: medicalSchemaType = {
-    candidate_name: medicalDetails?.data?.candidate_name || "",
+    candidate_name: medicalDetails?.data?.candidate || "",
   };
 
   const formik = useFormik<medicalSchemaType>({
@@ -29,14 +30,16 @@ const useUpdateMedical = () => {
     onSubmit: async (values, { setErrors, resetForm }) => {
       const response = (await updateMedical({
         data: values,
-        url: endpoints.medical.update.replace(":id", updateId),
+        url: endpoints.medical.update.replace(":id", updateId ?? ""),
         invalidateTag: [apiTags.medical.details, apiTags.medical.list],
       })) as ApiResponse;
       handleResponse({
         response,
         setErrorCallBack: setErrors,
-        handleCloseModal: handleCloseModal,
-        resetForm: resetForm,
+        handleOnSuccess: React.useCallback(() => {
+          resetForm();
+          handleCloseModal();
+        }, []),
       });
     },
   });

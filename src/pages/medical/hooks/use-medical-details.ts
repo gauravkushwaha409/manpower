@@ -1,17 +1,11 @@
 import { useGetDataQuery } from "@/api/api";
 import { endpoints } from "@/api/endpoints";
 import { apiTags } from "@/constant/tag";
-import { IApiDetailsResponse } from "@/interface/apiResponse.interface";
-
-interface IMedicalDetails {
-  id: string;
-  candidate_name: string;
-}
-type MedicalDetailsResponse = IApiDetailsResponse<IMedicalDetails>;
+import Medical from "@/types/medical.types";
 
 const useMedicalDetails = ({ id }: { id: string | null | undefined }) => {
   const { data, isLoading } = useGetDataQuery<{
-    data: MedicalDetailsResponse;
+    data: Medical.Details;
     isLoading: boolean;
   }>(
     {
