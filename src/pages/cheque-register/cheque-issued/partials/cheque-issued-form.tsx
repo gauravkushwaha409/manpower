@@ -1,6 +1,7 @@
 import FormInputDate from "@/components/form/form-input-date";
 import FormInputSelect from "@/components/form/form-input-select";
 import FormInputText from "@/components/form/FormInputText";
+import { chequeOptions } from "../../cheque-received/partials/cheque-received-form";
 
 const ChequeIssuedForm = () => {
   return (
@@ -16,7 +17,7 @@ const ChequeIssuedForm = () => {
       <FormInputDate label="Cheque Date" name="cheque_date" />
       <FormInputDate label="Issued Date" name="issued_date" />
       <FormInputText label="Amount" name="amount" />
-      <FormInputSelect label="Status" name="status" options={[]} />
+      <FormInputSelect label="Status" name="status" options={chequeOptions} />
     </div>
   );
 };
