@@ -10,13 +10,14 @@ import {
   orientationSchemaType,
   orientationValidationSchema,
 } from "../schema/orientation-schema";
+import React from "react";
 
 const useUpdateOrientation = () => {
   const [updateOrientation, { isLoading }] = useUpdateDataMutation();
-  const { handleCloseModal, updateId } = useUpdateModal();
+  const update = useUpdateModal();
   const { orientationDetails, isLoading: isInitialLoading } =
     useOrientationDetails({
-      id: updateId,
+      id: update.updateId,
     });
 
   const initialValues: orientationSchemaType = {
@@ -37,14 +38,16 @@ const useUpdateOrientation = () => {
     onSubmit: async (values, { setErrors, resetForm }) => {
       const response = (await updateOrientation({
         data: values,
-        url: endpoints.orientation.update.replace(":id", updateId),
+        url: endpoints.orientation.update.replace(":id", update.updateId ?? ""),
         invalidateTag: [apiTags.orientation.details, apiTags.orientation.list],
       })) as ApiResponse;
       handleResponse({
         response,
         setErrorCallBack: setErrors,
-        handleCloseModal: handleCloseModal,
-        resetForm: resetForm,
+        handleOnSuccess: React.useCallback(() => {
+          resetForm();
+          update.handleCloseModal();
+        }, []),
       });
     },
   });
