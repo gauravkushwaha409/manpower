@@ -270,19 +270,19 @@ export const mainMenuItems: MenuItem[] = [
     id: "my-subscription",
     icon: User2,
     label: "My Subscription",
-    link: PATH.orientation.index,
+    link: PATH.mySubscription.index,
   },
   {
     id: "my-membership",
     icon: User2,
     label: "My Membership",
-    link: PATH.orientation.index,
+    link: PATH.myMembership.index,
   },
   {
     id: "account",
     icon: User2,
     label: "Account",
-    link: PATH.orientation.index,
+    link: PATH.account.index,
   },
   {
     id: "user",

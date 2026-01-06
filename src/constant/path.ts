@@ -49,6 +49,15 @@ export const PATH = {
   orientation: {
     index: "/orientation",
   },
+  mySubscription: {
+    index: "/my-subscription",
+  },
+  myMembership: {
+    index: "/my-membership",
+  },
+  account: {
+    index: "/account",
+  },
   insurance: {
     index: "/insurance",
   },
