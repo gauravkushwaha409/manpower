@@ -57,6 +57,7 @@
   @apply font-outfit font-normal text-[18px] leading-7;
 }
 
+
 /* Font Style Name */
 @utility typography-input-label {
   @apply text-[12px] font-normal leading-[150%] text-gray-800;

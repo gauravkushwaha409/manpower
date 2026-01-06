@@ -20,7 +20,6 @@ import { insuranceRoutes } from "./partials/private-route/insurance-routes";
 import { invoiceRoutes } from "./partials/private-route/invoice-routes";
 import { quickPaymentRoutes } from "./partials/private-route/quick-payment-routes";
 import { chartOfAccountRoutes } from "./partials/private-route/chart-of-account-routes";
-import { chequeRegistered } from "./partials/private-route/cheque-register-routes";
 import { accountingRoutes } from "./partials/private-route/accounting-routes";
 
 /**
@@ -55,7 +54,6 @@ const MainRoutes = [
       ...invoiceRoutes,
       ...quickPaymentRoutes,
       ...chartOfAccountRoutes,
-      ...chequeRegistered,
       ...settingRoutes,
       ...accountingRoutes,
     ],

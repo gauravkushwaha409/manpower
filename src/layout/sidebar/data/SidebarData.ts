@@ -1,7 +1,17 @@
-import { IoSettingsOutline, IoListOutline } from "react-icons/io5";
+import {
+  IoSettingsOutline,
+  IoListOutline,
+  IoHammerOutline,
+} from "react-icons/io5";
 import { TbSeo } from "react-icons/tb";
 import { TfiWorld } from "react-icons/tfi";
-import { CheckCheck, User2, AirVent, UserMinus2Icon } from "lucide-react";
+import {
+  CheckCheck,
+  User2,
+  AirVent,
+  UserMinus2Icon,
+  AlignCenterVerticalIcon,
+} from "lucide-react";
 import { LiaIndustrySolid } from "react-icons/lia";
 import { PiBuildingOffice } from "react-icons/pi";
 import { MdDashboard } from "react-icons/md";
@@ -200,18 +210,19 @@ export const mainMenuItems = [
         icon: User2,
         label: "Cheque Register",
         active: false,
+        link: PATH.accounting.chequeRegister.index,
         children: [
           {
             id: "cheque-received",
             label: "Cheque Received",
-            icon: TbSeo,
-            link: PATH.chequeRegister.chequeReceived.index,
+            icon: IoHammerOutline,
+            link: PATH.accounting.chequeRegister.chequeReceived.index,
           },
           {
             id: "cheque-issued",
             label: "Cheque Issued",
-            icon: TbSeo,
-            link: PATH.chequeRegister.chequeIssued.index,
+            icon: AlignCenterVerticalIcon,
+            link: PATH.accounting.chequeRegister.chequeIssued.index,
           },
         ],
       },

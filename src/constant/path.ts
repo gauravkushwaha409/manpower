@@ -76,14 +76,6 @@ export const PATH = {
       index: "/chart-of-account/group",
     },
   },
-  chequeRegister: {
-    chequeIssued: {
-      index: "/cheque-register/cheque-issued",
-    },
-    chequeReceived: {
-      index: "/cheque-register/cheque-received",
-    },
-  },
   quickPayment: {
     index: "/quick-payment",
     create: "/quick-payment/create",
@@ -103,7 +95,15 @@ export const PATH = {
     sales: {},
     quickPayment: {},
     chartOfAccount: {},
-    chequeRegister: {},
+    chequeRegister: {
+      index: "/cheque-register",
+      chequeReceived: {
+        index: "/cheque-register/received",
+      },
+      chequeIssued: {
+        index: "/cheque-register/issued",
+      },
+    },
   },
   setting: {
     index: "/setting",
