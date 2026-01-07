@@ -5,7 +5,7 @@ import { useDelete } from "@/hooks/useDelete";
 import { endpoints } from "@/api/endpoints";
 import { apiTags } from "@/constant/tag";
 import TableAction from "@/components/TableAction";
-import { useQueryParamState } from "@/hooks/useQueryParamState";
+import { useQueryParamState } from "@/hooks/use-query-params-state";
 import QUERY_PARAMS from "@/constant/query-params";
 
 export const roleData: IRoleListItem[] = [

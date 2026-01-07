@@ -2,7 +2,7 @@ import ModalWrapper from "@/components/shadcn/modal-wrapper";
 import React from "react";
 import { useAddModal } from "@/hooks/use-add-modal";
 import QUERY_PARAMS from "@/constant/query-params";
-import { useQueryParamState } from "@/hooks/useQueryParamState";
+import { useQueryParamState } from "@/hooks/use-query-params-state";
 import CreateMedicalInstitute from "./create-medical-institute";
 import UpdateMedicalInstitute from "./update-medical-institute";
 import DeleteModal from "@/components/DeleteModal";

@@ -3,7 +3,7 @@ import React from "react";
 import CreateRole from "./create-role";
 import { useAddModal } from "@/hooks/use-add-modal";
 import QUERY_PARAMS from "@/constant/query-params";
-import { useQueryParamState } from "@/hooks/useQueryParamState";
+import { useQueryParamState } from "@/hooks/use-query-params-state";
 import DeleteModal from "@/components/DeleteModal";
 import { useDelete } from "@/hooks/useDelete";
 import { endpoints } from "@/api/endpoints";

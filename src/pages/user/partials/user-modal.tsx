@@ -4,7 +4,7 @@ import CreateUser from "./create-user";
 import UpdateUser from "./update-user";
 import { useAddModal } from "@/hooks/use-add-modal";
 import QUERY_PARAMS from "@/constant/query-params";
-import { useQueryParamState } from "@/hooks/useQueryParamState";
+import { useQueryParamState } from "@/hooks/use-query-params-state";
 import DeleteModal from "@/components/DeleteModal";
 import { endpoints } from "@/api/endpoints";
 import { apiTags } from "@/constant/tag";

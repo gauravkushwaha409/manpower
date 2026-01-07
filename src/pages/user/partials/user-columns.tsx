@@ -2,7 +2,7 @@ import { ColumnDef } from "@tanstack/react-table";
 import { IUserListItem } from "../hooks/use-user-list";
 import { Checkbox } from "@/components/ui/checkbox";
 import TableAction from "@/components/TableAction";
-import { useQueryParamState } from "@/hooks/useQueryParamState";
+import { useQueryParamState } from "@/hooks/use-query-params-state";
 import QUERY_PARAMS from "@/constant/query-params";
 import { useDelete } from "@/hooks/useDelete";
 import { endpoints } from "@/api/endpoints";

@@ -2,7 +2,7 @@ import React from "react";
 import ModalWrapper from "@/components/shadcn/modal-wrapper";
 import QUERY_PARAMS from "@/constant/query-params";
 import { useAddModal } from "@/hooks/use-add-modal";
-import { useQueryParamState } from "@/hooks/useQueryParamState";
+import { useQueryParamState } from "@/hooks/use-query-params-state";
 import { useDelete } from "@/hooks/useDelete";
 import { endpoints } from "@/api/endpoints";
 import { apiTags } from "@/constant/tag";
