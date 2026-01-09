@@ -1,15 +1,24 @@
+import { IOption } from "@/components/form/form-input-select";
 import * as Yup from "yup";
 
-export type CandidateDocumentType =
-  | "citizenship"
-  | "passport"
-  | "police_report";
-export const CandidateDocument: CandidateDocumentType[] = [
+export const candidateDocuments = [
   "citizenship",
   "passport",
   "police_report",
-];
+  'national_id',
+  'resume'
+] as const
+export type CandidateDocumentOptionType = typeof candidateDocuments[number]
 
+export const candidateDocumentOptions: IOption<CandidateDocumentOptionType>[] = [
+  { label: "Citizenship", value: "citizenship" },
+  { label: "Passport", value: "passport" },
+  { label: "Police Report", value: "police_report" },
+  { label: "National ID", value: "national_id" },
+  { label: "Resume", value: "resume" }
+] as const
+
+// ============== Step - 1 Validation Schema ====================
 export const step1ValidationSchema = Yup.object({
   first_name: Yup.string().required("This field is required"),
   last_name: Yup.string().required("This field is required"),
@@ -30,9 +39,10 @@ export const step1ValidationSchema = Yup.object({
   ward_no: Yup.string().required("This field is required"),
 });
 
+// ============== Step - 2 Validation Schema ====================
 export const step2ValidationSchema = Yup.object({
-  skill: Yup.string().required("This field is required"),
-  current_jobtitle: Yup.string().required("This field is required"),
+  skill: Yup.string().trim().required("This field is required"),
+  current_jobtitle: Yup.string().trim().required("This field is required"),
   languages: Yup.array()
     .of(
       Yup.object({
@@ -45,9 +55,10 @@ export const step2ValidationSchema = Yup.object({
   education: Yup.array()
     .of(
       Yup.object({
-        name_of_institute: Yup.string().required("This field is required"),
+        name_of_institute: Yup.string().trim().required("This field is required"),
         course: Yup.string().required("This field is required"),
         passed_year: Yup.string()
+          .trim()
           .required("This field is required")
           .matches(/^\d{4}$/, "Year must be 4 digits"),
       })
@@ -56,11 +67,26 @@ export const step2ValidationSchema = Yup.object({
     .min(1, "At least education is required"),
 });
 
-const baseFields = {
-  type: Yup.string()
-    .oneOf<CandidateDocumentType>(CandidateDocument)
-    .required("Document type is required"),
+// ============== Step - 3 Validation Schema ====================
 
+const citizenshipSchema = Yup.object({
+  citizenship_number: Yup.string().trim().required("This field is required"),
+  issued_district: Yup.string().trim().required("This field is required"),
+});
+
+const passportSchema = Yup.object({
+  passport_number: Yup.string().trim().required("This field is required"),
+  expire_date: Yup.string().trim().required("This field is required"),
+});
+
+const policeReportSchema = Yup.object({
+  report_number: Yup.string().trim().required("This field is required"),
+});
+
+const tempDocument = Yup.object().shape({
+  type: Yup.string()
+    .oneOf<CandidateDocumentOptionType>(candidateDocuments)
+    .required("Document type is required"),
   document: Yup.mixed<string | File>()
     .required("This field is required")
     .test("file-or-url", "Invalid document", (value) => {
@@ -74,54 +100,94 @@ const baseFields = {
           return false;
         }
       }
-
       return value instanceof File;
     }),
+  // ============ Citizenship Validation ============
+  citizenship_issued_date: Yup.string().trim().when("tempDocument.type", {
+    is: (documentType: CandidateDocumentOptionType) => documentType === "citizenship",
+    then: (schema) => schema.required("This field is required"),
+    otherwise: (schema) => schema.notRequired()
+  }),
+  citizenship_issued_district: Yup.string().trim().when("tempDocument.type", {
+    is: (documentType: CandidateDocumentOptionType) => documentType === "citizenship",
+    then: (schema) => schema.required("This field is required"),
+    otherwise: (schema) => schema.notRequired()
+  }),
+  citizenship_number: Yup.string().trim().when("tempDocument.type", {
+    is: (documentType: CandidateDocumentOptionType) => documentType === "citizenship",
+    then: (schema) => schema.required("This field is required"),
+    otherwise: (schema) => schema.notRequired()
+  }),
+  // =========== Passport Validation ===========
+  passport_issued_date: Yup.string().trim().when("tempDocument.type", {
+    is: (documentType: CandidateDocumentOptionType) => documentType === 'passport',
+    then: (schema) => schema.required("This field is required"),
+    otherwise: (schema) => schema.notRequired()
+  }),
+  passport_expiry_date: Yup.string().trim().when("tempDocument.type", {
+    is: (documentType: CandidateDocumentOptionType) => documentType === 'passport',
+    then: (schema) => schema.required("This field is required"),
+    otherwise: (schema) => schema.notRequired()
+  }),
+  passport_number: Yup.string().trim().when("tempDocument.type", {
+    is: (documentType: CandidateDocumentOptionType) => documentType === 'passport',
+    then: (schema) => schema.required("This field is required"),
+    otherwise: (schema) => schema.notRequired()
+  }),
 
-  issue_date: Yup.string().required("This field is required"),
-};
+  // =========== Police Report Validation ===========
+  police_report_issued_date: Yup.string().trim().when("tempDocument.type", {
+    is: (documentType: CandidateDocumentOptionType) => documentType === 'police_report',
+    then: (schema) => schema.required("This field is required"),
+    otherwise: (schema) => schema.notRequired()
+  }),
+  police_report_dispatch_number: Yup.string().trim().when("tempDocument.type", {
+    is: (documentType: CandidateDocumentOptionType) => documentType === 'police_report',
+    then: (schema) => schema.required("This field is required"),
+    otherwise: (schema) => schema.notRequired()
+  })
+})
 
-const citizenshipSchema = Yup.object({
-  ...baseFields,
-  citizenship_number: Yup.string().required("This field is required"),
-});
+const baseDocumentSchema = Yup.object({
+  type: Yup.string()
+    .oneOf(
+      ["citizenship", "passport", "police_report"],
+      "Invalid document type"
+    )
+    .required("Document type is required"),
+  document: Yup.mixed<string | File>()
+    .required("This field is required")
+    .test("file-or-url", "Invalid document", (value) => {
+      if (!value) return false;
 
-const passportSchema = Yup.object({
-  ...baseFields,
-  passport_number: Yup.string().required("This field is required"),
-  expire_date: Yup.string().required("This field is required"),
-});
-
-const policeReportSchema = Yup.object({
-  ...baseFields,
-  report_number: Yup.string().required("This field is required"),
+      if (typeof value === "string") {
+        try {
+          new URL(value);
+          return true;
+        } catch {
+          return false;
+        }
+      }
+      return value instanceof File;
+    }),
 });
 
 export const step3ValidationSchema = Yup.object({
-  document_type: Yup.string()
-    .oneOf<CandidateDocumentType>(CandidateDocument)
-    .required("Document type is required"),
+  tempDocument: tempDocument,
   documents: Yup.array()
     .of(
       Yup.lazy((value: any) => {
-        if (!value?.type) {
-          return Yup.object({
-            type: Yup.string().required("Document type is required"),
-          });
-        }
-
         switch (value.type) {
           case "citizenship":
-            return citizenshipSchema;
+            return baseDocumentSchema.concat(citizenshipSchema);
 
           case "passport":
-            return passportSchema;
+            return baseDocumentSchema.concat(passportSchema);
 
           case "police_report":
-            return policeReportSchema;
-
+            return baseDocumentSchema.concat(policeReportSchema);
           default:
-            return Yup.object().strip(true);
+            return baseDocumentSchema
         }
       })
     )
@@ -129,6 +195,7 @@ export const step3ValidationSchema = Yup.object({
     .min(1, "At least one document is required"),
 });
 
+// =============== Step - 4 Validation Schema ===========
 export const step4ValidationSchema = Yup.object({
   applied_country: Yup.string().required("This field is required"),
   company_name: Yup.string().required("This field is required"),

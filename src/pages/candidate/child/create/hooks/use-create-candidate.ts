@@ -25,7 +25,10 @@ export const useCreateCandidate = () => {
     languages: [],
     education: [],
     // step - 3 form field
-    document_type: "citizenship",
+    tempDocument: {
+      type: "citizenship",
+      document: ""
+    },
     documents: [],
     // Step-4
     applied_country: "",
@@ -36,7 +39,7 @@ export const useCreateCandidate = () => {
   };
   const formik = useFormik<CandidateSchemaType>({
     initialValues,
-    onSubmit: () => {},
+    onSubmit: () => { },
   });
 
   return { formik, step, setStep };
