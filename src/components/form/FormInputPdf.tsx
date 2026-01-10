@@ -50,9 +50,7 @@ const FormInputPdf: React.FC<IPdfUpload> = ({
 
   // Link parent ref
   useImperativeHandle(handleDeleteRef, () => ({
-    reset: () => {
-      handleDeleteFile();
-    },
+    reset: handleDeleteFile
   }));
 
   /** Sync initial Formik value */
