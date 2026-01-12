@@ -9,15 +9,15 @@ interface ISearchBoxProps {
 }
 
 const SearchBox = ({ placeholder = "Search", className }: ISearchBoxProps) => {
-  const { search, handleSearch } = useSearch();
-  const [inputValue, setInputValue] = useState(search);
+  const { get, set } = useSearch();
+  const [inputValue, setInputValue] = useState(get());
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setInputValue(value);
 
     if (value.length === 0 || value.length >= 2) {
-      handleSearch(value);
+      set(value);
     }
   };
 

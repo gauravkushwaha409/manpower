@@ -9,7 +9,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isSidebarOpen, toggleSidebar }) => {
   const location = useLocation();
   const [openDropdowns, setOpenDropdowns] = useState<string[]>([]);
   const [hoveredParentId, setHoveredParentId] = useState<string | null>(null);
-  const [hoveredChildId, setHoveredChildId] = useState<string | null>(null);
+  const [_, setHoveredChildId] = useState<string | null>(null);
 
   // Toggle dropdown handler
   const toggleDropdown = useCallback((id: string) => {
@@ -68,11 +68,10 @@ const Sidebar: React.FC<SidebarProps> = ({ isSidebarOpen, toggleSidebar }) => {
       >
         <Link
           to={item.link ?? "#"}
-          className={`flex justify-between items-center px-4 py-2 rounded-lg cursor-pointer transition-colors ${
-            isActive
+          className={`flex justify-between items-center px-4 py-2 rounded-lg cursor-pointer transition-colors ${isActive
               ? "bg-secondary-400 text-white"
               : "text-text-400 hover:bg-secondary-50"
-          }`}
+            }`}
         >
           <span className="text-sm">{item.label}</span>
           {hasChildren && <IoChevronForward size={14} className="opacity-70" />}
@@ -128,10 +127,9 @@ const Sidebar: React.FC<SidebarProps> = ({ isSidebarOpen, toggleSidebar }) => {
           className={`
             flex items-center justify-between px-3 rounded-xl cursor-pointer transition-colors
             ${level === 0 || level === 1 ? "py-3 mb-1" : "py-2"}
-            ${
-              isActive || (hasChildren && isParentActive && !isSidebarOpen)
-                ? "bg-secondary-400 text-white"
-                : "text-text-400 hover:bg-secondary-500 hover:text-white"
+            ${isActive || (hasChildren && isParentActive && !isSidebarOpen)
+              ? "bg-secondary-400 text-white"
+              : "text-text-400 hover:bg-secondary-500 hover:text-white"
             }
           `}
         >
@@ -186,9 +184,8 @@ const Sidebar: React.FC<SidebarProps> = ({ isSidebarOpen, toggleSidebar }) => {
     >
       {/* Header */}
       <div
-        className={`flex items-center pb-4 ${
-          isSidebarOpen ? "justify-between" : "justify-center"
-        }`}
+        className={`flex items-center pb-4 ${isSidebarOpen ? "justify-between" : "justify-center"
+          }`}
       >
         <button
           onClick={toggleSidebar}

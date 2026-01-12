@@ -25,8 +25,11 @@ export const useUpdateCandidate = () => {
     languages: [],
     education: [],
     // step - 3 form field
-    document_type: "citizenship",
     documents: [],
+    tempDocument: {
+      document: "",
+      type: "citizenship",
+    },
     // Step-4
     applied_country: "",
     company_name: "",
@@ -36,7 +39,7 @@ export const useUpdateCandidate = () => {
   };
   const formik = useFormik({
     initialValues,
-    onSubmit: () => {},
+    onSubmit: () => { },
   });
 
   return { formik, step, setStep };

@@ -20,7 +20,7 @@ const useCreateNewPassword = () => {
       createNewPasswordForm({
         url: "",
         data: values,
-        invalidateTag: "",
+        invalidateTag: [""],
       });
     },
   });

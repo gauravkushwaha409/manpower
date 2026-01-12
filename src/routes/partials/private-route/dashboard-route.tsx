@@ -2,7 +2,6 @@ import { PATH } from "@/constant/path";
 import { lazy } from "react";
 
 const Account = lazy(() => import("@/pages/account"));
-const ChangePassword = lazy(() => import("@/pages/changePassword/ChangePassword"));
 const Dashboard = lazy(() => import("@/pages/dashboard/Dashboard"));
 const MyMembership = lazy(() => import("@/pages/my-membership"));
 const MySubscription = lazy(() => import("@/pages/my-subscription"));
@@ -12,10 +11,6 @@ const Role = lazy(() => import("@/pages/role-permission/role"));
 const User = lazy(() => import("@/pages/user"));
 
 export const dashboardRoutes = [
-  {
-    path: PATH.auth.changePassword,
-    element: <ChangePassword />,
-  },
   {
     path: PATH.dashboard.dashboard,
     element: <Dashboard />,

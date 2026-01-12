@@ -15,7 +15,7 @@ export const useResetForm = () => {
       resetForm({
         url: "",
         data: values,
-        invalidateTag: "",
+        invalidateTag: [],
       });
     },
   });
