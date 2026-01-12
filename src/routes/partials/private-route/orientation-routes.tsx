@@ -1,5 +1,7 @@
 import { PATH } from "@/constant/path";
-import Orientation from "@/pages/orientation";
+import { lazy } from "react";
+
+const Orientation = lazy(() => import("@/pages/orientation"));
 
 export const orientationRoutes = [
   {
@@ -7,3 +9,4 @@ export const orientationRoutes = [
     element: <Orientation />,
   },
 ];
+

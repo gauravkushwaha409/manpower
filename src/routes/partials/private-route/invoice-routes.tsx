@@ -1,7 +1,9 @@
 import { PATH } from "@/constant/path";
-import Invoice from "@/pages/invoice";
-import CreateInvoice from "@/pages/invoice/child/add-invoice";
-import UpdateInvoice from "@/pages/invoice/child/update-invoice";
+import { lazy } from "react";
+
+const Invoice = lazy(() => import("@/pages/invoice"));
+const CreateInvoice = lazy(() => import("@/pages/invoice/child/add-invoice"));
+const UpdateInvoice = lazy(() => import("@/pages/invoice/child/update-invoice"));
 
 export const invoiceRoutes = [
   {
@@ -17,3 +19,4 @@ export const invoiceRoutes = [
     element: <UpdateInvoice />,
   },
 ];
+

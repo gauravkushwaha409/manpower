@@ -1,7 +1,9 @@
 import { PATH } from "@/constant/path";
-import CreatePreApprovalDofe from "@/pages/pre-approval-dofe/child/create/create-pre-approval-dofe";
-import UpdatePreApprovalDofe from "@/pages/pre-approval-dofe/child/update/update-pre-approval-dofe";
-import PreApprovalDofe from "@/pages/pre-approval-dofe";
+import { lazy } from "react";
+
+const CreatePreApprovalDofe = lazy(() => import("@/pages/pre-approval-dofe/child/create/create-pre-approval-dofe"));
+const UpdatePreApprovalDofe = lazy(() => import("@/pages/pre-approval-dofe/child/update/update-pre-approval-dofe"));
+const PreApprovalDofe = lazy(() => import("@/pages/pre-approval-dofe"));
 
 export const preApprovalDofeRoutes = [
   {
@@ -17,3 +19,4 @@ export const preApprovalDofeRoutes = [
     element: <UpdatePreApprovalDofe />,
   },
 ];
+

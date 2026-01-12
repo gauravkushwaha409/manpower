@@ -1,5 +1,7 @@
 import { PATH } from "@/constant/path";
-import Interview from "@/pages/interview";
+import { lazy } from "react";
+
+const Interview = lazy(() => import("@/pages/interview"));
 
 export const interviewRoutes = [
   {
@@ -7,3 +9,4 @@ export const interviewRoutes = [
     element: <Interview />,
   },
 ];
+

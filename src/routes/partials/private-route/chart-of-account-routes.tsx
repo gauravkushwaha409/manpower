@@ -1,6 +1,8 @@
 import { PATH } from "@/constant/path";
-import ChartOfAccount from "@/pages/chart-of-account/chart-of-account";
-import ChartOfGroup from "@/pages/chart-of-account/chart-of-group";
+import { lazy } from "react";
+
+const ChartOfAccount = lazy(() => import("@/pages/chart-of-account/chart-of-account"));
+const ChartOfGroup = lazy(() => import("@/pages/chart-of-account/chart-of-group"));
 
 export const chartOfAccountRoutes = [
   {
@@ -12,3 +14,4 @@ export const chartOfAccountRoutes = [
     element: <ChartOfGroup />,
   },
 ];
+

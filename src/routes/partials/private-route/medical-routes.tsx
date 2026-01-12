@@ -1,5 +1,7 @@
 import { PATH } from "@/constant/path";
-import Medical from "@/pages/medical";
+import { lazy } from "react";
+
+const Medical = lazy(() => import("@/pages/medical"));
 
 export const medicalRoutes = [
   {
@@ -7,3 +9,4 @@ export const medicalRoutes = [
     element: <Medical />,
   },
 ];
+

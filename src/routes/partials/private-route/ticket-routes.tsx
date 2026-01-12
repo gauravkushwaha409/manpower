@@ -1,5 +1,7 @@
 import { PATH } from "@/constant/path";
-import Ticket from "@/pages/ticket";
+import { lazy } from "react";
+
+const Ticket = lazy(() => import("@/pages/ticket"));
 
 export const ticketRoutes = [
   {
@@ -7,3 +9,4 @@ export const ticketRoutes = [
     element: <Ticket />,
   },
 ];
+

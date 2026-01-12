@@ -1,8 +1,10 @@
 import { PATH } from "@/constant/path";
-import Login from "@/pages/auth/login/Login";
-import ForgotPassword from "@/pages/auth/forgotPassword/NewPassword";
-import VerifyOtp from "@/pages/auth/otpVerification/VerifyOtp";
-import Reset from "@/pages/auth/reset/Reset";
+import { lazy } from "react";
+
+const Login = lazy(() => import("@/pages/auth/login/Login"));
+const ForgotPassword = lazy(() => import("@/pages/auth/forgotPassword/NewPassword"));
+const VerifyOtp = lazy(() => import("@/pages/auth/otpVerification/VerifyOtp"));
+const Reset = lazy(() => import("@/pages/auth/reset/Reset"));
 
 export const publicRoutes = [
   { path: PATH.auth.login, element: <Login /> },
@@ -10,3 +12,4 @@ export const publicRoutes = [
   { path: PATH.auth.forgotPassword, element: <ForgotPassword /> },
   { path: PATH.auth.resetPassword, element: <Reset /> },
 ];
+

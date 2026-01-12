@@ -1,11 +1,13 @@
 import { PATH } from "@/constant/path";
-import Expense from "@/pages/purchase/expense";
-import CreateExpense from "@/pages/purchase/expense/child/create-expense";
-import UpdateExpense from "@/pages/purchase/expense/child/update-expense";
-import Supplier from "@/pages/purchase/supplier";
-import ChequeRegister from "@/pages/cheque-register";
-import ChequeIssued from "@/pages/cheque-register/cheque-issued";
-import ChequeReceived from "@/pages/cheque-register/cheque-received";
+import { lazy } from "react";
+
+const Expense = lazy(() => import("@/pages/purchase/expense"));
+const CreateExpense = lazy(() => import("@/pages/purchase/expense/child/create-expense"));
+const UpdateExpense = lazy(() => import("@/pages/purchase/expense/child/update-expense"));
+const Supplier = lazy(() => import("@/pages/purchase/supplier"));
+const ChequeRegister = lazy(() => import("@/pages/cheque-register"));
+const ChequeIssued = lazy(() => import("@/pages/cheque-register/cheque-issued"));
+const ChequeReceived = lazy(() => import("@/pages/cheque-register/cheque-received"));
 
 export const accountingRoutes = [
   // =================== Supplier Routes =================
@@ -44,3 +46,4 @@ export const accountingRoutes = [
     ],
   },
 ];
+

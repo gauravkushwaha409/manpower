@@ -1,13 +1,15 @@
 import { PATH } from "@/constant/path";
-import Account from "@/pages/account";
-import ChangePassword from "@/pages/changePassword/ChangePassword";
-import Dashboard from "@/pages/dashboard/Dashboard";
-import MyMembership from "@/pages/my-membership";
-import MySubscription from "@/pages/my-subscription";
-import ModuleManagement from "@/pages/role-permission/module-management";
-import Permission from "@/pages/role-permission/permission";
-import Role from "@/pages/role-permission/role";
-import User from "@/pages/user";
+import { lazy } from "react";
+
+const Account = lazy(() => import("@/pages/account"));
+const ChangePassword = lazy(() => import("@/pages/changePassword/ChangePassword"));
+const Dashboard = lazy(() => import("@/pages/dashboard/Dashboard"));
+const MyMembership = lazy(() => import("@/pages/my-membership"));
+const MySubscription = lazy(() => import("@/pages/my-subscription"));
+const ModuleManagement = lazy(() => import("@/pages/role-permission/module-management"));
+const Permission = lazy(() => import("@/pages/role-permission/permission"));
+const Role = lazy(() => import("@/pages/role-permission/role"));
+const User = lazy(() => import("@/pages/user"));
 
 export const dashboardRoutes = [
   {
@@ -49,3 +51,4 @@ export const dashboardRoutes = [
     element: <Account />,
   },
 ];
+

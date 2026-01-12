@@ -1,7 +1,9 @@
 import { PATH } from "@/constant/path";
-import CreateCompany from "@/pages/company/child/create/create-company";
-import UpdateCompany from "@/pages/company/child/update/update-company";
-import Company from "@/pages/company/Company";
+import { lazy } from "react";
+
+const CreateCompany = lazy(() => import("@/pages/company/child/create/create-company"));
+const UpdateCompany = lazy(() => import("@/pages/company/child/update/update-company"));
+const Company = lazy(() => import("@/pages/company/Company"));
 
 export const companyRoutes = [
   {
@@ -17,3 +19,4 @@ export const companyRoutes = [
     element: <UpdateCompany />,
   },
 ];
+

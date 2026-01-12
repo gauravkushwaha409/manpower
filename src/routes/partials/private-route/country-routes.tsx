@@ -1,5 +1,7 @@
 import { PATH } from "@/constant/path";
-import Country from "@/pages/country/Country";
+import { lazy } from "react";
+
+const Country = lazy(() => import("@/pages/country/Country"));
 
 export const countryRoutes = [
   {
@@ -7,3 +9,4 @@ export const countryRoutes = [
     element: <Country />,
   },
 ];
+

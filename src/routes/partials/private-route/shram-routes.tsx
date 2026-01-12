@@ -1,5 +1,7 @@
 import { PATH } from "@/constant/path";
-import Sharam from "@/pages/shram";
+import { lazy } from "react";
+
+const Sharam = lazy(() => import("@/pages/shram"));
 
 export const shramRoutes = [
   {
@@ -7,3 +9,4 @@ export const shramRoutes = [
     element: <Sharam />,
   },
 ];
+

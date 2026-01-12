@@ -1,5 +1,7 @@
 import { PATH } from "@/constant/path";
-import Visa from "@/pages/visa";
+import { lazy } from "react";
+
+const Visa = lazy(() => import("@/pages/visa"));
 
 export const visaRoutes = [
   {
@@ -7,3 +9,4 @@ export const visaRoutes = [
     element: <Visa />,
   },
 ];
+

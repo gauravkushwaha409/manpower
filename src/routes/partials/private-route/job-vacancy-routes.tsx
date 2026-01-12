@@ -1,7 +1,9 @@
 import { PATH } from "@/constant/path";
-import CreateJobVacancy from "@/pages/job-vacancy/child/create/create-job-vacancy";
-import UpdateJobVacancy from "@/pages/job-vacancy/child/update/update-job-vacancy";
-import JobVacancy from "@/pages/job-vacancy/index.tsx";
+import { lazy } from "react";
+
+const CreateJobVacancy = lazy(() => import("@/pages/job-vacancy/child/create/create-job-vacancy"));
+const UpdateJobVacancy = lazy(() => import("@/pages/job-vacancy/child/update/update-job-vacancy"));
+const JobVacancy = lazy(() => import("@/pages/job-vacancy/index.tsx"));
 
 export const jobVacancyRoutes = [
   {
@@ -17,3 +19,4 @@ export const jobVacancyRoutes = [
     element: <UpdateJobVacancy />,
   },
 ];
+

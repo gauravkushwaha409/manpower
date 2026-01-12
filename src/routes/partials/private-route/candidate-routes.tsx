@@ -1,7 +1,9 @@
 import { PATH } from "@/constant/path";
-import Candidate from "@/pages/candidate";
-import CreateCandidate from "@/pages/candidate/child/create/CreateCandidate";
-import UpdateCandidate from "@/pages/candidate/child/update/UpdateCandidate";
+import { lazy } from "react";
+
+const Candidate = lazy(() => import("@/pages/candidate"));
+const CreateCandidate = lazy(() => import("@/pages/candidate/child/create/CreateCandidate"));
+const UpdateCandidate = lazy(() => import("@/pages/candidate/child/update/UpdateCandidate"));
 
 export const candidateRoutes = [
   {
@@ -17,3 +19,4 @@ export const candidateRoutes = [
     element: <UpdateCandidate />,
   },
 ];
+

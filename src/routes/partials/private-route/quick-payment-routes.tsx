@@ -1,7 +1,9 @@
 import { PATH } from "@/constant/path";
-import QuickPayment from "@/pages/quick-payment";
-import CreateQuickPayment from "@/pages/quick-payment/child/create-quick-payment";
-import UpdateQuickPayment from "@/pages/quick-payment/child/update-quick-payment";
+import { lazy } from "react";
+
+const QuickPayment = lazy(() => import("@/pages/quick-payment"));
+const CreateQuickPayment = lazy(() => import("@/pages/quick-payment/child/create-quick-payment"));
+const UpdateQuickPayment = lazy(() => import("@/pages/quick-payment/child/update-quick-payment"));
 
 export const quickPaymentRoutes = [
   {
@@ -17,3 +19,4 @@ export const quickPaymentRoutes = [
     element: <UpdateQuickPayment />,
   },
 ];
+

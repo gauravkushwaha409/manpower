@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { Outlet } from "react-router-dom";
 import Sidebar from "./sidebar";
 import Header from "./header/Header";
@@ -13,11 +13,14 @@ const Layout: React.FC = () => {
       <div className="u-flex-parent">
         <Header />
         <main className="u-flex-parent p-6">
-          <Outlet />
+          <Suspense fallback={<div className="flex h-full w-full items-center justify-center">Loading...</div>}>
+            <Outlet />
+          </Suspense>
         </main>
       </div>
     </div>
   );
 };
+
 
 export default Layout;
