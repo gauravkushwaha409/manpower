@@ -14,7 +14,7 @@ import useChartOfAccountDetails from "./use-chart-of-account-details";
 const useUpdateChartOfAccount = () => {
   const { updateId, handleCloseModal } = useUpdateModal();
   const [updateChartOfAccount, { isLoading }] = useUpdateDataMutation();
-  const chartOfAccountDetails = useChartOfAccountDetails({ id: updateId });
+  const chartOfAccountDetails = useChartOfAccountDetails({ id: updateId ?? "" });
   const initialValues: ChartOfAccountSchemaType = {
     account_name:
       chartOfAccountDetails?.chartOfAccountDetailResponse?.data?.account_name ||
@@ -31,7 +31,7 @@ const useUpdateChartOfAccount = () => {
     onSubmit: async (values, { setErrors, resetForm }) => {
       const response = (await updateChartOfAccount({
         data: values,
-        url: endpoints.chartOfAccount.account.update.replace(":id", updateId),
+        url: endpoints.chartOfAccount.account.update.replace(":id", updateId ?? ""),
         invalidateTag: [
           apiTags.chartOfAccount.account.details,
           apiTags.chartOfAccount.account.list,

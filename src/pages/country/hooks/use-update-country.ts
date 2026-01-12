@@ -32,14 +32,16 @@ const useUpdateCountry = () => {
     onSubmit: async (values, { setErrors, resetForm }) => {
       const response = (await updateCountry({
         data: values,
-        url: endpoints.country.update.replace(":id", updateId),
+        url: endpoints.country.update.replace(":id", updateId ?? ""),
         invalidateTag: [apiTags.country.details, apiTags.country.list],
       })) as ApiResponse;
       handleResponse({
         response,
         setErrorCallBack: setErrors,
-        handleCloseModal: handleCloseModal,
-        resetForm: resetForm,
+        handleOnSuccess: () => {
+          resetForm();
+          handleCloseModal();
+        }
       });
     },
   });

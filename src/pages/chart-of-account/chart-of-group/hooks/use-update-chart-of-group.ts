@@ -14,7 +14,7 @@ import {
 const useUpdateChartOfGroup = () => {
   const { updateId, handleCloseModal } = useUpdateModal();
   const [updateChartOfGroup, { isLoading }] = useUpdateDataMutation();
-  const chartOfGroupDetails = useChartOfGroupDetails({ id: updateId });
+  const chartOfGroupDetails = useChartOfGroupDetails({ id: updateId ?? "" });
   const initialValues: ChartOfGroupSchemaType = {
     group_name:
       chartOfGroupDetails?.chartOfGroupDetailResponse?.data?.group_name || "",
@@ -29,7 +29,7 @@ const useUpdateChartOfGroup = () => {
     onSubmit: async (values, { setErrors, resetForm }) => {
       const response = (await updateChartOfGroup({
         data: values,
-        url: endpoints.chartOfAccount.group.update.replace(":id", updateId),
+        url: endpoints.chartOfAccount.group.update.replace(":id", updateId ?? ""),
         invalidateTag: [
           apiTags.chartOfAccount.group.details,
           apiTags.chartOfAccount.group.list,
