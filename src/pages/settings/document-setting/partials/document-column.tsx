@@ -59,7 +59,7 @@ export const documentList: IDocumentListItem[] = [
 ];
 
 const DocumentColumns = (): ColumnDef<IDocumentListItem>[] => {
-  const { handleOpenModal: handleOpenDeleteModal } = useDelete({});
+  const { handleOpenModal: handleOpenDeleteModal } = useDelete({ endpoints: "", invalidates: [""] });
   const { handleOpenModal: handleOpenUpdateModal } = useUpdateModal();
   return [
     {
@@ -72,8 +72,8 @@ const DocumentColumns = (): ColumnDef<IDocumentListItem>[] => {
                 table.getIsAllRowsSelected()
                   ? true
                   : table.getIsSomeRowsSelected()
-                  ? "indeterminate"
-                  : false
+                    ? "indeterminate"
+                    : false
               }
               onCheckedChange={(value) => {
                 table.toggleAllRowsSelected(!!value);
@@ -90,8 +90,8 @@ const DocumentColumns = (): ColumnDef<IDocumentListItem>[] => {
                 row.getIsSelected()
                   ? true
                   : row.getIsSomeSelected()
-                  ? "indeterminate"
-                  : false
+                    ? "indeterminate"
+                    : false
               }
               onCheckedChange={row.getToggleSelectedHandler()}
             />

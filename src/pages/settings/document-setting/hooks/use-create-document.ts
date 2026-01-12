@@ -30,8 +30,10 @@ const useCreateDocument = () => {
       handleResponse({
         response,
         setErrorCallBack: setErrors,
-        handleCloseModal,
-        resetForm: resetForm,
+        handleOnSuccess: () => {
+          resetForm();
+          handleCloseModal();
+        }
       });
     },
   });

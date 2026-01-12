@@ -58,7 +58,7 @@ export const quickPaymentData: IQuickPaymentListItem[] = [
 // ======================= Qucik Payment Columns ===============================
 const QuickPaymentColumns = (): ColumnDef<IQuickPaymentListItem>[] => {
   const navigate = useNavigate();
-  const { handleOpenModal: handleOpenDeleteModal } = useDelete({});
+  const { handleOpenModal: handleOpenDeleteModal } = useDelete({ endpoints: "", invalidates: [""] });
 
   const handleClickEdit = useCallback((id: string) => {
     navigate(PATH.quickPayment.update.replace(":id", id));
@@ -74,8 +74,8 @@ const QuickPaymentColumns = (): ColumnDef<IQuickPaymentListItem>[] => {
                 table.getIsAllRowsSelected()
                   ? true
                   : table.getIsSomeRowsSelected()
-                  ? "indeterminate"
-                  : false
+                    ? "indeterminate"
+                    : false
               }
               onCheckedChange={(value) => {
                 table.toggleAllRowsSelected(!!value);
@@ -92,8 +92,8 @@ const QuickPaymentColumns = (): ColumnDef<IQuickPaymentListItem>[] => {
                 row.getIsSelected()
                   ? true
                   : row.getIsSomeSelected()
-                  ? "indeterminate"
-                  : false
+                    ? "indeterminate"
+                    : false
               }
               onCheckedChange={row.getToggleSelectedHandler()}
             />

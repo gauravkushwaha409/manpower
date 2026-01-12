@@ -5,7 +5,7 @@ import {
 
 namespace Medical {
   // ========== List Item ==============
-  interface ListItem {
+  export interface ListItem {
     id: string;
     candidate: string;
     exam_date: string;

@@ -60,7 +60,7 @@ export const ticketData: ITicketListItem[] = [
 ];
 
 const TicketColumns = (): ColumnDef<ITicketListItem>[] => {
-  const { handleOpenModal: handleOpenDeleteModal } = useDelete({});
+  const { handleOpenModal: handleOpenDeleteModal } = useDelete({ endpoints: "", invalidates: [""] });
   const { handleOpenModal: handleOpenUpdateModal } = useUpdateModal();
   return [
     {
@@ -73,8 +73,8 @@ const TicketColumns = (): ColumnDef<ITicketListItem>[] => {
                 table.getIsAllRowsSelected()
                   ? true
                   : table.getIsSomeRowsSelected()
-                  ? "indeterminate"
-                  : false
+                    ? "indeterminate"
+                    : false
               }
               onCheckedChange={(value) => {
                 table.toggleAllRowsSelected(!!value);
@@ -91,8 +91,8 @@ const TicketColumns = (): ColumnDef<ITicketListItem>[] => {
                 row.getIsSelected()
                   ? true
                   : row.getIsSomeSelected()
-                  ? "indeterminate"
-                  : false
+                    ? "indeterminate"
+                    : false
               }
               onCheckedChange={row.getToggleSelectedHandler()}
             />

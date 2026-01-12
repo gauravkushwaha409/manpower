@@ -78,7 +78,7 @@ export const interviewData: IInterviewListItem[] = [
 ];
 
 const InterviewColumns = (): ColumnDef<IInterviewListItem>[] => {
-  const { handleOpenModal: handleOpenDeleteModal } = useDelete({});
+  const { handleOpenModal: handleOpenDeleteModal } = useDelete({ endpoints: "", invalidates: [""] });
   const { handleOpenModal: handleOpenUpdateModal } = useUpdateModal();
   const { handleStatusClick } = useInterviewResultModal();
 
@@ -93,8 +93,8 @@ const InterviewColumns = (): ColumnDef<IInterviewListItem>[] => {
                 table.getIsAllRowsSelected()
                   ? true
                   : table.getIsSomeRowsSelected()
-                  ? "indeterminate"
-                  : false
+                    ? "indeterminate"
+                    : false
               }
               onCheckedChange={(value) => {
                 table.toggleAllRowsSelected(!!value);
@@ -111,8 +111,8 @@ const InterviewColumns = (): ColumnDef<IInterviewListItem>[] => {
                 row.getIsSelected()
                   ? true
                   : row.getIsSomeSelected()
-                  ? "indeterminate"
-                  : false
+                    ? "indeterminate"
+                    : false
               }
               onCheckedChange={row.getToggleSelectedHandler()}
             />

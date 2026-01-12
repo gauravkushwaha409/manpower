@@ -1,10 +1,12 @@
 import { useGetDataQuery } from "@/api/api";
 import { endpoints } from "@/api/endpoints";
-import { PreApprovalDofeDetailsResponse } from "../interface/IPreApprovalDofe";
+import { IApiDetailsResponse } from "@/interface/apiResponse.interface";
 
 interface IDetailsProps {
   id: string;
 }
+
+type PreApprovalDetailsResponse = IApiDetailsResponse<IDetailsProps>
 
 export const useGetPreApprovalDofeDetails = ({ id }: IDetailsProps) => {
   const {
@@ -14,7 +16,7 @@ export const useGetPreApprovalDofeDetails = ({ id }: IDetailsProps) => {
     isSuccess,
     refetch: refetchPreApprovalDofeDetails,
   } = useGetDataQuery<{
-    data: PreApprovalDofeDetailsResponse;
+    data: PreApprovalDetailsResponse,
     isLoading: boolean;
     isError: boolean;
     isSuccess: boolean;

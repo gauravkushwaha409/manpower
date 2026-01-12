@@ -4,10 +4,10 @@ import { useNavigate } from "react-router-dom";
 import { useDelete } from "@/hooks/useDelete";
 import { PATH } from "@/constant/path";
 import { Checkbox } from "@/components/ui/checkbox";
-import { ICandidateListItem } from "../hooks/use-candidate-list";
 import { useJobByCandidateModal } from "../hooks/use-job-by-candidate";
+import Candidate from "@/types/candidate.types";
 
-export const candidateData: ICandidateListItem[] = [
+export const candidateData: Candidate.ListItem[] = [
   {
     id: "1",
     first_name: "Ramesh",
@@ -110,10 +110,10 @@ export const candidateData: ICandidateListItem[] = [
   },
 ];
 
-export const CandidateColumns = (): ColumnDef<ICandidateListItem>[] => {
+export const CandidateColumns = (): ColumnDef<Candidate.ListItem>[] => {
   const navigate = useNavigate();
   const { handleOpenJobByCandidate } = useJobByCandidateModal();
-  const { handleOpenModal } = useDelete({});
+  const { handleOpenModal } = useDelete({ endpoints: "", invalidates: [""] });
   const handleUpdateClick = (id: string) => {
     navigate(PATH.candidate.update.replace(":id", id));
   };
@@ -128,8 +128,8 @@ export const CandidateColumns = (): ColumnDef<ICandidateListItem>[] => {
                 table.getIsAllRowsSelected()
                   ? true
                   : table.getIsSomeRowsSelected()
-                  ? "indeterminate"
-                  : false
+                    ? "indeterminate"
+                    : false
               }
               onCheckedChange={(value) => {
                 table.toggleAllRowsSelected(!!value);
@@ -146,8 +146,8 @@ export const CandidateColumns = (): ColumnDef<ICandidateListItem>[] => {
                 row.getIsSelected()
                   ? true
                   : row.getIsSomeSelected()
-                  ? "indeterminate"
-                  : false
+                    ? "indeterminate"
+                    : false
               }
               onCheckedChange={row.getToggleSelectedHandler()}
             />

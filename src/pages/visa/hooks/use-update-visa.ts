@@ -33,14 +33,16 @@ const useUpdateVisa = () => {
     onSubmit: async (values, { setErrors, resetForm }) => {
       const response = (await updateVisa({
         data: values,
-        url: endpoints.visa.update.replace(":id", updateId),
+        url: endpoints.visa.update.replace(":id", updateId ?? ""),
         invalidateTag: [apiTags.visa.details, apiTags.visa.list],
       })) as ApiResponse;
       handleResponse({
         response,
         setErrorCallBack: setErrors,
-        handleCloseModal: handleCloseModal,
-        resetForm: resetForm,
+        handleOnSuccess: () => {
+          handleCloseModal();
+          resetForm()
+        }
       });
     },
   });

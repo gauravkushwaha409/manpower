@@ -23,7 +23,7 @@ const useUpdateIndustry = () => {
     onSubmit: async (values) => {
       updateIndustry({
         data: values,
-        url: endpoints.industry.update.replace(":id", updateId),
+        url: endpoints.industry.update.replace(":id", updateId ?? ""),
         invalidateTag: [apiTags.industry.list, apiTags.industry.details],
       });
     },

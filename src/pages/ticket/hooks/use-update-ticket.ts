@@ -35,14 +35,16 @@ const useUpdateTicket = () => {
     onSubmit: async (values, { setErrors, resetForm }) => {
       const response = (await updateTicket({
         data: values,
-        url: endpoints.ticket.update.replace(":id", updateId),
+        url: endpoints.ticket.update.replace(":id", updateId ?? ""),
         invalidateTag: [apiTags.ticket.details, apiTags.ticket.list],
       })) as ApiResponse;
       handleResponse({
         response,
         setErrorCallBack: setErrors,
-        handleCloseModal: handleCloseModal,
-        resetForm: resetForm,
+        handleOnSuccess: () => {
+          resetForm();
+          handleCloseModal();
+        }
       });
     },
   });

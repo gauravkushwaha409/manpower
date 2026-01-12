@@ -51,7 +51,7 @@ export const subCategoryData: ISubCategoryListItem[] = [
 ];
 
 const SubCategoryColumns = (): ColumnDef<ISubCategoryListItem>[] => {
-  const { handleOpenModal: handleOpenDeleteModal } = useDelete({});
+  const { handleOpenModal: handleOpenDeleteModal } = useDelete({ endpoints: "", invalidates: [""] });
   const { handleOpenModal: handleOpenUpdateModal } = useUpdateModal();
   return [
     {
@@ -64,8 +64,8 @@ const SubCategoryColumns = (): ColumnDef<ISubCategoryListItem>[] => {
                 table.getIsAllRowsSelected()
                   ? true
                   : table.getIsSomeRowsSelected()
-                  ? "indeterminate"
-                  : false
+                    ? "indeterminate"
+                    : false
               }
               onCheckedChange={(value) => {
                 table.toggleAllRowsSelected(!!value);
@@ -82,8 +82,8 @@ const SubCategoryColumns = (): ColumnDef<ISubCategoryListItem>[] => {
                 row.getIsSelected()
                   ? true
                   : row.getIsSomeSelected()
-                  ? "indeterminate"
-                  : false
+                    ? "indeterminate"
+                    : false
               }
               onCheckedChange={row.getToggleSelectedHandler()}
             />

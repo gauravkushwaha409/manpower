@@ -15,7 +15,7 @@ const useUpdateJobTitle = () => {
   const { updateId, handleCloseModal } = useUpdateModal();
   const [updateJobTitle, { isLoading }] = useUpdateDataMutation();
   const { jobTitleDetails, isLoading: isInitialLoading } = useJobTitleDetails({
-    id: updateId,
+    id: updateId ?? "",
   });
 
   const initialValues: JobTitleSchemaType = {
@@ -40,14 +40,16 @@ const useUpdateJobTitle = () => {
 
       const response = (await updateJobTitle({
         data: formData,
-        url: endpoints.jobTitle.update.replace(":id", updateId),
+        url: endpoints.jobTitle.update.replace(":id", updateId ?? ""),
         invalidateTag: [apiTags.jobTitle.list, apiTags.jobTitle.details],
       })) as ApiResponse;
       handleResponse({
         response,
         setErrorCallBack: setErrors,
-        handleCloseModal,
-        resetForm: resetForm,
+        handleOnSuccess: () => {
+          resetForm();
+          handleCloseModal();
+        }
       });
     },
   });

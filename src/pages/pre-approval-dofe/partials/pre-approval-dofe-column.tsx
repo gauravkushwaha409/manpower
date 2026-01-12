@@ -9,7 +9,7 @@ import { IPreApprovalDofeListItem } from "../hooks/use-pre-approval-dofe-list";
 
 const PreApprovalDofeColumns = (): ColumnDef<IPreApprovalDofeListItem>[] => {
   const navigate = useNavigate();
-  const { handleOpenModal } = useDelete({});
+  const { handleOpenModal } = useDelete({ endpoints: "", invalidates: [""] });
   const handleUpdateClick = (id: string) => {
     navigate(PATH.preApprovalDofe.update.replace(":id", id));
   };
@@ -24,8 +24,8 @@ const PreApprovalDofeColumns = (): ColumnDef<IPreApprovalDofeListItem>[] => {
                 table.getIsAllRowsSelected()
                   ? true
                   : table.getIsSomeRowsSelected()
-                  ? "indeterminate"
-                  : false
+                    ? "indeterminate"
+                    : false
               }
               onCheckedChange={(value) => {
                 table.toggleAllRowsSelected(!!value);
@@ -42,8 +42,8 @@ const PreApprovalDofeColumns = (): ColumnDef<IPreApprovalDofeListItem>[] => {
                 row.getIsSelected()
                   ? true
                   : row.getIsSomeSelected()
-                  ? "indeterminate"
-                  : false
+                    ? "indeterminate"
+                    : false
               }
               onCheckedChange={row.getToggleSelectedHandler()}
             />

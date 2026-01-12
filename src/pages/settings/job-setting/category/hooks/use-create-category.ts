@@ -22,7 +22,7 @@ const useCreateCategory = () => {
   const formik = useFormik<CategorySchemaType>({
     initialValues,
     validationSchema: CategoryValidationSchema,
-    onSubmit: async (values, { setErrors }) => {
+    onSubmit: async (values, { setErrors, resetForm }) => {
       const response = (await createCategory({
         url: endpoints.category.create,
         data: values,
@@ -31,7 +31,10 @@ const useCreateCategory = () => {
       handleResponse({
         response,
         setErrorCallBack: setErrors,
-        handleCloseModal,
+        handleOnSuccess: () => {
+          resetForm();
+          handleCloseModal();
+        }
       });
     },
   });

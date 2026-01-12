@@ -2,7 +2,7 @@ import { IPaginationResponse } from "@/interface/apiResponse.interface";
 
 namespace Candidate {
   // ================== Candidate List ========================
-  interface ListItem {
+  export interface ListItem {
     id: string;
     first_name: string;
     last_name: string;

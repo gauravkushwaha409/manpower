@@ -3,7 +3,7 @@ import { useDelete } from "@/hooks/useDelete";
 import React from "react";
 
 const QuickPaymentModal = () => {
-  const deleteQuickPayment = useDelete({});
+  const deleteQuickPayment = useDelete({ endpoints: "", invalidates: [""] });
   return (
     <React.Fragment>
       <DeleteModal

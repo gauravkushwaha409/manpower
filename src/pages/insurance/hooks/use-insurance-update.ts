@@ -36,14 +36,16 @@ const useInsuranceUpdate = () => {
     onSubmit: async (values, { setErrors, resetForm }) => {
       const response = (await updateInsurance({
         data: values,
-        url: endpoints.insurance.update.replace(":id", updateId),
+        url: endpoints.insurance.update.replace(":id", updateId ?? ""),
         invalidateTag: [apiTags.insurance.details, apiTags.insurance.list],
       })) as ApiResponse;
       handleResponse({
         response,
         setErrorCallBack: setErrors,
-        handleCloseModal: handleCloseModal,
-        resetForm: resetForm,
+        handleOnSuccess: () => {
+          resetForm();
+          handleCloseModal()
+        }
       });
     },
   });

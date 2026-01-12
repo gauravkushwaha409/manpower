@@ -3,10 +3,10 @@ import { ColumnDef } from "@tanstack/react-table";
 import { useDelete } from "@/hooks/useDelete";
 import { useUpdateModal } from "@/hooks/use-update-modal";
 import { Checkbox } from "@/components/ui/checkbox";
-import { IMedicalListItem } from "../hooks/use-medical-list";
 import { File } from "lucide-react";
+import Medical from "@/types/medical.types";
 
-export const medicalData: IMedicalListItem[] = [
+export const medicalData: Medical.ListItem[] = [
   {
     id: "1",
     candidate: "Arjun Singh",
@@ -89,8 +89,8 @@ export const medicalData: IMedicalListItem[] = [
   },
 ];
 
-const MedicalColumns = (): ColumnDef<IMedicalListItem>[] => {
-  const { handleOpenModal: handleOpenDeleteModal } = useDelete({});
+const MedicalColumns = (): ColumnDef<Medical.ListItem>[] => {
+  const { handleOpenModal: handleOpenDeleteModal } = useDelete({ endpoints: "", invalidates: [""] });
   const { handleOpenModal: handleOpenUpdateModal } = useUpdateModal();
   return [
     {
@@ -103,8 +103,8 @@ const MedicalColumns = (): ColumnDef<IMedicalListItem>[] => {
                 table.getIsAllRowsSelected()
                   ? true
                   : table.getIsSomeRowsSelected()
-                  ? "indeterminate"
-                  : false
+                    ? "indeterminate"
+                    : false
               }
               onCheckedChange={(value) => {
                 table.toggleAllRowsSelected(!!value);
@@ -121,8 +121,8 @@ const MedicalColumns = (): ColumnDef<IMedicalListItem>[] => {
                 row.getIsSelected()
                   ? true
                   : row.getIsSomeSelected()
-                  ? "indeterminate"
-                  : false
+                    ? "indeterminate"
+                    : false
               }
               onCheckedChange={row.getToggleSelectedHandler()}
             />

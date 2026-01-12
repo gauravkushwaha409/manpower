@@ -25,13 +25,14 @@ const useUpdateInvoice = () => {
     referance_no: data?.data?.referance_no || "",
     due_date: data?.data?.due_date || "",
     products: [...data?.data?.products],
-    tempProductSchema: {
+    tempProduct: {
       product: "",
-      discount: 0,
-      quantity: 0,
-      rate: 0,
-      tax: 0,
+      discount: "",
+      quantity: "",
+      rate: "",
+      tax: false,
     },
+    edit_index: null
   };
 
   const formik = useFormik({

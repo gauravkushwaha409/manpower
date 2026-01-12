@@ -38,14 +38,16 @@ const useUpdateInterview = () => {
     onSubmit: async (values, { setErrors, resetForm }) => {
       const response = (await updateCountry({
         data: values,
-        url: endpoints.interview.update.replace(":id", updateId),
+        url: endpoints.interview.update.replace(":id", updateId ?? ""),
         invalidateTag: [apiTags.interview.details, apiTags.interview.list],
       })) as ApiResponse;
       handleResponse({
         response,
         setErrorCallBack: setErrors,
-        handleCloseModal: handleCloseModal,
-        resetForm: resetForm,
+        handleOnSuccess: () => {
+          resetForm();
+          handleCloseModal();
+        }
       });
     },
   });

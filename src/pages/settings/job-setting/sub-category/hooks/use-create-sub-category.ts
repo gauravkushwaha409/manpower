@@ -40,8 +40,10 @@ const useCreateSubCategory = () => {
       handleResponse({
         response,
         setErrorCallBack: setErrors,
-        handleCloseModal,
-        resetForm: resetForm,
+        handleOnSuccess: () => {
+          resetForm();
+          handleCloseModal();
+        }
       });
     },
   });

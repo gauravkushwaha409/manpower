@@ -10,7 +10,6 @@ import {
   medicalSchemaType,
   medicalValidationSchema,
 } from "../schema/medical-schema";
-import React from "react";
 
 const useUpdateMedical = () => {
   const [updateMedical, { isLoading }] = useUpdateDataMutation();
@@ -36,10 +35,10 @@ const useUpdateMedical = () => {
       handleResponse({
         response,
         setErrorCallBack: setErrors,
-        handleOnSuccess: React.useCallback(() => {
+        handleOnSuccess: () => {
           resetForm();
           handleCloseModal();
-        }, []),
+        },
       });
     },
   });

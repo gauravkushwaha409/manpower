@@ -6,7 +6,7 @@ import { OrientationStatusType } from "@/pages/orientation/schema/orientation-sc
 
 namespace Orientation {
   // ================ Orientation List ==================
-  interface IListItem {
+  export interface ListItem {
     id: string;
     candidate_name: string;
     candidate_job: string;
@@ -17,7 +17,7 @@ namespace Orientation {
     orientation_status: OrientationStatusType;
   }
 
-  export type List = IPaginationResponse<IListItem>;
+  export type List = IPaginationResponse<ListItem>;
   // ================ Orientation Details ==================
   interface IDetails {
     id: string;

@@ -15,7 +15,7 @@ const useUpdateDocument = () => {
   const { updateId, handleCloseModal } = useUpdateModal();
   const [updateDocument, { isLoading }] = useUpdateDataMutation();
   const { documentDetails, isLoading: isInitialLoading } = useDocumentDetails({
-    id: updateId,
+    id: updateId ?? "",
   });
 
   const initialValues: DocumentSchemaType = {
@@ -29,14 +29,16 @@ const useUpdateDocument = () => {
     onSubmit: async (values, { setErrors, resetForm }) => {
       const response = (await updateDocument({
         data: values,
-        url: endpoints.document.update.replace(":id", updateId),
+        url: endpoints.document.update.replace(":id", updateId ?? ""),
         invalidateTag: [apiTags.document.list, apiTags.document.details],
       })) as ApiResponse;
       handleResponse({
         response,
         setErrorCallBack: setErrors,
-        handleCloseModal,
-        resetForm: resetForm,
+        handleOnSuccess: () => {
+          resetForm();
+          handleCloseModal();
+        }
       });
     },
   });

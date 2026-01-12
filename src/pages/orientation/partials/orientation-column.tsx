@@ -3,12 +3,12 @@ import { ColumnDef } from "@tanstack/react-table";
 import { useDelete } from "@/hooks/useDelete";
 import { useUpdateModal } from "@/hooks/use-update-modal";
 import { Checkbox } from "@/components/ui/checkbox";
-import { IOrientationListItem } from "../hooks/use-orientation-list";
 import { File } from "lucide-react";
 import { OrientationStatusType } from "../schema/orientation-schema";
 import useUpdateOrientationStatusModal from "../hooks/use-update-orientation-status-modal";
+import Orientation from "@/types/orientation.types";
 
-export const orientationData: IOrientationListItem[] = [
+export const orientationData: Orientation.ListItem[] = [
   {
     id: "1",
     candidate_name: "Ramesh Kumar",
@@ -111,8 +111,8 @@ export const orientationData: IOrientationListItem[] = [
   },
 ];
 
-const OrientationColumns = (): ColumnDef<IOrientationListItem>[] => {
-  const { handleOpenModal: handleOpenDeleteModal } = useDelete({});
+const OrientationColumns = (): ColumnDef<Orientation.ListItem>[] => {
+  const { handleOpenModal: handleOpenDeleteModal } = useDelete({ endpoints: "", invalidates: [""] });
   const { handleOpenModal: handleOpenUpdateModal } = useUpdateModal();
   const { handleOpenOrientationStatusModal } =
     useUpdateOrientationStatusModal();
@@ -128,8 +128,8 @@ const OrientationColumns = (): ColumnDef<IOrientationListItem>[] => {
                 table.getIsAllRowsSelected()
                   ? true
                   : table.getIsSomeRowsSelected()
-                  ? "indeterminate"
-                  : false
+                    ? "indeterminate"
+                    : false
               }
               onCheckedChange={(value) => {
                 table.toggleAllRowsSelected(!!value);
@@ -146,8 +146,8 @@ const OrientationColumns = (): ColumnDef<IOrientationListItem>[] => {
                 row.getIsSelected()
                   ? true
                   : row.getIsSomeSelected()
-                  ? "indeterminate"
-                  : false
+                    ? "indeterminate"
+                    : false
               }
               onCheckedChange={row.getToggleSelectedHandler()}
             />

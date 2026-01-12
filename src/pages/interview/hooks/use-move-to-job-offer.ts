@@ -2,12 +2,12 @@ import { useUpdateDataMutation } from "@/api/api";
 import { useFormik } from "formik";
 
 const useMoveToJobOffer = () => {
-  const [moveToJobOffer, { isLoading }] = useUpdateDataMutation();
+  const [_, { isLoading }] = useUpdateDataMutation();
 
   const initialValues = {};
   const formik = useFormik({
     initialValues,
-    onSubmit: () => {},
+    onSubmit: () => { },
   });
 
   return { formik, isLoading };

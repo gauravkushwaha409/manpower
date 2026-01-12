@@ -16,7 +16,7 @@ const useUpdateSubCategory = () => {
   const [updateSubCategory, { isLoading }] = useUpdateDataMutation();
   const { subCategoryDetails, isLoading: isInitialLoading } =
     useSubCategoryDetails({
-      id: updateId,
+      id: updateId ?? "",
     });
 
   const initialValues: SubCategorySchemaType = {
@@ -39,14 +39,16 @@ const useUpdateSubCategory = () => {
 
       const response = (await updateSubCategory({
         data: formData,
-        url: endpoints.subCategory.update.replace(":id", updateId),
+        url: endpoints.subCategory.update.replace(":id", updateId ?? ""),
         invalidateTag: [apiTags.subCategory.list, apiTags.subCategory.details],
       })) as ApiResponse;
       handleResponse({
         response,
         setErrorCallBack: setErrors,
-        handleCloseModal,
-        resetForm: resetForm,
+        handleOnSuccess: () => {
+          resetForm();
+          handleCloseModal();
+        }
       });
     },
   });

@@ -8,7 +8,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 
 const IndustryColumn = (): ColumnDef<IndustryListItem>[] => {
   const { handleOpenModal } = useUpdateModal();
-  const { handleOpenModal: handleOpenDeleteModal } = useDelete({});
+  const { handleOpenModal: handleOpenDeleteModal } = useDelete({ endpoints: "", invalidates: [""] });
   return [
     {
       id: "select",
@@ -20,8 +20,8 @@ const IndustryColumn = (): ColumnDef<IndustryListItem>[] => {
                 table.getIsAllRowsSelected()
                   ? true
                   : table.getIsSomeRowsSelected()
-                  ? "indeterminate"
-                  : false
+                    ? "indeterminate"
+                    : false
               }
               onCheckedChange={(value) => {
                 table.toggleAllRowsSelected(!!value);
@@ -38,8 +38,8 @@ const IndustryColumn = (): ColumnDef<IndustryListItem>[] => {
                 row.getIsSelected()
                   ? true
                   : row.getIsSomeSelected()
-                  ? "indeterminate"
-                  : false
+                    ? "indeterminate"
+                    : false
               }
               onCheckedChange={row.getToggleSelectedHandler()}
             />

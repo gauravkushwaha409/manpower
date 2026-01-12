@@ -29,7 +29,7 @@ const useUpdateJobOffer = () => {
     onSubmit: async (values, { setErrors, resetForm }) => {
       const response = (await updateJobOffer({
         data: values,
-        url: endpoints.jobOffer.update.replace(":id", updateId),
+        url: endpoints.jobOffer.update.replace(":id", updateId ?? ""),
         invalidateTag: [apiTags.jobOffer.details, apiTags.jobOffer.list],
       })) as ApiResponse;
       handleResponse({

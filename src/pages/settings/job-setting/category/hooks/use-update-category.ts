@@ -15,7 +15,7 @@ const useUpdateCategory = () => {
   const { updateId, handleCloseModal } = useUpdateModal();
   const [updateCategory, { isLoading }] = useUpdateDataMutation();
   const { categoryDetails, isLoading: isInitialLoading } = useCategoryDetails({
-    id: updateId,
+    id: updateId ?? "",
   });
 
   const initialValues: CategorySchemaType = {
@@ -27,7 +27,7 @@ const useUpdateCategory = () => {
   const formik = useFormik<CategorySchemaType>({
     initialValues,
     validationSchema: CategoryValidationSchema,
-    onSubmit: async (value, { setErrors }) => {
+    onSubmit: async (value, { setErrors, resetForm }) => {
       const formData = new FormData();
       formData.append("industry", value.industry);
       formData.append("category", value.category);
@@ -35,14 +35,16 @@ const useUpdateCategory = () => {
         formData.append("icon", value.icon);
       const response = (await updateCategory({
         data: formData,
-        url: endpoints.category.update.replace(":id", updateId),
+        url: endpoints.category.update.replace(":id", updateId ?? ""),
         invalidateTag: [apiTags.category.list, apiTags.category.details],
       })) as ApiResponse;
       handleResponse({
         response,
         setErrorCallBack: setErrors,
-        handleCloseModal,
-        resetForm: formik.resetForm,
+        handleOnSuccess: () => {
+          resetForm();
+          handleCloseModal();
+        }
       });
     },
   });

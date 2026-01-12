@@ -238,7 +238,7 @@ export const jobVacancyData: IJobVacancyListItem[] = [
 
 const JobVacancyColumns = (): ColumnDef<IJobVacancyListItem>[] => {
   const navigate = useNavigate();
-  const { handleOpenModal } = useDelete({});
+  const { handleOpenModal } = useDelete({ endpoints: "", invalidates: [""] });
   const { handleOpenCandidateByJob } = useCandidateByJobModal();
   const handleUpdateClick = (id: string) => {
     navigate(PATH.jobVacancy.update.replace(":id", id));
@@ -254,8 +254,8 @@ const JobVacancyColumns = (): ColumnDef<IJobVacancyListItem>[] => {
                 table.getIsAllRowsSelected()
                   ? true
                   : table.getIsSomeRowsSelected()
-                  ? "indeterminate"
-                  : false
+                    ? "indeterminate"
+                    : false
               }
               onCheckedChange={(value) => {
                 table.toggleAllRowsSelected(!!value);
@@ -272,8 +272,8 @@ const JobVacancyColumns = (): ColumnDef<IJobVacancyListItem>[] => {
                 row.getIsSelected()
                   ? true
                   : row.getIsSomeSelected()
-                  ? "indeterminate"
-                  : false
+                    ? "indeterminate"
+                    : false
               }
               onCheckedChange={row.getToggleSelectedHandler()}
             />

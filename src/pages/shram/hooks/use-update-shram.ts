@@ -31,14 +31,16 @@ const useUpdateShram = () => {
     onSubmit: async (values, { setErrors, resetForm }) => {
       const response = (await updateShram({
         data: values,
-        url: endpoints.shram.update.replace(":id", updateId),
+        url: endpoints.shram.update.replace(":id", updateId ?? ""),
         invalidateTag: [apiTags.shram.details, apiTags.shram.list],
       })) as ApiResponse;
       handleResponse({
         response,
         setErrorCallBack: setErrors,
-        handleCloseModal: handleCloseModal,
-        resetForm: resetForm,
+        handleOnSuccess: () => {
+          resetForm()
+          handleCloseModal()
+        }
       });
     },
   });
