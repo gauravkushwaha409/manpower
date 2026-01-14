@@ -94,6 +94,9 @@ export const useCreateCandidate = () => {
     job_vacancy: "",
     interview_process: "",
     description: "",
+    edit_work_experience_index: null,
+    edit_education_index: null,
+    edit_certificate_index: null,
   };
   const formik = useFormik<CandidateSchemaType>({
     initialValues,

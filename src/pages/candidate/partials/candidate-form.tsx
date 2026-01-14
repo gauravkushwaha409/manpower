@@ -7,8 +7,14 @@ import { cn } from "@/lib/utils";
 import FormInputPdf from "@/components/form/FormInputPdf";
 import TextEditor from "@/components/form/TextEditor";
 import { CandidateSchemaType } from "../schema/candidate-schema";
-import useCandidateDocument from "../hooks/use-candidate-documents";
+
 import FormInputTextArea from "@/components/form/form-input-text-area";
+import TableWrapper from "@/components/TableWrapper";
+import Table from "@/components/Table";
+import { ColumnDef } from "@tanstack/react-table";
+import TableAction from "@/components/TableAction";
+import useCandidateForm from "../hooks/use-candidate-form";
+import FormSwitch from "@/components/form/FormSwitch";
 
 // ============= Candidate Step-1 Form ===================
 export const CandidateFormStep1 = () => {
@@ -185,7 +191,7 @@ export const CandidateFormStep2 = () => {
           {formik.values.languages.length > 0 && (
             <div className="mt-3 flex items-center justify-between gap-5 col-span-2">
               {index === formik.values.languages.length - 1 && (
-                <Button handleClick={addLanguage} varient="add">
+                <Button handleClick={addLanguage} variant="add">
                   Add More
                   <Plus />
                 </Button>
@@ -193,7 +199,7 @@ export const CandidateFormStep2 = () => {
               {index > 0 && (
                 <Button
                   handleClick={() => removeLanguage(index)}
-                  varient="delete"
+                  variant="delete"
                 >
                   Delete
                 </Button>
@@ -226,14 +232,14 @@ export const CandidateFormStep2 = () => {
           {/* Add/Remove buttons */}
           {index === formik.values.education.length - 1 && (
             <div className="mt-3 flex items-center gap-5 col-span-3">
-              <Button handleClick={addEducation} varient="add">
+              <Button handleClick={addEducation} variant="add">
                 Add More
                 <Plus />
               </Button>
 
               {index > 0 && (
                 <Button
-                  varient="delete"
+                  variant="delete"
                   handleClick={() => {
                     removeEducation(index);
                   }}
@@ -251,33 +257,73 @@ export const CandidateFormStep2 = () => {
 
 // ============= Candidate Step-3 Form ===================
 export const CandidateFormStep3 = () => {
+  const {
+    handleAddWorkExperience,
+    handleUpdateWorkExperience,
+    handleCancelUpdateWorkExperience,
+    isEditingWorkExperience,
+  } = useCandidateForm();
+
   return (
-    <div className="grid grid-cols-2 gap-4">
-      <FormInputText
-        label="Job Title"
-        name="tempWorkExperience.job_title"
-        placeholder="Enter Job Title"
-      />
-      <FormInputText
-        label="Company Name"
-        name="tempWorkExperience.company_name"
-        placeholder="Enter Company Name"
-      />
-      <FormInputText
-        label="Job Level"
-        name="tempWorkExperience.job_level"
-        placeholder="Enter Job Level"
-      />
-      <FormInputDate
-        label="Start Date"
-        name="tempWorkExperience.start_date"
-        placeholder="Enter Start Date"
-      />
-      <FormInputDate
-        label="End Date"
-        name="tempWorkExperience.end_date"
-        placeholder="Enter End Date"
-      />
+    <div className="space-y-6">
+      <div className="grid grid-cols-2 gap-4">
+        <FormInputText
+          label="Job Title"
+          name="tempWorkExperience.job_title"
+          placeholder="Enter Job Title"
+        />
+        <FormInputText
+          label="Company Name"
+          name="tempWorkExperience.company_name"
+          placeholder="Enter Company Name"
+        />
+        <FormInputText
+          label="Job Level"
+          name="tempWorkExperience.job_level"
+          placeholder="Enter Job Level"
+        />
+        <div className="grid grid-cols-2 gap-x-4">
+          <FormInputDate
+            label="Start Date"
+            name="tempWorkExperience.start_date"
+            placeholder="Enter Start Date"
+          />
+          <FormInputDate
+            label="End Date"
+            name="tempWorkExperience.end_date"
+            placeholder="Enter End Date"
+          />
+        </div>
+        <div className="flex items-center">
+          <FormSwitch title="Currently Working" name="tempWorkExperience.currently_working" />
+        </div>
+        <FormInputTextArea
+          label="Description"
+          name="tempWorkExperience.description"
+          placeholder="Enter Job Description"
+          wrapperClassName="col-span-2"
+        />
+
+        <div className="col-span-2">
+          {isEditingWorkExperience ? (
+            <div className="flex items-center gap-x-4">
+              <Button variant="update" handleClick={handleUpdateWorkExperience}>
+                Update
+              </Button>
+              <Button variant="delete" handleClick={handleCancelUpdateWorkExperience}>
+                Cancel
+              </Button>
+            </div>
+          ) : (
+            <Button variant="add" handleClick={handleAddWorkExperience}>
+              Add
+              <Plus size={18} className="ml-2" />
+            </Button>
+          )}
+        </div>
+      </div>
+
+      <WorkExperienceTable />
     </div>
   )
 }
@@ -285,33 +331,66 @@ export const CandidateFormStep3 = () => {
 // ============= Candidate Step-4 Form ===================
 
 export const CandidateFormStep4 = () => {
+  const {
+    handleAddEducation,
+    handleUpdateEducation,
+    handleCancelUpdateEducation,
+    isEditingEducation,
+  } = useCandidateForm();
+
   return (
-    <div className="grid grid-cols-2 gap-4">
-      <FormInputText
-        label="Degree"
-        name="tempEducationDetails.degree"
-        placeholder="Enter Degree"
-      />
-      <FormInputText
-        label="Institute Name"
-        name="tempEducationDetails.institute_name"
-        placeholder="Enter Institute Name"
-      />
-      <FormInputText
-        label="Faculty Name"
-        name="tempEducationDetails.faculty_name"
-        placeholder="Enter Faculty Name"
-      />
-      <FormInputDate
-        label="Start Date"
-        name="tempEducationDetails.start_date"
-        placeholder="Enter Start Date"
-      />
-      <FormInputDate
-        label="End Date"
-        name="tempEducationDetails.end_date"
-        placeholder="Enter End Date"
-      />
+    <div className="space-y-6">
+      <div className="grid grid-cols-2 gap-4">
+        <FormInputText
+          label="Degree"
+          name="tempEducationDetails.degree"
+          placeholder="Enter Degree"
+        />
+        <FormInputText
+          label="Institute Name"
+          name="tempEducationDetails.institute_name"
+          placeholder="Enter Institute Name"
+        />
+        <FormInputText
+          label="Faculty Name"
+          name="tempEducationDetails.faculty_name"
+          placeholder="Enter Faculty Name"
+        />
+        <div className="grid grid-cols-2 gap-x-4">
+          <FormInputDate
+            label="Start Date"
+            name="tempEducationDetails.start_date"
+            placeholder="Enter Start Date"
+          />
+          <FormInputDate
+            label="End Date"
+            name="tempEducationDetails.end_date"
+            placeholder="Enter End Date"
+          />
+        </div>
+        <div className="flex items-center">
+          <FormSwitch title="Currently Studying" name="tempEducationDetails.currently_studying" />
+        </div>
+
+        <div className="col-span-2">
+          {isEditingEducation ? (
+            <div className="flex items-center gap-x-4">
+              <Button variant="update" handleClick={handleUpdateEducation}>
+                Update
+              </Button>
+              <Button variant="delete" handleClick={handleCancelUpdateEducation}>
+                Cancel
+              </Button>
+            </div>
+          ) : (
+            <Button variant="add" handleClick={handleAddEducation}>
+              Add
+              <Plus size={18} className="ml-2" />
+            </Button>
+          )}
+        </div>
+      </div>
+      <EducationTable />
     </div>
   )
 }
@@ -319,25 +398,54 @@ export const CandidateFormStep4 = () => {
 // ============= Candidate Step-5 Form ===================
 
 export const CandidateFormStep5 = () => {
+  const {
+    handleAddCertificate,
+    handleUpdateCertificate,
+    handleCancelUpdateCertificate,
+    isEditingCertificate,
+    certificatePdfRef
+  } = useCandidateForm();
+
   return (
-    <div className="grid grid-cols-2 gap-4">
-      <FormInputText
-        label="Certificate Title"
-        name="tempCertificate.certificate_title"
-        placeholder="Enter Certificate Title"
-      />
-      <FormInputText
-        label="Organization Name"
-        name="tempCertificate.organization_name"
-        placeholder="Enter Organization Name"
-      />
-      <FormInputTextArea
-        label="Description"
-        name="tempCertificate.description"
-        placeholder="Enter Description"
-        wrapperClassName="col-span-2"
-      />
-      <FormInputPdf wrapperClassName="col-span-2" label="Upload Certificate" name="tempCertificate.certificate_file" />
+    <div className="space-y-6">
+      <div className="grid grid-cols-2 gap-4">
+        <FormInputText
+          label="Certificate Title"
+          name="tempCertificate.certificate_title"
+          placeholder="Enter Certificate Title"
+        />
+        <FormInputText
+          label="Organization Name"
+          name="tempCertificate.organization_name"
+          placeholder="Enter Organization Name"
+        />
+        <FormInputTextArea
+          label="Description"
+          name="tempCertificate.description"
+          placeholder="Enter Description"
+          wrapperClassName="col-span-2"
+        />
+        <FormInputPdf handleDeleteRef={certificatePdfRef} wrapperClassName="col-span-2" label="Upload Certificate" name="tempCertificate.certificate_file" />
+
+        <div className="col-span-2">
+          {isEditingCertificate ? (
+            <div className="flex items-center gap-x-4">
+              <Button variant="update" handleClick={handleUpdateCertificate}>
+                Update
+              </Button>
+              <Button variant="delete" handleClick={handleCancelUpdateCertificate}>
+                Cancel
+              </Button>
+            </div>
+          ) : (
+            <Button variant="add" handleClick={handleAddCertificate}>
+              Add
+              <Plus size={18} className="ml-2" />
+            </Button>
+          )}
+        </div>
+      </div>
+      <CertificateTable />
     </div>
   )
 }
@@ -345,7 +453,7 @@ export const CandidateFormStep5 = () => {
 // ============= Candidate Step-6 Form ===================
 export const CandidateFormStep6 = () => {
   const formik = useFormikContext<CandidateSchemaType>();
-  const { handleAddDocument, handleDeleteDocument, documetPdfRef } = useCandidateDocument()
+  const { handleAddDocument, handleDeleteDocument, documetPdfRef } = useCandidateForm()
   return (
     <div className="space-y-4">
       {/* Select Document Type */}
@@ -399,7 +507,7 @@ export const CandidateFormStep6 = () => {
       )}
       <FormInputPdf handleDeleteRef={documetPdfRef} label="Document" name="document" />
       <div>
-        <Button varient="add" handleClick={handleAddDocument}>
+        <Button variant="add" handleClick={handleAddDocument}>
           Add
         </Button>
       </div>
@@ -489,33 +597,165 @@ export const CandidateFormStep7 = () => {
   );
 };
 
+// ========================== Tables ==============================
+
+const WorkExperienceTable = () => {
+  const { values } = useCandidateForm();
+  return (
+    <TableWrapper
+      isLoading={false}
+      isDataAvailable={values?.workExperience?.length > 0}
+    >
+      <Table
+        isPagination={false}
+        columns={WorkExperienceColumn()}
+        data={values?.workExperience}
+      />
+    </TableWrapper>
+  );
+};
+
+const WorkExperienceColumn = (): ColumnDef<any>[] => {
+  const { handleEditWorkExperience, handleDeleteWorkExperience } = useCandidateForm();
+  return [
+    { header: "Job Title", accessorKey: "job_title" },
+    { header: "Company", accessorKey: "company_name" },
+    { header: "Level", accessorKey: "job_level" },
+    { header: "Start Date", accessorKey: "start_date" },
+    { header: "End Date", accessorKey: "end_date" },
+    {
+      header: "Action",
+      accessorKey: "action",
+      cell: ({ row }) => (
+        <TableAction
+          edit={{
+            active: true,
+            onClick: (e) => { e.preventDefault(); handleEditWorkExperience(row.index); }
+          }}
+          del={{
+            active: true,
+            onClick: (e) => { e.preventDefault(); handleDeleteWorkExperience(row.index); }
+          }}
+        />
+      ),
+    },
+  ];
+};
+
+const EducationTable = () => {
+  const { values } = useCandidateForm();
+  return (
+    <TableWrapper
+      isLoading={false}
+      isDataAvailable={values?.educationDetails?.length > 0}
+    >
+      <Table
+        isPagination={false}
+        columns={EducationColumn()}
+        data={values?.educationDetails}
+      />
+    </TableWrapper>
+  );
+};
+
+const EducationColumn = (): ColumnDef<any>[] => {
+  const { handleEditEducation, handleDeleteEducation } = useCandidateForm();
+  return [
+    { header: "Degree", accessorKey: "degree" },
+    { header: "Institute", accessorKey: "institute_name" },
+    { header: "Faculty", accessorKey: "faculty_name" },
+    { header: "Start Date", accessorKey: "start_date" },
+    { header: "End Date", accessorKey: "end_date" },
+    {
+      header: "Action",
+      accessorKey: "action",
+      cell: ({ row }) => (
+        <TableAction
+          edit={{
+            active: true,
+            onClick: (e) => { e.preventDefault(); handleEditEducation(row.index); }
+          }}
+          del={{
+            active: true,
+            onClick: (e) => { e.preventDefault(); handleDeleteEducation(row.index); }
+          }}
+        />
+      ),
+    },
+  ];
+};
+
+const CertificateTable = () => {
+  const { values } = useCandidateForm();
+  return (
+    <TableWrapper
+      isLoading={false}
+      isDataAvailable={values?.certificates?.length > 0}
+    >
+      <Table
+        isPagination={false}
+        columns={CertificateColumn()}
+        data={values?.certificates}
+      />
+    </TableWrapper>
+  );
+};
+
+const CertificateColumn = (): ColumnDef<any>[] => {
+  const { handleEditCertificate, handleDeleteCertificate } = useCandidateForm();
+  return [
+    { header: "Title", accessorKey: "certificate_title" },
+    { header: "Organization", accessorKey: "organization_name" },
+    {
+      header: "Action",
+      accessorKey: "action",
+      cell: ({ row }) => (
+        <TableAction
+          edit={{
+            active: true,
+            onClick: (e) => { e.preventDefault(); handleEditCertificate(row.index); }
+          }}
+          del={{
+            active: true,
+            onClick: (e) => { e.preventDefault(); handleDeleteCertificate(row.index); }
+          }}
+        />
+      ),
+    },
+  ];
+};
+
+
 // Add and Delete Button
-type ButtonVarient = "add" | "delete";
+type ButtonVariant = "add" | "update" | "delete";
 const Button = ({
   children,
   handleClick,
-  varient,
+  variant,
 }: {
   children: React.ReactNode;
   handleClick: () => void;
-  varient: ButtonVarient;
+  variant: ButtonVariant;
 }) => {
   const baseStyle =
-    "px-3 py-1 flex items-center typo-mid-bd-reg rounded-4xl cursor-pointer";
+    "px-4 py-2 flex items-center justify-center typo-mid-bd-reg rounded-lg cursor-pointer transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed";
 
-  const varients: Record<ButtonVarient, string> = {
+  const variants: Record<ButtonVariant, string> = {
     add: "text-white bg-secondary-500 hover:bg-secondary-700",
-    delete: "text-white bg-error-delete",
+    update: "text-white bg-primary-500 hover:bg-primary-700",
+    delete: "text-white bg-error-delete hover:bg-red-700",
   };
   return (
     <button
+      type="button"
       onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
         handleClick();
       }}
-      className={cn(baseStyle, varients[varient], "")}
+      className={cn(baseStyle, variants[variant])}
     >
       {children}
     </button>
   );
 };
+

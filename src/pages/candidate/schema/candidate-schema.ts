@@ -97,6 +97,7 @@ export const step3ValidationSchema = Yup.object({
     .of(workExperienceSchema)
     .min(1, "At least one work experience is required")
     .required(),
+  edit_work_experience_index: Yup.number().nullable(),
 });
 
 // ============== Step - 4 Education Details Validation Schema ====================
@@ -115,6 +116,7 @@ export const step4ValidationSchema = Yup.object({
     .of(educationDetailsSchema)
     .min(1, "At least one education detail is required")
     .required(),
+  edit_education_index: Yup.number().nullable(),
 })
 // ============== Step - 5 Certificate Validation Schema ====================
 const certificateSchema = Yup.object({
@@ -131,6 +133,7 @@ export const step5ValidationSchema = Yup.object({
     .of(certificateSchema)
     .min(1, "At least one certificate is required")
     .required(),
+  edit_certificate_index: Yup.number().nullable(),
 })
 
 // ============== Step - 6 Validation Schema ====================
