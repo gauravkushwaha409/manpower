@@ -10,6 +10,20 @@ export const candidateDocuments = [
 ] as const
 export type CandidateDocumentOptionType = typeof candidateDocuments[number]
 
+const validateFileOrUrl = (value: any) => {
+  if (!value) return false;
+
+  if (typeof value === "string") {
+    try {
+      new URL(value);
+      return true;
+    } catch {
+      return false;
+    }
+  }
+  return value instanceof File;
+};
+
 export const candidateDocumentOptions: IOption<CandidateDocumentOptionType>[] = [
   { label: "Citizenship", value: "citizenship" },
   { label: "Passport", value: "passport" },
@@ -66,9 +80,60 @@ export const step2ValidationSchema = Yup.object({
     .required("This field is required")
     .min(1, "At least education is required"),
 });
+// ============== Step - 3 work experience Validation Schema ====================
+const workExperienceSchema = Yup.object({
+  job_title: Yup.string().trim().required("This field is required"),
+  company_name: Yup.string().trim().required("This field is required"),
+  job_level: Yup.string().trim().required("This field is required"),
+  currently_working: Yup.boolean().required("This field is required"),
+  start_date: Yup.string().trim().required("This field is required"),
+  end_date: Yup.string().trim().required("This field is required"),
+  description: Yup.string().trim().required("This field is required"),
+});
 
-// ============== Step - 3 Validation Schema ====================
+export const step3ValidationSchema = Yup.object({
+  tempWorkExperience: workExperienceSchema,
+  workExperience: Yup.array()
+    .of(workExperienceSchema)
+    .min(1, "At least one work experience is required")
+    .required(),
+});
 
+// ============== Step - 4 Education Details Validation Schema ====================
+const educationDetailsSchema = Yup.object({
+  degree: Yup.string().trim().required("This field is required"),
+  institute_name: Yup.string().trim().required("This field is required"),
+  faculty_name: Yup.string().trim().required("This field is required"),
+  currently_studying: Yup.boolean().required("This field is required"),
+  start_date: Yup.string().trim().required("This field is required"),
+  end_date: Yup.string().trim().required("This field is required"),
+})
+
+export const step4ValidationSchema = Yup.object({
+  tempEducationDetails: educationDetailsSchema,
+  educationDetails: Yup.array()
+    .of(educationDetailsSchema)
+    .min(1, "At least one education detail is required")
+    .required(),
+})
+// ============== Step - 5 Certificate Validation Schema ====================
+const certificateSchema = Yup.object({
+  certificate_title: Yup.string().trim().required("This field is required"),
+  organization_name: Yup.string().trim().required("This field is required"),
+  description: Yup.string().trim().required("This field is required"),
+  certificate_file: Yup.mixed<string | File>()
+    .required("This field is required")
+    .test("file-or-url", "Invalid document", validateFileOrUrl),
+})
+export const step5ValidationSchema = Yup.object({
+  tempCertificate: certificateSchema,
+  certificates: Yup.array()
+    .of(certificateSchema)
+    .min(1, "At least one certificate is required")
+    .required(),
+})
+
+// ============== Step - 6 Validation Schema ====================
 const citizenshipSchema = Yup.object({
   citizenship_number: Yup.string().trim().required("This field is required"),
   issued_district: Yup.string().trim().required("This field is required"),
@@ -89,19 +154,7 @@ const tempDocument = Yup.object().shape({
     .required("Document type is required"),
   document: Yup.mixed<string | File>()
     .required("This field is required")
-    .test("file-or-url", "Invalid document", (value) => {
-      if (!value) return false;
-
-      if (typeof value === "string") {
-        try {
-          new URL(value);
-          return true;
-        } catch {
-          return false;
-        }
-      }
-      return value instanceof File;
-    }),
+    .test("file-or-url", "Invalid document", validateFileOrUrl),
   // ============ Citizenship Validation ============
   citizenship_issued_date: Yup.string().trim().when("tempDocument.type", {
     is: (documentType: CandidateDocumentOptionType) => documentType === "citizenship",
@@ -157,22 +210,11 @@ const baseDocumentSchema = Yup.object({
     .required("Document type is required"),
   document: Yup.mixed<string | File>()
     .required("This field is required")
-    .test("file-or-url", "Invalid document", (value) => {
-      if (!value) return false;
-
-      if (typeof value === "string") {
-        try {
-          new URL(value);
-          return true;
-        } catch {
-          return false;
-        }
-      }
-      return value instanceof File;
-    }),
+    .test("file-or-url", "Invalid document", validateFileOrUrl),
 });
 
-export const step3ValidationSchema = Yup.object({
+// ============== Step - 6 Validation Schema ====================
+export const step6ValidationSchema = Yup.object({
   tempDocument: tempDocument,
   documents: Yup.array()
     .of(
@@ -195,8 +237,8 @@ export const step3ValidationSchema = Yup.object({
     .min(1, "At least one document is required"),
 });
 
-// =============== Step - 4 Validation Schema ===========
-export const step4ValidationSchema = Yup.object({
+// =============== Step - 7 Validation Schema ===========
+export const step7ValidationSchema = Yup.object({
   applied_country: Yup.string().required("This field is required"),
   company_name: Yup.string().required("This field is required"),
   job_vacancy: Yup.string().required("This field is required"),
@@ -207,7 +249,10 @@ export const step4ValidationSchema = Yup.object({
 export const candidateValidationSchema = step1ValidationSchema
   .concat(step2ValidationSchema)
   .concat(step3ValidationSchema)
-  .concat(step4ValidationSchema);
+  .concat(step4ValidationSchema)
+  .concat(step5ValidationSchema)
+  .concat(step6ValidationSchema)
+  .concat(step7ValidationSchema);
 
 export type Step1ValidationSchemaType = Yup.InferType<
   typeof step1ValidationSchema
@@ -222,7 +267,20 @@ export type Step4ValidationSchemaType = Yup.InferType<
   typeof step4ValidationSchema
 >;
 
+export type Step5ValidationSchemaType = Yup.InferType<
+  typeof step5ValidationSchema
+>;
+export type Step6ValidationSchemaType = Yup.InferType<
+  typeof step6ValidationSchema
+>;
+export type Step7ValidationSchemaType = Yup.InferType<
+  typeof step7ValidationSchema
+>;
+
 export type CandidateSchemaType = Step1ValidationSchemaType &
   Step2ValidationSchemaType &
   Step3ValidationSchemaType &
-  Step4ValidationSchemaType;
+  Step4ValidationSchemaType &
+  Step5ValidationSchemaType &
+  Step6ValidationSchemaType &
+  Step7ValidationSchemaType;

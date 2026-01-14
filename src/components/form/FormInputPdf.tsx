@@ -7,12 +7,14 @@ import {
   useImperativeHandle,
 } from "react";
 import { CircleX, FileText } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 interface IPdfUpload extends ComponentProps<"input"> {
   name: string;
   label: string;
   labelClassName?: string;
   className?: string;
+  wrapperClassName?: string;
   required?: boolean;
   handleDeleteRef?: React.RefObject<{
     reset: () => void;
@@ -24,6 +26,7 @@ const FormInputPdf: React.FC<IPdfUpload> = ({
   label,
   className,
   labelClassName,
+  wrapperClassName,
   required,
   handleDeleteRef,
 }) => {
@@ -61,7 +64,7 @@ const FormInputPdf: React.FC<IPdfUpload> = ({
   }, [field.value]);
 
   return (
-    <div className="flex flex-col gap-2">
+    <div className={cn(`flex flex-col gap-2`, wrapperClassName)}>
       {/* Label */}
       <label
         className={`typography-input-label ${labelClassName}`}

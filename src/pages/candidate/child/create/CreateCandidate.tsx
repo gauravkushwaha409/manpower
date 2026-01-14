@@ -7,6 +7,9 @@ import {
   CandidateFormStep2,
   CandidateFormStep3,
   CandidateFormStep4,
+  CandidateFormStep5,
+  CandidateFormStep6,
+  CandidateFormStep7,
 } from "../../partials/candidate-form";
 
 const CreateCandidate = () => {
@@ -49,6 +52,21 @@ const CreateCandidate = () => {
             id: "candidate-step-4",
             title: "Step-4",
             content: <CandidateFormStep4 />,
+          },
+          {
+            id: "candidate-step-5",
+            title: "Step-5",
+            content: <CandidateFormStep5 />,
+          },
+          {
+            id: "candidate-step-6",
+            title: "Step-6",
+            content: <CandidateFormStep6 />,
+          },
+          {
+            id: "candidate-step-7",
+            title: "Step-7",
+            content: <CandidateFormStep7 />,
           },
         ]}
       />

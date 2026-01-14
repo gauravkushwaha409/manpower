@@ -8,7 +8,9 @@ import FormInputPdf from "@/components/form/FormInputPdf";
 import TextEditor from "@/components/form/TextEditor";
 import { CandidateSchemaType } from "../schema/candidate-schema";
 import useCandidateDocument from "../hooks/use-candidate-documents";
+import FormInputTextArea from "@/components/form/form-input-text-area";
 
+// ============= Candidate Step-1 Form ===================
 export const CandidateFormStep1 = () => {
   const provienceOption: IOption[] = [
     { label: "Koshi", value: "koshi" },
@@ -113,6 +115,7 @@ export const CandidateFormStep1 = () => {
   );
 };
 
+// ============= Candidate Step-2 Form ===================
 export const CandidateFormStep2 = () => {
   const newFieldEducation = {
     nameOfInstute: "",
@@ -248,8 +251,101 @@ export const CandidateFormStep2 = () => {
 
 // ============= Candidate Step-3 Form ===================
 export const CandidateFormStep3 = () => {
+  return (
+    <div className="grid grid-cols-2 gap-4">
+      <FormInputText
+        label="Job Title"
+        name="tempWorkExperience.job_title"
+        placeholder="Enter Job Title"
+      />
+      <FormInputText
+        label="Company Name"
+        name="tempWorkExperience.company_name"
+        placeholder="Enter Company Name"
+      />
+      <FormInputText
+        label="Job Level"
+        name="tempWorkExperience.job_level"
+        placeholder="Enter Job Level"
+      />
+      <FormInputDate
+        label="Start Date"
+        name="tempWorkExperience.start_date"
+        placeholder="Enter Start Date"
+      />
+      <FormInputDate
+        label="End Date"
+        name="tempWorkExperience.end_date"
+        placeholder="Enter End Date"
+      />
+    </div>
+  )
+}
+
+// ============= Candidate Step-4 Form ===================
+
+export const CandidateFormStep4 = () => {
+  return (
+    <div className="grid grid-cols-2 gap-4">
+      <FormInputText
+        label="Degree"
+        name="tempEducationDetails.degree"
+        placeholder="Enter Degree"
+      />
+      <FormInputText
+        label="Institute Name"
+        name="tempEducationDetails.institute_name"
+        placeholder="Enter Institute Name"
+      />
+      <FormInputText
+        label="Faculty Name"
+        name="tempEducationDetails.faculty_name"
+        placeholder="Enter Faculty Name"
+      />
+      <FormInputDate
+        label="Start Date"
+        name="tempEducationDetails.start_date"
+        placeholder="Enter Start Date"
+      />
+      <FormInputDate
+        label="End Date"
+        name="tempEducationDetails.end_date"
+        placeholder="Enter End Date"
+      />
+    </div>
+  )
+}
+
+// ============= Candidate Step-5 Form ===================
+
+export const CandidateFormStep5 = () => {
+  return (
+    <div className="grid grid-cols-2 gap-4">
+      <FormInputText
+        label="Certificate Title"
+        name="tempCertificate.certificate_title"
+        placeholder="Enter Certificate Title"
+      />
+      <FormInputText
+        label="Organization Name"
+        name="tempCertificate.organization_name"
+        placeholder="Enter Organization Name"
+      />
+      <FormInputTextArea
+        label="Description"
+        name="tempCertificate.description"
+        placeholder="Enter Description"
+        wrapperClassName="col-span-2"
+      />
+      <FormInputPdf wrapperClassName="col-span-2" label="Upload Certificate" name="tempCertificate.certificate_file" />
+    </div>
+  )
+}
+
+// ============= Candidate Step-6 Form ===================
+export const CandidateFormStep6 = () => {
   const formik = useFormikContext<CandidateSchemaType>();
-  const {handleAddDocument,handleDeleteDocument,documetPdfRef} =  useCandidateDocument()
+  const { handleAddDocument, handleDeleteDocument, documetPdfRef } = useCandidateDocument()
   return (
     <div className="space-y-4">
       {/* Select Document Type */}
@@ -339,8 +435,8 @@ export const CandidateFormStep3 = () => {
     </div>
   );
 };
-// ============= Candidate Step-4 Form ===================
-export const CandidateFormStep4 = () => {
+// ============= Candidate Step-7 Form ===================
+export const CandidateFormStep7 = () => {
   return (
     <div className="grid grid-cols-2 gap-4">
       <FormInputSelect
