@@ -37,12 +37,17 @@ interface IDeleteDataArgs {
   options?: any;
   invalidateTag?: string[];
 }
+
 const baseQuery = fetchBaseQuery({
   baseUrl: BASE_API_URL,
   prepareHeaders: async (headers) => {
     const token = getCookie(COOKIE_CONFIG.accessToken);
+    const tenantId = getCookie(COOKIE_CONFIG.tenantId);
     if (token) {
       headers.set("authorization", `Bearer ${token}`);
+    }
+    if (tenantId) {
+      headers.set("x-tenant-id", `${tenantId}`);
     }
     headers.set("Accept", "application/json");
     return headers;
@@ -52,7 +57,7 @@ const baseQuery = fetchBaseQuery({
 const baseQueryWithReauth = async (
   args: BaseQueryArg<any>,
   api: BaseQueryApi,
-  extraOptions: any
+  extraOptions: any,
 ) => {
   let result = await baseQuery(args, api, extraOptions);
   if (result.error && result.error.status === 401) {
@@ -65,7 +70,7 @@ const baseQueryWithReauth = async (
         body: { refresh },
       },
       api,
-      extraOptions
+      extraOptions,
     );
     if (refreshResult.data) {
       const { accessToken, refreshToken } = refreshResult.data as {
