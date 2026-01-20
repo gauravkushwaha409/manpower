@@ -5,8 +5,8 @@ const LoginForm: React.FC = () => {
   return (
     <div className="w-full h-full">
       <div className="flex flex-col justify-center items-center mb-6">
-        <h1 className="mb-4 font-bold text-2xl">Login</h1>
-        <p className="text-gray-600">
+        <h1 className="mb-4 font-bold text-xl">Login</h1>
+        <p className="text-gray-600 text-xs">
           Please enter your credentials to continue.
         </p>
       </div>
