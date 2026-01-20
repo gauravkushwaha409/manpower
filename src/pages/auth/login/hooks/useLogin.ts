@@ -1,13 +1,13 @@
-import { usePostDataMutation } from '@/api/api';
-import { endpoints } from '@/api/endpoints';
-import { showErrorMessage, showSuccessMessage } from '@/utils/toast';
-import { useFormik } from 'formik';
-import { useNavigate } from 'react-router-dom';
-import * as Yup from 'yup';
-import { COOKIE_CONFIG, setCookie } from '@/utils/cookie';
-import { ILoginError, ILoginSuccess } from '../interface/ILogin';
-import { PATH } from '@/constant/path';
-import handleErrors, { ApiResponse } from '@/api/api.error';
+import { usePostDataMutation } from "@/api/api";
+import { endpoints } from "@/api/endpoints";
+import { showErrorMessage, showSuccessMessage } from "@/utils/toast";
+import { useFormik } from "formik";
+import { useNavigate } from "react-router-dom";
+import * as Yup from "yup";
+import { COOKIE_CONFIG, setCookie } from "@/utils/cookie";
+import { ILoginError, ILoginSuccess } from "../interface/ILogin";
+import { PATH } from "@/constant/path";
+import handleErrors, { ApiResponse } from "@/api/api.error";
 
 const useLogin = () => {
   const navigate = useNavigate();
@@ -15,14 +15,14 @@ const useLogin = () => {
 
   const formik = useFormik({
     initialValues: {
-      email: '',
-      password: '',
+      email: "",
+      password: "",
     },
     validationSchema: Yup.object().shape({
-      email: Yup.string().required('Email is required'),
+      email: Yup.string().required("Email is required"),
       password: Yup.string()
-        .required('Password is required')
-        .min(4, 'Password must be at least 6 characters'),
+        .required("Password is required")
+        .min(4, "Password must be at least 6 characters"),
       //  .matches(/(?=.*[A-Z])/, "Password must contain at least one uppercase letter")
       //  .matches(/(?=.*\d)/, "Password must contain at least one number")
       //  .matches(/(?=.*[!@#$%^&*()_+={}\[\]:;"\'<>,.?/\\|`~])/, "Password must contain at least one special character"),
@@ -34,7 +34,7 @@ const useLogin = () => {
       });
       const response: ILoginSuccess = res?.data;
       const error = res?.error as ILoginError;
-      if ('error' in response && response.error) {
+      if ("error" in response && response.error) {
         handleErrors(res as ApiResponse, (errors) => {
           if (errors.general) {
             showErrorMessage(errors.general);
@@ -46,16 +46,20 @@ const useLogin = () => {
         });
         return;
       }
-      if (response && response?.status === 'success') {
+      if (response && response?.status === "success") {
         setCookie({
-          cookieName: 'accessToken',
+          cookieName: "accessToken",
           value: response?.data?.accessToken,
           expiresIn: COOKIE_CONFIG.accessTokenExpiryDuration,
         });
         setCookie({
-          cookieName: 'refreshToken',
+          cookieName: "refreshToken",
           value: response?.data?.refreshToken,
           expiresIn: COOKIE_CONFIG.refreshTokenExpiryDuration,
+        });
+        setCookie({
+          cookieName: "tenantId",
+          value: response?.data?.user?.tenantId,
         });
         navigate(PATH.dashboard.dashboard);
         showSuccessMessage(response?.message);

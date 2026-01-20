@@ -1,10 +1,10 @@
-import { CandidateSchemaType } from "@/pages/candidate/schema/candidate-schema";
+// import { CandidateSchemaType } from "@/pages/candidate/schema/candidate-schema";
 import { useFormik } from "formik";
 import { useState } from "react";
 
 export const useUpdateCandidate = () => {
   const [step, setStep] = useState<number>(0);
-  const initialValues: CandidateSchemaType = {
+  const initialValues = {
     // step - 1 form field
     first_name: "",
     last_name: "",
@@ -39,7 +39,7 @@ export const useUpdateCandidate = () => {
   };
   const formik = useFormik({
     initialValues,
-    onSubmit: () => { },
+    onSubmit: () => {},
   });
 
   return { formik, step, setStep };

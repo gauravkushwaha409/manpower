@@ -15,6 +15,7 @@ interface IUser {
   email: string;
   phone_No: string;
   avatar: string | null;
+  tenantId: string;
 }
 
 // Error Response

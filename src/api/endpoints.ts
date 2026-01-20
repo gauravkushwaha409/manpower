@@ -1,7 +1,7 @@
 export const endpoints = {
   refreshToken: "/user/superadmin/refresh-token",
   getData: "/getData",
-  login: "/user/superadmin/login",
+  login: "/user/login",
   changePassword: "/user/superadmin/change-password",
   createUser: "/user/register",
   getUser: "/user/list/search/",
@@ -40,7 +40,7 @@ export const endpoints = {
   },
   country: {
     list: "",
-    create: "",
+    create: "/manpower/country",
     update: "",
     delete: "",
     details: "",

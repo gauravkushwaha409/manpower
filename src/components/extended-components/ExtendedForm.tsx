@@ -33,7 +33,7 @@ export default function ExtendedForm<T extends FormikValues>({
         onSubmit={formik.handleSubmit}
         className={cn(
           "space-y-6 bg-background-200 bg-white shadow-[0px_1px_22px_0px_rgba(0,0,0,0.04)] p-4 rounded-xl",
-          className
+          className,
         )}
       >
         {children}
@@ -83,13 +83,17 @@ const FormButton = ({
   variant,
 }: ButtonProps) => {
   const baseClasses =
-    "px-3 py-1 flex items-center gap-x-2 typo-mid-bd-reg rounded-4xl transition-colors";
+    "px-4 py-2 flex items-center gap-x-2 typo-mid-bd-reg rounded-lg transition-all duration-200 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2";
 
   const variantClasses: Record<ButtonVariant, string> = {
-    submit: "bg-secondary-500 text-white hover:bg-secondary-700",
+    submit:
+      "bg-secondary-500 text-white hover:bg-secondary-600 active:bg-secondary-700 focus-visible:ring-secondary-400",
+
     previous:
-      "border border-secondary-500 text-secondary-500 hover:bg-secondary-500 hover:text-white",
-    cancel: "bg-red-500 text-white hover:bg-red-700",
+      "border border-secondary-500 text-secondary-600 hover:bg-secondary-50 active:bg-secondary-100 focus-visible:ring-secondary-400",
+
+    cancel:
+      "bg-red-500 text-white hover:bg-red-600 active:bg-red-700 focus-visible:ring-red-400",
   };
 
   const isDisabled = disabled || isLoading;
@@ -105,10 +109,12 @@ const FormButton = ({
       className={cn(
         baseClasses,
         variantClasses[variant],
-        isDisabled ? "opacity-60 cursor-not-allowed" : "cursor-pointer"
+        isDisabled
+          ? "opacity-50 cursor-not-allowed shadow-none"
+          : "cursor-pointer hover:shadow-md",
       )}
     >
-      {isLoading && <Loader />}
+      {isLoading && <Loader className="animate-spin duration-300" size={14} />}
       {text}
     </button>
   );
